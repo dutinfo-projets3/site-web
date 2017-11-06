@@ -1,3 +1,7 @@
+projet_s3:
+    resource: "@ProjetS3Bundle/Resources/config/routing.yml"
+    prefix:   /
+
 app:
     resource: '@AppBundle/Controller/'
     type: annotation

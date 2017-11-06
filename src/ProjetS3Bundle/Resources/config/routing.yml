@@ -1,0 +1,7 @@
+projet_s3_homepage:
+    path:     /
+    defaults: { _controller: ProjetS3Bundle:Web:index }
+
+projet_s3_login:
+    path:     /user/login
+    defaults: { _controller: ProjetS3Bundle:Web:login }
