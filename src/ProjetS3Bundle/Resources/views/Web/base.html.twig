@@ -1,27 +1,30 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<title>Accueil - Université PanAfricaine - L'Institut des Sciences de l'Eau et de l'Energie</title>
-		<!-- style -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
-		<link rel="stylesheet" href="{{ asset('bundles/projets3/css/base.css') }}">
-	</head>
-	<body>
-		<div class="container back">
-            <!-- logo -->
-			<div class="row">
-				<div class="col-md-3">
-					<img src="{{ asset('bundles/projets3/img/logo.png') }}" class="logo" width="370px" height="115px">
-				</div>
-			</div>
-            <!-- navbar principale-->
-			<nav class="navbar center navbar-toggleable-md navbar-light bg-faded">
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNav">
-                    <ul class="navbar-nav">
+{% extends "base.html.twig" %}
+
+{% block title %}
+	Accueil - Université PanAfricaine - L'Institut des Sciences de l'Eau et de l'Energie</title>
+{% endblock %}	
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="{{ asset('bundles/projets3/css/base.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="container back">
+	<!-- logo -->
+	<div class="row">
+		<div class="col-md-3">
+			<img src="{{ asset('bundles/projets3/img/logo.png') }}" class="logo" width="370px" height="115px">
+		</div>
+	</div>
+	<!-- navbar principale-->
+	<nav class="navbar center navbar-toggleable-md navbar-light bg-faded">
+		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNav">
+			<ul class="navbar-nav">
 				<li class="nav-item active"><a class="nav-link" href="{{ path('projet_s3_homepage')}}">Accueil<span class="sr-only">(current)</span></a></li>
 				<li class="nav-item"><a class="nav-link" href="#">Programme d'Etudes</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">Inscription</a></li>
@@ -30,34 +33,38 @@
 				<li class="nav-item"><a class="nav-link" href="#">Vie sur le campus</a></li>
 				<li class="nav-item"><a class="nav-link" href="#">A Propos</a></li>
 				<li class="nav-item"><a class="nav-link" href="{{ path('projet_s3_login') }}">Se connecter</a></li>
-                    </ul>
-                </div>
-            </nav>
+			</ul>
+		</div>
+	</nav>
+
+	{# @TODO: Menu connexion, gestion des sessions #}
 	{% if connected %}
 		<!-- navbar connected-->
-			<nav class="navbar center navbar-toggleable-md navbar-light bg-faded">
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNav">
-                    <ul class="navbar-nav text-center">
-						<li class="nav-item"><a class="nav-link" href="">Mes informations</a></li>
-						<li class="nav-item"><a class="nav-link" href="note.php">Mes notes</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">Emploi du temps</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">Messagerie</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">Cours en ligne</a></li>
-						<li class="nav-item"><a class="nav-link" href="index.php?connected=false">Se deconnecter</a></li>
-                    </ul>
-                </div>
-            </nav>	
+		<nav class="navbar center navbar-toggleable-md navbar-light bg-faded">
+			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNav">
+				<ul class="navbar-nav text-center">
+					<li class="nav-item"><a class="nav-link" href="">Mes informations</a></li>
+					<li class="nav-item"><a class="nav-link" href="note.php">Mes notes</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">Emploi du temps</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">Messagerie</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">Cours en ligne</a></li>
+					<li class="nav-item"><a class="nav-link" href="index.php?connected=false">Se deconnecter</a></li>
+				</ul>
+			</div>
+		</nav>
 	{% else %}
 		
 	{% endif %}
-			<div class="row">
-				{% block content %}
-				{% endblock %}
-			</div>
+		<div class="row">
+			{% block content %}
+			{% endblock %}
 		</div>
-		<script src="{{ asset('bundles/projets3/js/bootstrap.min.js') }}"></script>
-	</body>
-</html>
+	</div>
+{% endblock %}
+
+{% block javascripts %}
+	<script src="{{ asset('bundles/projets3/js/bootstrap.min.js') }}"></script>
+{% endblock %}
