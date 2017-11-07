@@ -5,7 +5,9 @@
 {% endblock %}	
 
 {% block stylesheets %}
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="{{ asset('bundles/projets3/css/bootstrap.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('bundles/projets3/css/bootstrap-grid.min.css') }}">
+	<link rel="stylesheet" href="{{ asset('bundles/projets3/css/bootstrap-reboot.min.css') }}">
 	<link rel="stylesheet" href="{{ asset('bundles/projets3/css/base.css') }}">
 {% endblock %}
 
@@ -66,5 +68,7 @@
 {% endblock %}
 
 {% block javascripts %}
+	<script src="{{ asset('bundles/projets3/js/jquery.min.js') }}"></script>
 	<script src="{{ asset('bundles/projets3/js/bootstrap.min.js') }}"></script>
+	<script src="{{ asset('bundles/projets3/js/bootstrap.bundle.min.js') }}"></script>
 {% endblock %}
