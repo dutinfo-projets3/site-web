@@ -43,34 +43,34 @@ class Utilisateur {
         }else{
             //formulaire de connexion
             //générer un challenge
-            $challenge = self::ramdomString(20);
+            $challenge = self::randomString(20);
             $_SESSION[self::SESSION_KEY]['challenge'] = $challenge;
             $urlActuelUser = $_SERVER['php_self'].$_SERVER['query_string'];
             $res = <<<HTML
-<form action="/login.php" method="POST" onsubmit="hash()">
-     <div class="form-group">
-        <label for="nomUtilisateur">Nom utilisateur</label>
-        <input type="text" name="user" class="form-control" id="nomUtilisateur" aria-describedby="idHelp" placeholder="Nom utilisateur">
-        <small id="idHelp" class="form-text text-muted">Ne jamais divulguer cette identifiant</small>
-      </div>
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" name="password" class="form-control" id="password" placeholder="Mot de passe">
-      </div>
-      <input hidden name="url" value="{$urlActuelUser}"
-      <input hidden name="code" value="">
-       <button type="submit" class="btn btn-primary">Connexion</button>
-</form>
-<script src="/assets/js/sha256.js"></script>
-<script>
-function hash() {
-    //sha(sha(password).challenge.sha(user))
-  var code = sha256(sha256(document.getElementsByName('password')) + {$challenge} + sha256(document.getElementsByName('user')));
-  document.getElementsByName('code')[0].value = code;
-  document.getElementsByName('password')[0].value = "";
-  document.getElementsByName('user')[0].value = "";
-}
-</script>
+            <form action="/login.php" method="POST" onsubmit="hash()">
+                 <div class="form-group">
+                    <label for="nomUtilisateur">Nom utilisateur</label>
+                    <input type="text" name="user" class="form-control" id="nomUtilisateur" aria-describedby="idHelp" placeholder="Nom utilisateur">
+                    <small id="idHelp" class="form-text text-muted">Ne jamais divulguer cette identifiant</small>
+                  </div>
+                  <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" class="form-control" id="password" placeholder="Mot de passe">
+                  </div>
+                  <input hidden name="url" value="{$urlActuelUser}"
+                  <input hidden name="code" value="">
+                   <button type="submit" class="btn btn-primary">Connexion</button>
+            </form>
+            <script src="/assets/js/sha256.js"></script>
+            <script>
+                function hash() {
+                    //sha(sha(password).challenge.sha(user))
+                  var code = sha256(sha256(document.getElementsByName('password')) + {$challenge} + sha256(document.getElementsByName('user')));
+                  document.getElementsByName('code')[0].value = code;
+                  document.getElementsByName('password')[0].value = "";
+                  document.getElementsByName('user')[0].value = "";
+                }
+            </script>
 HTML;
 
 return $res;
