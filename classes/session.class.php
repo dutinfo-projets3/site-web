@@ -24,7 +24,7 @@ class Session {
 	*
 	* @return void
 	*/
-	static public function startSession() {
+	static public function start() {
 		if(session_status() == PHP_SESSION_DISABLED){
 			throw new SessionException("Session déja ouverte");
 		} else if(session_status() == PHP_SESSION_NONE){
