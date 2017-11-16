@@ -33,6 +33,7 @@ class Etudiant extends Utilisateur {
 		$etudiant->setCP($user->getCP());
 		$etudiant->setVille($user->getVille());
 		$etudiant->setURL($user->getURL());
+		$etudiant->setUsername($user->getUsername());
 
 		$rq = "SELECT INE, dateEntree FROM Etudiant WHERE idEtudiant=?";
 		$stmt = myPDO::getInstance()->prepare($rq);
