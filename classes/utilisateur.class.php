@@ -148,9 +148,23 @@ return $res;
 			}
 
 		}
-		var_dump($obj);
 		return $obj;
 	}
+
+	/**
+	 * Créé une instance d'Etudiant, Professeur ou Secretaire en fonction de la présence dans la SESSION
+	 * @throws NotInSessionException si personne n'est connecté.
+	 */
+	public static function createFromSession(){
+		self::startSession();
+		if (isset($_SESSION[self::$SESSION_KEY]) && !empty($_SESSION[self::$SESSION_KEY])){
+			$user = $_SESSION[self::$SESSION_KEY];
+			return $user;
+		} else {
+			throw new NotInSessionException();
+		}
+	}
+
 
 	/**
 	 * Sauvegarde les données de l'utilisateur dans la session actuelle
@@ -245,3 +259,12 @@ class AuthenticationException extends Exception{
 	}
 
 }
+
+class NotInSessionException extends Exception {
+	
+	public function __construct($code = 0, Exception $prev = null){
+		parent::__construct("Trying to access a saved user which is not in the SESSION", $code, $prev);
+	}
+
+}
+
