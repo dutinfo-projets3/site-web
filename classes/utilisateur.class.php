@@ -110,15 +110,15 @@ return $res;
      * @return bool
      */
 	public static function isConnected(){
-	    $res = false;
-        Session::start();
-        if(!empty($_SESSION[self::SESSION_KEY]) && isset($_SESSION_KEY) &&(!empty($_SESSION[self::SESSION_KEY]['connected']) && isset($_SESSION[self::SESSION_KEY]['connected']))){
-            if($_SESSION[self::SESSION_KEY]['connected'] == true){
-                $res = true;
-            }
-        }
-        return $res;
-    }
+		$res = false;
+		Session::start();
+		if(!empty($_SESSION[self::SESSION_KEY]) && isset($_SESSION_KEY) &&(!empty($_SESSION[self::SESSION_KEY]['connected']) && isset($_SESSION[self::SESSION_KEY]['connected']))){
+			if($_SESSION[self::SESSION_KEY]['connected'] == true){
+				$res = true;
+			}
+		}
+		return $res;
+	}
 
 	/**
 	 * Connecte l'utilisateur et stock les informations dans la session.
