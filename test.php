@@ -9,9 +9,9 @@
 
 	var_dump($_SESSION);
 
-	User::createUserAuth(array("code"=> 
+	Utilisateur::createUserAuth(array("code"=> 
 		hash("SHA256", 
-			hash("SHA256", "nathan") . "test". hash("SHA256", "janc0000")
+			hash("SHA256", "nathan") . "LOL". hash("SHA256", "janc0000")
 		)));
 
 	var_dump($_SESSION);

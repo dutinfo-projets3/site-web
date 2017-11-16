@@ -126,9 +126,10 @@ return $res;
 	 */
 	public static function createUserAuth(array $data){
 		Session::start();
-		$rq = "SELECT * FROM Utilisateur WHERE SHA2(CONCAT(motDePasse, ?, SHA2(nomUtilisateur, '256')), '256') = ?;";
+		$rq = "SELECT * FROM PERSONNE WHERE SHA2(CONCAT(MOTDEPASSE, ?, SHA2(NOMUTILISATEUR, '256')), '256') = ?;";
 
 		$stmt = myPDO::getInstance()->prepare($rq);
+		$stmt->setFetchMode(PDO::FETCH_CLASS, "Utilisateur");
 		$stmt->execute(array($_SESSION[self::SESSION_KEY]['challenge'], $data['code']));
 
 		$obj = $stmt->fetch();
@@ -141,7 +142,7 @@ return $res;
 
 }
 
-class AuthenticationException {
+class AuthenticationException extends Exception{
 	
 	public function __construct($code = 0, Exception $previous = null){ 
 		parent::__construct("Aucun utilisateur avec ce couple pseudo/mdp", $code, $previous);
