@@ -6,7 +6,14 @@
 
 	$loader = new \Twig_Loader_Filesystem(__DIR__ . '/twigs');
 	$twig   = new \Twig_Environment($loader);
+<<<<<<< HEAD
 
+    $loginForm = Utilisateur::createLoginFrom();
+
+
+
+	echo ($twig->render('index.html.twig'));
+=======
 
 	$loginForm = "";
 
@@ -17,4 +24,4 @@
 	}
 
 	echo $twig->render('index.html.twig', array('form' => $loginForm));
-
+>>>>>>> 02982ff36f81885b7fcb267a1097e7edcb4f6083

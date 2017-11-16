@@ -7,7 +7,6 @@
 	$loader = new \Twig_Loader_Filesystem(__DIR__ . '/twigs');
 	$twig   = new \Twig_Environment($loader);
 
-
 	$loginForm = "";
 
 	if (Utilisateur::isConnected()){
@@ -17,4 +16,3 @@
 	}
 
 	echo $twig->render('index.html.twig', array('form' => $loginForm));
-

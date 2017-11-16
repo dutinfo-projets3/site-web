@@ -36,18 +36,13 @@ class Utilisateur {
 	/**
 	 * Renvoie le formulaire de connection de l'utilisateur, avec un challenge
 	 */
-	public static function createLoginFrom(){
-	    $res = "";
-        if(self::isConnected()){
-            //Affichage du nom et bouton de déconnexion
-
-        }else{
+	public static function createLoginForm(){
             //formulaire de connexion
             //générer un challenge
             $challenge = self::randomString(20);
             $_SESSION[self::SESSION_KEY]['challenge'] = $challenge;
-            $urlActuelUser = $_SERVER['php_self'].$_SERVER['query_string'];
-            $res = <<<HTML
+            $urlActuelUser = $_SERVER['PHP_SELF'].$_SERVER['QUERY_STRING'];
+            return <<<HTML
             <form action="login.php" method="POST" onsubmit="hash()">
                  <div class="form-group">
                     <label for="nomUtilisateur">Nom utilisateur</label>
@@ -78,10 +73,14 @@ class Utilisateur {
                 }
             </script>
 HTML;
+	}
 
-return $res;
-        }
 
+	/**
+	 * Créé le formulaire de déconnexion (Affiche aussi le nom d'utilisateurs et les infos importantes)
+	 */
+	public static function createLogoutForm(){
+		return "lol";
 	}
 
     public static function logOutForm($actionURL)
@@ -129,10 +128,9 @@ HTML;
 	public static function isConnected(){
 		$res = false;
 		Session::start();
-		if(!empty($_SESSION[self::SESSION_KEY]) && isset($_SESSION_KEY) &&(!empty($_SESSION[self::SESSION_KEY]['connected']) && isset($_SESSION[self::SESSION_KEY]['connected']))){
-			if($_SESSION[self::SESSION_KEY]['connected'] == true){
-				$res = true;
-			}
+		if(isset($_SESSION[self::SESSION_KEY]) && !empty($_SESSION[self::SESSION_KEY]) &&
+		   isset($_SESSION[self::SESSION_KEY]['connected']) && !empty($_SESSION[self::SESSION_KEY]['connected'])){
+			$res = $_SESSION[self::SESSION_KEY]['connected'] == true; // Car si connected != boolean ça doit pas mettre n'import quoi
 		}
 		return $res;
 	}
@@ -264,6 +262,14 @@ HTML;
 
 	public function setURL($u){
 		$this->urlImage = $u;
+	}
+
+	public function getUsername(){
+		return $this->nomUtilisateur;
+	}
+
+	public function setUsername($u){
+		$this->nomUtilisateur = $u;
 	}
 
 }

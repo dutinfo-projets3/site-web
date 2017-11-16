@@ -2,17 +2,20 @@
 	require_once("autoload.inc.php");
 
 try {
-	if (!Utilisateur::logoutIfRequested() && isset($_REQUEST['code']) && !empty($_REQUEST['code'])){
+	$logout = Utilisateur::logoutIfRequested();
+	if (!$logout && isset($_REQUEST['code']) && !empty($_REQUEST['code'])){
 		$u = Utilisateur::createUserAuth($_REQUEST);
 		$u->saveIntoSession();
-		var_dump($u);
-
-	} else {
+		header('Location: /');
+	} else if ($logout){
 		// Déconnecté, header
+		var_dump("déconnecté");
 	}
 } catch(AuthenticationException $e){
-	// Mauvais utilisateur
+		// Mauvais utilisateur
+		var_dump("bad user");
 
 } catch (Exception $e){
-	// Autre erreur
+		// Autre erreur
+		var_dump("lol");
 }
