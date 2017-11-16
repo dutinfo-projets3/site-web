@@ -48,7 +48,7 @@ class Utilisateur {
             $_SESSION[self::SESSION_KEY]['challenge'] = $challenge;
             $urlActuelUser = $_SERVER['php_self'].$_SERVER['query_string'];
             $res = <<<HTML
-            <form action="/login.php" method="POST" onsubmit="hash()">
+            <form action="login.php" method="POST" onsubmit="hash()">
                  <div class="form-group">
                     <label for="nomUtilisateur">Nom utilisateur</label>
                     <input type="text" name="user" class="form-control" id="nomUtilisateur" aria-describedby="idHelp" placeholder="Nom utilisateur">
@@ -58,15 +58,20 @@ class Utilisateur {
                     <label for="password">Password</label>
                     <input type="password" name="password" class="form-control" id="password" placeholder="Mot de passe">
                   </div>
-                  <input hidden name="url" value="{$urlActuelUser}"
-                  <input hidden name="code" value="">
+                  <input hidden name="url" value="{$urlActuelUser}">
+                  <input hidden name="code">
                    <button type="submit" class="btn btn-primary">Connexion</button>
             </form>
-            <script src="/assets/js/sha256.js"></script>
+            <script src="assets/js/sha256.js"></script>
             <script>
                 function hash() {
                     //sha(sha(password).challenge.sha(user))
-                  var code = sha256(sha256(document.getElementsByName('password')) + {$challenge} + sha256(document.getElementsByName('user')));
+                  code = sha256(sha256(
+                      document.getElementsByName('password')[0].value
+                      ) + "{$challenge}" + sha256(
+                          document.getElementsByName('user')[0].value
+                          )
+                          );
                   document.getElementsByName('code')[0].value = code;
                   document.getElementsByName('password')[0].value = "";
                   document.getElementsByName('user')[0].value = "";

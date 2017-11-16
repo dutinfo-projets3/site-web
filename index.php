@@ -6,7 +6,5 @@
 
 	$loader = new \Twig_Loader_Filesystem(__DIR__ . '/twigs');
 	$twig   = new \Twig_Environment($loader);
-
-	$test = new Etudiant();
-
-	echo $twig->render('index.html.twig', array("test" => $test));
+    $loginForm = Utilisateur::createLoginFrom();
+	echo $twig->render('index.html.twig', array('loginForm' => $loginForm));
