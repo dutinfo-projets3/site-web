@@ -84,6 +84,17 @@ return $res;
 
 	}
 
+    public static function logOutForm($actionURL)
+    {
+        $res = <<<HTML
+        <form action="{$actionURL}" method="POST">
+            <button type="submit" class="btn btn-primary" name="logout" value="true">Deconnexion</button> 
+        </form> 
+HTML;
+        return $res;
+    }
+
+
     /**
      * Génère une chaine aléatoire de caractère en fonction de la taille passé en paramètre
      * @param $size
