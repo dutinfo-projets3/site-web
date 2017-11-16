@@ -12,3 +12,4 @@
 			hash("SHA256", "nathan") . "LOL". hash("SHA256", "janc0000")
 		)));
 
+	var_dump($u);
