@@ -8,21 +8,22 @@ class Utilisateur {
 	/**
 	 * ID de l'utilisateur
 	 */
-	private $idPersonne;
+	protected $idPersonne;
 
 	/**
 	 * Informations privées de l'utilisateur
 	 */
-	private $nomPers;
-	private $prenom;
-	private $adresse;
-	private $codePostal;
-	private $ville;
+	protected $nomPers;
+	protected $prenomPers;
+	protected $adresse;
+	protected $codePostal;
+	protected $ville;
+	protected $nomUtilisateur;
 
 	/**
 	 * Image de l'utilisateur
 	 */
-	private $urlImage;
+	protected $urlImage;
 
 	/**
 	 * Type de l'utilisateur
@@ -30,7 +31,7 @@ class Utilisateur {
 	 * 1: Professeur
 	 * 2: Administration
 	 */
-	private $type;
+	protected $type;
 
 	/**
 	 * Renvoie le formulaire de connection de l'utilisateur, avec un challenge
@@ -126,7 +127,7 @@ return $res;
 	 */
 	public static function createUserAuth(array $data){
 		Session::start();
-		$rq = "SELECT * FROM PERSONNE WHERE SHA2(CONCAT(MOTDEPASSE, ?, SHA2(NOMUTILISATEUR, '256')), '256') = ?;";
+		$rq = "SELECT * FROM Personne WHERE SHA2(CONCAT(MOTDEPASSE, ?, SHA2(NOMUTILISATEUR, '256')), '256') = ?;";
 
 		$stmt = myPDO::getInstance()->prepare($rq);
 		$stmt->setFetchMode(PDO::FETCH_CLASS, "Utilisateur");
@@ -137,7 +138,102 @@ return $res;
 			throw new AuthenticationException();
 		} else {
 			$_SESSION[self::SESSION_KEY] = array("connected" => true);
+
+			switch ($obj->type){
+			case self::TYPES["ETUDIANT"]:
+				$obj = Etudiant::createFromUser($obj);
+				break;
+			default:
+				$obj = null;
+			}
+
 		}
+		var_dump($obj);
+		return $obj;
+	}
+
+	/**
+	 * Sauvegarde les données de l'utilisateur dans la session actuelle
+	 */
+	public function saveIntoSession(){
+		if (self::isConnected()){
+			$_SESSION[self::$SESSION_KEY] = array("connected" => true, "user" => $this);
+			return true;
+		}
+		return false;
+	}
+
+	/**
+	 * Déconnecte l'utilisateur si le champ logout est passé dans la requête
+	 */
+	public static function logoutIfRequested(){
+		if (isset($_REQUEST['logout']) && !empty($_REQUEST['logout']) && self::isConnected()){
+			$_SESSION[self::SESSION_KEY]["connected"] = false;
+			$_SESSION[self::SESSION_KEY]["user"] = NULL;
+			$_SESSION[self::SESSION_KEY] = NULL;
+			return true;
+		} 
+		return false;
+	}
+
+	/***
+	 * Getters & Setters
+	 **/
+
+	public function getID(){
+		return $this->idPersonne;
+	}
+
+	public function setID($id){
+		$this->idPersonne = $id;
+	}
+
+	public function getNom(){
+		return $this->nomPers;
+	}
+
+	public function setNom($nom){
+		$this->nomPers = $nom;
+	}
+
+	public function getPrenom(){
+		return $this->prenomPers;
+	}
+
+	public function setPrenom($nom){
+		$this->prenomPers = $nom;
+	}
+
+	public function getAdresse(){
+		return $this->adresse;
+	}
+
+	public function setAdresse($adr){
+		$this->adresse = $adr;
+	}
+
+	public function getCP(){
+		return $this->codePostal;
+	}
+
+	public function setCP($cp){
+		$this->codePostal = $cp;
+	}
+
+	public function getVille(){
+		return $this->ville;
+	}
+
+	public function setVille($v){
+		$this->ville = $v;
+	}
+
+	public function getURL(){
+		return $this->urlImage;
+	}
+
+	public function setURL($u){
+		$this->urlImage = $u;
 	}
 
 }
