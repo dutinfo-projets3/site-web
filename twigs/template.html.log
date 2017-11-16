@@ -1,0 +1,35 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Arch Linux) (preloaded format=pdfetex 2017.11.13)  16 NOV 2017 23:18
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**\input ./template.html.twig
+(./template.html.twig
+Missing character: There is no Ã in font cmr10!
+Missing character: There is no © in font cmr10!
+
+Overfull \hbox (7.27373pt too wide) in paragraph at lines 1--12
+\tenrm href="assets/css/bootstrap-grid.min.css"> <link rel="stylesheet" href="a
+ssets/css/bootstrap-reboot.min.css">|
+
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\tenrm h
+.\tenrm r
+.\tenrm e
+.\tenrm f
+.\tenrm =
+.etc.
+
+./template.html.twig:23: You can't use `macro parameter character #' in horizon
+tal mode.
+l.23 ...ton" data-toggle="collapse" data-target="#
+                                                  navbarNav" aria-controls="...
+
+? 
+./template.html.twig:23: Emergency stop.
+l.23 ...ton" data-toggle="collapse" data-target="#
+                                                  navbarNav" aria-controls="...
+End of file on the terminal!
+
+./template.html.twig:23:  ==> Fatal error occurred, no output PDF file produced
+!
