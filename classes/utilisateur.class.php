@@ -122,9 +122,29 @@ return $res;
 
 	/**
 	 * Connecte l'utilisateur et stock les informations dans la session.
+	 * @throws AuthenticationException
 	 */
-	public function createUserAuth(){
+	public static function createUserAuth(array $data){
+		Session::start();
+		$rq = "SELECT * FROM Utilisateur WHERE SHA2(CONCAT(motDePasse, ?, SHA2(nomUtilisateur, '256')), '256') = ?;";
+
+		$stmt = myPDO::getInstance()->prepare($rq);
+		$stmt->execute(array($_SESSION[self::SESSION_KEY]['challenge'], $data['code']));
+
+		$obj = $stmt->fetch();
+		if ($obj == null){
+			throw new AuthenticationException();
+		} else {
+			$_SESSION[self::SESSION_KEY] = array("connected" => true);
+		}
 	}
 
 }
 
+class AuthenticationException {
+	
+	public function __construct($code = 0, Exception $previous = null){ 
+		parent::__construct("Aucun utilisateur avec ce couple pseudo/mdp", $code, $previous);
+	}
+
+}
