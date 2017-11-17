@@ -36,13 +36,13 @@ class Utilisateur {
 	/**
 	 * Renvoie le formulaire de connection de l'utilisateur, avec un challenge
 	 */
-	public static function createLoginForm(){
+	public static function createLoginForm($err=null){
             //formulaire de connexion
             //générer un challenge
             $challenge = self::randomString(20);
             $_SESSION[self::$SESSION_KEY]['challenge'] = $challenge;
             $urlActuelUser = $_SERVER['PHP_SELF'].$_SERVER['QUERY_STRING'];
-            return <<<HTML
+            $val = <<<HTML
             <form action="login.php" method="POST" onsubmit="hash()">
                  <div class="form-group">
                     <label for="nomUtilisateur">Nom utilisateur</label>
@@ -53,9 +53,25 @@ class Utilisateur {
                     <label for="password">Password</label>
                     <input type="password" name="password" class="form-control" id="password" placeholder="Mot de passe">
                   </div>
+
                   <input hidden name="url" value="{$urlActuelUser}">
                   <input hidden name="code">
-                   <button type="submit" class="btn btn-primary">Connexion</button>
+HTML;
+	    if ($err != null){
+		$val .= "<span style='color: red;'> ";
+		switch($err){
+			case "badpass":
+				$val .= "Mauvais mot de passe!";
+				break;
+			case "other":
+				$val .= "Erreur serveur!";
+				break;
+		}
+		$val .= "</span>";
+	    }
+	
+	    return $val . <<<HTML
+		   <button type="submit" class="btn btn-primary">Connexion</button>
             </form>
             <script src="assets/js/sha256.js"></script>
             <script>
