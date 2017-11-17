@@ -15,18 +15,19 @@
 	<!-- logo -->
 	<div class="row">
 		<div class="col-md-3">
-			<img src="assets/img/logo.png" class="logo" width="370px" height="115px">
+			<img src="assets/img/logo.png"  class="img-fluid" alt="Responsive image">
 		</div>
-		<div class="col-3">
+		<div class="offset-6 col-3">
 			{{ form | raw }}
 		</div>
+	</div>
 	<!-- navbar principale-->
-	<nav class="navbar center navbar-toggleable-md navbar-light bg-faded">
-		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	<nav class="navbar  navbar-toggleable-md navbar-light bg-faded">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 
-		<div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNav">
+		<div class="navbar-collapse justify-content-center" id="navbarNav">
 			<ul class="navbar-nav">
 				<li class="nav-item active"><a class="nav-link" href="index.php">Accueil<span class="sr-only">(current)</span></a></li>
 				<li class="nav-item"><a class="nav-link" href="#">Programme d'Etudes</a></li>
@@ -64,7 +65,7 @@
 			{% block content %}
 			{% endblock %}
 		</div>
-	</div>
+</div>
 
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/bootstrap.min.js"></script>
