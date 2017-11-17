@@ -11,7 +11,8 @@
 	$loginForm = "";
 
 	if (Utilisateur::isConnected()){
-		$loginForm = Utilisateur::createLogoutForm();
+		$u = Utilisateur::createFromSession();
+		$loginForm = $u->createLogoutForm();
 	} else {
 		$loginForm = Utilisateur::createLoginForm();
 	}

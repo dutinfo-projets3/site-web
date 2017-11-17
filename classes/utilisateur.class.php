@@ -3,7 +3,7 @@
 class Utilisateur {
 
 	public const TYPES = array("ETUDIANT" => 0, "PROFESSEUR" => 1, "ADMINISTRATION" => 2);
-	public const SESSION_KEY = "__user__";
+	public static $SESSION_KEY = "__user__";
 
 	/**
 	 * ID de l'utilisateur
@@ -40,7 +40,7 @@ class Utilisateur {
             //formulaire de connexion
             //générer un challenge
             $challenge = self::randomString(20);
-            $_SESSION[self::SESSION_KEY]['challenge'] = $challenge;
+            $_SESSION[self::$SESSION_KEY]['challenge'] = $challenge;
             $urlActuelUser = $_SERVER['PHP_SELF'].$_SERVER['QUERY_STRING'];
             return <<<HTML
             <form action="login.php" method="POST" onsubmit="hash()">
@@ -79,8 +79,15 @@ HTML;
 	/**
 	 * Créé le formulaire de déconnexion (Affiche aussi le nom d'utilisateurs et les infos importantes)
 	 */
-	public static function createLogoutForm(){
-		return "lol";
+	public function createLogoutForm(){
+		return <<< HTML
+		<form action="login.php" method="POST">
+			<span> Bienvenue, {$this->getUsername()}
+			<button type="submit" class="btn btn-primary" name="logout" value="true">
+				Déconnexion
+			</button>
+		</form>
+HTML;
 	}
 
     public static function logOutForm($actionURL)
@@ -128,9 +135,9 @@ HTML;
 	public static function isConnected(){
 		$res = false;
 		Session::start();
-		if(isset($_SESSION[self::SESSION_KEY]) && !empty($_SESSION[self::SESSION_KEY]) &&
-		   isset($_SESSION[self::SESSION_KEY]['connected']) && !empty($_SESSION[self::SESSION_KEY]['connected'])){
-			$res = $_SESSION[self::SESSION_KEY]['connected'] == true; // Car si connected != boolean ça doit pas mettre n'import quoi
+		if(isset($_SESSION[self::$SESSION_KEY]) && !empty($_SESSION[self::$SESSION_KEY]) &&
+		   isset($_SESSION[self::$SESSION_KEY]['connected']) && !empty($_SESSION[self::$SESSION_KEY]['connected'])){
+			$res = $_SESSION[self::$SESSION_KEY]['connected'] == true; // Car si connected != boolean ça doit pas mettre n'import quoi
 		}
 		return $res;
 	}
@@ -145,13 +152,13 @@ HTML;
 
 		$stmt = myPDO::getInstance()->prepare($rq);
 		$stmt->setFetchMode(PDO::FETCH_CLASS, "Utilisateur");
-		$stmt->execute(array($_SESSION[self::SESSION_KEY]['challenge'], $data['code']));
+		$stmt->execute(array($_SESSION[self::$SESSION_KEY]['challenge'], $data['code']));
 
 		$obj = $stmt->fetch();
 		if ($obj == null){
 			throw new AuthenticationException();
 		} else {
-			$_SESSION[self::SESSION_KEY] = array("connected" => true);
+			$_SESSION[self::$SESSION_KEY] = array("connected" => true);
 
 			switch ($obj->type){
 			case self::TYPES["ETUDIANT"]:
@@ -170,10 +177,10 @@ HTML;
 	 * @throws NotInSessionException si personne n'est connecté.
 	 */
 	public static function createFromSession(){
-		self::startSession();
+		Session::start();
+
 		if (isset($_SESSION[self::$SESSION_KEY]) && !empty($_SESSION[self::$SESSION_KEY])){
-			$user = $_SESSION[self::$SESSION_KEY];
-			return $user;
+			return $_SESSION[self::$SESSION_KEY]["user"];
 		} else {
 			throw new NotInSessionException();
 		}
@@ -196,9 +203,9 @@ HTML;
 	 */
 	public static function logoutIfRequested(){
 		if (isset($_REQUEST['logout']) && !empty($_REQUEST['logout']) && self::isConnected()){
-			$_SESSION[self::SESSION_KEY]["connected"] = false;
-			$_SESSION[self::SESSION_KEY]["user"] = NULL;
-			$_SESSION[self::SESSION_KEY] = NULL;
+			$_SESSION[self::$SESSION_KEY]["connected"] = false;
+			$_SESSION[self::$SESSION_KEY]["user"] = NULL;
+			$_SESSION[self::$SESSION_KEY] = NULL;
 			return true;
 		} 
 		return false;
