@@ -165,7 +165,7 @@ HTML;
 	 */
 	public static function createUserAuth(array $data){
 		Session::start();
-		$rq = "SELECT * FROM Personne WHERE SHA2(CONCAT(MOTDEPASSE, ?, SHA2(NOMUTILISATEUR, '256')), '256') = ?;";
+		$rq = "SELECT * FROM Utilisateur WHERE SHA2(CONCAT(MOTDEPASSE, ?, SHA2(NOMUTILISATEUR, '256')), '256') = ?;";
 
 		$stmt = myPDO::getInstance()->prepare($rq);
 		$stmt->setFetchMode(PDO::FETCH_CLASS, "Utilisateur");
