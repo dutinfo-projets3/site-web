@@ -1,0 +1,19 @@
+.news{
+	margin: 20px;
+}
+
+/* Date et heure d'une news */
+.newsDate {
+	text-align: right;
+}
+
+/* Contenu d'une news */
+.news>div:last-child{
+	padding: 10px;
+	text-align: justify;
+}
+
+#indexCaroussel .carousel-caption p {
+	background: rgba(0, 0, 0, .7);
+	margin: 10px;
+}
