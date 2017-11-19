@@ -5,6 +5,9 @@
 		<link rel="stylesheet" href="/assets/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/assets/css/bootstrap-grid.min.css">
 		<link rel="stylesheet" href="/assets/css/bootstrap-reboot.min.css">
+		<link rel="stylesheet" href="/assets/css/tether.min.css">
+		<link rel="stylesheet" href="/assets/css/tether-theme-arrows-dark.min.css">
+		<link rel="stylesheet" href="/assets/css/tether-theme-basic.min.min.css">
 		<link rel="stylesheet" href="/assets/css/base.css">
 		{% block stylesheets %}
 		{% endblock %}
@@ -62,14 +65,20 @@
 	{% else %}
 		
 	{% endif %}
-		<div class="row">
+		<div id="site-content" class="row">
 			{% block content %}
 			{% endblock %}
 		</div>
 </div>
 
 		<script src="/assets/js/jquery.min.js"></script>
+		<script src="/assets/js/tether.min.js"></script>
 		<script src="/assets/js/bootstrap.min.js"></script>
 		<script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+		<script>
+			{% block javascript %}
+			{% endblock %}
+		</script>
 	</body>
 </html>
