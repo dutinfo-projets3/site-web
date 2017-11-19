@@ -61,35 +61,36 @@ class Utilisateur {
 		$_SESSION[self::$SESSION_KEY]['challenge'] = $challenge;
 		$urlActuelUser = $_SERVER['PHP_SELF'].$_SERVER['QUERY_STRING'];
 		$val = <<<HTML
-			<form action="login.php" method="POST" onsubmit="hash()">
-				<div class="form-group">
-					<label for="nomUtilisateur">Nom utilisateur</label>
-					<input type="text" name="user" class="form-control" id="nomUtilisateur" aria-describedby="idHelp" placeholder="Nom utilisateur">
-					<small id="idHelp" class="form-text text-muted">Ne jamais divulguer cette identifiant</small>
-				</div>
-				<div class="form-group">
-					<label for="password">Password</label>
-					<input type="password" name="password" class="form-control" id="password" placeholder="Mot de passe">
+			<form action="login.php" class="form" style="margin:15px;" method="POST" onsubmit="hash()">
+<div class="row bg-danger text-center" style="margin-bottom: 10px; display: block;">
+HTML;
+		if ($err != null){
+			switch($err){
+				case "badpass":
+					$val .= "Mauvais mot de passe!";
+					break;
+				case "other":
+					$val .= "Erreur serveur!";
+					break;
+			}
+		}
+
+		return $val .<<<HTML
+</div>
+<div class="row">
+				<div class="form-group col-sm-9" style="margin: 0;">
+					<input type="text" name="user" class="form-control form-control-sm" id="nomUtilisateur" aria-describedby="idHelp" placeholder="Nom d'Utilisateur">
+					<input type="password" name="password" style="margin-top: 10px;" class="form-control form-control-sm" id="password" placeholder="Mot de passe">
 				</div>
 
 				<input hidden name="url" value="{$urlActuelUser}">
 				<input hidden name="code">
-HTML;
-				if ($err != null){
-					$val .= "<span style='color: red;'> ";
-					switch($err){
-						case "badpass":
-							$val .= "Mauvais mot de passe!";
-							break;
-						case "other":
-							$val .= "Erreur serveur!";
-							break;
-					}
-					$val .= "</span>";
-				}
-	
-	return $val . <<<HTML
-				<button type="submit" class="btn btn-primary">Connexion</button>
+				<button type="submit" class="btn btn-primary col-sm-2">&rarr;</button>
+</div>
+				<div class="row">
+					<a href="" class="small col-sm-12 text-muted" style="display: block; text-align:center;"> Mot de passe oublié ? </a>
+				</div>
+
 			</form>
 		<script src="assets/js/sha256.js"></script>
 		<script>
@@ -104,6 +105,8 @@ HTML;
 		</script>
 HTML;
 	}
+
+
 
 
 	/**
