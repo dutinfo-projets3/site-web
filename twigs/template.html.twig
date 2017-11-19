@@ -22,7 +22,7 @@
 			<img src="assets/img/logo.png"  class="img-fluid" alt="Responsive image">
 
 		</div>
-		<div class="offset-6 col-3">
+		<div class="offset-5 col-3">
 			{{ form | raw }}
 		</div>
 	</div>
@@ -44,27 +44,6 @@
 			</ul>
 		</div>
 	</nav>
-
-	{# @TODO: Menu connexion, gestion des sessions #}
-	{% if connected %}
-		<!-- navbar connected-->
-		<nav class="navbar center navbar-toggleable-md navbar-light bg-faded">
-			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse d-flex justify-content-center" id="navbarNav">
-				<ul class="navbar-nav text-center">
-					<li class="nav-item"><a class="nav-link" href="">Mes informations</a></li>
-					<li class="nav-item"><a class="nav-link" href="note.php">Mes notes</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Emploi du temps</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Messagerie</a></li>
-					<li class="nav-item"><a class="nav-link" href="#">Cours en ligne</a></li>
-				</ul>
-			</div>
-		</nav>
-	{% else %}
-		
-	{% endif %}
 		<div id="site-content" class="row">
 			<div class="col-sm-12">
 			{% block content %}

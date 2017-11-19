@@ -114,12 +114,13 @@ HTML;
 	 */
 	public function createLogoutForm(){
 		return <<< HTML
-		<form action="login.php" method="POST">
-			<span> Bienvenue, {$this->getUsername()}
-			<button type="submit" class="btn btn-primary" name="logout" value="true">
-				Déconnexion
-			</button>
-		</form>
+		<div class="row mt-3 text-center" style="display: block">
+			Bienvenue, $this->prenomPers $this->nomPers
+		</div>
+		<div class="row mt-2">
+			<a class="btn btn-primary mr-2" href="">Espace personnel</a>
+			<a class="btn btn-danger mr-2" href="login.php?logout=true">Déconnexion</a>
+		</div>
 HTML;
 	}
 
