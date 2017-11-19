@@ -166,7 +166,7 @@ HTML;
 	 * Connecte l'utilisateur et stock les informations dans la session.
 	 * @throws AuthenticationException
 	 */
-	public static function createUserAuth(array $data){
+	public static function createUserAuth(array $data) {
 		Session::start();
 		$rq = "SELECT * FROM Utilisateur WHERE SHA2(CONCAT(MOTDEPASSE, ?, SHA2(NOMUTILISATEUR, '256')), '256') = ?;";
 
