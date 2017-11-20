@@ -2,6 +2,10 @@
 <html>
 	<head>
 		<title>Accueil - Université PanAfricaine - L'Institut des Sciences de l'Eau et de l'Energie</title>
+<<<<<<< HEAD
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+        {% block stylesheets %}
+=======
 		<link rel="stylesheet" href="/assets/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/assets/css/bootstrap-grid.min.css">
 		<link rel="stylesheet" href="/assets/css/bootstrap-reboot.min.css">
@@ -10,6 +14,7 @@
 		<link rel="stylesheet" href="/assets/css/tether-theme-basic.min.min.css">
 		<link rel="stylesheet" href="/assets/css/base.css">
 		{% block stylesheets %}
+>>>>>>> 41e31c5b151f68209098bea120d47adfb0b2f35a
 		{% endblock %}
 	</head>
 
@@ -27,8 +32,7 @@
 		</div>
 	</div>
 	<!-- navbar principale-->
-	<nav class="navbar navbar-expand-lg navbar-
-bg-light">
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -51,6 +55,12 @@ bg-light">
 			</div>
 		</div>
 </div>
+<<<<<<< HEAD
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+</body>
+=======
 
 		<script src="/assets/js/jquery.min.js"></script>
 		<script src="/assets/js/tether.min.js"></script>
@@ -62,4 +72,5 @@ bg-light">
 			{% endblock %}
 		</script>
 	</body>
+>>>>>>> 41e31c5b151f68209098bea120d47adfb0b2f35a
 </html>

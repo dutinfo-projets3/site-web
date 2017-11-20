@@ -1,0 +1,25 @@
+.news{
+	margin: 20px;
+}
+
+#indexCaroussel .carousel-caption p {
+	background: rgba(0, 0, 0, .7);
+	margin: 10px;
+}
+
+.indexNewsList{
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+.indexNewsList>div {
+	padding: 0;
+}
+
+.indexNewsList .newsDate {
+	text-align: right;
+}
+
+.indexNewsList .card-body {
+	padding: 15px;
+	text-align: justify;
+}

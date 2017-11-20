@@ -4,7 +4,11 @@ require_once('autoload.inc.php');
 
 class Etudiant extends Utilisateur {
 
-	private function __construct(){
+	/**
+	 * Créé une instance d'Etudiant depuis un utilisateur
+	 */
+	public function __construct($user){
+		parent::__construct($user);
 		$this->type = Utilisateur::TYPES["ETUDIANT"];
 	}
 	
@@ -24,18 +28,9 @@ class Etudiant extends Utilisateur {
 	 * Puis il va chercher les champs manquant dans la base de donnée
 	 */
 	public static function createFromUser($user){
-		$etudiant = new Etudiant();
+		$etudiant = new Etudiant($user);
 
-		$etudiant->setID($user->getID());
-		$etudiant->setNom($user->getNom());
-		$etudiant->setPrenom($user->getPrenom());
-		$etudiant->setAdresse($user->getAdresse());
-		$etudiant->setCP($user->getCP());
-		$etudiant->setVille($user->getVille());
-		$etudiant->setURL($user->getURL());
-		$etudiant->setUsername($user->getUsername());
-
-		$rq = "SELECT INE, dateEntree FROM Etudiant WHERE idEtudiant=?";
+		$rq = "SELECT * FROM Etudiant WHERE idEtudiant=?";
 		$stmt = myPDO::getInstance()->prepare($rq);
 		$stmt->setFetchMode(PDO::FETCH_ASSOC);
 		$stmt->execute(array($etudiant->getID()));

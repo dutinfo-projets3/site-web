@@ -6,6 +6,24 @@ class Utilisateur {
 	public static $SESSION_KEY = "__user__";
 
 	/**
+	 * Constructeur par copie de Utilisateur
+	 * Utilisé par Etudiant / Professeur / Administration
+	 * @param $user Utilisateur à copier
+	 */
+	public function __construct($user = null){
+		if ($user != null){
+			$this->idPersonne     = $user->getID();
+			$this->nomPers        = $user->getNom();
+			$this->prenomPers     = $user->getPrenom();
+			$this->adresse        = $user->getAdresse();
+			$this->codePostal     = $user->getCP();
+			$this->ville          = $user->getVille();
+			$this->urlImage       = $user->getURL();
+			$this->nomUtilisateur = $user->getUsername();
+		}
+	}
+
+	/**
 	 * ID de l'utilisateur
 	 */
 	protected $idPersonne;
@@ -37,59 +55,58 @@ class Utilisateur {
 	 * Renvoie le formulaire de connection de l'utilisateur, avec un challenge
 	 */
 	public static function createLoginForm($err=null){
-            //formulaire de connexion
-            //générer un challenge
-            $challenge = self::randomString(20);
-            $_SESSION[self::$SESSION_KEY]['challenge'] = $challenge;
-            $urlActuelUser = $_SERVER['PHP_SELF'].$_SERVER['QUERY_STRING'];
-            $val = <<<HTML
-            <form action="login.php" method="POST" onsubmit="hash()">
-                 <div class="form-group">
-                    <label for="nomUtilisateur">Nom utilisateur</label>
-                    <input type="text" name="user" class="form-control" id="nomUtilisateur" aria-describedby="idHelp" placeholder="Nom utilisateur">
-                    <small id="idHelp" class="form-text text-muted">Ne jamais divulguer cette identifiant</small>
-                  </div>
-                  <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" name="password" class="form-control" id="password" placeholder="Mot de passe">
-                  </div>
-
-                  <input hidden name="url" value="{$urlActuelUser}">
-                  <input hidden name="code">
+		//formulaire de connexion
+		//générer un challenge
+		$challenge = self::randomString(20);
+		$_SESSION[self::$SESSION_KEY]['challenge'] = $challenge;
+		$urlActuelUser = $_SERVER['PHP_SELF'].$_SERVER['QUERY_STRING'];
+		$val = <<<HTML
+			<form action="login.php" class="form" style="margin:15px;" method="POST" onsubmit="hash()">
+<div class="row bg-danger text-center" style="margin-bottom: 10px; display: block;">
 HTML;
-	    if ($err != null){
-		$val .= "<span style='color: red;'> ";
-		switch($err){
-			case "badpass":
-				$val .= "Mauvais mot de passe!";
-				break;
-			case "other":
-				$val .= "Erreur serveur!";
-				break;
+		if ($err != null){
+			switch($err){
+				case "badpass":
+					$val .= "Mauvais mot de passe!";
+					break;
+				case "other":
+					$val .= "Erreur serveur!";
+					break;
+			}
 		}
-		$val .= "</span>";
-	    }
-	
-	    return $val . <<<HTML
-		   <button type="submit" class="btn btn-primary">Connexion</button>
-            </form>
-            <script src="assets/js/sha256.js"></script>
-            <script>
-                function hash() {
-                    //sha(sha(password).challenge.sha(user))
-                  code = sha256(sha256(
-                      document.getElementsByName('password')[0].value
-                      ) + "{$challenge}" + sha256(
-                          document.getElementsByName('user')[0].value
-                          )
-                          );
-                  document.getElementsByName('code')[0].value = code;
-                  document.getElementsByName('password')[0].value = "";
-                  document.getElementsByName('user')[0].value = "";
-                }
-            </script>
+
+		return $val .<<<HTML
+</div>
+<div class="row">
+				<div class="form-group col-sm-9" style="margin: 0;">
+					<input type="text" name="user" class="form-control form-control-sm" id="nomUtilisateur" aria-describedby="idHelp" placeholder="Nom d'Utilisateur">
+					<input type="password" name="password" style="margin-top: 10px;" class="form-control form-control-sm" id="password" placeholder="Mot de passe">
+				</div>
+
+				<input hidden name="url" value="{$urlActuelUser}">
+				<input hidden name="code">
+				<button type="submit" class="btn btn-primary col-sm-2">&rarr;</button>
+</div>
+				<div class="row">
+					<a href="" class="small col-sm-12 text-muted" style="display: block; text-align:center;"> Mot de passe oublié ? </a>
+				</div>
+
+			</form>
+		<script src="assets/js/sha256.js"></script>
+		<script>
+			function hash() {
+				//sha(sha(password).challenge.sha(user))
+				code = sha256(sha256(
+				document.getElementsByName('password')[0].value) + "{$challenge}" + sha256(document.getElementsByName('user')[0].value));
+				document.getElementsByName('code')[0].value = code;
+				document.getElementsByName('password')[0].value = "";
+				document.getElementsByName('user')[0].value = "";
+			}
+		</script>
 HTML;
 	}
+
+
 
 
 	/**
@@ -97,57 +114,45 @@ HTML;
 	 */
 	public function createLogoutForm(){
 		return <<< HTML
-		<form action="login.php" method="POST">
-			<span> Bienvenue, {$this->getUsername()}
-			<button type="submit" class="btn btn-primary" name="logout" value="true">
-				Déconnexion
-			</button>
-		</form>
+		<div class="row mt-3 text-center" style="display: block">
+			Bienvenue, $this->prenomPers $this->nomPers
+		</div>
+		<div class="row mt-2">
+			<a class="btn btn-primary mr-2" href="">Espace personnel</a>
+			<a class="btn btn-danger mr-2" href="login.php?logout=true">Déconnexion</a>
+		</div>
 HTML;
 	}
 
-    public static function logOutForm($actionURL)
-    {
-        $res = <<<HTML
-        <form action="{$actionURL}" method="POST">
-            <button type="submit" class="btn btn-primary" name="logout" value="true">Deconnexion</button> 
-        </form> 
-HTML;
-        return $res;
-    }
+	/**
+	* Génère une chaine aléatoire de caractère en fonction de la taille passé en paramètre
+	* @param $size
+	* @return string
+	*/
+	public static function randomString($size) {
+		$res = "";
+		for ($i = 0; $i < $size; $i++) {
+			$choose = rand(1, 3);
+			switch ($choose) {
+				case 1 :
+					$res .= chr(rand((ord("a")), (ord("z"))));
+					break;
+				case 2 :
+					$res .= chr(rand((ord("A")), (ord("Z"))));
+					break;
+				case 3 :
+					$res .= chr(rand((ord("0")), (ord("9"))));
+					break;
+				default :
+			}
+		}
+		return $res;
+	}
 
-
-    /**
-     * Génère une chaine aléatoire de caractère en fonction de la taille passé en paramètre
-     * @param $size
-     * @return string
-     */
-
-    public static function randomString($size)
-    {
-        $res = "";
-        for ($i = 0; $i < $size; $i++) {
-            $choose = rand(1, 3);
-            switch ($choose) {
-                case 1 :
-                    $res .= chr(rand((ord("a")), (ord("z"))));
-                    break;
-                case 2 :
-                    $res .= chr(rand((ord("A")), (ord("Z"))));
-                    break;
-                case 3 :
-                    $res .= chr(rand((ord("0")), (ord("9"))));
-                    break;
-                default :
-            }
-        }
-        return $res;
-    }
-
-    /**
-     * Renvoie true si l'utilisateur est connecté et inversement
-     * @return bool
-     */
+	/**
+	* Renvoie true si l'utilisateur est connecté et inversement
+	* @return bool
+	*/
 	public static function isConnected(){
 		$res = false;
 		Session::start();
@@ -162,9 +167,9 @@ HTML;
 	 * Connecte l'utilisateur et stock les informations dans la session.
 	 * @throws AuthenticationException
 	 */
-	public static function createUserAuth(array $data){
+	public static function createUserAuth(array $data) {
 		Session::start();
-		$rq = "SELECT * FROM Personne WHERE SHA2(CONCAT(MOTDEPASSE, ?, SHA2(NOMUTILISATEUR, '256')), '256') = ?;";
+		$rq = "SELECT * FROM Utilisateur WHERE SHA2(CONCAT(MOTDEPASSE, ?, SHA2(NOMUTILISATEUR, '256')), '256') = ?;";
 
 		$stmt = myPDO::getInstance()->prepare($rq);
 		$stmt->setFetchMode(PDO::FETCH_CLASS, "Utilisateur");
@@ -177,11 +182,11 @@ HTML;
 			$_SESSION[self::$SESSION_KEY] = array("connected" => true);
 
 			switch ($obj->type){
-			case self::TYPES["ETUDIANT"]:
-				$obj = Etudiant::createFromUser($obj);
-				break;
-			default:
-				$obj = null;
+				case self::TYPES["ETUDIANT"]:
+					$obj = Etudiant::createFromUser($obj);
+					break;
+				default:
+					$obj = null;
 			}
 
 		}
