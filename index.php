@@ -7,5 +7,6 @@ require_once("autoload.inc.php");
 /**
  * @TODO: Charger la liste des news et passer le tableau au twig
  */
+$listNews = News::createNews();
 
-echo TwigLoader::getInstance()->render('index.html.twig', array());
+echo TwigLoader::getInstance()->render('index.html.twig', array('news' => $listNews));
