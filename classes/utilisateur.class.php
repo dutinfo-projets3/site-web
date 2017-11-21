@@ -118,7 +118,7 @@ HTML;
 			Bienvenue, $this->prenomPers $this->nomPers
 		</div>
 		<div class="row mt-2">
-			<a class="btn btn-primary mr-2" href="">Espace personnel</a>
+			<a class="btn btn-primary mr-2" href="perso/home.php">Espace personnel</a>
 			<a class="btn btn-danger mr-2" href="login.php?logout=true">Déconnexion</a>
 		</div>
 HTML;

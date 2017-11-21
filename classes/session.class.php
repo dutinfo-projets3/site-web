@@ -28,7 +28,7 @@ class Session {
 		if(session_status() == PHP_SESSION_DISABLED){
 			throw new SessionException("Session déja ouverte");
 		} else if(session_status() == PHP_SESSION_NONE){
-			$start = session_start();
+			session_start();
 		} else if(session_status() != PHP_SESSION_DISABLED && session_status() != PHP_SESSION_NONE && session_status() != PHP_SESSION_ACTIVE && headers_sent() == false){
 			throw new RuntimeException("Statut incohérent");
 		}
