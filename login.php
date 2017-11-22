@@ -15,6 +15,7 @@ try {
 } catch (Exception $e){
 		// Autre erreur
 		$err = "other";
+		var_dump($e);
 }
 $location = "/index.php";
 

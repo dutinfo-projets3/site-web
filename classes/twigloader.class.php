@@ -30,14 +30,14 @@ class TwigLoader{
 	public function render(string $twigname, array $parameters){
 		if (Utilisateur::isConnected()){
 			$parameters["connected"] = true;
-			$parameters["form"] = Utilisateur::createFromSession()->createLogoutForm();
+			$parameters["form"] = Utilisateur::createFromSession()->createLogoutForm(isset($parameters['displayPanelButton']) ? $parameters['displayPanelButton'] : true);
 		} else {
 			$err = isset($_GET['err']) ? $_GET['err'] : null;
 			$parameters["connected"] = false;
 			$parameters["form"]      = Utilisateur::createLoginForm($err);
 		}
 
-		return $this->twig->render($twigname, $parameters);
+		return $this->twig->render($twigname . '.html.twig', $parameters);
 	}
 
 }

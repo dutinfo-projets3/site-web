@@ -1,0 +1,14 @@
+.menuicon {
+	height: 150px;
+	color: white;
+}
+
+.menuicon a {
+	background-color: red;
+	color: none;
+}
+
+.menuicon a:link, .menuicon a:visited, .menuicon a:hover, .menuicon a:active {
+    text-decoration: none;
+    color: #ecf0f1;
+}

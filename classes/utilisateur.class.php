@@ -20,6 +20,7 @@ class Utilisateur {
 			$this->ville          = $user->getVille();
 			$this->urlImage       = $user->getURL();
 			$this->nomUtilisateur = $user->getUsername();
+			$this->type           = $user->getUserType();
 		}
 	}
 
@@ -112,16 +113,23 @@ HTML;
 	/**
 	 * Créé le formulaire de déconnexion (Affiche aussi le nom d'utilisateurs et les infos importantes)
 	 */
-	public function createLogoutForm(){
-		return <<< HTML
+	public function createLogoutForm(bool $displayPanelButton){
+		$val = <<< HTML
 		<div class="row mt-3 text-center" style="display: block">
 			Bienvenue, $this->prenomPers $this->nomPers
 		</div>
 		<div class="row mt-2">
-			<a class="btn btn-primary mr-2" href="perso/home.php">Espace personnel</a>
-			<a class="btn btn-danger mr-2" href="login.php?logout=true">Déconnexion</a>
+HTML;
+		if ($displayPanelButton){
+			$val .= '<a class="btn btn-primary col-6" href="/perso">Scolarité</a>';
+			$val .= '<a class="btn btn-danger col-5 offset-1" href="/login.php?logout=true">Déconnexion</a>';
+		} else {
+			$val .= '<a class="btn btn-danger col-12 mr-2" href="/login.php?logout=true">Déconnexion</a>';
+		}
+		$val .= <<< HTML
 		</div>
 HTML;
+		return $val;
 	}
 
 	/**
@@ -185,7 +193,11 @@ HTML;
 				case self::TYPES["ETUDIANT"]:
 					$obj = Etudiant::createFromUser($obj);
 					break;
+				case self::TYPES["PROFESSEUR"]:
+					$obj = Professeur::createFromUser($obj);
+					break;
 				default:
+					var_dump("SOMETHING WENT WRNG");
 					$obj = null;
 			}
 
@@ -298,6 +310,10 @@ HTML;
 
 	public function setUsername($u){
 		$this->nomUtilisateur = $u;
+	}
+
+	public function getUserType(){
+		return $this->type;
 	}
 
 }

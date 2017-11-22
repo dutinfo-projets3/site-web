@@ -1,7 +1,5 @@
 <?php
 
-require_once('autoload.inc.php');
-
 class Professeur extends Utilisateur {
 
 	/**
@@ -23,14 +21,14 @@ class Professeur extends Utilisateur {
 	public static function createFromUser($user){
 		$prof = new Professeur($user);
 
-		$rq = "SELECT * FROM Etudiant WHERE idProfesseur=?";
+		$rq = "SELECT * FROM Professeur WHERE idProfesseur=?";
 		$stmt = myPDO::getInstance()->prepare($rq);
 		$stmt->setFetchMode(PDO::FETCH_ASSOC);
 		$stmt->execute(array($prof->getID()));
 
 		$tab = $stmt->fetch();
-		$prof->setDateEmbauche($tab["dateEmbauche"]);
-		$prof->setDateDepart($tab["dateDepart"]);
+		$prof->dateEmbauche = $tab["dateEmbauche"];
+		$prof->dateDepart   = $tab["dateDepart"];
 		return $prof;
 	}
 
