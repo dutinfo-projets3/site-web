@@ -8,4 +8,4 @@ if (!Utilisateur::isConnected()){
 
 $user = Utilisateur::createFromSession();
 
-echo TwigLoader::getInstance()->render('perso/index', array("displayPanelButton" => false, "usertype" => $user->getUserType()));
+echo TwigLoader::getInstance()->render('', 'perso/index', array("displayPanelButton" => false, "usertype" => $user->getUserType()));
