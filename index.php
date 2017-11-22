@@ -9,4 +9,4 @@ require_once("autoload.inc.php");
  */
 $listNews = News::createNews();
 
-echo TwigLoader::getInstance()->render('index', array('news' => $listNews));
+echo TwigLoader::getInstance()->render('news', 'index', array('news' => $listNews));

@@ -1,0 +1,5 @@
+{% if (active) %}
+<li class="nav-item active"><a class="nav-link" href="{{ href }}">{{ text }}<span class="sr-only">(current)</span></a></li>
+{% else %}
+<li class="nav-item"><a class="nav-link" href="{{ href }}">{{ text }}</a></li>
+{% endif %}

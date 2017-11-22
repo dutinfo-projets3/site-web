@@ -34,13 +34,13 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarToggler">
 			<ul class="navbar-nav m-auto">
-				<li class="nav-item active"><a class="nav-link" href="/index.php">Accueil<span class="sr-only">(current)</span></a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Programme d'Etudes</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Inscription</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Bourses d'Etudes</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Corps Professoral</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">Vie sur le campus</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">A Propos</a></li>
+				{{ include('menuitem.html.twig', {'text': "Accueil", 'href': '/', 'active': (page == "news") }) }}
+				{{ include('menuitem.html.twig', {'text': "Programmes d'études", 'href': '/', 'active': (page == "progetude") }) }}
+				{{ include('menuitem.html.twig', {'text': "Inscription", 'href': '/', 'active': (page == "inscription") }) }}
+				{{ include('menuitem.html.twig', {'text': "Bourses d'études", 'href': '/', 'active': (page == "boursesetudes") }) }}
+				{{ include('menuitem.html.twig', {'text': "Corps professoral", 'href': '/', 'active': (page == "corpsprof") }) }}
+				{{ include('menuitem.html.twig', {'text': "Vie sur le campus", 'href': '/', 'active': (page == "viecampus") }) }}
+				{{ include('menuitem.html.twig', {'text': "À propos", 'href': '/', 'active': (page == "apropos") }) }}
 			</ul>
 		</div>
 	</nav>
