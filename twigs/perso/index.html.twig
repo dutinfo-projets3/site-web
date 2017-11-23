@@ -7,7 +7,7 @@
 {% block content %}
 	{% if (usertype == 0) %}
 		<h3 class="w-100 text-center"> Accueil étudiant </h3>
-		<div class="row pt-5 h-100 justify-content-around flex-wrap">
+		<div class="menuicon row pt-5 h-100 justify-content-around flex-wrap">
 
 			{{ include('perso/card.html.twig', { 'bgcolor': "#3c4a59", 'img': "/assets/img/notes.png", 'text': "Mes notes", "url": "/perso/notes.php"}) }}
 			{{ include('perso/card.html.twig', { 'bgcolor': "#455556", 'img': "/assets/img/absences.png", 'text': "Mes absences", "url": "/perso/absences.php"}) }}
@@ -17,7 +17,7 @@
 
 	{% elseif (usertype == 1) %}
 		<h3 class="w-100 text-center h-100"> Accueil professeur </h3>
-		<div class="row pt-5 justify-content-around container-fluid">
+		<div class="menuicon row pt-5 justify-content-around container-fluid">
 			{{ include('perso/card.html.twig', {'bgcolor': "#3c4a59", 'img': "/assets/img/notes.png", 'text': "Entrer des notes", 'url': "/perso/notemanager.php"})}}
 			{{ include('perso/card.html.twig', {'bgcolor': "#455556", 'img': "/assets/img/absences.png", 'text': "Gestion des absences", 'url': "/perso/absencesmanager.php"})}}
 			{{ include('perso/card.html.twig', {'bgcolor': "#404040", 'img': "/assets/img/edt.png", 'text': "Mon emploi du temps", 'url': "/perso/edt.php"})}}
