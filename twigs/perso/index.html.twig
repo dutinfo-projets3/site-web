@@ -16,14 +16,24 @@
 		</div>
 
 	{% elseif (usertype == 1) %}
-		<h3 class="w-100 text-center h-100"> Accueil professeur </h3>
-		<div class="menuicon row pt-5 justify-content-around container-fluid">
+		<h3 class="w-100 text-center"> Accueil professeur </h3>
+		<div class="menuicon row pt-5 justify-content-around">
 			{{ include('perso/card.html.twig', {'bgcolor': "#3c4a59", 'img': "/assets/img/notes.png", 'text': "Entrer des notes", 'url': "/perso/notemanager.php"})}}
 			{{ include('perso/card.html.twig', {'bgcolor': "#455556", 'img': "/assets/img/absences.png", 'text': "Gestion des absences", 'url': "/perso/absencesmanager.php"})}}
 			{{ include('perso/card.html.twig', {'bgcolor': "#404040", 'img': "/assets/img/edt.png", 'text': "Mon emploi du temps", 'url': "/perso/edt.php"})}}
 		</div>
 	{% elseif (usertype == 2) %}
-
+		<h3 class="w-100 text-center">Accueil administration</h3>
+		<div class="menuicon row pt-5 justify-content-around">
+			{{ include('perso/card.html.twig', {'bgcolor': "#3c4a59", 'img': "/assets/img/groupes.png", 'text': "Groupes", 'url': "/perso/groupemanager.php"})}}
+			{{ include('perso/card.html.twig', {'bgcolor': "#455556", 'img': "/assets/img/absences.png", 'text': "Absences", 'url': "/perso/absencesmanager.php"})}}
+			{{ include('perso/card.html.twig', {'bgcolor': "#404040", 'img': "/assets/img/edt.png", 'text': "Cours", 'url': "/perso/coursmanager.php"})}}
+		</div>
+		<div class="menuicon row pt-5 justify-content-around">
+			{{ include('perso/card.html.twig', {'bgcolor': "#707070", 'img': "/assets/img/newspaper.png", 'text': "News", 'url': "/perso/newsmanager.php"})}}
+			{{ include('perso/card.html.twig', {'bgcolor': "#5c6a79", 'img': "/assets/img/notebook.png", 'text': "Gestion des formations", 'url': "/perso/formationmanager.php"})}}
+			{{ include('perso/card.html.twig', {'bgcolor': "#344546", 'img': "/assets/img/ajetud.png", 'text': "Gestion des étudiants", 'url': "/perso/etudiant.php"})}}
+		</div>
 	{% else %}
 		Une erreur est survenue !
 	{% endif %}
