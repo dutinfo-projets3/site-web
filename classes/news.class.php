@@ -16,6 +16,7 @@ class News
     private $numero;
     private $description;
     private $datePublication;
+
     /**
      * @return mixed
      */
@@ -112,26 +113,50 @@ class News
         $this->datePublication = $datePublication;
     }
 
+    //A tester
 
-    public static function createNews()
+    /**
+     * retourne le nombre de news qui se trouve dans la base de donnée
+     * @return int
+     */
+    public static function getCountNumbers()
     {
-        $listNews = array();
-
         $stmt = myPDO::getInstance()->prepare(<<<SQL
-        SELECT idNews FROM News
-        ORDER BY datePublication DESC;
+        SELECT COUNT(idNews) FROM News;
 SQL
-  );
+        );
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $stmt->execute();
-        $listIdNews = $stmt->fetchAll();
-        foreach($listIdNews as $idNew){
-            array_push($listNews, self::createNewsFromId($idNew['idNews']));
-        }
 
-        return $listNews;
+
+        return $stmt->fetch()['COUNT(idNews)'];
     }
 
+    //A tester
+
+    /**
+     * retourne les news en fonction de la page ou l'on se trouve(indexiation page accueil des news) et de leur date de pulication
+     * @param int $nextHope
+     * @return News
+     */
+    public static function createNewsNext($start = 0, $range = 5)
+    {
+        $stmt = myPDO::getInstance()->prepare(<<<SQL
+        SELECT * FROM News
+        ORDER BY datePublication DESC
+        LIMIT :start, :range;
+     
+SQL
+        );
+        $stmt->setFetchMode(PDO::FETCH_CLASS, "News");
+        $stmt->bindParam(':start', $start, PDO::PARAM_INT);
+        $stmt->bindParam(':range', $range, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll();
+    }
+
+    //A tester
+    // nous serviras pour charger le nom du secretaire qui a écrit la new
     public static function createNewsFromId($idNews)
     {
         $stmt = myPDO::getInstance()->prepare(<<<SQL
