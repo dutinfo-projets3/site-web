@@ -196,6 +196,9 @@ HTML;
 				case self::TYPES["PROFESSEUR"]:
 					$obj = Professeur::createFromUser($obj);
 					break;
+				case self::TYPES["ADMINISTRATION"]:
+					$obj = Secretaire::createFromUser($obj);
+					break;
 				default:
 					var_dump("SOMETHING WENT WRNG");
 					$obj = null;

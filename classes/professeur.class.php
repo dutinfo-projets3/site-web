@@ -13,6 +13,11 @@ class Professeur extends Utilisateur {
 	 */
 	private $dateDepart;
 
+	public function __construct($user){
+		parent::__construct($user);
+		$this->type = Utilisateur::TYPES["PROFESSEUR"];
+	}
+
 	/**
 	 * Créé une instance de professeur à partir d'un utilisateur
 	 * Il créé une copie de User dans une instance de Professeur

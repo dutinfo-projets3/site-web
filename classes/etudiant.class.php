@@ -3,14 +3,6 @@
 class Etudiant extends Utilisateur {
 
 	/**
-	 * Créé une instance d'Etudiant depuis un utilisateur
-	 */
-	public function __construct($user){
-		parent::__construct($user);
-		$this->type = Utilisateur::TYPES["ETUDIANT"];
-	}
-	
-	/**
 	 * Identifiant National Etudiant
 	 */
 	private $INE;
@@ -20,6 +12,14 @@ class Etudiant extends Utilisateur {
 	 */
 	private $dateEntree;
 
+	/**
+	 * Créé une instance d'Etudiant depuis un utilisateur
+	 */
+	public function __construct($user){
+		parent::__construct($user);
+		$this->type = Utilisateur::TYPES["ETUDIANT"];
+	}
+	
 	/**
 	 * Créé une instance d'étudiant à partir d'un utilisateur
 	 * Il créé une copie de User dans une instance d'Etudiant
