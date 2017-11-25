@@ -91,25 +91,25 @@
             </li>
 
             <!--Pagination Button-->
-            {% for i in 1..numberOfPage %}
+            {% for i in 1..pageAmt %}
 
-                {% if i == currentlyPage %}
-                    <li class="page-item active"><a class="page-link" href="?pageNumber={{ i }}">{{ i }}</a>
+                {% if i == currentPage %}
+                    <li class="page-item active"><a class="page-link" href="?page={{ i }}">{{ i }}</a>
                     </li>
                 {% else %}
-                    <li class="page-item"><a class="page-link" href="?pageNumber={{ i }}">{{ i }}</a>
+                    <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a>
                     </li>
                 {% endif %}
 
             {% endfor %}
 
             <!-- prev -->
-            {% if currentlyPage == numberOfPage %}
+            {% if currentPage == pageAmt %}
             <li class="page-item disabled">
             {% else %}
             <li class="page-item">
             {% endif %}
-                <a class="page-link" href="?pageNumber={{ currentlyPage+1 }}">Next</a>
+                <a class="page-link" href="?page={{ currentPage+1 }}">Next</a>
             </li>
 
         </ul>
