@@ -16,6 +16,7 @@ if (isset($_GET['page']) && !empty($_GET['page'])) {
 		$listNews = News::createNewsNext(($_GET['page'] - 1) * $MAX_PAGE_VIEW, $MAX_PAGE_VIEW);
 	} catch (InvalidArgumentException $e) {
 		$listNews = News::createNewsNext(0, $MAX_PAGE_VIEW);
+		$currentPage = 1;
 	}
 } else {
 	$listNews = News::createNewsNext(0, $MAX_PAGE_VIEW);

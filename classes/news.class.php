@@ -140,7 +140,7 @@ SQL
 	*
 	*/
 	public static function createNewsNext($start = 0, $range = 5) {
-		if ($start < 0){
+		if ($start < 0 || $start > ceil(self::getCountNumbers()/$range)){
 			throw new InvalidArgumentException("Le numéro de page ne peut être inferieur à 0");
 		}
 		$stmt = myPDO::getInstance()->prepare(<<<SQL

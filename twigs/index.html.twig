@@ -78,16 +78,17 @@
 
 
     <!--Pagination -->
+    if
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
 
             <!-- next -->
-            {% if currentlyPage == 1 %}
+            {% if currentPage <= 1 %}
             <li class="page-item disabled">
             {% else %}
             <li class="page-item">
             {% endif %}
-                <a class="page-link" href="?pageNumber={{ currentlyPage-1 }}">Previous</a>
+                <a class="page-link" href="?page={{ currentPage-1 }}">Previous</a>
             </li>
 
             <!--Pagination Button-->
@@ -104,7 +105,7 @@
             {% endfor %}
 
             <!-- prev -->
-            {% if currentPage == pageAmt %}
+            {% if currentPage >= pageAmt %}
             <li class="page-item disabled">
             {% else %}
             <li class="page-item">
