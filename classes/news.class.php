@@ -7,154 +7,184 @@
  */
 require_once 'autoload.inc.php';
 
-class News
-{
+class News {
 
-    private $idNews;
-    private $idSecretaire;
-    private $nomEvenement;
-    private $numero;
-    private $description;
-    private $datePublication;
-    /**
-     * @return mixed
-     */
-    public function getIdNews()
-    {
-        return $this->idNews;
-    }
+	private $idNews;
+	private $idSecretaire;
+	private $nomEvenement;
+	private $numero;
+	private $description;
+	private $datePublication;
 
-    /**
-     * @param mixed $idNews
-     */
-    public function setIdNews($idNews)
-    {
-        $this->idNews = $idNews;
-    }
+	/**
+	 * Getter pour idNews
+	 * @return idNews 
+	 */
+	public function getIdNews() {
+		return $this->idNews;
+	}
 
-    /**
-     * @return mixed
-     */
-    public function getIdSecretaire()
-    {
-        return $this->idSecretaire;
-    }
+	/**
+	 * Setter pour idNews
+	 * @param Integer $idNews
+	 */
+	public function setIdNews($idNews) {
+		$this->idNews = $idNews;
+	}
 
-    /**
-     * @param mixed $idSecretaire
-     */
-    public function setIdSecretaire($idSecretaire)
-    {
-        $this->idSecretaire = $idSecretaire;
-    }
+	/**
+	 * Getter pour idSecretaire
+	 * @return idSecretaire
+	 */
+	public function getIdSecretaire() {
+		return $this->idSecretaire;
+	}
 
-    /**
-     * @return mixed
-     */
-    public function getNomEvenement()
-    {
-        return $this->nomEvenement;
-    }
+	/**
+	 * Setter pour idSecretaire
+	 * @param Integer $idSecretaire
+	 */
+	public function setIdSecretaire($idSecretaire) {
+		$this->idSecretaire = $idSecretaire;
+	}
 
-    /**
-     * @param mixed $nomEvenement
-     */
-    public function setNomEvenement($nomEvenement)
-    {
-        $this->nomEvenement = $nomEvenement;
-    }
+	/**
+	 * Getter pour le nom de la news
+	 * @return String nomEvenement
+	 */
+	public function getNomEvenement() {
+		return $this->nomEvenement;
+	}
 
-    /**
-     * @return mixed
-     */
-    public function getNumero()
-    {
-        return $this->numero;
-    }
+	/**
+	 * Setter pour le nom de la news
+	 * @param String $nomEvenement
+	 */
+	public function setNomEvenement($nomEvenement) {
+		$this->nomEvenement = $nomEvenement;
+	}
 
-    /**
-     * @param mixed $numero
-     */
-    public function setNumero($numero)
-    {
-        $this->numero = $numero;
-    }
+	/**
+	 * @TODO ???
+	 * Getter pour numero 
+	 * @return Integer numero
+	 */
+	public function getNumero() {
+		return $this->numero;
+	}
 
-    /**
-     * @return mixed
-     */
-    public function getDescription()
-    {
-        return $this->description;
-    }
+	/**
+	 * @TODO ???
+	 * Setter pour numero
+	 * @param Integer $numero
+	 */
+	public function setNumero($numero) {
+		$this->numero = $numero;
+	}
+	/**
+	 * Getter pour le contenu de la news
+	 * Non parsée
+	 * @return String $description
+	 */
+	public function getDescription() {
+		return $this->description;
+	}
 
-    /**
-     * @param mixed $descirpion
-     */
-    public function setDescirpion($descirpion)
-    {
-        $this->descirpion = $descirpion;
-    }
+	/**
+	 * Setter pour le contenu
+	 * @param String
+	 */
+	public function setDescription($description) {
+		$this->description = $description;
+	}
 
-    /**
-     * @return mixed
-     */
-    public function getDatePublication()
-    {
-        return $this->datePublication;
-    }
+	/**
+	 * Getter pour la date de publication
+	 * @return Date $datePublication
+	 */
+	public function getDatePublication() {
+		return $this->datePublication;
+	}
 
-    /**
-     * @param mixed $datePublication
-     */
-    public function setDatePublication($datePublication)
-    {
-        $this->datePublication = $datePublication;
-    }
+	/**
+	 * Setter pour la date de publication
+	 * @param Date $datePublication
+	 */
+	public function setDatePublication($datePublication) {
+		$this->datePublication = $datePublication;
+	}
 
-
-    public static function createNews()
-    {
-        $listNews = array();
-
-        $stmt = myPDO::getInstance()->prepare(<<<SQL
-        SELECT idNews FROM News
-        ORDER BY datePublication DESC;
+	/**
+	 * Retourne le nombre de news qui se trouve dans la base de donnée
+	 * @return Nombre de news dans la base de données 
+	 */
+	public static function getCountNumbers() {
+		$stmt = myPDO::getInstance()->prepare(<<<SQL
+		SELECT COUNT(idNews) FROM News;
 SQL
-  );
-        $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        $stmt->execute();
-        $listIdNews = $stmt->fetchAll();
-        foreach($listIdNews as $idNew){
-            array_push($listNews, self::createNewsFromId($idNew['idNews']));
-        }
+		);
+		$stmt->setFetchMode(PDO::FETCH_ASSOC);
+		$stmt->execute();
 
-        return $listNews;
-    }
+		return $stmt->fetch()['COUNT(idNews)'];
+	}
 
-    public static function createNewsFromId($idNews)
-    {
-        $stmt = myPDO::getInstance()->prepare(<<<SQL
-        SELECT * FROM News
-        WHERE idNews = ?
+	/**
+	* Retourne les news en fonction de la page où l'on se trouve
+	* @param $start Offset du numéro de news
+	* @param $range nombre de news à retourner
+	* @throws InvalidArgumentException
+	* @return News array
+	*
+	* @TODO Test
+	*
+	*/
+	public static function createNewsNext($start = 0, $range = 5) {
+		if ($start < 0){
+			throw new InvalidArgumentException("Le numéro de page ne peut être inferieur à 0");
+		}
+		$stmt = myPDO::getInstance()->prepare(<<<SQL
+		SELECT * FROM News
+		ORDER BY datePublication DESC
+		LIMIT :start, :range;
 SQL
-        );
-        $stmt->setFetchMode(PDO::FETCH_CLASS, 'News');
-        $stmt->execute(Array($idNews));
-        $obj = $stmt->fetch();
-        if ($obj == null) {
-            throw new NewsException();
-        } else {
-            return $obj;
-        }
-    }
+		);
+		$stmt->setFetchMode(PDO::FETCH_CLASS, "News");
+		$stmt->bindParam(':start', $start, PDO::PARAM_INT);
+		$stmt->bindParam(':range', $range, PDO::PARAM_INT);
+		$stmt->execute();
+		return $stmt->fetchAll();
+	}
+
+	/**
+	* Retourne une news depuis son ID
+	* @param $idNews L'id de la news voulue
+	* @throws NewsException
+	* @return News instance
+	*
+	* @TODO Test
+	*
+	*/
+	public static function createNewsFromId($idNews) {
+		$stmt = myPDO::getInstance()->prepare(<<<SQL
+		SELECT * FROM News
+		WHERE idNews = ?
+SQL
+		);
+		$stmt->setFetchMode(PDO::FETCH_CLASS, 'News');
+		$stmt->execute(Array($idNews));
+		$obj = $stmt->fetch();
+		if ($obj == null) {
+			throw new NewsException();
+		} else {
+			return $obj;
+		}
+	}
 
 }
 
-class NewsException extends Exception
-{
-    public function __construct($message, $code, Exception $previous)
-    {
-        parent::__construct($message = "Pas de news disponible avec cette id", $code = 0, $previous = null);
-    }
+class NewsException extends Exception {
+	public function __construct($message = "Pas de news disponible avec cet ID", $code = 0, Exception $previous = null) {
+		parent::__construct($message, $code, $previous);
+	}
 }
