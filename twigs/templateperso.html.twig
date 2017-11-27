@@ -2,9 +2,6 @@
 <html>
 	<head>
 		<title>Accueil - Université PanAfricaine - L'Institut des Sciences de l'Eau et de l'Energie</title>
-
-		<meta charset="UTF-8">
-
 		<link rel="stylesheet" href="/assets/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/assets/css/bootstrap-grid.min.css">
 		<link rel="stylesheet" href="/assets/css/bootstrap-reboot.min.css">
@@ -13,7 +10,7 @@
 		<link rel="stylesheet" href="/assets/css/tether-theme-basic.min.min.css">
 		<link rel="stylesheet" href="/assets/css/base.css">
 		<link rel="stylesheet" href="/assets/css/news.css">
-
+		
 		{% block stylesheets %}
 		{% endblock %}
 	</head>
@@ -21,9 +18,12 @@
 	<body>
 <div class="container back">
 	<!-- logo -->
+
 	<div class="row">
 		<div class="col-md-3">
+
 			<img src="/assets/img/logo.png"  class="img-fluid" alt="Responsive image">
+
 		</div>
 		<div class="offset-5 col-3">
 			{{ form | raw }}
@@ -37,13 +37,13 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarToggler">
 			<ul class="navbar-nav m-auto">
-				{{ include('menuitem.html.twig', {'text': "Accueil", 'href': '/index.php', 'active': (page == "news") }) }}
-				{{ include('menuitem.html.twig', {'text': "Programmes d'études", 'href': '/programme.php', 'active': (page == "progetude") }) }}
-				{{ include('menuitem.html.twig', {'text': "Inscription", 'href': '/admission.php', 'active': (page == "inscription") }) }}
-				{{ include('menuitem.html.twig', {'text': "Bourses d'études", 'href': '/boursesetudes.php', 'active': (page == "boursesetudes") }) }}
-				{{ include('menuitem.html.twig', {'text': "Corps professoral", 'href': '/corpsprof.php', 'active': (page == "corpsprof") }) }}
-				{{ include('menuitem.html.twig', {'text': "Vie sur le campus", 'href': '/viecampus.php', 'active': (page == "viecampus") }) }}
-				{{ include('menuitem.html.twig', {'text': "À propos", 'href': '/about.php', 'active': (page == "about") }) }}
+				{{ include('menuitem.html.twig', {'text': "Accueil", 'href': '../index.php', 'active': (page == "news") }) }}
+				{{ include('menuitem.html.twig', {'text': "Programmes d'études", 'href': '../programme.php', 'active': (page == "progetude") }) }}
+				{{ include('menuitem.html.twig', {'text': "Inscription", 'href': '../admission.php', 'active': (page == "inscription") }) }}
+				{{ include('menuitem.html.twig', {'text': "Bourses d'études", 'href': '../boursesetudes.php', 'active': (page == "boursesetudes") }) }}
+				{{ include('menuitem.html.twig', {'text': "Corps professoral", 'href': '../corpsprof.php', 'active': (page == "corpsprof") }) }}
+				{{ include('menuitem.html.twig', {'text': "Vie sur le campus", 'href': '../viecampus.php', 'active': (page == "viecampus") }) }}
+				{{ include('menuitem.html.twig', {'text': "À propos", 'href': '../about.php', 'active': (page == "about") }) }}
 			</ul>
 		</div>
 	</nav>
