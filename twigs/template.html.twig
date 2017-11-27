@@ -9,6 +9,8 @@
 		<link rel="stylesheet" href="/assets/css/tether-theme-arrows-dark.min.css">
 		<link rel="stylesheet" href="/assets/css/tether-theme-basic.min.min.css">
 		<link rel="stylesheet" href="/assets/css/base.css">
+		<link rel="stylesheet" href="/assets/css/news.css">
+		
 		{% block stylesheets %}
 		{% endblock %}
 	</head>
@@ -27,29 +29,85 @@
 			{{ form | raw }}
 		</div>
 	</div>
-	<!-- navbar principale-->
+
+	<!-- navbar principale -->
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse" id="navbarToggler">
 			<ul class="navbar-nav m-auto">
-				{{ include('menuitem.html.twig', {'text': "Accueil", 'href': '/', 'active': (page == "news") }) }}
-				{{ include('menuitem.html.twig', {'text': "Programmes d'études", 'href': '/', 'active': (page == "progetude") }) }}
-				{{ include('menuitem.html.twig', {'text': "Inscription", 'href': '/', 'active': (page == "inscription") }) }}
-				{{ include('menuitem.html.twig', {'text': "Bourses d'études", 'href': '/', 'active': (page == "boursesetudes") }) }}
-				{{ include('menuitem.html.twig', {'text': "Corps professoral", 'href': '/', 'active': (page == "corpsprof") }) }}
-				{{ include('menuitem.html.twig', {'text': "Vie sur le campus", 'href': '/', 'active': (page == "viecampus") }) }}
-				{{ include('menuitem.html.twig', {'text': "À propos", 'href': '/', 'active': (page == "apropos") }) }}
+				{{ include('menuitem.html.twig', {'text': "Accueil", 'href': 'index.php', 'active': (page == "news") }) }}
+				{{ include('menuitem.html.twig', {'text': "Programmes d'études", 'href': 'programme.php', 'active': (page == "progetude") }) }}
+				{{ include('menuitem.html.twig', {'text': "Inscription", 'href': 'admission.php', 'active': (page == "inscription") }) }}
+				{{ include('menuitem.html.twig', {'text': "Bourses d'études", 'href': 'boursesetudes.php', 'active': (page == "boursesetudes") }) }}
+				{{ include('menuitem.html.twig', {'text': "Corps professoral", 'href': 'corpsprof.php', 'active': (page == "corpsprof") }) }}
+				{{ include('menuitem.html.twig', {'text': "Vie sur le campus", 'href': 'viecampus.php', 'active': (page == "viecampus") }) }}
+				{{ include('menuitem.html.twig', {'text': "À propos", 'href': 'about.php', 'active': (page == "about") }) }}
 			</ul>
 		</div>
 	</nav>
-		<div id="site-content" class="row">
-			<div class="col-sm-12">
-			{% block content %}
-			{% endblock %}
+	<!-- navbar secondaire -->
+	{{include('submenu.html.twig')}}
+
+	<div class="row">
+		<div id="indexCaroussel" class="carousel slide col-sm-10 offset-sm-1" data-ride="carousel">
+			<ol class="carousel-indicators">
+				<li data-target="#indexCaroussel" data-slide-to="0" class="active"></li>
+				<li data-target="#indexCaroussel" data-slide-to="1"></li>
+				<li data-target="#indexCaroussel" data-slide-to="2"></li>
+				<li data-target="#indexCaroussel" data-slide-to="3"></li>
+			</ol>
+
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img class="d-block w-100" src="assets/img/index1.jpg" alt="First slide">
+					<div class="carousel-caption d-none d-md-block">
+						<p>Graduation ceremony of the first Cohort - October 27th, 2016</p>
+					</div>
+				</div>
+				<div class="carousel-item">
+					<img class="d-block w-100" src="assets/img/index2.jpg" alt="Second slide">
+					<div class="carousel-caption d-none d-md-block">
+						<p>Applications for the academic year 2017/2018 are now open</p>
+					</div>
+
+				</div>
+				<div class="carousel-item">
+					<img class="d-block w-100" src="assets/img/index3.jpg" alt="Third slide">
+					<div class="carousel-caption d-none d-md-block">
+						<p>PAUWES First Career Days – September 21st-29th</p>
+					</div>
+
+				</div>
+				<div class="carousel-item">
+					<img class="d-block w-100" src="assets/img/index4.jpg" alt="Third slide">
+					<div class="carousel-caption d-none d-md-block">
+						<p>PAUWES Entrepreneurship Day. #PAD2017</p>
+					</div>
+
+				</div>
 			</div>
+
+			<a class="carousel-control-prev" href="#indexCaroussel" role="button" data-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="sr-only">Précédente</span>
+			</a>
+
+			<a class="carousel-control-next" href="#indexCaroussel" role="button" data-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="sr-only">Suivante</span>
+			</a>
 		</div>
+	</div>
+
+
+	<div id="site-content" class="row">
+		<div class="col-sm-12">
+		{% block content %}
+		{% endblock %}
+		</div>
+	</div>
 </div>
 
 		<!--
@@ -63,6 +121,10 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 		<script>
+			$('.carousel').carousel({
+  				interval: 4000
+			})
+
 			{% block javascript %}
 			{% endblock %}
 		</script>

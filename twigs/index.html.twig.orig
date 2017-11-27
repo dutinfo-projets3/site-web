@@ -29,7 +29,11 @@
         <ul class="pagination justify-content-center">
 
             <!-- next -->
+<<<<<<< HEAD
             {% if currentPage <= 1 %}
+=======
+            {% if currentPage == 1 %}
+>>>>>>> 6b81a6c1bce7b62aae9afe295ec15263e87f494f
             <li class="page-item disabled">
             {% else %}
             <li class="page-item">
