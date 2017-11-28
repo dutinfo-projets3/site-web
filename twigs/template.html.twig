@@ -38,12 +38,12 @@
 		<div class="collapse navbar-collapse" id="navbarToggler">
 			<ul class="navbar-nav m-auto">
 				{{ include('menuitem.html.twig', {'text': "Accueil", 'href': 'index.php', 'active': (page == "news") }) }}
-				{{ include('menuitem.html.twig', {'text': "Programmes d'études", 'href': 'programme.php', 'active': (page == "progetude") }) }}
-				{{ include('menuitem.html.twig', {'text': "Inscription", 'href': 'admission.php', 'active': (page == "inscription") }) }}
-				{{ include('menuitem.html.twig', {'text': "Bourses d'études", 'href': 'boursesetudes.php', 'active': (page == "boursesetudes") }) }}
-				{{ include('menuitem.html.twig', {'text': "Corps professoral", 'href': 'corpsprof.php', 'active': (page == "corpsprof") }) }}
-				{{ include('menuitem.html.twig', {'text': "Vie sur le campus", 'href': 'viecampus.php', 'active': (page == "viecampus") }) }}
-				{{ include('menuitem.html.twig', {'text': "À propos", 'href': 'about.php', 'active': (page == "about") }) }}
+				{{ include('menuitem.html.twig', {'text': "Programmes d'études", 'href': 'staticpage.php?page=programme', 'active': (page == "programme") }) }}
+				{{ include('menuitem.html.twig', {'text': "Inscription", 'href': 'staticpage.php?page=admission', 'active': (page == "admission") }) }}
+				{{ include('menuitem.html.twig', {'text': "Bourses d'études", 'href': 'staticpage.php?page=boursesetudes', 'active': (page == "boursesetudes") }) }}
+				{{ include('menuitem.html.twig', {'text': "Corps professoral", 'href': 'staticpage.php?page=corpsprof', 'active': (page == "corpsprof") }) }}
+				{{ include('menuitem.html.twig', {'text': "Vie sur le campus", 'href': 'staticpage.php?page=viecampus', 'active': (page == "viecampus") }) }}
+				{{ include('menuitem.html.twig', {'text': "À propos", 'href': 'staticpage.php?page=about', 'active': (page == "about") }) }}
 			</ul>
 		</div>
 	</nav>
