@@ -1,7 +1,8 @@
 <?php
 require_once("autoload.inc.php");
 
-if (!isset($_GET['page']) || empty($_GET['page'])){
+// On évite le remontage d'arborescence :)
+if (!isset($_GET['page']) || empty($_GET['page']) || strpos($_GET["page"], "..") || strpos($_GET["page"], "/")){
 	header('Location: /');
 } else {
 	$html = "";
