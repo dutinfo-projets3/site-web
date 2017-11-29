@@ -1,8 +1,1 @@
-<?php
-error_reporting(E_ALL);
-ini_set("display_errors", 1);
-
-require_once("autoload.inc.php");
-
-
-echo TwigLoader::getInstance()->render('about-jobs','jobs', array());
+㰿灨瀊敲牯牟牥灯牴楮木䕟䅌䰩㬊楮楟獥琨≤楳灬慹彥牲潲猢Ⱐㄩ㬊ੲ敱畩牥彯湣攨≡畴潬潡搮楮挮灨瀢⤻ਊ੥捨漠呷楧䱯慤敲㨺来瑉湳瑡湣攨⤭㹲敮摥爨❡扯畴⵪潢猧Ⱗ橯扳✬⁡牲慹⠩⤻�
