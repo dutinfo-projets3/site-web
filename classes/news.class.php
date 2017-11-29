@@ -16,8 +16,10 @@ class News
     private $numero;
     private $description;
     private $datePublication;
+
     /**
-     * @return mixed
+     * Getter pour idNews
+     * @return idNews
      */
     public function getIdNews()
     {
@@ -25,7 +27,8 @@ class News
     }
 
     /**
-     * @param mixed $idNews
+     * Setter pour idNews
+     * @param Integer $idNews
      */
     public function setIdNews($idNews)
     {
@@ -33,7 +36,8 @@ class News
     }
 
     /**
-     * @return mixed
+     * Getter pour idSecretaire
+     * @return idSecretaire
      */
     public function getIdSecretaire()
     {
@@ -41,7 +45,8 @@ class News
     }
 
     /**
-     * @param mixed $idSecretaire
+     * Setter pour idSecretaire
+     * @param Integer $idSecretaire
      */
     public function setIdSecretaire($idSecretaire)
     {
@@ -49,7 +54,8 @@ class News
     }
 
     /**
-     * @return mixed
+     * Getter pour le nom de la news
+     * @return String nomEvenement
      */
     public function getNomEvenement()
     {
@@ -57,7 +63,8 @@ class News
     }
 
     /**
-     * @param mixed $nomEvenement
+     * Setter pour le nom de la news
+     * @param String $nomEvenement
      */
     public function setNomEvenement($nomEvenement)
     {
@@ -65,7 +72,9 @@ class News
     }
 
     /**
-     * @return mixed
+     * @TODO ???
+     * Getter pour numero
+     * @return Integer numero
      */
     public function getNumero()
     {
@@ -73,7 +82,9 @@ class News
     }
 
     /**
-     * @param mixed $numero
+     * @TODO ???
+     * Setter pour numero
+     * @param Integer $numero
      */
     public function setNumero($numero)
     {
@@ -81,7 +92,9 @@ class News
     }
 
     /**
-     * @return mixed
+     * Getter pour le contenu de la news
+     * Non parsée
+     * @return String $description
      */
     public function getDescription()
     {
@@ -89,15 +102,17 @@ class News
     }
 
     /**
-     * @param mixed $descirpion
+     * Setter pour le contenu
+     * @param String
      */
-    public function setDescirpion($descirpion)
+    public function setDescription($description)
     {
-        $this->descirpion = $descirpion;
+        $this->description = $description;
     }
 
     /**
-     * @return mixed
+     * Getter pour la date de publication
+     * @return Date $datePublication
      */
     public function getDatePublication()
     {
@@ -105,38 +120,76 @@ class News
     }
 
     /**
-     * @param mixed $datePublication
+     * Setter pour la date de publication
+     * @param Date $datePublication
      */
     public function setDatePublication($datePublication)
     {
         $this->datePublication = $datePublication;
     }
 
-
-    public static function createNews()
+    /**
+     * Retourne le nombre de news qui se trouve dans la base de donnée
+     * @return Nombre de news dans la base de données
+     */
+    public static function getCountNumbers()
     {
-        $listNews = array();
-
         $stmt = myPDO::getInstance()->prepare(<<<SQL
-        SELECT idNews FROM News
-        ORDER BY datePublication DESC;
+		SELECT COUNT(idNews) FROM News;
 SQL
-  );
+        );
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $stmt->execute();
-        $listIdNews = $stmt->fetchAll();
-        foreach($listIdNews as $idNew){
-            array_push($listNews, self::createNewsFromId($idNew['idNews']));
-        }
 
-        return $listNews;
+        return $stmt->fetch()['COUNT(idNews)'];
     }
 
+    /**
+     * Retourne les news en fonction de la page où l'on se trouve
+     * @param $start Offset du numéro de news
+     * @param $range nombre de news à retourner
+     * @throws InvalidArgumentException
+     * @return News array
+     *
+     * @TODO Test
+     *
+     */
+    public static function createNewsNext($start = 0, $range = 5)
+    {
+
+        if ($start >= 0 && $start < self::getCountNumbers()) {
+            $stmt = myPDO::getInstance()->prepare(<<<SQL
+		SELECT * FROM News
+		ORDER BY datePublication DESC
+		LIMIT :start, :range;
+SQL
+            );
+            $stmt->setFetchMode(PDO::FETCH_CLASS, "News");
+            $stmt->bindParam(':start', $start, PDO::PARAM_INT);
+            $stmt->bindParam(':range', $range, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetchAll();
+        } else {
+            throw new InvalidArgumentException("Le numéro de page ne peut être inferieur à 0");
+
+        }
+
+    }
+
+    /**
+     * Retourne une news depuis son ID
+     * @param $idNews L'id de la news voulue
+     * @throws NewsException
+     * @return News instance
+     *
+     * @TODO Test
+     *
+     */
     public static function createNewsFromId($idNews)
     {
         $stmt = myPDO::getInstance()->prepare(<<<SQL
-        SELECT * FROM News
-        WHERE idNews = ?
+		SELECT * FROM News
+		WHERE idNews = ?
 SQL
         );
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'News');
@@ -153,8 +206,8 @@ SQL
 
 class NewsException extends Exception
 {
-    public function __construct($message, $code, Exception $previous)
+    public function __construct($message = "Pas de news disponible avec cet ID", $code = 0, Exception $previous = null)
     {
-        parent::__construct($message = "Pas de news disponible avec cette id", $code = 0, $previous = null);
+        parent::__construct($message, $code, $previous);
     }
 }

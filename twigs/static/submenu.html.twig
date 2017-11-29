@@ -1,0 +1,55 @@
+{% if (page == "progetude") %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler2" aria-controls="navbarToggler2" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarToggler2">
+			<ul class="navbar-nav m-auto">
+				{{ include('menuitem.html.twig', {'text': "Master en Sciences (MSc) de l’Eau", 'href': 'mastereau.php', 'active': (subpage == "mastereau") }) }}
+				{{ include('menuitem.html.twig', {'text': "Master en Sciences (MSc) de l’Energie", 'href': 'masterenergie.php', 'active': (subpage == "masterenergie") }) }}
+				{{ include('menuitem.html.twig', {'text': "Perspectives de carrière", 'href': 'perspective.php', 'active': (subpage == "perspective") }) }}
+				{{ include('menuitem.html.twig', {'text': "C’est votre Occasion", 'href': 'occasion.php', 'active': (subpage == "occasion") }) }}
+				{{ include('menuitem.html.twig', {'text': "Contact", 'href': 'contact.php', 'active': (subpage == "contact") }) }}
+			</ul>
+		</div>
+	</nav>
+
+
+{% elseif (page == "viecampus") %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler2" aria-controls="navbarToggler2" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarToggler2">
+			<ul class="navbar-nav m-auto">
+				{{ include('menuitem.html.twig', {'text': "Hébergement", 'href': 'hebergement.php', 'active': (subpage == "hebergement") }) }}
+				{{ include('menuitem.html.twig', {'text': "Ville", 'href': 'ville.php', 'active': (subpage == "ville") }) }}
+				{{ include('menuitem.html.twig', {'text': "Université de Tlemcen", 'href': 'univtlemcen.php', 'active': (subpage == "univtlemcen") }) }}
+				{{ include('menuitem.html.twig', {'text': "Comment s’y rendre", 'href': 'commentrendre.php', 'active': (subpage == "commentrendre") }) }}
+				{{ include('menuitem.html.twig', {'text': "Guide de l'étudiant", 'href': 'http://pauwes.univ-tlemcen.dz/wp-content/uploads/2014/10/StudentGuide_Download.pdf', 'active': (subpage == "guide") }) }}
+			</ul>
+
+		</div>
+	</nav>
+
+{% elseif (page == "about") %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler2" aria-controls="navbarToggler2" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarToggler2">
+			<ul class="navbar-nav m-auto">
+				{{ include('menuitem.html.twig', {'text': "Bienvenue", 'href': 'welcome.php', 'active': (subpage == "welcome") }) }}
+				{{ include('menuitem.html.twig', {'text': "5 questions au Directeur", 'href': 'questions.php', 'active': (subpage == "questions") }) }}
+				{{ include('menuitem.html.twig', {'text': "Université PanAfricaine UPA", 'href': 'highschool.php', 'active': (subpage == "highschool") }) }}
+				{{ include('menuitem.html.twig', {'text': "Possibilités d'Emploi", 'href': 'jobs.php', 'active': (subpage == "jobs") }) }}
+				{{ include('menuitem.html.twig', {'text': "Partenaires", 'href': 'partners.php', 'active': (subpage == "partners") }) }}
+				{{ include('menuitem.html.twig', {'text': "Mentions Légales", 'href': 'legalnotice.php', 'active': (subpage == "legalnotice") }) }}
+			</ul>
+
+		</div>
+	</nav>
+{% endif %}

@@ -28,7 +28,11 @@ class TwigLoader{
 	 * Retourne le HTML du Twig
 	 */
 	public function render(string $page, string $twigname, array $parameters){
-		$parameters["page"] = $page;
+		$split = explode('-', $page);
+		$parameters["page"] = $split[0];
+		if(isset($split[1])){
+			$parameters["subpage"] = $split[1];
+		}
 		if (Utilisateur::isConnected()){
 			$parameters["connected"] = true;
 			$parameters["form"] = Utilisateur::createFromSession()->createLogoutForm(isset($parameters['displayPanelButton']) ? $parameters['displayPanelButton'] : true);
