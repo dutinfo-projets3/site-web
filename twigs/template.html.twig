@@ -15,48 +15,66 @@
 		{% block stylesheets %}
 		{% endblock %}
 	</head>
+    {% block stylesheets %}
+    {% endblock %}
+</head>
 
-	<body>
+<!--icon feather-->
+<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+
+<body>
 <div class="container back">
-	<!-- logo -->
 
-	<div class="row">
-		<div class="col-md-3">
+    <div class="row">
+        <!-- logo -->
+        <div class="col-lg-3 col-sm-12 d-lg-flex flex-column justify-content-center">
+            <img src="/assets/img/logo.png" class="img-fluid" alt="Responsive image">
+        </div>
 
-			<img src="/assets/img/logo.png"  class="img-fluid" alt="Responsive image">
+        <!--Connection menu mobile and desktop-->
+        <nav class="navbar navbar-expand-lg offset-lg-4 col-lg-4 d-lg-flex align-items-lg-end flex-lg-column">
+            {% if error == null and connected == false %}
+                 <div class="collapse navbar-collapse " id="navbarConnexion">
+            {% else %}
+                <div class="collapse navbar-collapse show" id="navbarConnexion">
+             {% endif %}
+                    {{ form | raw }}
+                </div>
+        </nav>
 
-		</div>
-		<div class="offset-5 col-3">
-			{{ form | raw }}
-		</div>
-	</div>
+    </div>
 
-	<!-- navbar principale -->
-	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarToggler">
-			<ul class="navbar-nav m-auto">
-				{{ include('menuitem.html.twig', {'text': "Accueil", 'href': 'index.php', 'active': (page == "news") }) }}
-				{{ include('menuitem.html.twig', {'text': "Programmes d'études", 'href': '/staticpage.php?page=programme', 'active': (page == "programme") }) }}
-				{{ include('menuitem.html.twig', {'text': "Inscription", 'href': '/staticpage.php?page=admission', 'active': (page == "admission") }) }}
-				{{ include('menuitem.html.twig', {'text': "Bourses d'études", 'href': '/staticpage.php?page=boursesetudes', 'active': (page == "boursesetudes") }) }}
-				{{ include('menuitem.html.twig', {'text': "Corps professoral", 'href': '/staticpage.php?page=corpsprof', 'active': (page == "corpsprof") }) }}
-				{{ include('menuitem.html.twig', {'text': "Vie sur le campus", 'href': '/staticpage.php?page=viecampus', 'active': (page == "viecampus") }) }}
-				{{ include('menuitem.html.twig', {'text': "À propos", 'href': '/staticpage.php?page=about', 'active': (page == "about") }) }}
-			</ul>
-		</div>
-	</nav>
+    <!-- navbar principale -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
+                aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+            <i data-feather="menu"></i>
+        </button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarConnexion"
+                aria-controls="navbarConnexion" aria-expanded="false" aria-label="Toggle navigation">
+            <i data-feather="users"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarToggler">
+            <ul class="navbar-nav m-auto">
+                {{ include('menuitem.html.twig', {'text': "Accueil", 'href': 'index.php', 'active': (page == "news") }) }}
+                {{ include('menuitem.html.twig', {'text': "Programmes d'études", 'href': '/staticpage.php?page=programme', 'active': (page == "programme") }) }}
+                {{ include('menuitem.html.twig', {'text': "Inscription", 'href': '/staticpage.php?page=admission', 'active': (page == "admission") }) }}
+                {{ include('menuitem.html.twig', {'text': "Bourses d'études", 'href': '/staticpage.php?page=boursesetudes', 'active': (page == "boursesetudes") }) }}
+                {{ include('menuitem.html.twig', {'text': "Corps professoral", 'href': '/staticpage.php?page=corpsprof', 'active': (page == "corpsprof") }) }}
+                {{ include('menuitem.html.twig', {'text': "Vie sur le campus", 'href': '/staticpage.php?page=viecampus', 'active': (page == "viecampus") }) }}
+                {{ include('menuitem.html.twig', {'text': "À propos", 'href': '/staticpage.php?page=about', 'active': (page == "about") }) }}
+            </ul>
+        </div>
 
-	<div id="site-content" class="row">
-		<div class="col-sm-12">
-		{% block content %}
-		{% endblock %}
-		</div>
-	</div>
+    </nav>
+
+    <div id="site-content" class="row">
+        <div class="col-sm-12">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
 </div>
-
 		<!--
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/tether.min.js"></script>
@@ -67,6 +85,9 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+    <script>
+        feather.replace();
+    </script>
 		<script>
 			{% block javascript %}
 			{% endblock %}

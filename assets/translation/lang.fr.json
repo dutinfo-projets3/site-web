@@ -1,0 +1,30 @@
+{
+	"__home.field.userName__" : "Nom d'utilisateur",
+	"__home.field.password__" : "Mot de passe",
+
+	"__home.text.forgotPassword__" : "Mot de passe oublié?",
+	"__home.text.welcome__" : "Bienvenue, ",
+
+
+	"__home.homeBar.home__" : "Accueil",
+	"__home.homeBar.studyProgram__" : "Programme d'étude",
+	"__home.homeBar.inscription__" : "Inscription",
+	"__home.homeBar.scholarship__" : "Bourse d'étude",
+	"__home.homeBar.faculty__" : "Corps professoral",
+	"__home.homeBar.campusLife__" : "Vie sur le campus",
+	"__home.homeBar.about__" : "A propos",
+
+
+	"__home.button.education__" : "Scolarité",
+	"__home.button.disconnect__" : "Déconnexion",
+	"__home.button.next__" : "Suivant",
+	"__home.button.previous__" : "Précédent",
+	"__home.button.newButton__" : "En savoir plus",
+
+	"__perso.text.studentHome__" : "Accueil Etudiant",
+
+	"__perso.button.myMark__" : "Mes notes",
+	"__perso.button.myAbsence__" : "Mes absences",
+	"__perso.button.mySchedule__" : "Emploi du temps",
+	"__image.logo__" : "Logo"
+}

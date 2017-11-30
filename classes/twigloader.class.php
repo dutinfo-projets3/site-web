@@ -40,6 +40,8 @@ class TwigLoader{
 			$err = isset($_GET['err']) ? $_GET['err'] : null;
 			$parameters["connected"] = false;
 			$parameters["form"]      = Utilisateur::createLoginForm($err);
+			$parameters['error'] = $err;
+
 		}
 
 		return $this->twig->render($twigname . '.html.twig', $parameters);
