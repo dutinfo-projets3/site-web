@@ -21,10 +21,29 @@
 	"__home.button.previous__" : "Previous",
 	"__home.button.newButton__" : "More details",
 
-	"__perso.text.studentHome__" : "Student Home",
+	"__perso.student.studentHome__" : "Student Home",
+	"__perso.student.myMarks__" : "My marks",
+	"__perso.student.myAbsences__" : "My absences",
+	"__perso.student.mySchedule__" : "My schedule",
 
-	"__perso.button.myMark__" : "My marks",
-	"__perso.button.myAbsence__" : "My absences",
-	"__perso.button.mySchedule__" : "Schedule",
+	"__perso.teacher.teacherHome__" : "Teacher Home",
+	"__perso.teacher.insertMarks__" : "Insert marks",
+	"__perso.teach.absencesManagement__" : "Absences management",
+	"__perso.teacher.mySchedule__" : "my Schedule",
+
+	"__perso.administration.administrationHome__" : "Administration Home",
+	"__perso.administration.groups__" : "Groups",
+	"__perso.administration.absences__" : "Absences",
+	"__perso.administration.lessons__" : "Lessons",
+	"__perso.administration.news__" : "News",
+	"__perso.administration.formationManagement" : "Formation management",
+	"__perso.administration.studentManagement" : "Student management",
+
 	"__image.logo__" : "Logo",
+
+	"__home.form.badPass__" : "Bad password",
+	"__home.form.serverError__" : "Server error",
+	"__home.form.userName__" : "Username",
+	"__home.form.password__" : "Password",
+	"__home.forgottenPassword__" : "Forgotten password?"
 }

@@ -1,24 +1,31 @@
 if(Cookies.get("lang") == null){
     Cookies.set("lang","en");
 }
+
+function setLangueFr(){
+    if(Cookies.get("lang")!="fr"){
+        Cookies.set("lang","fr");
+        javascript:window.location.reload();
+    }
+
+}
+
+function setLangueEn(){
+    if(Cookies.get("lang")!="en"){
+        Cookies.set("lang","en");
+        javascript:window.location.reload();
+    }
+}
+
 jQuery(function($){
-    if(Cookies.get("lang") == "en"){
-	   $.getJSON("assets/translation/lang.en.json",function(json){
+	   $.getJSON("/assets/translation/lang." + Cookies.get("lang") + ".json",function(json){
             var doc = document.getElementsByTagName("html");
             searchAndTranslate(doc.item(0),json);
         });
-    }
-    else if(Cookies.get("lang") == "fr"){
-        $.getJSON("assets/translation/lang.fr.json",function(json){
-            var doc = document.getElementsByTagName("html");
-            searchAndTranslate(doc.item(0),json);
-        });
-    }
 })
      function searchAndTranslate(doc,json){
         if(doc.firstChild != null && doc.firstChild.nodeValue != null){
             var index =0;
-            console.log(doc);
             while(doc.firstChild.nodeValue.indexOf("__",index)!=-1){
                 index =doc.firstChild.nodeValue.indexOf("__",index);
                 var translationString ="__";

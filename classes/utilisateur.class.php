@@ -71,10 +71,10 @@ HTML;
         if ($err != null) {
             switch ($err) {
                 case "badpass":
-                    $val .= "Mauvais mot de passe!";
+                    $val .= "__home.form.badPass__";
                     break;
                 case "other":
-                    $val .= "Erreur serveur!";
+                    $val .= "__home.form.serverError__";
                     break;
             }
         }
@@ -83,9 +83,9 @@ HTML;
 </div>
 <div class="row p-lg-0 p-5">
 				<div class="form-group col-sm-12 col-lg-9 m-0  pl-lg-2 pr-lg-2 p-0">
-					<input type="text" name="user" class="form-control form-control-sm" id="nomUtilisateur" aria-describedby="idHelp" placeholder="Nom d'Utilisateur">
-					<input type="password" name="password"  class="form-control form-control-sm mt-2" id="password" placeholder="Mot de passe">
-					<a href="" class="small col-sm-12 text-muted p-0 d-lg-none"> Mot de passe oublié ? </a>
+					<input type="text" name="user" class="form-control form-control-sm" id="nomUtilisateur" aria-describedby="idHelp" placeholder="__home.form.userName__">
+					<input type="password" name="password"  class="form-control form-control-sm mt-2" id="password" placeholder="__home.form.password__">
+					<a href="" class="small col-sm-12 text-muted p-0 d-lg-none"> __home.forgottenPassword__</a>
 				</div>
 				
 				<input hidden name="url" value="{$urlActuelUser}">
@@ -93,7 +93,7 @@ HTML;
 				<button type="submit" class="btn btn-primary col-lg-2 col-12  mt-lg-0 mt-1">&rarr;</button>
 </div>
 				<div class="row d-none d-lg-block">
-					<a href="" class="small col-sm-12 text-muted"> Mot de passe oublié ? </a>
+					<a href="" class="small col-sm-12 text-muted"> __home.forgottenPassword__ </a>
 				</div>
 
 			</form>
@@ -120,7 +120,7 @@ HTML;
         $val = <<< HTML
     <div class="row p-lg-0">
 		<div class="row col-12 m-0 d-flex justify-content-center">
-			<span>Bienvenue, $this->prenomPers $this->nomPers</span>
+			<span>__home.text.welcome__ $this->prenomPers $this->nomPers</span>
 		</div>
 		<div class="row col-12 m-0 pt-2 pb-2 pr-5 pl-5 p-lg-0 mt-lg-2 mb-lg-1">
 HTML;
@@ -128,20 +128,20 @@ HTML;
             $val .= '<a class="btn btn-primary col-lg-5 col-5 " href="/perso">
                         <div class="row pr-2 pl-2">
                             <i data-feather="grid" class="col-12 col-lg-2 p-0"></i>
-                            <span class="col-10 d-none d-lg-inline p-0">Scolarité</span>
+                            <span class="col-10 d-none d-lg-inline p-0">__home.button.education__</span>
                         </div>
                     </a>';
             $val .= '<a class="btn btn-danger col-lg-6 offset-2 offset-lg-1 col-5" href="/login.php?logout=true">
                         <div class="row pr-2 pl-2">
                             <i data-feather="log-out" class="col-12 p-0 col-lg-2"></i>
-                            <span class="col-10 d-none d-lg-inline p-0">Déconnexion</span>
+                            <span class="col-10 d-none d-lg-inline p-0">__home.button.disconnect__</span>
                         </div>
                     </a>';
         } else {
             $val .= '<a class="btn btn-danger  col-12 col-lg-6 offset-lg-3" href="/login.php?logout=true">
                         <div class="row pr-2 pl-2">
                             <i data-feather="log-out" class="col-2 p-0"></i>
-                            <span class="col-10 p-0">Déconnexion</span>
+                            <span class="col-10 p-0">__home.button.disconnect__</span>
                         </div>
                     </a>';
         }
