@@ -1,11 +1,7 @@
-.menuicon {
-	height: 150px;
-	color: white;
-}
-
-.menuicon a {
-	background-color: red;
-	color: none;
+@media screen and (min-width: 1024px) {
+	html, body {
+		height: 100%;
+	}
 }
 
 .menuicon a:link, .menuicon a:visited, .menuicon a:hover, .menuicon a:active {
