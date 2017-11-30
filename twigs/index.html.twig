@@ -51,21 +51,26 @@
             </a>
         </div>
     </div>
-
+    <h4 class="text-center mt-3">Actualité</h4>
     <!-- chargement des news -->
     {% for new in news %}
-        <div class="row indexNewsList">
-            <div class="col-sm-10 offset-sm-1 card">
-                <div class="card-header">
-                    <div class="row">
-                        <h4 class="col-sm-10">{{ new.nomEvenement }}</h4>
-                        <h4 class="col-sm-2 text-muted newsDate"> {{ new.datePublication }}</h4>
+        <div class="row m-3">
+            <div class="col-sm-10 offset-sm-1 border">
+                <div class="col-12 p-0 m-0">
+                    <div class="row p-2 bg-light">
+                        <h4 class="col-12 col-md-9 col-lg-10">{{ new.nomEvenement }}</h4>
+                        <h5 class="col-12 col-md-3 col-lg-2 text-muted"> {{ new.datePublication }}</h5>
                     </div>
                 </div>
-                <div class="card-body">
-                    <p class="card-text">{{ new.description }}
+                <div class="row p-3">
+                    <p class="col-lg-12">{{ new.description }}
                     </p>
-                    <a href="#" class="offset-sm-10 btn btn-primary">En savoir plus</a>
+                    <a href="#" class="offset-9  col-3">
+                        <div class="row pr-2 pl-2">
+                            <i data-feather="plus-square" class="col-12 p-0 col-lg-2"></i>
+                            <span class="col-10 d-none d-lg-inline p-0">Plus Information</span>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
