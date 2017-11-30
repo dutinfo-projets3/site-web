@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 	<head>
 		<title>Accueil - Université PanAfricaine - L'Institut des Sciences de l'Eau et de l'Energie</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,8 +9,8 @@
 		<link rel="stylesheet" href="/assets/css/tether.min.css">
 		<link rel="stylesheet" href="/assets/css/tether-theme-arrows-dark.min.css">
 		<link rel="stylesheet" href="/assets/css/tether-theme-basic.min.min.css">
-		<link rel="stylesheet" href="/assets/css/base.css">
-		<link rel="stylesheet" href="/assets/css/news.css">
+		<link rel="stylesheet" media="screen" href="/assets/css/base.css">
+
 
 		<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 
@@ -20,7 +20,7 @@
 
 
 <body>
-<div class="container back">
+<div class="container back h-100 d-flex flex-column">
 
     <div class="row">
         <!-- logo -->
@@ -55,7 +55,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarToggler">
             <ul class="navbar-nav m-auto">
-                {{ include('menuitem.html.twig', {'text': "Accueil", 'href': 'index.php', 'active': (page == "news") }) }}
+                {{ include('menuitem.html.twig', {'text': "Accueil", 'href': '/index.php', 'active': (page == "news") }) }}
                 {{ include('menuitem.html.twig', {'text': "Programmes d'études", 'href': '/staticpage.php?page=programme', 'active': (page == "programme") }) }}
                 {{ include('menuitem.html.twig', {'text': "Inscription", 'href': '/staticpage.php?page=admission', 'active': (page == "admission") }) }}
                 {{ include('menuitem.html.twig', {'text': "Bourses d'études", 'href': '/staticpage.php?page=boursesetudes', 'active': (page == "boursesetudes") }) }}
@@ -67,13 +67,19 @@
 
     </nav>
 
-    <div id="site-content" class="row">
-        <div class="col-sm-12">
             {% block content %}
             {% endblock %}
+
+
+    <footer class="border-info bg-light footer navbar-fixed-bottoms mb-3">
+        <div class="d-flex flex-column">
+            <span>Pan African University Institute of Water and Energy Sciences (including Climate Change) PAUWES</span>
+            <span>c/o Tlemcen University, B.P. 119 | Pôle Chetouane, Tlemcen 13000, Algeria | info@pauwes.univ-tlemcen.dz</span>
+            <span>Phone : +213 43 41 04 35 / Fax : +213 43 41 04 99</span>
         </div>
-    </div>
+    </footer>
 </div>
+
 		<!--
 		<script src="assets/js/jquery.min.js"></script>
 		<script src="assets/js/tether.min.js"></script>

@@ -1,20 +1,21 @@
 body {
-	background-color: #CCC;
+    background-color: #CCC;
+
 }
 
-.back{
-	background-color : rgb(255,255,255);
+.back {
+    background-color: rgb(255, 255, 255);
 }
 
 .c {
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: auto;  
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
 }
 
 #site-content {
-	padding-top: 20px;
-	padding-bottom: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
