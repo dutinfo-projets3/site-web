@@ -8,7 +8,7 @@
     {% if (usertype == 0) %}
 
         <h3 class="text-center m-0 pb-0 pt-3"> Accueil étudiant </h3>
-        <div class="d-flex align-content-center justify-content-around flex-wrap">
+        <div class="d-flex align-content-center justify-content-around flex-wrap h-100">
 
             {{ include('perso/card.html.twig', { 'bgcolor': "#3c4a59", 'img': "/assets/img/notes.png", 'text': "Mes notes", "url": "/perso/notes.php"}) }}
             {{ include('perso/card.html.twig', { 'bgcolor': "#455556", 'img': "/assets/img/absences.png", 'text': "Mes absences", "url": "/perso/absences.php"}) }}
