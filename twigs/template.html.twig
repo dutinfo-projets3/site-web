@@ -20,13 +20,19 @@
 
 
 <body>
+
 <div class="container back d-lg-flex flex-lg-column h-100">
+
+    <div>
+        <button class = "langue" onclick="setLangueFr()"><img src="/assets/img/logoFrance.png" alt="Français"/></button>
+        <button class = "langue" onclick="setLangueEn()"><img src="/assets/img/logoAnglais.png" alt="English"/></button>
+    </div>
 
     <div class="row">
         <!-- logo -->
         <div class="col-lg-3 col-sm-12 d-lg-flex flex-column justify-content-center">
 		<a href="/">
-			<img src="/assets/img/logo.png" class="img-fluid" alt="Responsive image">
+			<img src="/assets/img/logo.png" class="img-fluid" alt="__image.logo__">
 		</a>
         </div>
 
@@ -55,13 +61,13 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarToggler">
             <ul class="navbar-nav m-auto">
-                {{ include('menuitem.html.twig', {'text': "Accueil", 'href': '/index.php', 'active': (page == "news") }) }}
-                {{ include('menuitem.html.twig', {'text': "Programmes d'études", 'href': '/staticpage.php?page=programme', 'active': (page == "programme") }) }}
-                {{ include('menuitem.html.twig', {'text': "Inscription", 'href': '/staticpage.php?page=admission', 'active': (page == "admission") }) }}
-                {{ include('menuitem.html.twig', {'text': "Bourses d'études", 'href': '/staticpage.php?page=boursesetudes', 'active': (page == "boursesetudes") }) }}
-                {{ include('menuitem.html.twig', {'text': "Corps professoral", 'href': '/staticpage.php?page=corpsprof', 'active': (page == "corpsprof") }) }}
-                {{ include('menuitem.html.twig', {'text': "Vie sur le campus", 'href': '/staticpage.php?page=viecampus', 'active': (page == "viecampus") }) }}
-                {{ include('menuitem.html.twig', {'text': "À propos", 'href': '/staticpage.php?page=about', 'active': (page == "about") }) }}
+                {{ include('menuitem.html.twig', {'text': "__home.homeBar.home__", 'href': '/index.php', 'active': (page == "news") }) }}
+                {{ include('menuitem.html.twig', {'text': "__home.homeBar.studyProgram__", 'href': '/staticpage.php?page=programme', 'active': (page == "programme") }) }}
+                {{ include('menuitem.html.twig', {'text': "__home.homeBar.inscription__", 'href': '/staticpage.php?page=admission', 'active': (page == "admission") }) }}
+                {{ include('menuitem.html.twig', {'text': "__home.homeBar.scholarship__", 'href': '/staticpage.php?page=boursesetudes', 'active': (page == "boursesetudes") }) }}
+                {{ include('menuitem.html.twig', {'text': "__home.homeBar.faculty__", 'href': '/staticpage.php?page=corpsprof', 'active': (page == "corpsprof") }) }}
+                {{ include('menuitem.html.twig', {'text': "__home.homeBar.campusLife__", 'href': '/staticpage.php?page=viecampus', 'active': (page == "viecampus") }) }}
+                {{ include('menuitem.html.twig', {'text': "__home.homeBar.about__", 'href': '/staticpage.php?page=about', 'active': (page == "about") }) }}
             </ul>
         </div>
 
@@ -73,11 +79,11 @@
 
     <footer class="border-info bg-light footer mb-3 mt-lg-0 mt-3">
         <div class="row p-4">
-            <h6 class="col-12 m-1">A propos : </h6>
+            <h6 class="col-12 m-1 p-lg-1">A propos : </h6>
             <span class="col-12 p-3 ml-1 p-lg-1">Pan African University Institute of Water and Energy Sciences (including Climate Change) PAUWES</span>
-            <h6 class="col-12 m-1">Adresse : </h6>
+            <h6 class="col-12 m-1 p-lg-1">Adresse : </h6>
             <span class="col-12 p-3 ml-1 p-lg-1">c/o Tlemcen University, B.P. 119 | Pôle Chetouane, Tlemcen 13000, Algeria | info@pauwes.univ-tlemcen.dz</span>
-            <h6 class="col-12 m-1">Contact : </h6>
+            <h6 class="col-12 m-1 p-l-1">Contact : </h6>
             <span class="col-12 p-3 ml-1 p-lg-1">tel: +213 43 41 04 35 / Fax : +213 43 41 04 99</span>
         </div>
     </footer>
@@ -90,12 +96,14 @@
 		<script src="assets/js/bootstrap.bundle.min.js"></script>
 		-->
 
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
     <script>
         feather.replace();
     </script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="/assets/js/language.js"></script>
 		<script>
 			{% block javascript %}
 			{% endblock %}

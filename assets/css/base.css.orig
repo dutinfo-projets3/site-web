@@ -17,6 +17,9 @@ body {
 #site-content {
     padding-top: 20px;
     padding-bottom: 20px;
+<<<<<<< HEAD
+}
+=======
 }
 
 .langue{
@@ -24,3 +27,4 @@ body {
 	background-color: white;
 }
 
+>>>>>>> 1a3d6378a35747fbb01ba4339f166a266c79eecf

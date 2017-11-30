@@ -87,8 +87,8 @@
             <li class="page-item disabled">
         {% else %}
             <li class="page-item">
-                {% endif %}
-                <a class="page-link" href="?page={{ currentPage-1 }}">Previous</a>
+            {% endif %}
+                <a class="page-link" href="?page={{ currentPage-1 }}">__home.button.previous__</a>
             </li>
 
             <!--Pagination Button-->
@@ -109,10 +109,9 @@
             <li class="page-item disabled">
                 {% else %}
             <li class="page-item">
-                {% endif %}
-                <a class="page-link" href="?page={{ currentPage+1 }}">Next</a>
+            {% endif %}
+                <a class="page-link" href="?page={{ currentPage+1 }}">__home.button.next__</a>
             </li>
-
         </ul>
     </nav>
 
