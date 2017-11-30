@@ -24,7 +24,7 @@
 		</div>
 	{% elseif (usertype == 2) %}
 		<h3 class="text-center m-0 pb-0 pt-3">__perso.administration.administrationHome__</h3>
-		<div class="menuicon row pt-5 justify-content-around">
+		<div class="d-flex align-content-center justify-content-around flex-wrap h-100">
 			{{ include('perso/card.html.twig', {'bgcolor': "#3c4a59", 'img': "/assets/img/groupes.png", 'text': "__perso.administration.groups__", 'url': "/perso/groupemanager.php"})}}
 			{{ include('perso/card.html.twig', {'bgcolor': "#455556", 'img': "/assets/img/absences.png", 'text': "__perso.administration.absences__", 'url': "/perso/absencesmanager.php"})}}
 			{{ include('perso/card.html.twig', {'bgcolor': "#404040", 'img': "/assets/img/edt.png", 'text': "__perso.administration.lessons__", 'url': "/perso/coursmanager.php"})}}
