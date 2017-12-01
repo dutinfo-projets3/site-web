@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/html">
 	<head>
 		<title>Accueil - Université PanAfricaine - L'Institut des Sciences de l'Eau et de l'Energie</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<link rel="stylesheet" href="/assets/css/bootstrap.min.css">
 		<link rel="stylesheet" href="/assets/css/bootstrap-grid.min.css">
 		<link rel="stylesheet" href="/assets/css/bootstrap-reboot.min.css">
@@ -20,12 +20,14 @@
 
 
 <body>
-<div class="container back">
+
+<div class="container back d-lg-flex flex-lg-column h-100">
+
     <div>
         <button class = "langue" onclick="setLangueFr()"><img src="/assets/img/logoFrance.png" alt="Français"/></button>
         <button class = "langue" onclick="setLangueEn()"><img src="/assets/img/logoAnglais.png" alt="English"/></button>
     </div>
-<div class="container back h-100 d-flex flex-column">
+
     <div class="row">
         <!-- logo -->
         <div class="col-lg-3 col-sm-12 d-lg-flex flex-column justify-content-center">
@@ -75,11 +77,14 @@
             {% endblock %}
 
 
-    <footer class="border-info bg-light footer navbar-fixed-bottoms mb-3">
-        <div class="d-flex flex-column">
-            <span>Pan African University Institute of Water and Energy Sciences (including Climate Change) PAUWES</span>
-            <span>c/o Tlemcen University, B.P. 119 | Pôle Chetouane, Tlemcen 13000, Algeria | info@pauwes.univ-tlemcen.dz</span>
-            <span>Phone : +213 43 41 04 35 / Fax : +213 43 41 04 99</span>
+    <footer class="border-info bg-light footer mb-3 mt-lg-0 mt-3">
+        <div class="row p-4">
+            <h6 class="col-12 m-1 p-lg-1">A propos : </h6>
+            <span class="col-12 p-3 ml-1 p-lg-1">Pan African University Institute of Water and Energy Sciences (including Climate Change) PAUWES</span>
+            <h6 class="col-12 m-1 p-lg-1">Adresse : </h6>
+            <span class="col-12 p-3 ml-1 p-lg-1">c/o Tlemcen University, B.P. 119 | Pôle Chetouane, Tlemcen 13000, Algeria | info@pauwes.univ-tlemcen.dz</span>
+            <h6 class="col-12 m-1 p-l-1">Contact : </h6>
+            <span class="col-12 p-3 ml-1 p-lg-1">tel: +213 43 41 04 35 / Fax : +213 43 41 04 99</span>
         </div>
     </footer>
 </div>

@@ -1,0 +1,30 @@
+body {
+    background-color: #CCC;
+
+}
+
+.back {
+    background-color: rgb(255, 255, 255);
+}
+
+.c {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+#site-content {
+    padding-top: 20px;
+    padding-bottom: 20px;
+<<<<<<< HEAD
+}
+=======
+}
+
+.langue{
+	border: none;
+	background-color: white;
+}
+
+>>>>>>> 1a3d6378a35747fbb01ba4339f166a266c79eecf
