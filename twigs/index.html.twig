@@ -1,21 +1,80 @@
 {% extends 'template.html.twig' %}
 
-{% block content %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="/assets/css/news.css">
+{% endblock %}
 
-    <!-- chargement des news -->
-    {% for new in news %}
-        <div class="row indexNewsList">
-            <div class="col-sm-10 offset-sm-1 card">
-                <div class="card-header">
-                    <div class="row">
-                        <h4 class="col-sm-10">{{ new.nomEvenement }}</h4>
-                        <h4 class="col-sm-2 text-muted newsDate"> {{ new.datePublication }}</h4>
+{% block content %}
+    <div class="row">
+        <div id="indexCaroussel" class="carousel slide col-sm-10 offset-sm-1" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#indexCaroussel" data-slide-to="0" class="active"></li>
+                <li data-target="#indexCaroussel" data-slide-to="1"></li>
+                <li data-target="#indexCaroussel" data-slide-to="2"></li>
+                <li data-target="#indexCaroussel" data-slide-to="3"></li>
+            </ol>
+
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="assets/img/index1.jpg" alt="First slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>Graduation ceremony of the first Cohort - October 27th, 2016</p>
                     </div>
                 </div>
-                <div class="card-body">
-                    <p class="card-text">{{ new.description }}
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="assets/img/index2.jpg" alt="Second slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>Applications for the academic year 2017/2018 are now open</p>
+                    </div>
+
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="assets/img/index3.jpg" alt="Third slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>PAUWES First Career Days – September 21st-29th</p>
+                    </div>
+
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="assets/img/index4.jpg" alt="Third slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <p>PAUWES Entrepreneurship Day. #PAD2017</p>
+                    </div>
+
+                </div>
+            </div>
+
+            <a class="carousel-control-prev" href="#indexCaroussel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Précédente</span>
+            </a>
+
+            <a class="carousel-control-next" href="#indexCaroussel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Suivante</span>
+            </a>
+        </div>
+    </div>
+    <h4 class="text-center mt-3">Actualité</h4>
+    <!-- chargement des news -->
+    {% for new in news %}
+        <div class="row m-3">
+            <div class="col-sm-10 offset-sm-1 border">
+                <div class="col-12 p-0 m-0">
+                    <div class="row p-2 bg-light">
+                        <h4 class="col-12 col-md-9 col-lg-10">{{ new.nomEvenement }}</h4>
+                        <h5 class="col-12 col-md-3 col-lg-2 text-muted"> {{ new.datePublication }}</h5>
+                    </div>
+                </div>
+                <div class="row p-3">
+                    <p class="col-lg-12">{{ new.description }}
                     </p>
-                    <a href="#" class="offset-sm-10 btn btn-primary">En savoir plus</a>
+                    <a href="#" class="offset-9  col-3">
+                        <div class="row pr-2 pl-2">
+                            <i data-feather="plus-square" class="col-12 p-0 col-lg-2"></i>
+                            <span class="col-10 d-none d-lg-inline p-0">Plus Information</span>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -27,12 +86,12 @@
         <ul class="pagination justify-content-center">
 
             <!-- next -->
-            {% if currentPage == 1 %}
+            {% if currentPage <= 1 %}
             <li class="page-item disabled">
-            {% else %}
+        {% else %}
             <li class="page-item">
             {% endif %}
-                <a class="page-link" href="?pageNumber={{ currentlyPage-1 }}">Previous</a>
+                <a class="page-link" href="?page={{ currentPage-1 }}">__home.button.previous__</a>
             </li>
 
             <!--Pagination Button-->
@@ -49,15 +108,21 @@
             {% endfor %}
 
             <!-- prev -->
-            {% if currentPage == pageAmt %}
+            {% if currentPage >= pageAmt %}
             <li class="page-item disabled">
-            {% else %}
+                {% else %}
             <li class="page-item">
             {% endif %}
-                <a class="page-link" href="?page={{ currentPage+1 }}">Next</a>
+                <a class="page-link" href="?page={{ currentPage+1 }}">__home.button.next__</a>
             </li>
-
         </ul>
     </nav>
 
+{% endblock %}
+
+
+{% block javascript %}
+    $('.carousel').carousel({
+    interval: 4000
+    })
 {% endblock %}

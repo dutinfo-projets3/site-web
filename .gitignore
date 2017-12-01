@@ -17,6 +17,7 @@
 /web/bundles/
 *.swp
 *.log
+*.orig
 .idea/vcs.xml
 
 # Created by https://www.gitignore.io/api/phpstorm

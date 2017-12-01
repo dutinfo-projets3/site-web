@@ -1,0 +1,55 @@
+{
+	"__home.text.welcome__" : "Bienvenue, ",
+
+	"__home.homeBar.home__" : "Accueil",
+	"__home.homeBar.studyProgram__" : "Programme d'étude",
+	"__home.homeBar.inscription__" : "Inscription",
+	"__home.homeBar.scholarship__" : "Bourse d'étude",
+	"__home.homeBar.faculty__" : "Corps professoral",
+	"__home.homeBar.campusLife__" : "Vie sur le campus",
+	"__home.homeBar.about__" : "A propos",
+
+	"__home.button.education__" : "Scolarité",
+	"__home.button.disconnect__" : "Déconnexion",
+	"__home.button.next__" : "Suivant",
+	"__home.button.previous__" : "Précédent",
+	"__home.button.newButton__" : "En savoir plus",
+
+	"__perso.student.studentHome__" : "Accueil Etudiant",
+	"__perso.student.myMarks__" : "Mes notes",
+	"__perso.student.myAbsences__" : "Mes absences",
+	"__perso.student.mySchedule__" : "Mon emploi du temps",
+
+	"__perso.teacher.teacherHome__" : "Accueil Professeur",
+	"__perso.teacher.insertMarks__" : "Insérer des notes",
+	"__perso.teach.absencesManagement__" : "Gestion des absences",
+	"__perso.teacher.mySchedule__" : "Mon emploi du temps",
+
+	"__perso.administration.administrationHome__" : "Accueil administration",
+	"__perso.administration.groups__" : "Groupes",
+	"__perso.administration.absences__" : "Absences",
+	"__perso.administration.lessons__" : "Cours",
+	"__perso.administration.news__" : "News",
+	"__perso.administration.formationManagement__" : "Gestion des formations",
+	"__perso.administration.studentManagement__" : "Gestion des étudiants",
+
+	"__image.logo__" : "Logo",
+
+	"__home.form.badPass__" : "Mauvais mot de passe",
+	"__home.form.serverError__" : "Erreur du serveur",
+	"__home.form.userName__" : "Nom d'utilisateur",
+	"__home.form.password__" : "Mot de passe",
+	"__home.forgottenPassword__" : "Mot de passe oublié?",
+
+	"__home.inscription__" : "Inscription",
+	"__home.inscription.p1__" : "Les jeunes candidats qualifiés, talentueux et entreprenants des Etats membres de l’Union Africaine sont invités à postuler dès maintenant pour l’année universitaire 2017-2018. Le programme commence en octobre 2017.",
+	"__home.inscription.condition__" : "Les candidats doivent remplir les conditions suivantes :",
+	"__home.inscription.cond1__" : "Avoir un Diplôme de premier cycle d’une université reconnue (avec au moins une division supérieure de deuxième classe ou son équivalent)",
+	"__home.inscription.cond2__" : "Avoir suivi une formation académique en sciences, en ingénierie ou dans un domaine apparenté (pour la formation en ingénierie)",
+	"__home.inscription.cond3__" : "Avoir suivi une formation académique en sciences sociales, en sciences économiques, en gestion ou dans un domaine connexe (pour la formation en politiques)",
+	"__home.inscription.cond4__" : "Parler couramment l’anglais, le français sera un plus",
+	"__home.inscription.cond5__" : "Pas plus de 30 ans pour les candidats hommes et 35 ans pour les candidates féminins",
+	"__home.inscription.p2__" : "Les femmes sont particulièrement encouragées à postuler.",
+	"__home.inscription.p3__" : "Nous accepterons uniquement les candidatures en ligne qui sont complètes et qui ont été envoyées avant la date limite.",
+	"__home.inscription.a__" : "Comment postuler"
+}

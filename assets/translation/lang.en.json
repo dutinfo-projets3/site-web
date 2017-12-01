@@ -1,0 +1,61 @@
+{
+	"__home.field.userName__" : "Username",
+	"__home.field.password__" : "Password",
+
+	"__home.text.forgotPassword__" : "Forgot password?",
+	"__home.text.welcome__" : "Welcome, ",
+
+
+	"__home.homeBar.home__" : "Home",
+	"__home.homeBar.studyProgram__" : "Study program",
+	"__home.homeBar.inscription__" : "Registration",
+	"__home.homeBar.scholarship__" : "Scholarships",
+	"__home.homeBar.faculty__" : "Faculty",
+	"__home.homeBar.campusLife__" : "Campus Life",
+	"__home.homeBar.about__" : "About",
+
+
+	"__home.button.education__" : "Education",
+	"__home.button.disconnect__" : "Disconnect",
+	"__home.button.next__" : "Next",
+	"__home.button.previous__" : "Previous",
+	"__home.button.newButton__" : "More details",
+
+	"__perso.student.studentHome__" : "Student Home",
+	"__perso.student.myMarks__" : "My marks",
+	"__perso.student.myAbsences__" : "My absences",
+	"__perso.student.mySchedule__" : "My schedule",
+
+	"__perso.teacher.teacherHome__" : "Teacher Home",
+	"__perso.teacher.insertMarks__" : "Insert marks",
+	"__perso.teach.absencesManagement__" : "Absences management",
+	"__perso.teacher.mySchedule__" : "my Schedule",
+
+	"__perso.administration.administrationHome__" : "Administration Home",
+	"__perso.administration.groups__" : "Groups",
+	"__perso.administration.absences__" : "Absences",
+	"__perso.administration.lessons__" : "Lessons",
+	"__perso.administration.news__" : "News",
+	"__perso.administration.formationManagement__" : "Formation management",
+	"__perso.administration.studentManagement__" : "Student management",
+
+	"__image.logo__" : "Logo",
+
+	"__home.form.badPass__" : "Bad password",
+	"__home.form.serverError__" : "Server error",
+	"__home.form.userName__" : "Username",
+	"__home.form.password__" : "Password",
+	"__home.forgottenPassword__" : "Forgotten password?",
+
+	"__home.inscription__" : "Registration",
+	"__home.inscription.p1__" : "Young qualified, talented and enterprising candidates from African Union Member States are invited to apply now for the 2017-2018 academic year. The program begins in October 2017.",
+	"__home.inscription.condition__" : "Applicants must fulfill the following conditions:",
+	"__home.inscription.cond1__" : "Have an undergraduate degree from a recognized university (with at least an upper second-class division or equivalent)",
+	"__home.inscription.cond2__" : "Have completed an academic education in science, engineering or a related field (for engineering education)",
+	"__home.inscription.cond3__" : "Have completed academic training in social sciences, economics, management or a related field (for policy training)",
+	"__home.inscription.cond4__" : "Speak fluently English, French will be a plus",
+	"__home.inscription.cond5__" : "No more than 30 years for male candidates and 35 years for female candidates",
+	"__home.inscription.p2__" : "Women are particularly encouraged to apply.",
+	"__home.inscription.p3__" : "We will only accept online applications that are complete and sent before the deadline.",
+	"__home.inscription.a__" : "How to apply"
+}
