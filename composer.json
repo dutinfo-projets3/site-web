@@ -9,6 +9,7 @@
     ],
     "require": {
         "twig/twig": "~2.0",
-        "phpunit/phpunit": "^6.4"
+        "phpunit/phpunit": "^6.4",
+        "jbbcode/jbbcode": "^1.3"
     }
 }
