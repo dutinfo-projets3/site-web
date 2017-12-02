@@ -8,7 +8,7 @@
 
 class News
 {
-
+    private static $parser;
     private $idNews;
     private $idSecretaire;
     private $nomEvenement;
@@ -147,17 +147,13 @@ SQL
      * Retourne les news en fonction de la page où l'on se trouve
      * @param $start Offset du numéro de news
      * @param $range nombre de news à retourner
-     * @param $parsing 
-     *		0 = pas de parse (BBCode brut)
-     *		1 = Parse HTML (BBCode traduit en HTML)
-     *		2 = Parse vide (BBCode supprimé, balises image aussi)
      * @throws InvalidArgumentException
      * @return News array
      *
      * @TODO Test
      *
      */
-    public static function createNewsNext($start = 0, $range = 5, $parsing = 0)
+    public static function createNewsNext($start = 0, $range = 5)
     {
 
         if ($start >= 0 && $start < self::getCountNumbers()) {
@@ -172,19 +168,6 @@ SQL
             $stmt->bindParam(':range', $range, PDO::PARAM_INT);
             $stmt->execute();
 	    $news = $stmt->fetchAll();
-	    if ($parsing == 1 || $parsing == 2){
-	    	$parser = new JBBCode\Parser();
-
-		if ($parsing == 1){
-			$parser->addCodeDefinitionSet(new JBBCode\DefaultCodeDefinitionSet());
-		} else {
-			NullParser::addDefinitions($parser);
-		}
-
-		foreach($news as $nw){
-			$nw->description = $parser->parse(htmlentities($nw->description))->getAsHtml();
-		}
-	    }
 	    return $news;
         } else {
             throw new InvalidArgumentException("Le numéro de page ne peut être inferieur à 0");
@@ -196,17 +179,13 @@ SQL
     /**
      * Retourne une news depuis son ID
      * @param $idNews L'id de la news voulue
-     * @param $parsing 
-     *		0 = pas de parse (BBCode brut)
-     *		1 = Parse HTML (BBCode traduit en HTML)
-     *		2 = Parse vide (BBCode supprimé, balises image aussi)
      * @throws NewsException
      * @return News instance
      *
      * @TODO Test
      *
      */
-    public static function createFromID($idNews, $parsing = 0)
+    public static function createFromID($idNews)
     {
         $stmt = myPDO::getInstance()->prepare(<<<SQL
 		SELECT * FROM News
@@ -214,18 +193,33 @@ SQL
 SQL
         );
         $stmt->setFetchMode(PDO::FETCH_CLASS, 'News');
-        $stmt->execute(Array($idNews));
+        $stmt->execute(array($idNews));
         $obj = $stmt->fetch();
         if ($obj == null) {
             throw new NewsException();
 	} else {
-		if ($parsing == 1){
-			$parser = new JBBCode\Parser();
-			$parser->addCodeDefinitionSet(new JBBCode\DefaultCodeDefinitionSet());
-			$obj->description = $parser->parse($obj->description)->getAsHtml();
-		}
             return $obj;
         }
+    }
+
+    private static function getParser(){
+    	if (News::$parser == null){
+		News::$parser = new JBBCode\Parser();
+		News::$parser->addCodeDefinitionSet(new JBBCode\DefaultCodeDefinitionSet());
+	}
+	return News::$parser;
+    }
+
+    /**
+     * Renvoie le contenu de la news parsé
+     * @param markup si on veut afficher les elements HTML
+     */
+    public function parse($markup){
+	if ($markup){
+		$this->description = News::getParser()->parse($this->description)->getAsHtml();
+	} else {
+		$this->description = News::getParser()->parse($this->description)->getAsText();
+	}
     }
 
 }
