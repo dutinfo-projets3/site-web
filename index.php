@@ -14,13 +14,13 @@ $listNews = array();
 if (isset($_GET['page']) && !empty($_GET['page'])) {
 	$currentPage = $_GET['page'];
 	try {
-		$listNews = News::createNewsNext(($_GET['page'] - 1) * $MAX_PAGE_VIEW, $MAX_PAGE_VIEW);
+		$listNews = News::createNewsNext(($_GET['page'] - 1) * $MAX_PAGE_VIEW, $MAX_PAGE_VIEW, 2);
 	} catch (InvalidArgumentException $e) {
 	    $currentPage = 1;
-		$listNews = News::createNewsNext(0, $MAX_PAGE_VIEW);
+		$listNews = News::createNewsNext(0, $MAX_PAGE_VIEW, 2);
 	}
 } else {
-	$listNews = News::createNewsNext(0, $MAX_PAGE_VIEW);
+	$listNews = News::createNewsNext(0, $MAX_PAGE_VIEW, 2);
 }
 
 /**

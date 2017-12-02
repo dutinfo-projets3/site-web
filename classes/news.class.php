@@ -148,13 +148,17 @@ SQL
      * Retourne les news en fonction de la page où l'on se trouve
      * @param $start Offset du numéro de news
      * @param $range nombre de news à retourner
+     * @param $parsing 
+     *		0 = pas de parse (BBCode brut)
+     *		1 = Parse HTML (BBCode traduit en HTML)
+     *		2 = Parse vide (BBCode supprimé, balises image aussi)
      * @throws InvalidArgumentException
      * @return News array
      *
      * @TODO Test
      *
      */
-    public static function createNewsNext($start = 0, $range = 5)
+    public static function createNewsNext($start = 0, $range = 5, $parsing = 0)
     {
 
         if ($start >= 0 && $start < self::getCountNumbers()) {
@@ -168,7 +172,21 @@ SQL
             $stmt->bindParam(':start', $start, PDO::PARAM_INT);
             $stmt->bindParam(':range', $range, PDO::PARAM_INT);
             $stmt->execute();
-            return $stmt->fetchAll();
+	    $news = $stmt->fetchAll();
+	    if ($parsing == 1 || $parsing == 2){
+	    	$parser = new JBBCode\Parser();
+
+		if ($parsing == 1){
+			$parser->addCodeDefinitionSet(new JBBCode\DefaultCodeDefinitionSet());
+		} else {
+			$parser->addCodeDefinitionSet(null /** TODO: Parseur vide */);
+		}
+
+		foreach($news as $nw){
+			$nw->description = $parser->parse(htmlentities($nw->description));
+		}
+	    }
+	    return $news;
         } else {
             throw new InvalidArgumentException("Le numéro de page ne peut être inferieur à 0");
 
@@ -179,13 +197,17 @@ SQL
     /**
      * Retourne une news depuis son ID
      * @param $idNews L'id de la news voulue
+     * @param $parsing 
+     *		0 = pas de parse (BBCode brut)
+     *		1 = Parse HTML (BBCode traduit en HTML)
+     *		2 = Parse vide (BBCode supprimé, balises image aussi)
      * @throws NewsException
      * @return News instance
      *
      * @TODO Test
      *
      */
-    public static function createNewsFromId($idNews)
+    public static function createFromID($idNews, $parsing = 0)
     {
         $stmt = myPDO::getInstance()->prepare(<<<SQL
 		SELECT * FROM News
@@ -197,7 +219,12 @@ SQL
         $obj = $stmt->fetch();
         if ($obj == null) {
             throw new NewsException();
-        } else {
+	} else {
+		if ($parsing == 1){
+			$parser = new JBBCode\Parser();
+			$parser->addCodeDefinitionSet(new JBBCode\DefaultCodeDefinitionSet());
+			$obj->description = $parser->parse($obj->description)->getAsHtml();
+		}
             return $obj;
         }
     }
