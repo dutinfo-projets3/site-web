@@ -7,6 +7,7 @@ if (!Utilisateur::isConnected()){
 	return;
 }
 
-$user = Utilisateur::createFromSession();
+//$user = Utilisateur::createFromSession();
+$user = Utilisateur::createFromID(3);
 
 echo TwigLoader::getInstance()->render('', 'perso/infoperso', array("user" => $user));

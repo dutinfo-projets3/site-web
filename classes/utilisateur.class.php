@@ -215,25 +215,31 @@ HTML;
             throw new AuthenticationException();
         } else {
             $_SESSION[self::$SESSION_KEY] = array("connected" => true);
-
-            switch ($obj->type) {
-                case self::TYPES["ETUDIANT"]:
-                    $obj = Etudiant::createFromUser($obj);
-                    break;
-                case self::TYPES["PROFESSEUR"]:
-                    $obj = Professeur::createFromUser($obj);
-                    break;
-                case self::TYPES["ADMINISTRATION"]:
-                    $obj = Secretaire::createFromUser($obj);
-                    break;
-                default:
-                    var_dump("SOMETHING WENT WRNG");
-                    $obj = null;
-            }
-
+	    $obj = createUserKind($obj);
         }
         return $obj;
     }
+
+	/**
+	 * Renvoie une instance d'Etudiant si l'utilistateur est un étudiant, de prof si l'util est un prof, etc...
+	 */
+	private function createUserKind($user){
+		$obj = null;
+		switch ($user->type) {
+	                case self::TYPES["ETUDIANT"]:
+	                    $obj = Etudiant::createFromUser($user);
+	                    break;
+	                case self::TYPES["PROFESSEUR"]:
+	                    $obj = Professeur::createFromUser($user);
+	                    break;
+	                case self::TYPES["ADMINISTRATION"]:
+	                    $obj = Secretaire::createFromUser($user);
+	                    break;
+	                default:
+	                    var_dump("SOMETHING WENT WRNG");
+	            }
+		return $obj;
+	}
 
     /**
      * Créé une instance d'Etudiant, Professeur ou Secretaire en fonction de la présence dans la SESSION
@@ -250,6 +256,23 @@ HTML;
         }
     }
 
+    /**
+     * Créé une instance de l'utilisateur en fonction de l'ID proposé
+     * @throws InvalidArgumentException si l'utilisateur n'existe pas
+     */
+    public static function createFromID($id){
+	$rq = "SELECT * FROM Utilisateur WHERE idPersonne=:id;";
+	$stmt = myPDO::getInstance()->prepare($rq);
+
+	$stmt->bindValue(":id", $id);
+
+	$stmt->setFetchMode(PDO::FETCH_CLASS, 'Utilisateur');
+
+	$res = null;
+	if($stmt->execute())
+		$res = $stmt->fetch();
+	return $res;
+    }
 
     /**
      * Sauvegarde les données de l'utilisateur dans la session actuelle

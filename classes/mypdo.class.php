@@ -84,7 +84,7 @@ final class myPDO {
     }
 }
 
-require_once('../pdo_config.php');
+require_once($_SERVER["DOCUMENT_ROOT"] . '/../pdo_config.php');
 
 /*
  
