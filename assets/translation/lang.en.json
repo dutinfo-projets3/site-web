@@ -8,7 +8,7 @@
 
 	"__home.homeBar.home__" : "Home",
 	"__home.homeBar.studyProgram__" : "Study program",
-	"__home.homeBar.inscription__" : "Inscription",
+	"__home.homeBar.inscription__" : "Registration",
 	"__home.homeBar.scholarship__" : "Scholarships",
 	"__home.homeBar.faculty__" : "Faculty",
 	"__home.homeBar.campusLife__" : "Campus Life",
@@ -45,5 +45,17 @@
 	"__home.form.serverError__" : "Server error",
 	"__home.form.userName__" : "Username",
 	"__home.form.password__" : "Password",
-	"__home.forgottenPassword__" : "Forgotten password?"
+	"__home.forgottenPassword__" : "Forgotten password?",
+
+	"__home.inscription__" : "Registration",
+	"__home.inscription.p1__" : "Young qualified, talented and enterprising candidates from African Union Member States are invited to apply now for the 2017-2018 academic year. The program begins in October 2017.",
+	"__home.inscription.condition__" : "Applicants must fulfill the following conditions:",
+	"__home.inscription.cond1__" : "Have an undergraduate degree from a recognized university (with at least an upper second-class division or equivalent)",
+	"__home.inscription.cond2__" : "Have completed an academic education in science, engineering or a related field (for engineering education)",
+	"__home.inscription.cond3__" : "Have completed academic training in social sciences, economics, management or a related field (for policy training)",
+	"__home.inscription.cond4__" : "Speak fluently English, French will be a plus",
+	"__home.inscription.cond5__" : "No more than 30 years for male candidates and 35 years for female candidates",
+	"__home.inscription.p2__" : "Women are particularly encouraged to apply.",
+	"__home.inscription.p3__" : "We will only accept online applications that are complete and sent before the deadline.",
+	"__home.inscription.a__" : "How to apply"
 }
