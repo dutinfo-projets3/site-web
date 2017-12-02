@@ -1,0 +1,24 @@
+{% extends 'template.html.twig' %}
+
+{% block content %}
+
+	<div class="row perso m-5">
+		<div class="photo rounded-circle img-responsive col-lg-6 col-12 text-center" >
+			<img class="rounded-circle" src="/assets/img/users/{{ user.username }}.jpg" style="max-width:200px" alt="photo_user" />
+		</div>
+		<div class="info col-lg-4 col-12 pt-lg-0 pt-5">
+			<div class="row"><span class="pt-2 col-5 d-block"> Nom: </span> <span class="inputable text-center pt-2 col-7 d-block"> {{ user.nom }}</span></div>
+			<div class="row"><span class="pt-2 col-5 d-block"> Prénom: </span> <span class="inputable text-center pt-2 col-7 d-block"> {{ user.prenom }} </span> </div>
+			<div class="row"><span class="pt-2 col-5 d-block"> Adresse: </span> <span class="inputable text-center pt-2 col-7 d-block"> {{ user.adresse }}</span> </div>
+			<div class="row"><span class="pt-2 col-5 d-block"> Ville: </span> <span class="inputable text-center pt-2 col-7 d-block"> {{ user.ville }} </span> </div>
+			<div class="row"><span class="pt-2 col-5 d-block"> Code postal: </span> <span class="inputable text-center pt-2 col-7 d-block"> {{ user.CP }}</span> </div>
+			<div class="row"><span class="pt-2 col-5 d-block"> Numéro: </span> <span class="inputable text-center pt-2 col-7 d-block"> {{ user.numerotel }}</span> </div>
+			<div class="row"><span class="pt-2 col-5 d-block"> Email: </span> <span class="inputable text-center pt-2 col-7 d-block"> {{ user.mail }} </span> </div>
+			<div class="row pt-4">
+				<button type="button" class="mr-1 btn btn-dark">Changer de photo</button>
+				<button type="button" class="btn btn-dark">Editer les infos</button>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

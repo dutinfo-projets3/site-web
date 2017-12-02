@@ -22,6 +22,8 @@ class Utilisateur
             $this->ville = $user->getVille();
             $this->urlImage = $user->getURL();
             $this->nomUtilisateur = $user->getUsername();
+	    $this->mail = $user->getMail();
+	    $this->numerotel = $user->getNumerotel();
             $this->type = $user->getUserType();
         }
     }
@@ -40,6 +42,8 @@ class Utilisateur
     protected $codePostal;
     protected $ville;
     protected $nomUtilisateur;
+    protected $mail;
+    protected $numerotel;
 
     /**
      * Image de l'utilisateur
@@ -360,6 +364,14 @@ HTML;
     public function getUserType()
     {
         return $this->type;
+    }
+
+    public function getNumerotel(){
+    	return $this->numerotel;
+    }
+
+    public function getMail(){
+	    return $this->mail;
     }
 
 }
