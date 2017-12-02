@@ -1,52 +1,52 @@
 <!doctype html>
 <html xmlns="http://www.w3.org/1999/html">
-	<head>
-		<title>Accueil - Université PanAfricaine - L'Institut des Sciences de l'Eau et de l'Energie</title>
+<head>
+    <title>Accueil - Université PanAfricaine - L'Institut des Sciences de l'Eau et de l'Energie</title>
 
-		<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-		<link rel="stylesheet" href="/assets/css/bootstrap-grid.min.css">
-		<link rel="stylesheet" href="/assets/css/bootstrap-reboot.min.css">
-		<link rel="stylesheet" href="/assets/css/tether.min.css">
-		<link rel="stylesheet" href="/assets/css/tether-theme-arrows-dark.min.css">
-		<link rel="stylesheet" href="/assets/css/tether-theme-basic.min.min.css">
-		<link rel="stylesheet" href="/assets/css/base.css">
-		<link rel="stylesheet" href="/assets/css/news.css">
-		<link rel="stylesheet" media="screen" href="/assets/css/base.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="/assets/css/tether.min.css">
+    <link rel="stylesheet" href="/assets/css/tether-theme-arrows-dark.min.css">
+    <link rel="stylesheet" href="/assets/css/tether-theme-basic.min.min.css">
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/news.css">
+    <link rel="stylesheet" media="screen" href="/assets/css/base.css">
 
 
-		<script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
 
-		{% block stylesheets %}
-		{% endblock %}
-	</head>
+    {% block stylesheets %}
+    {% endblock %}
+</head>
 
 <body>
 
-<div class="container back d-lg-flex flex-lg-column h-100">
+<div class="container back d-lg-flex flex-column h-100">
 
     <div>
-        <button class = "langue" onclick="setLangueFr()"><img src="/assets/img/logoFrance.png" alt="Français"/></button>
-        <button class = "langue" onclick="setLangueEn()"><img src="/assets/img/logoAnglais.png" alt="English"/></button>
+        <button class="langue" onclick="setLangueFr()"><img src="/assets/img/logoFrance.png" alt="Français"/></button>
+        <button class="langue" onclick="setLangueEn()"><img src="/assets/img/logoAnglais.png" alt="English"/></button>
     </div>
 
-    <div class="row">
+    <div class="row" id="logoConnection">
         <!-- logo -->
         <div class="col-lg-3 col-sm-12 d-lg-flex flex-column justify-content-center">
-		<a href="/">
-			<img src="/assets/img/logo.png" class="img-fluid" alt="__image.logo__">
-		</a>
+            <a href="/">
+                <img src="/assets/img/logo.png" class="img-fluid" alt="__image.logo__">
+            </a>
         </div>
 
         <!--Connection menu mobile and desktop-->
         <nav class="navbar navbar-expand-lg offset-lg-4 col-lg-4 d-lg-flex align-items-lg-end flex-lg-column">
             {% if error == null and connected == false %}
-                 <div class="collapse navbar-collapse " id="navbarConnexion">
-            {% else %}
+            <div class="collapse navbar-collapse " id="navbarConnexion">
+                {% else %}
                 <div class="collapse navbar-collapse show" id="navbarConnexion">
-             {% endif %}
+                    {% endif %}
                     {{ form | raw }}
                 </div>
         </nav>
@@ -54,7 +54,7 @@
     </div>
 
     <!-- navbar principale -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navPrincipale">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
                 aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
             <i data-feather="menu"></i>
@@ -77,8 +77,9 @@
 
     </nav>
 
-            {% block content %}
-            {% endblock %}
+
+    {% block content %}
+    {% endblock %}
 
 
     <footer class="border-info bg-light footer mb-3 mt-lg-0 mt-3">
@@ -93,24 +94,28 @@
     </footer>
 </div>
 
-		<!--
-		<script src="assets/js/jquery.min.js"></script>
-		<script src="assets/js/tether.min.js"></script>
-		<script src="assets/js/bootstrap.min.js"></script>
-		<script src="assets/js/bootstrap.bundle.min.js"></script>
-		-->
+<!--
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/tether.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
+-->
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-    <script>
-        feather.replace();
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-    <script src="/assets/js/language.js"></script>
-		<script>
-			{% block javascript %}
-			{% endblock %}
-		</script>
-	</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+        integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+        integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
+<script>
+    feather.replace();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<script src="/assets/js/language.js"></script>
+<script>
+    {% block javascript %}
+    {% endblock %}
+</script>
+</body>
 </html>
