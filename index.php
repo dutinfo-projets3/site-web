@@ -24,7 +24,7 @@ if (isset($_GET['page']) && !empty($_GET['page'])) {
 }
 
 foreach($listNews as $n){
-	$n->parse(false);
+	Parser::parse($n, false);
 }
 
 /**

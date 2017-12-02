@@ -8,7 +8,6 @@
 
 class News
 {
-    private static $parser;
     private $idNews;
     private $idSecretaire;
     private $nomEvenement;
@@ -200,41 +199,6 @@ SQL
 	} else {
             return $obj;
         }
-    }
-
-    /**
-     * @TODO: Passer tout ça dans un singleton de parser
-     */
-    private static function getParser(){
-    	if (News::$parser == null){
-		News::$parser = new JBBCode\Parser();
-		News::$parser->addCodeDefinitionSet(new JBBCode\DefaultCodeDefinitionSet());
-
-		$builder = new JBBCode\CodeDefinitionBuilder('center', '<div class="text-center">{param}</div>');
-		News::$parser->addCodeDefinition($builder->build());
-
-		$builder = new JBBCode\CodeDefinitionBuilder('s', '<span style="text-decoration: line-through">{param}</span>');
-		News::$parser->addCodeDefinition($builder->build());
-
-		$builder = new JBBCode\CodeDefinitionBuilder('size', '<span style="font-size: {option}px">{param}</span>');
-		$builder->setUseOption(true);
-		News::$parser->addCodeDefinition($builder->build());
-
-//		News::$parser->addCoeDefinitionSet(new BBCodeDefinitions());
-	}
-	return News::$parser;
-    }
-
-    /**
-     * Renvoie le contenu de la news parsé
-     * @param markup si on veut afficher les elements HTML
-     */
-    public function parse($markup){
-	if ($markup){
-		$this->description = News::getParser()->parse($this->description)->getAsHtml();
-	} else {
-		$this->description = News::getParser()->parse($this->description)->getAsText();
-	}
     }
 
 }
