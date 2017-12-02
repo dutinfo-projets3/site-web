@@ -215,7 +215,7 @@ HTML;
             throw new AuthenticationException();
         } else {
             $_SESSION[self::$SESSION_KEY] = array("connected" => true);
-	    $obj = createUserKind($obj);
+	    $obj = Utilisateur::createUserKind($obj);
         }
         return $obj;
     }
@@ -223,7 +223,7 @@ HTML;
 	/**
 	 * Renvoie une instance d'Etudiant si l'utilistateur est un étudiant, de prof si l'util est un prof, etc...
 	 */
-	private function createUserKind($user){
+	private static function createUserKind($user){
 		$obj = null;
 		switch ($user->type) {
 	                case self::TYPES["ETUDIANT"]:
