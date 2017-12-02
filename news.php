@@ -6,5 +6,6 @@ if (!isset($_GET["id"]) || empty($_GET["id"])){
 }
 
 $news = News::createFromID($_GET["id"], 1);
+$user = Utilisateur::createFromID($news->getIdSecretaire());
 
-echo TwigLoader::getInstance()->render('news', 'news', array('news' => $news));
+echo TwigLoader::getInstance()->render('news', 'news', array('news' => $news, 'user' => $user));

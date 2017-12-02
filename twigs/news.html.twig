@@ -3,11 +3,11 @@
 {% block content %}
 
 	<h3 class="text-center mt-2">{{ news.nomEvenement }}</h3>
-	<div class="col-12 mt-5">
-		{{ news.description }}
+	<div class="col-lg-10 offset-lg-1 col-12 offset-0 mt-5">
+		{{ news.description|raw }}
 	</div>
-	<div class="col-12 mt-3 mb-5 text-right">
-		Écrit par #####
+	<div class="col-lg-10 offset-lg-1 col-12 offset-0 mt-5 mb-5 text-right">
+		Écrit par {{ user.nom }} {{ user.prenom }}, le {{ news.datePublication }}
 	</div>
 
 {% endblock %}

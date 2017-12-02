@@ -5,7 +5,6 @@
  * Date: 20/11/2017
  * Time: 19:20
  */
-require_once 'autoload.inc.php';
 
 class News
 {
@@ -179,11 +178,11 @@ SQL
 		if ($parsing == 1){
 			$parser->addCodeDefinitionSet(new JBBCode\DefaultCodeDefinitionSet());
 		} else {
-			$parser->addCodeDefinitionSet(null /** TODO: Parseur vide */);
+			NullParser::addDefinitions($parser);
 		}
 
 		foreach($news as $nw){
-			$nw->description = $parser->parse(htmlentities($nw->description));
+			$nw->description = $parser->parse(htmlentities($nw->description))->getAsHtml();
 		}
 	    }
 	    return $news;
