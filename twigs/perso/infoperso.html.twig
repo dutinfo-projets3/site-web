@@ -8,7 +8,7 @@
 
 	<div class="row perso m-5">
 		<div class="photo rounded-circle img-responsive col-lg-6 col-12 text-center" >
-			<img class="rounded-circle" src="/assets/img/users/{{ user.username }}.jpg" style="max-width:200px" alt="photo_user" />
+			<img class="rounded-circle" src="/api/getuserpic.php?name={{ user.username }}" style="max-width:200px" alt="photo_user" />
 		</div>
 		<div id="info" class="col-lg-4 col-12 pt-lg-0 pt-5">
 			{{ include('perso/infopersoitem.html.twig', {'rowname': "Nom:", 'idname': "nom", 'error': "Entrez un nom valide"}) }}

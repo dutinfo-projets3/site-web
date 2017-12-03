@@ -115,8 +115,7 @@ function showFields(){
 }
 
 function validateOneField(fld){
-	validate = function(){
-		console.log("test" + fld);
+	validateField = function(){
 		currField = elements[fld];
 		if (currField.validator(currField.field.val())){
 			currField.wrong.addClass("d-none");
@@ -131,9 +130,9 @@ function validateOneField(fld){
 		}
 	};
 
-	elements[fld].field.get(0).onkeyup = validate;
+	elements[fld].field.get(0).onkeyup = validateField;
 
-	return validate;
+	return validateField;
 }
 
 function validate(){

@@ -18,7 +18,7 @@
 *.swp
 *.log
 *.orig
-assets/img/users/*
+users/*
 .idea/vcs.xml
 
 # Created by https://www.gitignore.io/api/phpstorm
