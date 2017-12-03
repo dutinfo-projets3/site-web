@@ -19,7 +19,8 @@ $util = Utilisateur::createFromSession();
  * Si l'utilisateur tente de se modifier lui même OU que l'utilisateur est un secrétaire
  */
 $hasid = checkParam("id");
-if (($hasid && $util->getUserType() == Utilisateur::TYPES["ADMINISTRATION"]) || !$hasid){
+var_dump($hasid);
+if (($hasid && $util->getUserType() == Utilisateur::TYPES["ADMINISTRATION"]) || ($hasid && $_GET['id'] == $util->getID())){
 	/**
 	 * Si l'utilisateur à bien entré tous les champs
 	 */
