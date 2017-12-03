@@ -11,16 +11,21 @@
 			<img class="rounded-circle" src="/assets/img/users/{{ user.username }}.jpg" style="max-width:200px" alt="photo_user" />
 		</div>
 		<div id="info" class="col-lg-4 col-12 pt-lg-0 pt-5">
-			{{ include('perso/infopersoitem.html.twig', {'rowname': "Nom:", 'idname': "nom" }) }}
-			{{ include('perso/infopersoitem.html.twig', {'rowname': "Prénom:", 'idname': "prenom" }) }}
-			{{ include('perso/infopersoitem.html.twig', {'rowname': "Adresse:", 'idname': "adresse" }) }}
-			{{ include('perso/infopersoitem.html.twig', {'rowname': "Ville:", 'idname': "ville" }) }}
-			{{ include('perso/infopersoitem.html.twig', {'rowname': "Code postal:", 'idname': "cp" }) }}
-			{{ include('perso/infopersoitem.html.twig', {'rowname': "Numéro:", 'idname': "numero" }) }}
-			{{ include('perso/infopersoitem.html.twig', {'rowname': "Email:", 'idname': "mail" }) }}
+			{{ include('perso/infopersoitem.html.twig', {'rowname': "Nom:", 'idname': "nom", 'error': "Entrez un nom valide"}) }}
+			{{ include('perso/infopersoitem.html.twig', {'rowname': "Prénom:", 'idname': "prenom", 'error': "Entrez un prénom valide" }) }}
+			{{ include('perso/infopersoitem.html.twig', {'rowname': "Adresse:", 'idname': "adresse", 'error': "Entrez une adresse valide"}) }}
+			{{ include('perso/infopersoitem.html.twig', {'rowname': "Ville:", 'idname': "ville", 'error': "Entrez une ville valide" }) }}
+			{{ include('perso/infopersoitem.html.twig', {'rowname': "Code postal:", 'idname': "cp", 'error': "Entrez un code postal valide" }) }}
+			{{ include('perso/infopersoitem.html.twig', {'rowname': "Numéro:", 'idname': "numero", 'error': "Entrez un numéro valide" }) }}
+			{{ include('perso/infopersoitem.html.twig', {'rowname': "Email:", 'idname': "mail", 'error': "Entrez un email valide" }) }}
 			<div id="ifmdp" class="row mt-4 mb-4"> <span class="col-12"> Si vous voulez changer votre mot de passe </span> </div>
-			<div id="mdp1" class="row mt-2"><span class="col-5 d-block"> Mot de passe: </span><input class="col-7" type="password" id="inp_mdp" /></div>
-			<div id="mdp2" class="row mt-2"><span class="col-5 d-block"> Répéter: </span><input class="col-7" type="password" id="inp_rmdp" /></div>
+			<div id="mdp1" class="row mt-2"><span class="col-5 d-block"> Mot de passe: </span><input class="col-7" type="password" id="inp_mdp1" /></div>
+			<div id="mdp2" class="row mt-2"><span class="col-5 d-block"> Répéter: </span><input class="col-7" type="password" id="inp_mdp2" /></div>
+			<div id="mdpValidate-span" class="mt-1 flex-row d-none justify-content-center">
+				<i data-feather="x" class="text-danger"></i>
+				<span class="text-danger ml-2">Les mots de passes ne correspondent pas!</span>
+			</div>
+
 			<div id="errormsg" class="row mt-3"> <span class="text-center bg-warning text-white p-2 col-10 offset-1 d-block"> Une erreur est survenue! </span> </div>
 			<div id="loaderpic" class="col-12 text-center mt-4">
 				<div class="d-inline-block"></div>
