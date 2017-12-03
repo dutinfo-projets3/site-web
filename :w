@@ -19,15 +19,16 @@ $util = Utilisateur::createFromSession();
  * Si l'utilisateur tente de se modifier lui même OU que l'utilisateur est un secrétaire
  */
 $hasid = checkParam("id");
-if (($hasid && $util->getUserType() == Utilisateur::TYPES["ADMINISTRATION"]) || !$hasid){
+if (($hasid && $util->getID() == $_GET["id"]) || ($hasid && $util->getUserType() == Utilisateur::TYPES["ADMINISTRATION"]) || !$hasid){
 	/**
 	 * Si l'utilisateur à bien entré tous les champs
 	 */
 	if (checkParam('nom') && checkParam('prenom') && checkParam('adresse') && checkParam('cp') && checkParam('ville') && checkParam('numerotel') && checkParam('mail')){
 		if ($hasid){
-			$utilisateur = Utilisateur::createFromID($_GET["id"]);
+			if ($util->getID() == $_GET['id'])
+			$utilisateur = $util;
 		} else {
-			$utilisateur = $util; 
+			$utilisateur = Utilisateur::createFromID($_GET["id"]);
 		}
 
 	$utilisateur->setNom($_GET["nom"])
@@ -51,6 +52,9 @@ if (($hasid && $util->getUserType() == Utilisateur::TYPES["ADMINISTRATION"]) || 
 		if (checkParam("dateDepart"))
 			$utilisateur->setDateDepart($_GET["dateDepart"]);
 	}
+
+	echo "ready";
+	var_dump($utilisateur);
 
 	$utilisateur->updateBD(isset($_GET["mdp"]) ? $_GET["mdp"] : null);
 

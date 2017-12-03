@@ -1,88 +1,122 @@
-function clearFields(){
-	$("#info").children().not(":last").remove();
+var elements = {
+	nom: { text: $("#nom-span"), field: $("#nom-field") },
+	prenom: { text: $("#prenom-span"), field: $("#prenom-field") },
+	adresse: { text: $("#adresse-span"), field: $("#adresse-field") },
+	ville: { text: $("#ville-span"), field: $("#ville-field") },
+	cp: { text: $("#cp-span"), field: $("#cp-field") },
+	numerotel: { text: $("#numero-span"), field: $("#numero-field") },
+	mail: { text: $("#mail-span"), field: $("#mail-field") }
+};
+
+var bt1      = $("#bt_chg_photo");
+var bt2      = $("#bt_chg_infos");
+var loader   = $("#loaderpic");
+var ifp      = $("#ifmdp");
+var pwd1     = $("#mdp1");
+var pwd2     = $("#mdp2");
+var errormsg = $("#errormsg");
+
+errormsg.hide();
+loader.hide();
+ifp.hide();
+pwd1.hide();
+pwd2.hide();
+
+function toggleForm(showFields, invert){
+	for (var k in elements){
+		elements[k].text.toggleClass("d-none");
+		elements[k].text.toggleClass("d-block");
+		elements[k].field.toggleClass("d-block");
+		elements[k].field.toggleClass("d-none");
+
+		if(showFields && !invert){
+			elements[k].field.val(elements[k].text.text());
+		} else if (!showFields && !invert) {
+			elements[k].text.text(elements[k].field.val());
+		}
+	}
+
+	bt1.toggleClass("btn-dark");
+	bt2.toggleClass("btn-dark");
+	bt1.toggleClass("btn-danger");
+	bt2.toggleClass("btn-success");
+
+	if (showFields){
+		bt1.text("Annuler");
+		bt2.text("Valider");
+		ifp.show();
+		pwd1.show();
+		pwd2.show();
+	} else {
+		bt1.text("Changer de photo");
+		bt2.text("Editer les infos");
+		ifp.hide();
+		pwd1.hide();
+		pwd2.hide();
+	}
 }
 
-function addField(leftText, txField, idright, content){
-	var madiv = $("<div>");
-	madiv.addClass("mt-2 row");
+function uploadPic(){
+	console.log("Upload picture");
+}
+
+function cancel(){
+	toggleForm(false, true);
+	bt1.unbind("click").click(uploadPic);
+	bt2.unbind("click").click(showFields);
+}
+
+function showFields(){
+	toggleForm(true, false);
+	bt1.unbind("click").click(cancel);
+	bt2.unbind("click").click(validate);
+}
+
+function validate(){
+	bt1.prop("disabled", true);
+	bt2.prop("disabled", true);
+
+	// Vérifier le text
 	
-	var leftSpan = $("<span>");
-	leftSpan.addClass("col-5 d-block" + (txField ? " pt-1" : ""));
-	leftSpan.text(leftText);
-	madiv.append(leftSpan);
-
-	var rightThing;
-	if (txField){
-		rightThing = $("<input>");
-		rightThing.addClass("col-7");
-		rightThing.attr("type", "text");
-		rightThing.attr("name", idright);
-		rightThing.val(content);
-	} else {
-		rightThing = $("<span>");
-		rightThing.addClass("text-center col-7 d-block");
-		rightThing.text(content);
-	}
-	rightThing.attr("id", idright);
-
-	madiv.append(rightThing);
-	$("#info").prepend(madiv);
-}
-
-function getFieldVal(val){
-	if (actualState){
-		return $("#" + val).text();
-	} else {
-		return $("#" + val).val();
-	}
-}
-
-function getFieldArray(){
-	return {
-		nom: getFieldVal("nom"),
-		prenom: getFieldVal("prenom"),
-		adresse: getFieldVal("adresse"),
-		ville: getFieldVal("ville"),
-		cp: getFieldVal("cp"),
-		numero: getFieldVal("numero"),
-		mail: getFieldVal("mail")
+	userInfo = {
+		nom: elements["nom"].field.val(),
+		prenom: elements["prenom"].field.val(),
+		adresse: elements["adresse"].field.val(),
+		ville: elements["ville"].field.val(),
+		cp: elements["cp"].field.val(),
+		numerotel: elements["numerotel"].field.val(),
+		mail: elements["mail"].field.val()
 	};
+
+	// Faire la requête ajax
+	loader.show();
+	$.ajax({
+			type: "GET",
+			url: "/api/updateinfo.php",
+			data: userInfo,
+			error: function(event, jqXHR, ajaxSettings, thrownError) { 
+				console.log(thrownError);
+				errormsg.show();
+				loader.hide();
+				bt1.prop("disabled", false);
+				bt2.prop("disabled", false);
+			},
+			success: function(msg){ 
+				console.log(msg);
+				loader.hide();
+				toggleForm(false, false);
+				bt1.unbind("click").click(uploadPic);
+				bt2.unbind("click").click(showFields);
+				bt1.prop("disabled", false);
+				bt2.prop("disabled", false);
+			}
+		}
+	);
 }
 
-function buildForm(txField, values){
-	if (txField){
-		addField("Répéter", txField, "mdp2", "");
-		addField("Mot de passe", txField, "mdp", "");
-	}
+bt1.click(uploadPic);
+bt2.click(showFields);
 
-	addField("Email", txField, "mail", values["mail"]);
-	addField("Numéro", txField, "numero", values["numero"]);
-	addField("Code postal", txField, "cp", values["cp"]);
-	addField("Ville", txField, "ville", values["ville"]);
-	addField("Adresse", txField, "adresse", values["adresse"]);
-	addField("Prénom", txField, "prenom", values["prenom"]);
-	addField("Nom", txField, "nom", values["nom"]);
-
+for (var k in elements){
+	elements[k].text.text(userInfo[k]);
 }
-
-function toggleToField(){
-	currValues = getFieldArray();
-	clearFields();
-	buildForm(true, currValues);
-}
-
-function toggleToText(){
-
-	// Verifier les champs
-	// Envoyer au fichier 
-
-}
-
-function updatePhotoAction(){
-
-}
-
-function cancelInfoOptions(){
-
-}
-$("#bt_chg_infos").click("toggleToField");

@@ -1,0 +1,10 @@
+@keyframes playloader {
+	100% { background-position: -800px; }
+}
+
+#loaderpic>div {
+	width: 100px;
+	height: 100px;
+	background: url('/assets/img/spinner.png') left center;
+	animation: playloader .8s steps(8) infinite;
+}
