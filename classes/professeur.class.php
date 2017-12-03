@@ -19,6 +19,23 @@ class Professeur extends Utilisateur {
 	}
 
 	/**
+	 * Créé une instance de professeur à partir des infos
+	 */
+	public static function createFromInfo($nom, $prenom, $adresse, $cp, $ville, $mail, $numtel, $dateEmbauche = null, $dateDepart = null){
+		// Hack dégueux pour avoir le même prototype que dans User et ne pas avoir de warning
+		if ($dateEmbauche != null){
+			$user = parent::createFromInfo($nom, $prenom, $adresse, $cp, $ville, $mail, $numtel);
+			$prof = (new Professeur($user))->setDateEmbauche($dateEmbauche);
+
+			if ($dateDepart != null){
+				$prof->setDateDepart($dateDepart);
+			}
+
+			return $prof;
+		}
+	}
+
+	/**
 	 * Créé une instance de professeur à partir d'un utilisateur
 	 * Il créé une copie de User dans une instance de Professeur
 	 * Puis il va chercher les champs manquant dans la base de donnée
@@ -35,6 +52,39 @@ class Professeur extends Utilisateur {
 		$prof->dateEmbauche = $tab["dateEmbauche"];
 		$prof->dateDepart   = $tab["dateDepart"];
 		return $prof;
+	}
+
+	public function insertIntoBD($pass){
+		$id = parent::insertIntoBD($pass);
+
+		$rq = "INSERT INTO Professeur (idProfesseur, dateEmbauche, dateDepart) VALUES (:id, :emb, :dpt)";
+		$stmt = myPDO::getInstance()->prepare($rq);
+
+		$stmt->execute(array(
+			"id"         => $id,
+			"emb"        => $this->getDateEmbauche(),
+			"dpt"        => $this->getDateDepart()
+		));
+
+		return $id;
+	}
+
+	public function getDateEmbauche(){
+		return $this->dateEmbauche;
+	}
+
+	public function getDateDepart(){
+		return $this->dateDepart;
+	}
+
+	public function setDateEmbauche($date){
+		$this->dateEmbauche = $date;
+		return $this;
+	}
+
+	public function setDateDepart($date){
+		$this->dateDepart = $date;
+		return $this;
 	}
 
 }

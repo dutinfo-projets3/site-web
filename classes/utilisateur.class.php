@@ -26,6 +26,10 @@ class Utilisateur {
 		}
 	}
 
+	public static function createFromInfo($nom, $prenom, $adresse, $cp, $ville, $mail, $numtel){
+		return (new Utilisateur())->setNom($nom)->setPrenom($prenom)->setAdresse($adresse)->setCP($cp)->setVille($ville)->setMail($mail)->setNumeroTel($numtel);
+	}
+
 	/**
 	 * ID de l'utilisateur
 	 */
@@ -267,6 +271,29 @@ HTML;
 	}
 
 	/**
+	 * Ajoute un nouvel utilisateur dans la BD
+	 * @return Utilisateur avec son id mis à jour
+	 */
+	public function insertIntoBD($mdp){
+		$rq = "INSERT INTO Utilisateur (idPersonne, type, nomUtilisateur, nomPers, prenomPers, motDePasse, adresse, ville, codePostal, mail, numerotel) VALUES (null, :type, null, :nom, :prenom, SHA2(:mdp, 256), :adresse, :ville, :cp, :mail, :numerotel)";
+		$stmt = myPDO::getInstance()->prepare($rq);
+
+		$stmt->execute(array(
+			"type"      => $this->getUserType(),
+			"nom"       => $this->getNom(),
+			"prenom"    => $this->getPrenom(),
+			"mdp"       => $mdp,
+			"adresse"   => $this->getAdresse(),
+			"ville"     => $this->getVille(),
+			"cp"        => $this->getCP(),
+			"mail"      => $this->getMail(),
+			"numerotel" => $this->getNumerotel()
+		));
+
+		return myPDO::getInstance()->lastInsertId();
+	}
+
+	/**
 	 * Sauvegarde les données de l'utilisateur dans la session actuelle
 	 */
 	public function saveIntoSession() {
@@ -300,6 +327,12 @@ HTML;
 
 	public function setID($id) {
 		$this->idPersonne = $id;
+		return $this;
+	}
+
+	public function setType($type){
+		$this->type = $type;
+		return $this;
 	}
 
 	public function getNom() {
@@ -308,6 +341,7 @@ HTML;
 
 	public function setNom($nom) {
 		$this->nomPers = $nom;
+		return $this;
 	}
 
 	public function getPrenom() {
@@ -316,6 +350,7 @@ HTML;
 
 	public function setPrenom($nom) {
 		$this->prenomPers = $nom;
+		return $this;
 	}
 
 	public function getAdresse() {
@@ -324,6 +359,7 @@ HTML;
 
 	public function setAdresse($adr) {
 		$this->adresse = $adr;
+		return $this;
 	}
 
 	public function getCP() {
@@ -332,6 +368,7 @@ HTML;
 
 	public function setCP($cp) {
 		$this->codePostal = $cp;
+		return $this;
 	}
 
 	public function getVille() {
@@ -340,6 +377,7 @@ HTML;
 
 	public function setVille($v) {
 		$this->ville = $v;
+		return $this;
 	}
 
 	public function getURL() {
@@ -348,6 +386,7 @@ HTML;
 
 	public function setURL($u) {
 		$this->urlImage = $u;
+		return $this;
 	}
 
 	public function getUsername() {
@@ -356,6 +395,7 @@ HTML;
 
 	public function setUsername($u) {
 		$this->nomUtilisateur = $u;
+		return $this;
 	}
 
 	public function getUserType() {
@@ -368,6 +408,16 @@ HTML;
 
 	public function getMail() {
 		return $this->mail;
+	}
+
+	public function setNumeroTel($numtel){
+		$this->numerotel = $numtel;
+		return $this;
+	}
+
+	public function setMail($mail){
+		$this->mail = $mail;
+		return $this;
 	}
 
 }

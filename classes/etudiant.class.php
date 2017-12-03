@@ -19,6 +19,18 @@ class Etudiant extends Utilisateur {
 		parent::__construct($user);
 		$this->type = Utilisateur::TYPES["ETUDIANT"];
 	}
+
+	/**
+	 * Créé une instance d'Etudiant à partir des infos
+	 */
+	public static function createFromInfo($nom, $prenom, $adresse, $cp, $ville, $mail, $numtel, $INE = null, $dateEntree = null){
+		// Hack dégueux pour avoir le même prototype que dans User et ne pas avoir de warning
+		if ($INE != null && $dateEntree != null){
+			$user = parent::createFromInfo($nom, $prenom, $adresse, $cp, $ville, $mail, $numtel);
+			return (new Etudiant($user))->setINE($INE)->setDateEntree($dateEntree);
+		}
+	}
+
 	
 	/**
 	 * Créé une instance d'étudiant à partir d'un utilisateur
@@ -40,12 +52,36 @@ class Etudiant extends Utilisateur {
 		return $etudiant;
 	}
 
+	public function insertIntoBD($pass){
+		$id = parent::insertIntoBD($pass);
+
+		$rq = "INSERT INTO Etudiant (idEtudiant, INE, dateEntree) VALUES (:id, :ine, :dateentree)";
+		$stmt = myPDO::getInstance()->prepare($rq);
+
+		$stmt->execute(array(
+			"id"         => $id,
+			"ine"        => $this->getINE(),
+			"dateentree" => $this->getDateEntree()
+		));
+
+		return $id;
+	}
+
 	public function setINE($ine){
 		$this->INE = $ine;
+		return $this;
 	}
 
 	public function setDateEntree ($de){
 		$this->dateEntree = $de;
+		return $this;
 	}
 
+	public function getINE(){
+		return $this->INE;
+	}
+
+	public function getDateEntree(){
+		return $this->dateEntree;
+	}
 }

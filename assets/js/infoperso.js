@@ -1,5 +1,3 @@
-var actualState = true;
-
 function clearFields(){
 	$("#info").children().not(":last").remove();
 }
@@ -67,10 +65,24 @@ function buildForm(txField, values){
 
 }
 
-$("#bt_chg_infos").click(function(){
+function toggleToField(){
 	currValues = getFieldArray();
 	clearFields();
-	buildForm(actualState, currValues);
-	actualState = !actualState;
-});
+	buildForm(true, currValues);
+}
 
+function toggleToText(){
+
+	// Verifier les champs
+	// Envoyer au fichier 
+
+}
+
+function updatePhotoAction(){
+
+}
+
+function cancelInfoOptions(){
+
+}
+$("#bt_chg_infos").click("toggleToField");

@@ -19,6 +19,24 @@ class Secretaire extends Utilisateur {
 		parent::__construct($user);
 		$this->type = Utilisateur::TYPES["ADMINISTRATION"];
 	}
+
+	/**
+	 * Créé une instance de secretaire à partir des infos
+	 */
+	public static function createFromInfo($nom, $prenom, $adresse, $cp, $ville, $mail, $numtel, $dateEmbauche = null, $dateDepart = null){
+		// Hack dégueux pour avoir le même prototype que dans User et ne pas avoir de warning
+		if ($dateEmbauche != null){
+			$user = parent::createFromInfo($nom, $prenom, $adresse, $cp, $ville, $mail, $numtel);
+			$secr = (new Secretaire($user))->setDateEmbauche($dateEmbauche);
+
+			if ($dateDepart != null){
+				$secr->setDateDepart($dateDepart);
+			}
+
+			return $secr;
+		}
+	}
+
 	
 	/**
 	 * Créé une instance de secrétaire à partir d'un utilisateur
@@ -40,13 +58,37 @@ class Secretaire extends Utilisateur {
 		return $secretaire;
 	}
 
+	public function insertIntoBD($pass){
+		$id = parent::insertIntoBD($pass);
+
+		$rq = "INSERT INTO Secretaire (idSecretaire, dateEmbauche, dateDepart) VALUES (:id, :emb, :dpt)";
+		$stmt = myPDO::getInstance()->prepare($rq);
+
+		$stmt->execute(array(
+			"id"         => $id,
+			"emb"        => $this->getDateEmbauche(),
+			"dpt"        => $this->getDateDepart()
+		));
+
+		return $id;
+	}
+
+	public function getDateEmbauche(){
+		return $this->dateEmbauche;
+	}
+
+	public function getDateDepart(){
+		return $this->dateDepart;
+	}
 
 	public function setDateEmbauche($date){
 		$this->dateEmbauche = $date;
+		return $this;
 	}
 
 	public function setDateDepart($date){
 		$this->dateDepart = $date;
+		return $this;
 	}
 
 }
