@@ -140,7 +140,6 @@ function validate(){
 	bt2.prop("disabled", true);
 
 	// On synchronise la variable userInfo
-	userInfo = {};
 	for (var k in elements){
 		userInfo[k] = elements[k].field.val();
 	}

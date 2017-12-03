@@ -42,6 +42,7 @@
 {% block lnkjavascript %}
 	<script type="text/javascript">
 		var userInfo = {
+			id: "{{ user.ID }}",
 			nom: "{{ user.nom }}",
 			prenom: "{{ user.prenom }}",
 			adresse: "{{ user.adresse }}",

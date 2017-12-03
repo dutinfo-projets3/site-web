@@ -52,6 +52,9 @@ if (($hasid && $util->getUserType() == Utilisateur::TYPES["ADMINISTRATION"]) || 
 			$utilisateur->setDateDepart($_GET["dateDepart"]);
 	}
 
+	if ($_GET["id"] == $util->getID())
+		$utilisateur->saveIntoSession();
+
 	$utilisateur->updateBD(isset($_GET["mdp"]) ? $_GET["mdp"] : null);
 
 	} else {
