@@ -88,15 +88,6 @@ class Professeur extends Utilisateur {
 		));
 	}
 
-	/**
-	 * Créé un professeur à partir de son id
-	 */
-	public static function createFromID($id){
-		return Professeur::createFromUser(Utilisateur::createFromID($id));
-	}
-
-
-
 	public function getDateEmbauche(){
 		return $this->dateEmbauche;
 	}

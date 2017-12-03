@@ -89,13 +89,6 @@ class Etudiant extends Utilisateur {
 		));
 	}
 
-	/**
-	 * Créé un étudiant à partir de son id
-	 */
-	public static function createFromID($id){
-		return Etudiant::createFromUser(Utilisateur::createFromID($id));
-	}
-
 	public function setINE($ine){
 		$this->INE = $ine;
 		return $this;

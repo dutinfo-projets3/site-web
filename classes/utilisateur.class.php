@@ -267,7 +267,7 @@ HTML;
 		$res = null;
 		if ($stmt->execute())
 			$res = $stmt->fetch();
-		return $res;
+		return Utilistaeur::createUserKind($res);
 	}
 
 	/**

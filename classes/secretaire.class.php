@@ -92,13 +92,6 @@ class Secretaire extends Utilisateur {
 		));
 	}
 
-	/**
-	 * Créé une secretaire à partir de son id
-	 */
-	public static function createFromID($id){
-		return Secretaire::createFromUser(Utilisateur::createFromID($id));
-	}
-
 	public function getDateEmbauche(){
 		return $this->dateEmbauche;
 	}
