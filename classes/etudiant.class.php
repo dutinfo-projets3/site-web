@@ -46,12 +46,19 @@ class Etudiant extends Utilisateur {
 		$stmt->execute(array($etudiant->getID()));
 
 		$tab = $stmt->fetch();
-		$etudiant->setINE($tab["INE"]);
-		$etudiant->setDateEntree($tab["dateEntree"]);
+		if (isset($tab["INE"]) && !empty($tab["INE"]))
+			$etudiant->setINE($tab["INE"]);
+
+		if (isset($tab["dateEntree"]) && !empty($tab["dateEntree"]))
+			$etudiant->setDateEntree($tab["dateEntree"]);
 
 		return $etudiant;
 	}
 
+	/**
+	 * Ajoute un nouvel utilisateur dans la BD
+	 * @return Utilisateur avec son id mis à jour
+	 */
 	public function insertIntoBD($pass){
 		$id = parent::insertIntoBD($pass);
 
@@ -65,6 +72,28 @@ class Etudiant extends Utilisateur {
 		));
 
 		return $id;
+	}
+
+	/**
+	 * Met a jour l'utilisateur dans la base de donnée
+	 * Change son mot de passe s'il est spécifié en paramètre
+	 */
+	public function updateBD($mdp = null){
+		parent::updateBD($mdp);
+		$rq = "UPDATE Etudiant SET INE=:ine, dateEntree=:dateEntree WHERE idEtudiant=:id";
+		$stmt = myPDO::getInstance()->prepare($rq);
+		$stmt->execute(array(
+			"ine" => $this->getINE(),
+			"dateEntree" => $this->getDateEntree(),
+			"id" => $this->getID()
+		));
+	}
+
+	/**
+	 * Créé un étudiant à partir de son id
+	 */
+	public static function createFromID($id){
+		return Etudiant::createFromUser(Utilisateur::createFromID($id));
 	}
 
 	public function setINE($ine){

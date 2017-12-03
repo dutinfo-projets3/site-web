@@ -58,6 +58,10 @@ class Secretaire extends Utilisateur {
 		return $secretaire;
 	}
 
+	/**
+	 * Ajoute un nouvel utilisateur dans la BD
+	 * @return Utilisateur avec son id mis à jour
+	 */
 	public function insertIntoBD($pass){
 		$id = parent::insertIntoBD($pass);
 
@@ -71,6 +75,28 @@ class Secretaire extends Utilisateur {
 		));
 
 		return $id;
+	}
+
+	/**
+	 * Met a jour l'utilisateur dans la base de donnée
+	 * Change son mot de passe s'il est spécifié en paramètre
+	 */
+	public function updateBD($mdp = null){
+		parent::updateBD($mdp);
+		$rq = "UPDATE Secretaire SET dateEmbauche=:dateEmbauche, dateDepart=:dateDepart WHERE idSecretaire=:id";
+		$stmt = myPDO::getInstance()->prepare($rq);
+		$stmt->execute(array(
+			"dateEmbauche" => $this->getDateEmbauche(),
+			"dateDepart" => $this->getDateDepart(),
+			"id" => $this->getID()
+		));
+	}
+
+	/**
+	 * Créé une secretaire à partir de son id
+	 */
+	public static function createFromID($id){
+		return Secretaire::createFromUser(Utilisateur::createFromID($id));
 	}
 
 	public function getDateEmbauche(){

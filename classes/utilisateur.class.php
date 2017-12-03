@@ -294,6 +294,34 @@ HTML;
 	}
 
 	/**
+	 * Met a jour l'utilisateur dans la base de donnée
+	 * Change son mot de passe s'il est spécifié en paramètre
+	 */
+	public function updateBD($mdp = null){
+		$rq = "UPDATE Utilisateur SET nomPers=:nom, prenomPers=:prenom, adresse=:adr, ville=:ville, codePostal=:cp, mail=:mail, numerotel=:numtel";
+		$values = array(
+			"id"        => $this->getID(),
+			"nom"       => $this->getNom(),
+			"prenom"    => $this->getPrenom(),
+			"adr"       => $this->getAdresse(),
+			"ville"     => $this->getVille(),
+			"cp"        => $this->getCP(),
+			"mail"      => $this->getMail(),
+			"numtel"    => $this->getNumerotel()
+		);
+		if ($mdp != null) {
+			$rq .= ", motDePasse=SHA2(:mdp, 256)";
+			$values["mdp"] = $mdp;
+		}
+
+		$rq .= " WHERE idPersonne=:id";
+
+		$stmt = myPDO::getInstance()->prepare($rq);
+		$stmt->execute($values);
+
+	}
+
+	/**
 	 * Sauvegarde les données de l'utilisateur dans la session actuelle
 	 */
 	public function saveIntoSession() {
