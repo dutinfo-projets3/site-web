@@ -45,7 +45,7 @@ var elements = {
 	}
 };
 
-var bt1      = $("#bt_chg_photo");
+var bt1      = $("#bt_cancel");
 var bt2      = $("#bt_chg_infos");
 var loader   = $("#loaderpic");
 var ifp      = $("#ifmdp");
@@ -55,6 +55,7 @@ var pwdf1    = $("#inp_mdp1");
 var pwdf2    = $("#inp_mdp2");
 var pwdError = $("#mdpValidate-span");
 var errormsg = $("#errormsg");
+var uploader = $("#newpic");
 
 errormsg.hide();
 loader.hide();
@@ -78,19 +79,20 @@ function toggleForm(showFields, invert){
 		}
 	}
 
-	bt1.toggleClass("btn-dark");
 	bt2.toggleClass("btn-dark");
-	bt1.toggleClass("btn-danger");
 	bt2.toggleClass("btn-success");
 
+	bt1.toggleClass("d-none");
+	bt2.toggleClass("offset-2");
+	bt2.toggleClass("col-5");
+	bt2.toggleClass("col-12")
+
 	if (showFields){
-		bt1.text("Annuler");
 		bt2.text("Valider");
 		ifp.show();
 		pwd1.show();
 		pwd2.show();
 	} else {
-		bt1.text("Changer de photo");
 		bt2.text("Editer les infos");
 		ifp.hide();
 		pwd1.hide();
@@ -98,19 +100,13 @@ function toggleForm(showFields, invert){
 	}
 }
 
-function uploadPic(){
-	console.log("Upload picture");
-}
-
 function cancel(){
 	toggleForm(false, true);
-	bt1.unbind("click").click(uploadPic);
 	bt2.unbind("click").click(showFields);
 }
 
 function showFields(){
 	toggleForm(true, false);
-	bt1.unbind("click").click(cancel);
 	bt2.unbind("click").click(validate);
 }
 
@@ -136,7 +132,6 @@ function validateOneField(fld){
 }
 
 function validate(){
-	bt1.prop("disabled", true);
 	bt2.prop("disabled", true);
 
 	// On synchronise la variable userInfo
@@ -158,15 +153,12 @@ function validate(){
 				console.log(thrownError);
 				errormsg.show();
 				loader.hide();
-				bt1.prop("disabled", false);
 				bt2.prop("disabled", false);
 			},
 			success: function(msg){ 
 				loader.hide();
 				toggleForm(false, false);
-				bt1.unbind("click").click(uploadPic);
 				bt2.unbind("click").click(showFields);
-				bt1.prop("disabled", false);
 				bt2.prop("disabled", false);
 				userInfo["mdp"] = "";
 			}
@@ -174,7 +166,7 @@ function validate(){
 	);
 }
 
-bt1.click(uploadPic);
+bt1.click(cancel);
 bt2.click(showFields);
 
 for (var k in elements){
@@ -202,3 +194,41 @@ validateMdp = function() {
 
 pwdf1.get(0).onkeyup = validateMdp;
 pwdf2.get(0).onkeyup = validateMdp;
+
+uploader.get(0).onchange = function(){
+	$("#tropgros").removeClass("d-block");
+	$("#tropgros").addClass("d-none");
+	$("#badfile").removeClass("d-block");
+	$("#badfile").addClass("d-none");
+	$("#erreurimg").removeClass("d-block");
+	$("#erreurimg").addClass("d-none");
+
+	var file = uploader.get(0).files[0];
+	if ((file.type == "image/jpeg" || file.type == "image/png") && file.size < 2000000){
+		var fd = new FormData();
+		fd.append('photo', file);
+
+		$.ajax({
+			type: 'POST',
+			url: '/api/updatepic.php',
+			data: fd,
+			processData: false,
+			contentType: false,
+			success: function(data){
+				// Hack degueux pour refresh l'image
+				$("#userpicture").attr("src", "/api/getuserpic.php?name=" + userInfo.username + "&ts=" + new Date().getTime());
+				uploader.val('');
+			},
+			error: function(a, b, c, d){
+				$("#erreurimg").removeClass("d-none");
+				$("#erreurimg").addClass("d-block");
+			}
+		});
+	} else if (file.size > 2000000){
+		$("#tropgros").removeClass("d-none");
+		$("#tropgros").addClass("d-block");
+	} else {
+		$("#badfile").removeClass("d-none");
+		$("#badfile").addClass("d-block");
+	}
+}

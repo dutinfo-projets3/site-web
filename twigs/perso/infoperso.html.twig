@@ -7,8 +7,13 @@
 {% block content %}
 
 	<div class="row perso m-5">
-		<div class="photo rounded-circle img-responsive col-lg-6 col-12 text-center" >
-			<img class="rounded-circle" src="/api/getuserpic.php?name={{ user.username }}" style="max-width:200px" alt="photo_user" />
+		<div class="col-lg-6 col-12 text-center" >
+			<img id="userpicture" class="rounded-circle" src="/api/getuserpic.php?name={{ user.username }}" style="max-width:200px" alt="photo_user" />
+			<span class="d-block mt-3"> Changer de photo </span>
+			<span id="tropgros" class="d-none text-white bg-danger"> Votre photo est trop lourde </span>
+			<span id="badfile" class="d-none text-white bg-danger"> Votre fichier n'est pas une photo </span>
+			<span id="erreurimg" class="d-none text-white bg-danger"> Une erreur est survenue! </span>
+			<input class="mt-4" type="file" name="newpic" id="newpic" />
 		</div>
 		<div id="info" class="col-lg-4 col-12 pt-lg-0 pt-5">
 			{{ include('perso/infopersoitem.html.twig', {'rowname': "Nom:", 'idname': "nom", 'error': "Entrez un nom valide"}) }}
@@ -31,8 +36,8 @@
 				<div class="d-inline-block"></div>
 			</div>
 			<div class="row pt-4">
-				<button id="bt_chg_photo" type="button" class="col-6 mr-1 btn btn-dark">Changer de photo</button>
-				<button id="bt_chg_infos" type="button" class="col-5 btn btn-dark">Editer les infos</button>
+				<button id="bt_cancel" type="button" class="col-5 d-none btn btn-danger">Annuler</button>
+				<button id="bt_chg_infos" type="button" class="col-12 btn btn-dark">Editer les infos</button>
 			</div>
 		</div>
 	</div>
@@ -43,6 +48,7 @@
 	<script type="text/javascript">
 		var userInfo = {
 			id: "{{ user.ID }}",
+			username:"{{ user.username }}",
 			nom: "{{ user.nom }}",
 			prenom: "{{ user.prenom }}",
 			adresse: "{{ user.adresse }}",
