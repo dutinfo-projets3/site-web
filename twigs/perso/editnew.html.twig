@@ -1,0 +1,146 @@
+{% extends 'template.html.twig' %}
+
+ {% block stylesheets %}
+
+ {% endblock %}
+
+{% block content %}
+
+    <h1>Ajouter une news</h1>
+
+
+    <!-- Create the editor container -->
+
+
+    <div class="nav bg-light nav-pills p-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+        <a class="nav-link active" id="v-pills-add-tab" data-toggle="pill" href="#v-pills-add" role="tab"
+           aria-controls="v-pills-add" aria-selected="true">Ajouter</a>
+        <a class="nav-link" id="v-pills-modified-tab" data-toggle="pill" href="#v-pills-modified" role="tab"
+           aria-controls="v-pills-modified" aria-selected="false">Modifier</a>
+    </div>
+    <div class="tab-content" id="v-pills-tabContent">
+        <div class="tab-pane fade show active" id="v-pills-add" role="tabpanel" aria-labelledby="v-pills-add-tab">
+            {% if success==true %}
+                <h2 class="bg-success">New poster</h2>
+            {% endif %}
+
+            <form class="container-fluid col-12 col-md-8 m-auto d-flex flex-column pb-5 pt-5 " id="addNews"
+                  action="/perso/newsmanager.php" method="post">
+
+                    <div class="input-group mb-2">
+                        <span class="input-group-addon" id="basic-addon1">Titre</span>
+
+                        <input name="titre" id="titre" type="text" class="form-control" placeholder="Titre" aria-label="Titre"
+                               aria-describedby="basic-addon1">
+                    </div>
+                    <div class="col-12 p-0 warning ">
+                        <!--bbcode editor-->
+                        <textarea id="bbcode"></textarea>
+                    </div>
+
+                <p class="text-warning d-none">Tous les chanmps doivent être remplies</p>
+                <input id="description" name="description" value="" hidden>
+                <button type="submit" class="btn btn-primary col-5 col-lg-3 mt-1">Ajouter</button>
+            </form>
+        </div>
+        <div class="tab-pane fade" id="v-pills-modified" role="tabpanel" aria-labelledby="v-pills-modified-tab">
+        </div>
+
+    </div>
+
+
+
+
+{% endblock %}
+
+{% block lnkjavascript %}
+
+    <script src='/assets/js/tinymce/tinymce.min.js'></script>
+    <!-- Initialize Quill editor -->
+    <script>
+
+
+        var images = new Array();
+        //config de l'éditeur
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'image code bbcode',
+            menubar: '',
+            bbcode_dialect: "punbb",
+            toolbar: [
+                'bold italic  link image numlist',
+                'alignleft aligncenter alignright'
+            ],
+            // enable title field in the Image dialog
+            image_title: true,
+            // enable automatic uploads of images represented by blob or data URIs
+            automatic_uploads: true,
+            // URL of our upload handler (for more details check: https://www.tinymce.com/docs/configure/file-image-upload/#images_upload_url)
+            // images_upload_url: 'postAcceptor.php',
+            // here we add custom filepicker only to Image dialog
+            file_picker_types: 'image',
+            // and here's our custom image picker
+            file_picker_callback: function (cb, value, meta) {
+                var input = document.createElement('input');
+                input.setAttribute('type', 'file');
+                input.setAttribute('accept', 'image/*');
+
+                // Note: In modern browsers input[type="file"] is functional without
+                // even adding it to the DOM, but that might not be the case in some older
+                // or quirky browsers like IE, so you might want to add it to the DOM
+                // just in case, and visually hide it. And do not forget do remove it
+                // once you do not need it anymore.
+
+                input.onchange = function () {
+                    var file = this.files[0];
+
+                    var reader = new FileReader();
+                    reader.onload = function () {
+                        // Note: Now we need to register the blob in TinyMCEs image blob
+                        // registry. In the next release this part hopefully won't be
+                        // necessary, as we are looking to handle it internally.
+                        var id = 'blobid' + (new Date()).getTime();
+                        var blobCache = tinymce.activeEditor.editorUpload.blobCache;
+                        var base64 = reader.result.split(',')[1];
+
+                        var blobInfo = blobCache.create(id, file, base64);
+                        blobCache.add(blobInfo);
+                        images.push({url: blobInfo.blobUri(), value: base64});
+                        // call the callback and populate the Title field with the file name
+                        cb(blobInfo.blobUri(), {title: file.name});
+                    };
+                    reader.readAsDataURL(file);
+                };
+
+                input.click();
+            }
+        });
+
+        document.forms["addNews"].onsubmit = function () {
+            //récuperation du bbcode
+            varToSend = tinymce.activeEditor.getContent();
+
+            //changement de l'url du bbcode en base 64
+            for (i = 0; i < images.length; i++) {
+                r = new RegExp(images[i].url, 'gm');
+                console.log(r);
+                varToSend = varToSend.replace(r, images[i].value);
+            }
+
+            //modification de se que l'on envoie
+            $("#description").attr("value", varToSend);
+            console.log(varToSend);
+            if (varToSend == "") {
+                $('.warning').addClass("border border-warning p-2 ");
+                $('.text-warning').addClass("d-block p-1");
+                return false;
+            }
+            if($('#titre').val() == "" ){
+                $('#titre').addClass("border border-warning p-2 ");
+                $('.text-warning').addClass("d-block p-1");
+                return false;
+            }
+
+        }
+    </script>
+{% endblock %}

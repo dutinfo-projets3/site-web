@@ -11,7 +11,6 @@ class News
     private $idNews;
     private $idSecretaire;
     private $nomEvenement;
-    private $numero;
     private $description;
     private $datePublication;
 
@@ -200,7 +199,30 @@ SQL
             return $obj;
         }
     }
-
+	/**
+	 * Insert une nexs
+	 * @param $idSecretaire id du secretaire qui insére la news
+	 * @param $title  titre de la new
+	 * @param $description contenue de la new
+	 * @throws NewsInsertException
+	 * @return true si la news a été postées
+	 *
+	 * @TODO Test
+	 *
+	 */
+    public static function insertIntoBD($idSecretaire, $title, $description){
+		$stmt = myPDO::getInstance()->prepare(<<<SQL
+		INSERT INTO News (idSecretaire, nomEvenement, description, datePublication) 
+		VALUES (?, ?, ?, SYSDATE());
+SQL
+		);
+		$succes = $stmt->execute(array($idSecretaire, $title, $description));
+		if ($succes == false) {
+			throw new NewsInsertException();
+		} else {
+			return true;
+		}
+	}
 }
 
 class NewsException extends Exception
@@ -209,4 +231,12 @@ class NewsException extends Exception
     {
         parent::__construct($message, $code, $previous);
     }
+}
+
+class NewsInsertException extends Exception
+{
+	public function __construct($message = "Impossible d'insérer une new", $code = 0, Exception $previous = null)
+	{
+		parent::__construct($message, $code, $previous);
+	}
 }
