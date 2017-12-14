@@ -18,6 +18,7 @@ if (!Utilisateur::isConnected() || !$user->getUserType() == Utilisateur::TYPES['
 	return;
 }
 $success = false;
+
 if(isset($_POST["titre"]) && isset($_POST["description"])){
 	try {
 		$success = News::insertIntoBD($user->getID(), $_POST["titre"], $_POST["description"]);
@@ -27,5 +28,4 @@ if(isset($_POST["titre"]) && isset($_POST["description"])){
 	}
 
 }
-
 echo TwigLoader::getInstance()->render('', 'perso/editnew', array('success' => $success));

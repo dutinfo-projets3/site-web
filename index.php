@@ -23,9 +23,6 @@ if (isset($_GET['page']) && !empty($_GET['page'])) {
 	$listNews = News::createNewsNext(0, $MAX_PAGE_VIEW);
 }
 
-foreach($listNews as $n){
-	Parser::parse($n, false);
-}
 
 /**
  * Rendu

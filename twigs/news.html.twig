@@ -1,13 +1,31 @@
 {% extends "template.html.twig" %}
 
+{% block stylesheets %}
+    <link href="https://cdn.quilljs.com/1.3.4/quill.snow.css" rel="stylesheet">
+{% endblock %}
+
 {% block content %}
 
-	<h3 class="text-center mt-2">{{ news.nomEvenement }}</h3>
-	<div class="col-lg-10 offset-lg-1 col-12 offset-0 mt-5">
-		{{ news.description|raw }}
-	</div>
-	<div class="col-lg-10 offset-lg-1 col-12 offset-0 mt-5 mb-5 text-right">
-		Écrit par {{ user.nom }} {{ user.prenom }}, le {{ news.datePublication }}
-	</div>
+    <h3 class="text-center mt-2">{{ news.nomEvenement }}</h3>
+    <div class="col-lg-10 offset-lg-1 col-12 offset-0 mt-5">
+        <div id="news"></div>
+    </div>
+    <div class="col-lg-10 offset-lg-1 col-12 offset-0 mt-5 mb-5 text-right">
+        Écrit par {{ user.nom }} {{ user.prenom }}, le {{ news.datePublication }}
+    </div>
 
+{% endblock %}
+{% block lnkjavascript %}
+    <script src="https://cdn.quilljs.com/1.3.4/quill.js"></script>
+
+    <script>
+        var news = new Quill('#news', {
+            theme: 'snow',
+            readOnly: true,
+            modules: {
+                toolbar: ""
+            }
+        });
+        news.setContents(({{ news.description|raw }}));
+    </script>
 {% endblock %}
