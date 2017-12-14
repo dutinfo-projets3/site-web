@@ -1,0 +1,46 @@
+{% extends 'template.html.twig' %}
+
+{% block content %}
+
+	<div class="row">
+		<table class="calendar table table-dark table-hover table-responsive text-center">
+			<thead>
+				<tr>
+					<th scope="col">Semaine du <br /> 11/12/17</th><!-- @TODO: Trouver une solution propre -->
+					<th scope="col">Lundi</th>
+					<th scope="col">Mardi</th>
+					<th scope="col">Mercredi</th>
+					<th scope="col">Jeudi</th>
+					<th scope="col">Vendredi</th>
+					<th scope="col">Samedi</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+	</div>
+
+{% endblock %}
+
+{% block javascript %}
+	var cal = document.getElementsByClassName("calendar")[0];
+	var crp = cal.getElementsByTagName("tbody")[0];
+	for (i = 8; i < 18; i++){
+		var currRow = document.createElement("tr");
+
+		var hd = document.createElement("th");
+		hd.setAttribute("scope", "col");
+		hd.innerText = i + "h-"+ (i+1) + "h";
+		currRow.appendChild(hd);
+
+		/** Ajout d'un cours **/
+		for (j = 0; j < 6; j++){
+			var cr = document.createElement("td");
+			cr.innerText = "Cours" + i + "/" + j;
+			currRow.appendChild(cr);
+		}
+
+	 	crp.appendChild(currRow);
+	}
+{% endblock %}
+

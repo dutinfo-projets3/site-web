@@ -1,0 +1,99 @@
+{% extends 'template.html.twig' %}
+
+{% block content %}
+
+	<div class="row">
+		<table class="calendar table table-dark table-hover table-responsive text-center">
+			<thead>
+				<tr>
+					<th scope="col">Semaine du <br />11/12/17</th>
+					<th scope="col">Lundi</th>
+					<th scope="col">Mardi</th>
+					<th scope="col">Mercredi</th>
+					<th scope="col">Jeudi</th>
+					<th scope="col">Vendredi</th>
+					<th scope="col">Samedi</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="huitaneuf">
+					<th scope="row">8h-9h</th>
+				</tr>
+				<tr>
+					<th scope="row">9h-10h</th>
+					<td>Cours12</td>
+					<td>Cours22</td>
+					<td>Cours32</td>
+					<td>Cours42</td>
+					<td>Cours52</td>
+					<td>Cours62</td>
+				</tr>
+				<tr>
+					<th scope="row">10h-11h</th>
+					<td>Cours13</td>
+					<td>Cours23</td>
+					<td>Cours33</td>
+					<td>Cours43</td>
+					<td>Cours53</td>
+					<td>Cours63</td>
+				</tr>
+				<tr>
+					<th scope="row">11h-12h</th>
+					<td>Cours14</td>
+					<td>Cours24</td>
+					<td>Cours34</td>
+					<td>Cours44</td>
+					<td>Cours54</td>
+					<td>Cours64</td>
+				</tr>
+				<tr>
+					<th scope="row">12h-13h</th>
+					<td>cours15</td>
+					<td>cours25</td>
+					<td>cours35</td>
+					<td>cours45</td>
+					<td>cours55</td>
+					<td>cours65</td>
+				</tr>
+				<tr>
+					<th scope="row">13h-14h</th>
+					<td>cours16</td>
+					<td>cours26</td>
+					<td>cours36</td>
+					<td>cours46</td>
+					<td>cours56</td>
+					<td>cours66</td>
+				</tr>
+				<tr>
+					<th scope="row">14h-15h</th>
+					<td>cours17</td>
+					<td>cours27</td>
+					<td>cours37</td>
+					<td>cours47</td>
+					<td>cours57</td>
+					<td>cours67</td>
+				</tr>
+				<tr>
+					<th scope="row">15h-16h</th>
+					<td>cours18</td>
+					<td>cours28</td>
+					<td>cours38</td>
+					<td>cours48</td>
+					<td>cours58</td>
+					<td>cours68</td>
+				</tr>
+				<tr>
+					<th scope="row">17h-18h</th>
+					<td>cours19</td>
+					<td>cours29</td>
+					<td>cours39</td>
+					<td>cours49</td>
+					<td>cours59</td>
+					<td>cours69</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+{% endblock %}
+
