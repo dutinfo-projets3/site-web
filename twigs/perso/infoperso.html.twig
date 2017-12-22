@@ -2,13 +2,24 @@
 
 {% block stylesheets %}
 	<link rel="stylesheet" href="/assets/css/infoperso.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
 {% endblock %}
 
 {% block content %}
 
+	{% if userList %}
+		<div class="row d-flex justify-content-center pt-5">
+			<select id="userToEdit" class="js-example-basic-single text-center d-inline" name="userToEdit">
+				{% for u in userList %}
+					<option value="{{ u.id }}">{{ u.nom }} {{ u.prenom }}</option>
+				{% endfor %}
+			</select>
+		</div>
+	{% endif %}
+
 	<div class="row perso m-5">
 		<div class="col-lg-6 col-12 text-center" >
-			<img id="userpicture" class="rounded-circle" src="/api/getuserpic.php?name={{ user.username }}" style="max-width:200px" alt="photo_user" />
+			<img id="userpicture" class="rounded-circle" style="max-width:200px" alt="photo_user" />
 			<span class="d-block mt-3"> Changer de photo </span>
 			<span id="tropgros" class="d-none text-white bg-danger"> Votre photo est trop lourde </span>
 			<span id="badfile" class="d-none text-white bg-danger"> Votre fichier n'est pas une photo </span>
@@ -45,18 +56,42 @@
 {% endblock %}
 
 {% block lnkjavascript %}
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 	<script type="text/javascript">
-		var userInfo = {
-			id: "{{ user.ID }}",
-			username:"{{ user.username }}",
-			nom: "{{ user.nom }}",
-			prenom: "{{ user.prenom }}",
-			adresse: "{{ user.adresse }}",
-			ville: "{{ user.ville }}",
-			cp: "{{ user.cp }}",
-			numerotel: "{{ user.numerotel }}",
-			mail: "{{ user.mail }}"
-		};
+		function getUserInfo(){
+
+			{% if userList %}
+				idUser = document.getElementById("userToEdit").value;
+			{% else %}
+				idUser = {{ user.ID }}
+			{% endif %}
+
+			var request = $.ajax({
+				url: '/api/getUser.php',
+				type: 'GET',
+				data: { id: idUser } ,
+				contentType: 'application/json; charset=utf-8'
+			});
+
+			request.done(function(jsn){
+				setUserInfo(jsn);
+			});
+		}
+
+{% if userList %}
+	document.getElementById("userToEdit").value = {{ user.ID }};
+	$("#userToEdit").change(function(e){
+		getUserInfo();
+	});
+{% endif %}
+
+getUserInfo();
+
+
+
+$(document).ready(function() {
+	$('.js-example-basic-single').select2();
+});
 	</script>
 	<script src="/assets/js/infoperso.js" type="text/javascript"></script>
 {% endblock %}

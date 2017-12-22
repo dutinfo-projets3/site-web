@@ -116,6 +116,16 @@ HTML;
 HTML;
 	}
 
+	/**
+	 * Create a list of every users
+	 */
+	public static function createList(){
+		$rq = "SELECT idPersonne as id, nomPers as nom, prenomPers as prenom FROM Utilisateur";
+		$stmt = myPDO::getInstance()->prepare($rq);
+		$stmt->setFetchMode(PDO::FETCH_ASSOC);
+		$stmt->execute();
+		return $stmt->fetchAll();
+	}
 
 	/**
 	 * Créé le formulaire de déconnexion (Affiche aussi le nom d'utilisateurs et les infos importantes)
@@ -345,6 +355,20 @@ HTML;
 		return false;
 	}
 
+	public function asArray(){
+		return array(
+			"id"        => $this->idPersonne,
+			"nom"       => $this->nomPers,
+			"prenom"    => $this->prenomPers,
+			"adresse"   => $this->adresse,
+			"cp"        => $this->codePostal,
+			"ville"     => $this->ville,
+			"username"  => $this->nomUtilisateur,
+			"mail"      => $this->mail,
+			"numerotel" => $this->numerotel
+		);
+	}
+	
 	/***
 	 * Getters & Setters
 	 **/
