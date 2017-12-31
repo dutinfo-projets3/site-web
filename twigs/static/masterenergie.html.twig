@@ -1,18 +1,14 @@
 {% extends 'template.html.twig' %}
 
+{% block titlepage %} "__home.masterEnergie.title__" {% endblock %}
+
 {% block content %}
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
-			<h1>Master de Science (MSc) de l'Energie</h1>
+			<h1>"__home.masterEnergie.firstTitle__"</h1>
 			<img src="/assets/img/masterenergy.gif">
-			<p><a href="http://pauwes.univ-tlemcen.dz/wp-content/uploads/2014/03/PAUWES_curriculum_MSc-Energy.pdf">Download</a> the Curriculum Master of Science in Energy as an PDF-Document.</p>
+			<p><a href="http://pauwes.univ-tlemcen.dz/wp-content/uploads/2014/03/PAUWES_curriculum_MSc-Energy.pdf">"__home.masterEnergie.dl__"</a> "__home.masterEnergie.Curriculum__"</p>
 		</div>
 	</div>
 
-{% endblock %}
-
-{% block javascript %}
-$('.carousel').carousel({
-  interval: 4000
-})
 {% endblock %}
