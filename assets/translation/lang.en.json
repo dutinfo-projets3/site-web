@@ -47,7 +47,7 @@
 	"__home.form.password__" : "Password",
 	"__home.forgottenPassword__" : "Forgotten password?",
 
-	"__home.inscription__" : "Registration",
+	"__home.inscription__" : "Registration - Pan African University - Institute of Water and Energy Sciences",
 	"__home.inscription.p1__" : "Young qualified, talented and enterprising candidates from African Union Member States are invited to apply now for the 2017-2018 academic year. The program begins in October 2017.",
 	"__home.inscription.condition__" : "Applicants must fulfill the following conditions:",
 	"__home.inscription.cond1__" : "Have an undergraduate degree from a recognized university (with at least an upper second-class division or equivalent)",
@@ -57,5 +57,73 @@
 	"__home.inscription.cond5__" : "No more than 30 years for male candidates and 35 years for female candidates",
 	"__home.inscription.p2__" : "Women are particularly encouraged to apply.",
 	"__home.inscription.p3__" : "We will only accept online applications that are complete and sent before the deadline.",
-	"__home.inscription.a__" : "How to apply"
+	"__home.inscription.a__" : "How to apply",
+
+	
+	"__home.about.title__" : "About - Pan African University - Institute of Water and Energy Sciences",
+	"__home.about__" : "About",
+
+	"__home.scholarship.title__" : "Scholarship - Pan African University - Institute of Water and Energy Sciences",
+	"__home.scholarship.p1__": "A generous financial aid is granted to the best students, including :",
+	"__home.scholarship.li1__" : "A scholarship covering the university fees",
+	"__home.scholarship.li2__" : "An allowance covering substance fees including housing",
+	"__home.scholarship.li3__" : "A round-trip plane ticket",
+	"__home.scholarship.p2__" : "Student must pledge to working in Africa after having earned their diplomas.",
+
+	"__home.howToGo.title__" : " How to get there - Pan African University - Institute of Water and Energy Sciences",
+	"__home.howToGo.h1__" : "How to get there",
+	"__home.howToGo.firstMean__" :"By Airplane",
+	"__home.howToGo.describeFirst__" : "Tlemcen has an international airport as well as Oran, a city on the Mediterranean Sea, only 140 km away from Tlemcen. Flights are possible from Algiers, Paris, Lyon, Barcelona, Almeria, Marseilles, Montpellier, Casablanca.",
+	"__home.howToGo.secondMean__" :"Shipping Lines and Ferries",
+	"__home.howToGo.describeSecond__" :"Oran and Algiers can also be reached by international shipping lines and ferries.",
+	"__home.howToGo.thirdMean__" : "By Train",
+	"__home.howToGo.describeThird__" :"Tlemcen has a railway station. It is well connected by rail to Algiers and Oran.",
+	"__home.howToGo.AroundCity__" :"Getting around",
+	"__home.howToGo.describeCity__" :"PAUWES is located at the Chetouane campus of technology and science, about  10 mins north-east of the city centre and easy to reach by bus or taxi. Campus facilities within Tlemcen can easily be reached by public transport.",
+
+	"__home.contact.phone__" : "Postal Address",
+	"__home.contact.pPhone__" : "Pan African University Institute for Water and Energy Sciences (including Climate Change) – PAUWES c/o Abou Bekr Belkaid University of Tlemcen B.P. 119 13000 Tlemcen Algeria",
+	"__home.contact.firstItem__" : "Renseignements généraux",
+	"__home.contact.secondtItem__" : "Informations regardant les admissions et les aides financières:",
+	"__home.contact.thirdItem__" : "Informations pour les positions académiques: ",
+	"__home.contact.phone__" : "Téléhone",
+
+	"__home.corsProf.title__" : "Faculty - Pan African University - Institute of Water and Energy Sciences",
+	"__home.corpsProf.teacher__" : "Reknowned teachers and skilled practitioners",
+	"__home.corpsProf.teacherDescribe__" : "Teaching is conducted by world-class academics, as well as experts from the public and private sectors and non-governmental organizations, supporting the institute’s interdisciplinary approach.",
+	"__home.corpsProf.International__" : "An International Perspective",
+	"__home.corpsProf.InternationalDescribe__" : "The ranks of the institute’s faculty include renowned academics and practitioners from across Africa, from the African Diaspora and world-wide.",
+	"__home.corpsProf.research__" : "Supporting Students’ Own Research and Innovation",
+	"__home.corpsProf.researchDescribe__" : "The faculty and staff of PAUWES reflect the vision, objectives and quality standards of the Pan African University system. United in their goal to educate a new generation of African leaders, revitalize higher education and research in the region and invigorate the job market, the institute’s faculty works closely with students to develop their expertise and support creativity and innovation.",
+	
+	"__home.housing.title__" : "Accomodation - Pan African University - Institute of Water and Energy Sciences",
+	"__home.housing.firstTitle__" : "Accommodation",
+	"__home.housing.safe__" : "Safe and Comfortable Places to Stay",
+	"__home.housing.choice__" : "PAUWES students can chose between two modern halls of residence. One is located close to the campus, one close to the city centre. Comfortable apartments include cooking and washing facilities, reliable electricity and internet as well as secured housing. Alternatively, private  apartments are available.",
+	
+	"__home.highschool.title__" : "",
+	"__home.highschool.firstTitle__" : "Pan African University PAU",
+	"__home.highschool.secdonTitle__" : "Research and Education For a Peaceful, Prosperous and Integrated Africa",
+	"__home.highSchool.paragraph__" : "The PAU is an initiative of the African Heads of State and Government of the African Union. It is a premier continental university network whose mission is to provide a comprehensive postgraduate education geared towards the development of a prosperous, integrated and peaceful Africa. The PAU is part of a continental initiative to revitalize higher education and research in Africa. It is aiming to exemplify excellence, enhance the attractiveness and global competitiveness of African higher education and research and establish African Universities at the core of Africa’s development. Five thematic institutes will establish Master and PhD programmes and engage in collaborative and development oriented research programmes. They will work with centers in other African regions while collaborating closely with the economic sector and civil society to enhance their relevance and contribution in dealing with local challenges. The PAU network system currently includes institutes in Kenya, Nigeria, Cameroon, Southern Africa and will in future be expanded to further African countries.",
+	"__home.highSchool.firstTextLink__" : "Pan African University PAU",
+	"__home.highSchool.secondTextLink__" : "Pan African University Institute for Basic Sciences, Technology and Innovation (PAUSTI)",
+	"__home.highSchool.secondText__" : "at Jomo Kenyatta University of Agriculture and Technology (JKUAT), Juja, Kenya.",
+	"__home.highSchool.thirdTextLink__" : "Pan African University Institute for Life and Earth Sciences including Health and Agriculture (PAULESI)",
+	"__home.highSchool.thirdText__" : "at the University of Ibadan (UI), Ibadan, Nigeria.",
+	"__home.highSchool.fourthText__" : "Pan African University Institute for Governance, Humanities and Social Sciences (PAUGHSS) at the University of Yaounde II, Soa, Cameroon.",
+	"__home.highSchool.fifthTextLink__" : "Pan African University Institute of Water and Energy Sciences (including Climate Change) (PAUWES)",
+	"__home.highSchool.fifthText__" : "University of Tlemcen, Tlemcen, Algeria.",
+	"__home.highSchool.sixthText__" : "Pan African University Institute of Space Sciences, Southern Africa Host country and host university still to be determined.",
+
+	"__home.legalNotice.firstTitle__" : "Legal Notice",
+	"__home.legalNotice.secondTitle__" : "Postal Address",
+	"__home.legalNotice.address__" : "Pan African University Institute for Water and Energy Sciences (including Climate Change) – PAUWES c/o Abou Bekr Belkaid University of Tlemcen B.P. 119 13000 Tlemcen Algeria ",
+	"__home.legalNotice.edited__" : "Edited by :",
+	"__home.legalNotice.prog__" : "Programming : ",
+	"__home.legalNotice.text__" : "Text : ",
+	"__home.legalNotice.photoCred__" : "Crédits photo : ",
+
+	"__home.masterEau.firstTitle__" : "Master of Science (MSc) in Water",
+	"__home.masterEau.dl__" : "Download",
+	"__home.masterEau.Curriculum__" : "the Curriculum Master of Science in Water as an PDF-Document."
 }
