@@ -5,7 +5,6 @@
  {% endblock %}
 
 {% block content %}
-
     <h1>Ajouter une news</h1>
     <!-- Create the editor container -->
     <div class="nav bg-light nav-pills p-2" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -17,7 +16,7 @@
     <div class="tab-content" id="v-pills-tabContent">
         <div class="tab-pane fade show active" id="v-pills-add" role="tabpanel" aria-labelledby="v-pills-add-tab">
             {% if success==true %}
-                <h2 class="bg-success">New poster</h2>
+                <h2 class="bg-success">News postée</h2>
             {% endif %}
             <form class="container-fluid col-12 col-md-8 m-auto d-flex flex-column pb-5 pt-5 " id="addNews"
                   action="/perso/newsmanager.php" method="post">
@@ -29,18 +28,43 @@
                            aria-describedby="basic-addon1">
                 </div>
 
-                    <!--bbcode editor-->
-                    <div class="col-12 warning" id="editor" style="min-height: 200px">
-                    </div>
+                <!--bbcode editor-->
+                <div class="col-12 warning" id="editor" style="min-height: 200px">
+                </div>
 
-                <p class="text-warning d-none">Veuillez remplir tous les champs obligatoires</p>
+                <p class="text-warning add d-none">Veuillez remplir tous les champs obligatoires</p>
                 <input id="description" name="description" value="" hidden>
                 <button type="submit" class="btn btn-primary col-5 col-lg-3 mt-3 ">Ajouter</button>
             </form>
         </div>
         <div class="tab-pane fade" id="v-pills-modified" role="tabpanel" aria-labelledby="v-pills-modified-tab">
+            <select name="selectName" id="selectName">
+            </select>
+            <form class="container-fluid col-12 col-md-8 m-auto d-flex flex-column pb-5 pt-5" id="sendNews">
+                <div class="input-group mb-2">
+                    <span class="input-group-addon" id="basic-addon1">Titre</span>
+
+                    <input name="modifTitre" id="modifTitre" type="text" class="form-control" placeholder="Titre"
+                           aria-label="Titre"
+                           aria-describedby="basic-addon1">
+                </div>
+
+                <!--bbcode editor-->
+                <div class="col-12 warning-mod" id="modifNews" style="min-height: 200px">
+                </div>
+
+                <p class="text-warning mod d-none">Veuillez remplir tous les champs obligatoires</p>
+                <input id="descriptionModified" name="descriptionModified" value="" hidden>
+                <div class="d-flex align-items-center mt-3">
+                    <button type="submit" class="btn btn-primary col-5 col-lg-3">Modifier</button>
+                    <div class="col-lg-1 col-2">
+                        <img src="../../assets/img/rolling.gif" alt="Responsive image" class="img-fluid" id="rolling" style="visibility: hidden">
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
+
 
 {% endblock %}
 
@@ -48,33 +72,129 @@
     <script src="https://cdn.quilljs.com/1.3.4/quill.js"></script>
     <script src="/assets/js/image-resize.min.js"></script>
     <script>
-        var toolbarOptions = [[{'font': []}], [{'size': ['small', false, 'large', 'huge']}], [{'align': []}, {'list': 'ordered'}, {'list': 'bullet'}], ['bold', 'italic'], ['link', 'image']];
-        var quill = new Quill('#editor', {
-            theme: 'snow',
-            modules: {
-                imageResize: {modules: ['Resize']},
-                toolbar: toolbarOptions
+        $(document).ready(function () {
+            var valueSelected = {{ firstNews.IdNews }};
+            var toolbarOptions = [[{'font': []}], [{'size': ['small', false, 'large', 'huge']}], [{'align': []}, {'list': 'ordered'}, {'list': 'bullet'}], ['bold', 'italic', 'underline', 'strike'], [{'color': []}], ['link', 'image'], ['clean']];
+            var quill = new Quill('#editor', {
+                theme: 'snow',
+                modules: {
+                    imageResize: {modules: ['Resize']},
+                    toolbar: toolbarOptions
+                }
+            });
+            var modifiedNews = new Quill('#modifNews', {
+                theme: 'snow',
+                modules: {
+                    imageResize: {modules: ['Resize']},
+                    toolbar: toolbarOptions
+                }
+            });
+            //Première news pour modification
+            modifiedNews.setContents({{ firstNews.Description | raw }});
+            $('#modifTitre').val("{{ firstNews.NomEvenement }}");
+
+            {% for name in newsNames %}
+            $("#selectName").append(new Option("{{ name['nomEvenement'] }}",{{ name['idNews'] }}));
+            {% endfor %}
+
+            $('#selectName').change(function () {
+                $("#rolling").css("visibility","hidden");
+                valueSelected = $("#selectName")[0].value;
+                var request = $.ajax({
+                    url: "/api/getnews.php",
+                    method: "GET",
+                    data: {idNews: valueSelected},
+                    contentType: "application/json; charset=utf-8"
+                });
+
+                request.done(function (res) {
+                    modifiedNews.setContents(JSON.parse(res.description));
+                    $('#modifTitre').val(res.title);
+
+                });
+
+                request.fail(function (jqXHR, textStatus) {
+                    alert("Erreur veuillez reseiller");
+                });
+            });
+
+
+            document.forms["sendNews"].onsubmit = function () {
+                send = true;
+                title =  warningTitle($('#modifTitre'), $('.mod'));
+                description =  warningDescripition(modifiedNews, $('.warning-mod'), $('.mod'));
+                send = title && description;
+                if(send!= false) {
+                    $("#rolling").prop("src", "../../assets/img/rolling.gif");
+                    $("#rolling").css("visibility", "visible");
+                    $("button").prop('disabled', true);
+
+                    varToSendModified = modifiedNews.getContents();
+                    varToSendModified = JSON.stringify(varToSendModified);
+                    $("#descriptionModified").attr("value", varToSendModified);
+
+
+                    var requestModified = $.ajax({
+                        url: "/api/updatenews.php",
+                        method: "POST",
+                        data: {idNews: valueSelected, description: varToSendModified, title: $("#modifTitre")[0].value},
+                    });
+
+                    requestModified.done(function (res) {
+
+                        $("#rolling").prop("src", "../../assets/img/check.png");
+                        $("button").prop('disabled', false);
+                        //Permet de mettre a jour le nom de la news dans le select
+                        $("option[value~='" + valueSelected + "']").text($("#modifTitre")[0].value);
+
+                    });
+
+                    requestModified.fail(function (jqXHR, textStatus) {
+                        $("#rolling").prop("src", "../../assets/img/wrong.png");
+                        $("#rolling").css("visibility", "visible");
+                        $("button").prop('disabled', false);
+                    });
+                }
+                return false;
+            };
+            document.forms["addNews"].onsubmit = function () {
+                send = true;
+                title =  warningTitle($('#titre'), $('.add'));
+                description =  warningDescripition(quill, $('.warning'), $('.add'));
+                send = title && description;
+                if(send != false) {
+                    //récuperation du contenue
+                    varToSend = quill.getContents();
+                    varToSend = JSON.stringify(varToSend);
+
+                    //modification de se que l'on envoie
+                    $("#description").attr("value", varToSend);
+                }
+                return send;
             }
+
         });
-
-        document.forms["addNews"].onsubmit = function () {
-            //récuperation du contenue
-            varToSend = quill.getContents();
-            varToSend = JSON.stringify(varToSend);
-
-            //modification de se que l'on envoie
-            $("#description").attr("value", varToSend);
-
+        function warningDescripition(quill, warningClass, textWarning) {
             if (quill.getLength() == 1) {
-                $('.warning').addClass("border border-warning p-2 ");
-                $('.text-warning').addClass("d-block p-1");
+                warningClass.addClass("border border-warning p-2 ");
+                textWarning.addClass("d-block p-1");
                 return false;
-            }
-            if ($('#titre').val() == "") {
-                $('#titre').addClass("border border-warning p-2 ");
-                $('.text-warning').addClass("d-block p-1");
-                return false;
+            }else{
+                warningClass.removeClass("border border-warning p-2");
+                return true
             }
         }
+        function warningTitle(warningClass, textWarning) {
+            if (warningClass.val() == "") {
+                warningClass.addClass("border border-warning p-2");
+                textWarning.addClass("d-block p-1");
+                return false;
+            }else{
+                warningClass.removeClass("border border-warning p-2");
+                return true;
+            }
+
+        }
+
     </script>
 {% endblock %}

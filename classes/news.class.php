@@ -152,16 +152,15 @@ SQL
 			$stmt->execute();
 			$news = $stmt->fetchAll();
 
-
 			for ($i = 0; $i < count($news); $i++) {
 				$value = json_decode($news[$i]->getDescription(), true);
 				$n = 0;
-				if(!is_array($value['ops'][$n]['insert'])) {
+				if (!is_array($value['ops'][$n]['insert'])) {
 					while (strlen($value['ops'][$n]['insert']) == 1) {
 						$n++;
 					}
 					$news[$i]->setDescription(substr($value['ops'][$n]['insert'], 0) . "...");
-				}else{
+				} else {
 					$news[$i]->setDescription("Images" . "...");
 				}
 			}
@@ -199,7 +198,7 @@ SQL
 	}
 
 	/**
-	 * Insert une nexs
+	 * Insert une news
 	 * @param $idSecretaire id du secretaire qui insére la news
 	 * @param $title  titre de la new
 	 * @param $description contenue de la new
@@ -221,6 +220,39 @@ SQL
 		} else {
 			return true;
 		}
+	}
+
+	/**
+	 * Permet d'obtenir le nom et l'id chaque news classer par ordre d'édition
+	 * @return mixed
+	 */
+	public static function getNewsNames() {
+		$stmt = myPDO::getInstance()->prepare(<<<SQL
+		SELECT idNews, nomEvenement, datePublication
+		FROM News
+		ORDER BY datePublication DESC ;
+SQL
+		);
+		$stmt->setFetchMode(PDO::FETCH_ASSOC);
+		$stmt->execute();
+		return $stmt->fetchAll();
+	}
+
+	/**
+	 * Permet de mettre a jour un news dans la BD en fonction de son id
+	 * @param $idNews
+	 * @param $title
+	 * @param $description
+	 * @return true si l'update c'est bien passé
+	 */
+	public static function updateNews($idNews, $title, $description) {
+		$stmt = myPDO::getInstance()->prepare(<<<SQL
+			UPDATE News SET nomEvenement = ? , description = ?
+			WHERE idNews = ? 
+SQL
+		);
+
+		return $stmt->execute(array($title, $description, $idNews));
 	}
 }
 

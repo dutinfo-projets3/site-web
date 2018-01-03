@@ -17,15 +17,17 @@ if (!Utilisateur::isConnected() || !$user->getUserType() == Utilisateur::TYPES['
 	header('Location: /');
 	return;
 }
+$newsName = News::getNewsNames();
+$firstNews = News::createFromID($newsName[0]['idNews']);
 $success = false;
 
 if(isset($_POST["titre"]) && isset($_POST["description"])){
 	try {
+
 		$success = News::insertIntoBD($user->getID(), $_POST["titre"], $_POST["description"]);
 	}
 	catch(Exception $e){
-
+		var_dump($e->getMessage());
 	}
-
 }
-echo TwigLoader::getInstance()->render('', 'perso/editnew', array('success' => $success));
+echo TwigLoader::getInstance()->render('', 'perso/editnew', array('success' => $success, 'newsNames' => $newsName, 'firstNews' => $firstNews));
