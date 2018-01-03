@@ -1,19 +1,21 @@
 {% extends 'template.html.twig' %}
 
+{% block titlepage %} "__home.legalNotice.title__" {% endblock %}
+
 {% block content %}
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
-			<h1>Mentions Légales</h1>
-			<h4>Adresse Postale</h4>
-			<p>Université PanAfricaine Institut de l’Université PanAfricaine pour l’Eau et l’Energie (y compris le changement climatique) – PAUWES A l’Université de Tlemcen B.P. 119 13000 Tlemcen Algérie </p>
+			<h1>"__home.legalNotice.firstTitle__"</h1>
+			<h4>"__home.legalNotice.secondTitle__"</h4>
+			<p>"__home.legalNotice.address__" </p>
 			<h4>Email</h4>
-			<ul><li><a>contact@pauwes.univ-tlemcen.dz</a></li></ul>
+			<li> <a href="contact@pauwes.univ-tlemcen.dz"> </a> </li>
 			<ul>
-				<li>Edité par : PAUWES et GIZ</li>
+				<li>"__home.legalNotice.edited__" PAUWES, GIZ</li>
 				<li>Design : DUT Informatique</li>
-				<li>Programmation : DUT Informatique</li>
-				<li>Texte : Regine Kreitz, Ellen Thalman</li>
-				<li>Crédits photo : Tlemcen University, Mr Hefhaf/Tlemcen University, Michael Gajo/GIZ, michaeljung/Fotolia, paulmz/Fotolia, Piotr Pakuła/Fotolia, Zurijeta/Shutterstock, john michael evan potter/Shutterstock, PhotoSky/Shutterstock, bikeriderinlondon/Shutterstock, Tyler Olson/Shutterstock</li>
+				<li>"__home.legalNotice.prog__" :DUT Informatique</li>
+				<li>"__home.legalNotice.text__" Regine Kreitz, Ellen Thalman</li>
+				<li>"__home.legalNotice.photoCred__" Tlemcen University, Mr Hefhaf/Tlemcen University, Michael Gajo/GIZ, michaeljung/Fotolia, paulmz/Fotolia, Piotr Pakuła/Fotolia, Zurijeta/Shutterstock, john michael evan potter/Shutterstock, PhotoSky/Shutterstock, bikeriderinlondon/Shutterstock, Tyler Olson/Shutterstock</li>
 			</ul>
 		</div>
 	</div>

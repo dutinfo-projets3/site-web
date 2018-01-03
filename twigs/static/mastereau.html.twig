@@ -1,18 +1,14 @@
 {% extends 'template.html.twig' %}
 
+{% block titlepage %} "__home.masterEau.title__" {% endblock %}
+
 {% block content %}
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
-			<h1>Master de Science (MSc) de l'Eau</h1>
+			<h1>"__home.masterEau.firstTitle__"</h1>
 			<img src="/assets/img/mastereau.gif">
-			<p><a href="http://pauwes.univ-tlemcen.dz/wp-content/uploads/2014/03/PAUWES_curriculum_MSc-Water.pdf">Download</a> the Curriculum Master of Science in Water as an PDF-Document.</p>
+			<p><a href="http://pauwes.univ-tlemcen.dz/wp-content/uploads/2014/03/PAUWES_curriculum_MSc-Water.pdf">"__home.masterEau.dl__"</a>"__home.masterEau.Curriculum__"</p>
 		</div>
 	</div>
 
-{% endblock %}
-
-{% block javascript %}
-$('.carousel').carousel({
-  interval: 4000
-})
 {% endblock %}

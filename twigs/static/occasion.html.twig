@@ -1,5 +1,7 @@
 {% extends 'template.html.twig' %}
 
+{% block titlepage %} "__home.occasion.title__" {% endblock %}
+
 {% block content %}
 	<div class="row">
 		<div class="col-md-8 col-md-offset-2">
@@ -7,10 +9,4 @@
 		</div>
 	</div>
 
-{% endblock %}
-
-{% block javascript %}
-$('.carousel').carousel({
-  interval: 4000
-})
 {% endblock %}

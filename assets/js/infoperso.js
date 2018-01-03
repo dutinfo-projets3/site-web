@@ -102,6 +102,12 @@ function toggleForm(showFields, invert){
 
 function cancel(){
 	toggleForm(false, true);
+
+	for (var a in elements){
+		elements[a].wrong.addClass("d-none");
+		elements[a].wrong.removeClass("d-flex");
+	}
+
 	bt2.unbind("click").click(showFields);
 }
 
@@ -146,32 +152,38 @@ function validate(){
 	// Faire la requête ajax
 	loader.show();
 	$.ajax({
-			type: "GET",
-			url: "/api/updateinfo.php",
-			data: userInfo,
-			error: function(event, jqXHR, ajaxSettings, thrownError) { 
-				console.log(thrownError);
-				errormsg.show();
-				loader.hide();
-				bt2.prop("disabled", false);
-			},
-			success: function(msg){ 
-				loader.hide();
-				toggleForm(false, false);
-				bt2.unbind("click").click(showFields);
-				bt2.prop("disabled", false);
-				userInfo["mdp"] = "";
-			}
+		type: "GET",
+		url: "/api/updateinfo.php",
+		data: userInfo,
+		error: function(event, jqXHR, ajaxSettings, thrownError) { 
+			console.log(thrownError);
+			errormsg.show();
+			loader.hide();
+			bt2.prop("disabled", false);
+		},
+		success: function(msg){ 
+			loader.hide();
+			toggleForm(false, false);
+			bt2.unbind("click").click(showFields);
+			bt2.prop("disabled", false);
+			userInfo["mdp"] = "";
 		}
+	}
 	);
 }
 
 bt1.click(cancel);
 bt2.click(showFields);
 
-for (var k in elements){
-	elements[k].text.text(userInfo[k]);
-	elements[k].isValid = validateOneField(k);
+function setUserInfo(ui){
+	userInfo = ui;
+	for (var k in elements){
+		elements[k].text.text(userInfo[k]);
+		elements[k].field.val(userInfo[k]);
+		elements[k].isValid = validateOneField(k);
+	}
+
+	$("#userpicture").attr("src", "/api/getuserpic.php?name=" + userInfo.username + "&ts=" + new Date().getTime());
 }
 
 validateMdp = function() {
@@ -210,7 +222,7 @@ uploader.get(0).onchange = function(){
 
 		$.ajax({
 			type: 'POST',
-			url: '/api/updatepic.php',
+			url: '/api/updatepic.php?name=' + userInfo.username,
 			data: fd,
 			processData: false,
 			contentType: false,
@@ -223,7 +235,7 @@ uploader.get(0).onchange = function(){
 				$("#erreurimg").removeClass("d-none");
 				$("#erreurimg").addClass("d-block");
 			}
-		});
+			});
 	} else if (file.size > 2000000){
 		$("#tropgros").removeClass("d-none");
 		$("#tropgros").addClass("d-block");

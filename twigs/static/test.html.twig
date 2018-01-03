@@ -2,11 +2,12 @@
 
 {% block content %}
 
-	<div class="row">
-		<table class="calendar table table-dark table-hover table-responsive text-center">
+	<div class="mt-5 row">
+
+		<table class="col-12 col-lg-10 offset-lg-1 text-center table table-dark" style="display: overflow;">
 			<thead>
 				<tr>
-					<th scope="col">Semaine du <br /> 11/12/17</th><!-- @TODO: Trouver une solution propre -->
+					<th scope="col">#</th>
 					<th scope="col">Lundi</th>
 					<th scope="col">Mardi</th>
 					<th scope="col">Mercredi</th>
@@ -15,32 +16,33 @@
 					<th scope="col">Samedi</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody id="cald">
 			</tbody>
 		</table>
+
 	</div>
 
 {% endblock %}
 
 {% block javascript %}
-	var cal = document.getElementsByClassName("calendar")[0];
-	var crp = cal.getElementsByTagName("tbody")[0];
-	for (i = 8; i < 18; i++){
-		var currRow = document.createElement("tr");
+	var cal = document.getElementById("cald");
 
-		var hd = document.createElement("th");
-		hd.setAttribute("scope", "col");
-		hd.innerText = i + "h-"+ (i+1) + "h";
-		currRow.appendChild(hd);
+	for (i = 8; i <= 17; i++){
+		var tr = document.createElement("tr");
+		var th = document.createElement("th")
+		th.setAttribute("scope", "row");
+		th.innerText = i + "h - " + (i+1) + "h";
 
-		/** Ajout d'un cours **/
+		tr.appendChild(th);
+
 		for (j = 0; j < 6; j++){
-			var cr = document.createElement("td");
-			cr.innerText = "Cours" + i + "/" + j;
-			currRow.appendChild(cr);
+			a = document.createElement("td");
+			a.innerText = "Cours" + i +"/" +j;
+	  		tr.appendChild(a);
 		}
 
-	 	crp.appendChild(currRow);
+	 	cal.appendChild(tr);
 	}
+
 {% endblock %}
 

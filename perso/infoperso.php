@@ -9,11 +9,21 @@ if (!Utilisateur::isConnected()){
 
 $isme = false;
 
-if (isset($_GET["user"]) && !empty($_GET["user"]) && Utilisateur::createFromSession()->getUserType() == Utilisateur::TYPES["ADMINISTRATION"]) {
+$params = array();
+
+$isAdmin = Utilisateur::createFromSession()->getUserType() == Utilisateur::TYPES["ADMINISTRATION"];
+
+if ($isAdmin && isset($_GET["multiple"]) && !empty($_GET["multiple"])){
+	$params["userList"] = Utilisateur::createList();
+}
+
+if (isset($_GET["user"]) && !empty($_GET["user"]) && $isAdmin) {
 	$user = Utilisateur::createFromID($_GET["user"]);
 } else {
 	$user = Utilisateur::createFromSession();
 	$isme = true;
 }
+$params["isme"] = $isme;
+$params["user"] = $user;
 
-echo TwigLoader::getInstance()->render('', 'perso/infoperso', array("isme" => $isme, "user" => $user));
+echo TwigLoader::getInstance()->render('', 'perso/infoperso', $params);

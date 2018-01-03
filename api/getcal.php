@@ -1,0 +1,5063 @@
+<?php
+header("Content-Type: text/calandar");
+echo <<<CAL
+BEGIN:VCALENDAR
+METHOD:PUBLISH
+PRODID:-//agenda.univ-reims.fr//NONSGML CreateICSFiles//FR
+VERSION:2.0
+X-WR-CALNAME: URCA-Mescours_janc0001
+BEGIN:VTIMEZONE
+TZID:Europe/Paris
+BEGIN:DAYLIGHT
+TZOFFSETFROM:+0100
+TZOFFSETTO:+0200
+TZNAME:CEST
+DTSTART:19700329T020000
+RRULE:FREQ=YEARLY;BYDAY=-1SU;BYMONTH=3
+END:DAYLIGHT
+BEGIN:STANDARD
+TZOFFSETFROM:+0200
+TZOFFSETTO:+0100
+TZNAME:CET
+DTSTART:19701025T030000
+RRULE:FREQ=YEARLY;BYDAY=-1SU;BYMONTH=10
+END:STANDARD
+END:VTIMEZONE
+BEGIN:VEVENT
+UID:105394-1759131782
+DTSTAMP:20170907T101500Z
+ORGANIZER:mailto:no-reply@univ-reims.fr
+DTSTART:20170907T101500
+DTEND:20170907T111500
+SUMMARY:CM M3102 Services réseaux
+DESCRIPTION:CM M3102 Services réseaux\n[groupe] INFS3\n[enseignant] ARGANINI Gregory\n[salle] 05_A2_Amphi (IUT de Reims)
+LOCATION:[salle] 05_A2_Amphi (IUT de Reims)
+END:VEVENT
+BEGIN:VEVENT
+UID:105394-1759131783
+DTSTAMP:20170915T101500Z
+ORGANIZER:mailto:no-reply@univ-reims.fr
+DTSTART:20170915T101500
+DTEND:20170915T111500
+SUMMARY:CM M3204 Gestion syst inform
+DESCRIPTION:CM M3204 Gestion syst inform\n[groupe] INFS3\n[enseignant] ESCUYER Gilles\n[salle] 05_A2_Amphi (IUT de Reims)
+LOCATION:[salle] 05_A2_Amphi (IUT de Reims)
+END:VEVENT
+BEGIN:VEVENT
+UID:105394-1759131784
+DTSTAMP:20170922T101500Z
+ORGANIZER:mailto:no-reply@univ-reims.fr
+DTSTART:20170922T101500
+DTEND:20170922T111500
+SUMMARY:CM M3204 Gestion syst inform
+DESCRIPTION:CM M3204 Gestion syst inform\n[groupe] INFS3\n[enseignant] ESCUYER Gilles\n[salle] 05_A2_Amphi (IUT de Reims)
+LOCATION:[salle] 05_A2_Amphi (IUT de Reims)
+END:VEVENT
+BEGIN:VEVENT
+UID:105394-1759131785
+DTSTAMP:20170929T101500Z
+ORGANIZER:mailto:no-reply@univ-reims.fr
+DTSTART:20170929T101500
+DTEND:20170929T111500
+SUMMARY:CM M3204 Gestion syst inform
+DESCRIPTION:CM M3204 Gestion syst inform\n[groupe] INFS3\n[enseignant] ESCUYER Gilles\n[salle] 05_A2_Amphi (IUT de Reims)
+LOCATION:[salle] 05_A2_Amphi (IUT de Reims)
+END:VEVENT
+BEGIN:VEVENT
+UID:105394-1759131786
+DTSTAMP:20171006T101500Z
+ORGANIZER:mailto:no-reply@univ-reims.fr
+DTSTART:20171006T101500
+DTEND:20171006T111500
+SUMMARY:CM M3204 Gestion syst inform
+DESCRIPTION:CM M3204 Gestion syst inform\n[groupe] INFS3\n[enseignant] ESCUYER Gilles\n[salle] 05_A2_Amphi (IUT de Reims)
+LOCATION:[salle] 05_A2_Amphi (IUT de Reims)
+END:VEVENT
+BEGIN:VEVENT
+UID:105394-1759131787
+DTSTAMP:20171013T101500Z
+ORGANIZER:mailto:no-reply@univ-reims.fr
+DTSTART:20171013T101500
+DTEND:20171013T111500
+SUMMARY:CM M3204 Gestion syst inform
+DESCRIPTION:CM M3204 Gestion syst inform\n[groupe] INFS3\n[enseignant] ESCUYER Gilles\n[salle] 05_A2_Amphi (IUT de Reims)
+LOCATION:[salle] 05_A2_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+UID:105394-1759131788
+DTSTAMP:20171020T101500Z
+ORGANIZER:mailto:no-reply@univ-reims.fr
+DTSTART:20171020T101500
+DTEND:20171020T111500
+SUMMARY:CM M3204 Gestion syst inform
+DESCRIPTION:CM M3204 Gestion syst inform\n[groupe] INFS3\n[enseignant] ESCUYER Gilles\n[salle] 05_A2_Amphi (IUT de Reims)
+LOCATION:[salle] 05_A2_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131789
+
+DTSTAMP:20171027T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171027T101500
+
+DTEND:20171027T111500
+
+SUMMARY:CM M3204 Gestion syst inform
+
+DESCRIPTION:CM M3204 Gestion syst inform\n[groupe] INFS3\n[enseignant] ESCUYER Gilles\n[salle] 05_A2_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_A2_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131790
+
+DTSTAMP:20171027T111500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171027T111500
+
+DTEND:20171027T121500
+
+SUMMARY:CM M3106C1 Base program C++
+
+DESCRIPTION:CM M3106C1 Base program C++\n[groupe] INFS3_1
+
+ INFS3_2\n[enseignant] ROMANIUK Barbara\n[salle] 05_A2_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_A2_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131791
+
+DTSTAMP:20171110T111500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171110T111500
+
+DTEND:20171110T121500
+
+SUMMARY:CM M3106C1 Base program C++
+
+DESCRIPTION:CM M3106C1 Base program C++\n[groupe] INFS3_1
+
+ INFS3_2\n[enseignant] ROMANIUK Barbara\n[salle] 05_A2_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_A2_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131792
+
+DTSTAMP:20170915T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170915T133000
+
+DTEND:20170915T153000
+
+SUMMARY:TD M3201 Probabilités stats
+
+DESCRIPTION:TD M3201 Probabilités stats\n[groupe] INFS3_1\n[enseignant] ROUYER Julien\n[salle] 05_U33 (IUT de Reims)\n[notes] ROUYER Julien
+
+LOCATION:[salle] 05_U33 (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131793
+
+DTSTAMP:20170922T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170922T133000
+
+DTEND:20170922T153000
+
+SUMMARY:TD M3201 Probabilités stats
+
+DESCRIPTION:TD M3201 Probabilités stats\n[groupe] INFS3_1\n[enseignant] ROUYER Julien\n[salle] 05_U33 (IUT de Reims)\n[notes] ROUYER Julien
+
+LOCATION:[salle] 05_U33 (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131794
+
+DTSTAMP:20170929T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170929T133000
+
+DTEND:20170929T153000
+
+SUMMARY:TD M3201 Probabilités stats
+
+DESCRIPTION:TD M3201 Probabilités stats\n[groupe] INFS3_1\n[enseignant] ROUYER Julien\n[salle] 05_U33 (IUT de Reims)\n[notes] ROUYER Julien
+
+LOCATION:[salle] 05_U33 (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131795
+
+DTSTAMP:20171006T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171006T133000
+
+DTEND:20171006T153000
+
+SUMMARY:TD M3201 Probabilités stats
+
+DESCRIPTION:TD M3201 Probabilités stats\n[groupe] INFS3_1\n[enseignant] ROUYER Julien\n[salle] 05_U33 (IUT de Reims)\n[notes] ROUYER Julien
+
+LOCATION:[salle] 05_U33 (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131796
+
+DTSTAMP:20171013T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171013T133000
+
+DTEND:20171013T153000
+
+SUMMARY:TD M3201 Probabilités stats
+
+DESCRIPTION:TD M3201 Probabilités stats\n[groupe] INFS3_1\n[enseignant] ROUYER Julien\n[salle] 05_U33 (IUT de Reims)\n[notes] ROUYER Julien
+
+LOCATION:[salle] 05_U33 (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131797
+
+DTSTAMP:20171020T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171020T133000
+
+DTEND:20171020T153000
+
+SUMMARY:TD M3201 Probabilités stats
+
+DESCRIPTION:TD M3201 Probabilités stats\n[groupe] INFS3_1\n[enseignant] ROUYER Julien\n[salle] 05_U33 (IUT de Reims)\n[notes] ROUYER Julien
+
+LOCATION:[salle] 05_U33 (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131798
+
+DTSTAMP:20171027T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171027T133000
+
+DTEND:20171027T153000
+
+SUMMARY:TD M3201 Probabilités stats
+
+DESCRIPTION:TD M3201 Probabilités stats\n[groupe] INFS3_1\n[enseignant] ROUYER Julien\n[salle] 05_U33 (IUT de Reims)\n[notes] ROUYER Julien
+
+LOCATION:[salle] 05_U33 (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131799
+
+DTSTAMP:20171110T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171110T133000
+
+DTEND:20171110T153000
+
+SUMMARY:TD M3201 Probabilités stats
+
+DESCRIPTION:TD M3201 Probabilités stats\n[groupe] INFS3_1\n[enseignant] ROUYER Julien\n[salle] 05_U33 (IUT de Reims)\n[notes] ROUYER Julien
+
+LOCATION:[salle] 05_U33 (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131800
+
+DTSTAMP:20170913T160000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170913T160000
+
+DTEND:20170913T180000
+
+SUMMARY:TP M3104 Program Web serveur
+
+DESCRIPTION:TP M3104 Program Web serveur\n[groupe] INFS3_1A\n[enseignant] WINCKLER Michael\n[salle] 05_U12_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U12_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131801
+
+DTSTAMP:20170920T160000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170920T160000
+
+DTEND:20170920T180000
+
+SUMMARY:TP M3104 Program Web serveur
+
+DESCRIPTION:TP M3104 Program Web serveur\n[groupe] INFS3_1A\n[enseignant] WINCKLER Michael\n[salle] 05_U12_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U12_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131802
+
+DTSTAMP:20170927T160000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170927T160000
+
+DTEND:20170927T180000
+
+SUMMARY:TP M3104 Program Web serveur
+
+DESCRIPTION:TP M3104 Program Web serveur\n[groupe] INFS3_1A\n[enseignant] WINCKLER Michael\n[salle] 05_U12_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U12_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131803
+
+DTSTAMP:20171004T160000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171004T160000
+
+DTEND:20171004T180000
+
+SUMMARY:TP M3104 Program Web serveur
+
+DESCRIPTION:TP M3104 Program Web serveur\n[groupe] INFS3_1A\n[enseignant] WINCKLER Michael\n[salle] 05_U12_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U12_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131804
+
+DTSTAMP:20171011T160000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171011T160000
+
+DTEND:20171011T180000
+
+SUMMARY:TP M3104 Program Web serveur
+
+DESCRIPTION:TP M3104 Program Web serveur\n[groupe] INFS3_1A\n[enseignant] WINCKLER Michael\n[salle] 05_U12_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U12_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131805
+
+DTSTAMP:20171018T160000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171018T160000
+
+DTEND:20171018T180000
+
+SUMMARY:TP M3104 Program Web serveur
+
+DESCRIPTION:TP M3104 Program Web serveur\n[groupe] INFS3_1A\n[enseignant] WINCKLER Michael\n[salle] 05_U12_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U12_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131806
+
+DTSTAMP:20171025T160000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171025T160000
+
+DTEND:20171025T180000
+
+SUMMARY:TP M3104 Program Web serveur
+
+DESCRIPTION:TP M3104 Program Web serveur\n[groupe] INFS3_1A\n[enseignant] WINCKLER Michael\n[salle] 05_U12_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U12_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131807
+
+DTSTAMP:20171108T160000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171108T160000
+
+DTEND:20171108T180000
+
+SUMMARY:TP M3104 Program Web serveur
+
+DESCRIPTION:TP M3104 Program Web serveur\n[groupe] INFS3_1A\n[enseignant] WINCKLER Michael\n[salle] 05_U12_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U12_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131808
+
+DTSTAMP:20171118T100000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171118T100000
+
+DTEND:20171118T120000
+
+SUMMARY:TP M3104 Program Web serveur
+
+DESCRIPTION:TP M3104 Program Web serveur\n[groupe] INFS3_1A\n[enseignant] WINCKLER Michael\n[salle] 05_U01M_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U01M_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131809
+
+DTSTAMP:20171125T100000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171125T100000
+
+DTEND:20171125T120000
+
+SUMMARY:TP M3104 Program Web serveur
+
+DESCRIPTION:TP M3104 Program Web serveur\n[groupe] INFS3_1A\n[enseignant] WINCKLER Michael\n[salle] 05_U01M_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U01M_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131810
+
+DTSTAMP:20171202T100000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171202T100000
+
+DTEND:20171202T120000
+
+SUMMARY:TP M3104 Program Web serveur
+
+DESCRIPTION:TP M3104 Program Web serveur\n[groupe] INFS3_1A\n[enseignant] WINCKLER Michael\n[salle] 05_U01M_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U01M_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131811
+
+DTSTAMP:20171209T100000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171209T100000
+
+DTEND:20171209T120000
+
+SUMMARY:TP M3104 Program Web serveur
+
+DESCRIPTION:TP M3104 Program Web serveur\n[groupe] INFS3_1A\n[enseignant] WINCKLER Michael\n[salle] 05_U01M_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U01M_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131812
+
+DTSTAMP:20171216T100000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171216T100000
+
+DTEND:20171216T120000
+
+SUMMARY:TP M3104 Program Web serveur
+
+DESCRIPTION:TP M3104 Program Web serveur\n[groupe] INFS3_1A\n[enseignant] WINCKLER Michael\n[salle] 05_U01M_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U01M_Info (IUT de Reims)
+BEGIN:VALARM
+
+ACTION:DISPLAY
+
+TRIGGER;VALUE=DURATION:-PT15M
+
+DESCRIPTION:Votre Ã©vÃ©nement dÃ©bute dans 15 minutes.
+
+END:VALARM
+
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131813
+
+DTSTAMP:20171223T100000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171223T100000
+
+DTEND:20171223T120000
+
+SUMMARY:TP M3104 Program Web serveur
+
+DESCRIPTION:TP M3104 Program Web serveur\n[groupe] INFS3_1A\n[enseignant] WINCKLER Michael\n[salle] 05_U01M_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U01M_Info (IUT de Reims)
+BEGIN:VALARM
+
+ACTION:DISPLAY
+
+TRIGGER;VALUE=DURATION:-PT15M
+
+DESCRIPTION:Votre Ã©vÃ©nement dÃ©bute dans 15 minutes.
+
+END:VALARM
+
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131814
+
+DTSTAMP:20171118T080000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171118T080000
+
+DTEND:20171118T100000
+
+SUMMARY:TP M3201 Probabilités stats
+
+DESCRIPTION:TP M3201 Probabilités stats\n[groupe] INFS3_1A\n[enseignant] ROUYER Julien\n[salle] 05_U00M_Info (IUT de Reims)\n[notes] ROUYER Julien
+
+LOCATION:[salle] 05_U00M_Info (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131815
+
+DTSTAMP:20171125T080000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171125T080000
+
+DTEND:20171125T100000
+
+SUMMARY:TP M3201 Probabilités stats
+
+DESCRIPTION:TP M3201 Probabilités stats\n[groupe] INFS3_1A\n[enseignant] ROUYER Julien\n[salle] 05_U00M_Info (IUT de Reims)\n[notes] ROUYER Julien
+
+LOCATION:[salle] 05_U00M_Info (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131816
+
+DTSTAMP:20171202T080000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171202T080000
+
+DTEND:20171202T100000
+
+SUMMARY:TP M3201 Probabilités stats
+
+DESCRIPTION:TP M3201 Probabilités stats\n[groupe] INFS3_1A\n[enseignant] ROUYER Julien\n[salle] 05_U00M_Info (IUT de Reims)\n[notes] ROUYER Julien
+
+LOCATION:[salle] 05_U00M_Info (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131817
+
+DTSTAMP:20171209T080000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171209T080000
+
+DTEND:20171209T100000
+
+SUMMARY:TP M3201 Probabilités stats
+
+DESCRIPTION:TP M3201 Probabilités stats\n[groupe] INFS3_1A\n[enseignant] ROUYER Julien\n[salle] 05_U00M_Info (IUT de Reims)\n[notes] ROUYER Julien
+
+LOCATION:[salle] 05_U00M_Info (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131818
+
+DTSTAMP:20171216T080000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171216T080000
+
+DTEND:20171216T100000
+
+SUMMARY:TP M3201 Probabilités stats
+
+DESCRIPTION:TP M3201 Probabilités stats\n[groupe] INFS3_1A\n[enseignant] ROUYER Julien\n[salle] 05_U00M_Info (IUT de Reims)\n[notes] ROUYER Julien
+
+LOCATION:[salle] 05_U00M_Info (IUT de Reims)\
+BEGIN:VALARM
+
+ACTION:DISPLAY
+
+TRIGGER;VALUE=DURATION:-PT15M
+
+DESCRIPTION:Votre Ã©vÃ©nement dÃ©bute dans 15 minutes.
+
+END:VALARM
+
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131819
+
+DTSTAMP:20171223T080000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171223T080000
+
+DTEND:20171223T100000
+
+SUMMARY:TP M3201 Probabilités stats
+
+DESCRIPTION:TP M3201 Probabilités stats\n[groupe] INFS3_1A\n[enseignant] ROUYER Julien\n[salle] 05_U00M_Info (IUT de Reims)\n[notes] ROUYER Julien
+
+LOCATION:[salle] 05_U00M_Info (IUT de Reims)\
+BEGIN:VALARM
+
+ACTION:DISPLAY
+
+TRIGGER;VALUE=DURATION:-PT15M
+
+DESCRIPTION:Votre Ã©vÃ©nement dÃ©bute dans 15 minutes.
+
+END:VALARM
+
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131820
+
+DTSTAMP:20171116T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171116T081500
+
+DTEND:20171116T101500
+
+SUMMARY:TP M3101 Princip syst exploi
+
+DESCRIPTION:TP M3101 Princip syst exploi\n[groupe] INFS3_1A\n[enseignant] VAUTROT Philippe\n[salle] 05_U01M_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U01M_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131821
+
+DTSTAMP:20171123T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171123T081500
+
+DTEND:20171123T101500
+
+SUMMARY:TP M3101 Princip syst exploi
+
+DESCRIPTION:TP M3101 Princip syst exploi\n[groupe] INFS3_1A\n[enseignant] VAUTROT Philippe\n[salle] 05_U01M_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U01M_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131822
+
+DTSTAMP:20171130T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171130T081500
+
+DTEND:20171130T101500
+
+SUMMARY:TP M3101 Princip syst exploi
+
+DESCRIPTION:TP M3101 Princip syst exploi\n[groupe] INFS3_1A\n[enseignant] VAUTROT Philippe\n[salle] 05_U01M_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U01M_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131823
+
+DTSTAMP:20171207T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171207T081500
+
+DTEND:20171207T101500
+
+SUMMARY:TP M3101 Princip syst exploi
+
+DESCRIPTION:TP M3101 Princip syst exploi\n[groupe] INFS3_1A\n[enseignant] VAUTROT Philippe\n[salle] 05_U01M_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U01M_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131824
+
+DTSTAMP:20171214T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171214T081500
+
+DTEND:20171214T101500
+
+SUMMARY:TP M3101 Princip syst exploi
+
+DESCRIPTION:TP M3101 Princip syst exploi\n[groupe] INFS3_1A\n[enseignant] VAUTROT Philippe\n[salle] 05_U01M_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U01M_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131825
+
+DTSTAMP:20171221T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171221T081500
+
+DTEND:20171221T101500
+
+SUMMARY:TP M3101 Princip syst exploi
+
+DESCRIPTION:TP M3101 Princip syst exploi\n[groupe] INFS3_1A\n[enseignant] VAUTROT Philippe\n[salle] 05_U01M_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U01M_Info (IUT de Reims)
+BEGIN:VALARM
+
+ACTION:DISPLAY
+
+TRIGGER;VALUE=DURATION:-PT15M
+
+DESCRIPTION:Votre Ã©vÃ©nement dÃ©bute dans 15 minutes.
+
+END:VALARM
+
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131826
+
+DTSTAMP:20171114T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171114T081500
+
+DTEND:20171114T101500
+
+SUMMARY:TP M3101 Princip syst exploi
+
+DESCRIPTION:TP M3101 Princip syst exploi\n[groupe] INFS3_1A\n[enseignant] VAUTROT Philippe\n[salle] 05_U14_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U14_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131827
+
+DTSTAMP:20171121T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171121T081500
+
+DTEND:20171121T101500
+
+SUMMARY:TP M3101 Princip syst exploi
+
+DESCRIPTION:TP M3101 Princip syst exploi\n[groupe] INFS3_1A\n[enseignant] VAUTROT Philippe\n[salle] 05_U14_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U14_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131828
+
+DTSTAMP:20171128T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171128T081500
+
+DTEND:20171128T101500
+
+SUMMARY:TP M3101 Princip syst exploi
+
+DESCRIPTION:TP M3101 Princip syst exploi\n[groupe] INFS3_1A\n[enseignant] VAUTROT Philippe\n[salle] 05_U14_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U14_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131829
+
+DTSTAMP:20171205T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171205T081500
+
+DTEND:20171205T101500
+
+SUMMARY:TP M3101 Princip syst exploi
+
+DESCRIPTION:TP M3101 Princip syst exploi\n[groupe] INFS3_1A\n[enseignant] VAUTROT Philippe\n[salle] 05_U14_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U14_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131830
+
+DTSTAMP:20171212T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171212T081500
+
+DTEND:20171212T101500
+
+SUMMARY:TP M3101 Princip syst exploi
+
+DESCRIPTION:TP M3101 Princip syst exploi\n[groupe] INFS3_1A\n[enseignant] VAUTROT Philippe\n[salle] 05_U14_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U14_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131831
+
+DTSTAMP:20171219T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171219T081500
+
+DTEND:20171219T101500
+
+SUMMARY:TP M3101 Princip syst exploi
+
+DESCRIPTION:TP M3101 Princip syst exploi\n[groupe] INFS3_1A\n[enseignant] VAUTROT Philippe\n[salle] 05_U14_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U14_Info (IUT de Reims)
+BEGIN:VALARM
+
+ACTION:DISPLAY
+
+TRIGGER;VALUE=DURATION:-PT15M
+
+DESCRIPTION:Votre Ã©vÃ©nement dÃ©bute dans 15 minutes.
+
+END:VALARM
+
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131832
+
+DTSTAMP:20171117T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171117T133000
+
+DTEND:20171117T153000
+
+SUMMARY:TD M3301 Méthodo prod applic
+
+DESCRIPTION:TD M3301 Méthodo prod applic\n[groupe] INFS3_1\n[enseignant] GUESSOUM Zahia\n[salle] 05_U10_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U10_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131833
+
+DTSTAMP:20171124T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171124T133000
+
+DTEND:20171124T153000
+
+SUMMARY:TD M3301 Méthodo prod applic
+
+DESCRIPTION:TD M3301 Méthodo prod applic\n[groupe] INFS3_1\n[enseignant] GUESSOUM Zahia\n[salle] 05_U10_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U10_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131834
+
+DTSTAMP:20171201T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171201T133000
+
+DTEND:20171201T153000
+
+SUMMARY:TD M3301 Méthodo prod applic
+
+DESCRIPTION:TD M3301 Méthodo prod applic\n[groupe] INFS3_1\n[enseignant] GUESSOUM Zahia\n[salle] 05_U10_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U10_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131835
+
+DTSTAMP:20171208T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171208T133000
+
+DTEND:20171208T153000
+
+SUMMARY:TD M3301 Méthodo prod applic
+
+DESCRIPTION:TD M3301 Méthodo prod applic\n[groupe] INFS3_1\n[enseignant] GUESSOUM Zahia\n[salle] 05_U10_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U10_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131836
+
+DTSTAMP:20171215T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171215T133000
+
+DTEND:20171215T153000
+
+SUMMARY:TD M3301 Méthodo prod applic
+
+DESCRIPTION:TD M3301 Méthodo prod applic\n[groupe] INFS3_1\n[enseignant] GUESSOUM Zahia\n[salle] 05_U10_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U10_Info (IUT de Reims)
+BEGIN:VALARM
+
+ACTION:DISPLAY
+
+TRIGGER;VALUE=DURATION:-PT15M
+
+DESCRIPTION:Votre Ã©vÃ©nement dÃ©bute dans 15 minutes.
+
+END:VALARM
+
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131837
+
+DTSTAMP:20171222T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171222T133000
+
+DTEND:20171222T153000
+
+SUMMARY:TD M3301 Méthodo prod applic
+
+DESCRIPTION:TD M3301 Méthodo prod applic\n[groupe] INFS3_1\n[enseignant] GUESSOUM Zahia\n[salle] 05_U10_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U10_Info (IUT de Reims)
+BEGIN:VALARM
+
+ACTION:DISPLAY
+
+TRIGGER;VALUE=DURATION:-PT15M
+
+DESCRIPTION:Votre Ã©vÃ©nement dÃ©bute dans 15 minutes.
+
+END:VALARM
+
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131838
+
+DTSTAMP:20170912T143000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170912T143000
+
+DTEND:20170912T163000
+
+SUMMARY:TD M3301 Méthodo prod applic
+
+DESCRIPTION:TD M3301 Méthodo prod applic\n[groupe] INFS3_1\n[enseignant] GUESSOUM Zahia\n[salle] 05_U10_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U10_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131839
+
+DTSTAMP:20170919T143000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170919T143000
+
+DTEND:20170919T163000
+
+SUMMARY:TD M3301 Méthodo prod applic
+
+DESCRIPTION:TD M3301 Méthodo prod applic\n[groupe] INFS3_1\n[enseignant] GUESSOUM Zahia\n[salle] 05_U10_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U10_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131840
+
+DTSTAMP:20170926T143000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170926T143000
+
+DTEND:20170926T163000
+
+SUMMARY:TD M3301 Méthodo prod applic
+
+DESCRIPTION:TD M3301 Méthodo prod applic\n[groupe] INFS3_1\n[enseignant] GUESSOUM Zahia\n[salle] 05_U10_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U10_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131841
+
+DTSTAMP:20171003T143000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171003T143000
+
+DTEND:20171003T163000
+
+SUMMARY:TD M3301 Méthodo prod applic
+
+DESCRIPTION:TD M3301 Méthodo prod applic\n[groupe] INFS3_1\n[enseignant] GUESSOUM Zahia\n[salle] 05_U10_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U10_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131842
+
+DTSTAMP:20171010T143000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171010T143000
+
+DTEND:20171010T163000
+
+SUMMARY:TD M3301 Méthodo prod applic
+
+DESCRIPTION:TD M3301 Méthodo prod applic\n[groupe] INFS3_1\n[enseignant] GUESSOUM Zahia\n[salle] 05_U10_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U10_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131843
+
+DTSTAMP:20171017T143000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171017T143000
+
+DTEND:20171017T163000
+
+SUMMARY:TD M3301 Méthodo prod applic
+
+DESCRIPTION:TD M3301 Méthodo prod applic\n[groupe] INFS3_1\n[enseignant] GUESSOUM Zahia\n[salle] 05_U10_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U10_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131844
+
+DTSTAMP:20171024T143000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171024T143000
+
+DTEND:20171024T163000
+
+SUMMARY:TD M3301 Méthodo prod applic
+
+DESCRIPTION:TD M3301 Méthodo prod applic\n[groupe] INFS3_1\n[enseignant] GUESSOUM Zahia\n[salle] 05_U10_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U10_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131845
+
+DTSTAMP:20171107T143000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171107T143000
+
+DTEND:20171107T163000
+
+SUMMARY:TD M3301 Méthodo prod applic
+
+DESCRIPTION:TD M3301 Méthodo prod applic\n[groupe] INFS3_1\n[enseignant] GUESSOUM Zahia\n[salle] 05_U10_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U10_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131846
+
+DTSTAMP:20170915T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170915T081500
+
+DTEND:20170915T101500
+
+SUMMARY:TD M3206 Collaborer anglais
+
+DESCRIPTION:TD M3206 Collaborer anglais\n[groupe] INFS3_1\n[enseignant] ZMOLNIG Ingrid\n[salle] 05_U16 (IUT de Reims)
+
+LOCATION:[salle] 05_U16 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131847
+
+DTSTAMP:20170922T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170922T081500
+
+DTEND:20170922T101500
+
+SUMMARY:TD M3206 Collaborer anglais
+
+DESCRIPTION:TD M3206 Collaborer anglais\n[groupe] INFS3_1\n[enseignant] ZMOLNIG Ingrid\n[salle] 05_U16 (IUT de Reims)
+
+LOCATION:[salle] 05_U16 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131848
+
+DTSTAMP:20170929T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170929T081500
+
+DTEND:20170929T101500
+
+SUMMARY:TD M3206 Collaborer anglais
+
+DESCRIPTION:TD M3206 Collaborer anglais\n[groupe] INFS3_1\n[enseignant] ZMOLNIG Ingrid\n[salle] 05_U16 (IUT de Reims)
+
+LOCATION:[salle] 05_U16 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131849
+
+DTSTAMP:20171006T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171006T081500
+
+DTEND:20171006T101500
+
+SUMMARY:TD M3206 Collaborer anglais
+
+DESCRIPTION:TD M3206 Collaborer anglais\n[groupe] INFS3_1\n[enseignant] ZMOLNIG Ingrid\n[salle] 05_U16 (IUT de Reims)
+
+LOCATION:[salle] 05_U16 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131850
+
+DTSTAMP:20171013T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171013T081500
+
+DTEND:20171013T101500
+
+SUMMARY:TD M3206 Collaborer anglais
+
+DESCRIPTION:TD M3206 Collaborer anglais\n[groupe] INFS3_1\n[enseignant] ZMOLNIG Ingrid\n[salle] 05_U16 (IUT de Reims)
+
+LOCATION:[salle] 05_U16 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131851
+
+DTSTAMP:20171020T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171020T081500
+
+DTEND:20171020T101500
+
+SUMMARY:TD M3206 Collaborer anglais
+
+DESCRIPTION:TD M3206 Collaborer anglais\n[groupe] INFS3_1\n[enseignant] ZMOLNIG Ingrid\n[salle] 05_U16 (IUT de Reims)
+
+LOCATION:[salle] 05_U16 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131852
+
+DTSTAMP:20171027T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171027T081500
+
+DTEND:20171027T101500
+
+SUMMARY:TD M3206 Collaborer anglais
+
+DESCRIPTION:TD M3206 Collaborer anglais\n[groupe] INFS3_1\n[enseignant] ZMOLNIG Ingrid\n[salle] 05_U16 (IUT de Reims)
+
+LOCATION:[salle] 05_U16 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131853
+
+DTSTAMP:20171110T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171110T081500
+
+DTEND:20171110T101500
+
+SUMMARY:TD M3206 Collaborer anglais
+
+DESCRIPTION:TD M3206 Collaborer anglais\n[groupe] INFS3_1\n[enseignant] ZMOLNIG Ingrid\n[salle] 05_U16 (IUT de Reims)
+
+LOCATION:[salle] 05_U16 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131854
+
+DTSTAMP:20171117T153000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171117T153000
+
+DTEND:20171117T173000
+
+SUMMARY:TD M3205 Expr-Com
+
+ comm prof
+
+DESCRIPTION:TD M3205 Expr-Com
+
+ comm prof\n[groupe] INFS3_1\n[enseignant] DUPUIS Richard\n[salle] 05_U16 (IUT de Reims)
+
+LOCATION:[salle] 05_U16 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131855
+
+DTSTAMP:20171124T153000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171124T153000
+
+DTEND:20171124T173000
+
+SUMMARY:TD M3205 Expr-Com
+
+ comm prof
+
+DESCRIPTION:TD M3205 Expr-Com
+
+ comm prof\n[groupe] INFS3_1\n[enseignant] DUPUIS Richard\n[salle] 05_U16 (IUT de Reims)
+
+LOCATION:[salle] 05_U16 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131856
+
+DTSTAMP:20171201T153000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171201T153000
+
+DTEND:20171201T173000
+
+SUMMARY:TD M3205 Expr-Com
+
+ comm prof
+
+DESCRIPTION:TD M3205 Expr-Com
+
+ comm prof\n[groupe] INFS3_1\n[enseignant] DUPUIS Richard\n[salle] 05_U16 (IUT de Reims)
+
+LOCATION:[salle] 05_U16 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131857
+
+DTSTAMP:20171208T153000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171208T153000
+
+DTEND:20171208T173000
+
+SUMMARY:TD M3205 Expr-Com
+
+ comm prof
+
+DESCRIPTION:TD M3205 Expr-Com
+
+ comm prof\n[groupe] INFS3_1\n[enseignant] DUPUIS Richard\n[salle] 05_U16 (IUT de Reims)
+
+LOCATION:[salle] 05_U16 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131858
+
+DTSTAMP:20171215T153000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171215T153000
+
+DTEND:20171215T173000
+
+SUMMARY:TD M3205 Expr-Com
+
+ comm prof
+
+DESCRIPTION:TD M3205 Expr-Com
+
+ comm prof\n[groupe] INFS3_1\n[enseignant] DUPUIS Richard\n[salle] 05_U16 (IUT de Reims)
+
+LOCATION:[salle] 05_U16 (IUT de Reims)
+BEGIN:VALARM
+
+ACTION:DISPLAY
+
+TRIGGER;VALUE=DURATION:-PT15M
+
+DESCRIPTION:Votre Ã©vÃ©nement dÃ©bute dans 15 minutes.
+
+END:VALARM
+
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131859
+
+DTSTAMP:20171222T153000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171222T153000
+
+DTEND:20171222T173000
+
+SUMMARY:TD M3205 Expr-Com
+
+ comm prof
+
+DESCRIPTION:TD M3205 Expr-Com
+
+ comm prof\n[groupe] INFS3_1\n[enseignant] DUPUIS Richard\n[salle] 05_U16 (IUT de Reims)
+
+LOCATION:[salle] 05_U16 (IUT de Reims)
+BEGIN:VALARM
+
+ACTION:DISPLAY
+
+TRIGGER;VALUE=DURATION:-PT15M
+
+DESCRIPTION:Votre Ã©vÃ©nement dÃ©bute dans 15 minutes.
+
+END:VALARM
+
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131860
+
+DTSTAMP:20180108T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20180108T133000
+
+DTEND:20180108T173000
+
+SUMMARY:TD M3204 Gestion syst inform
+
+DESCRIPTION:TD M3204 Gestion syst inform\n[groupe] INFS3_1\n[enseignant] GOUGELET Estelle\n[salle] 05_U02M_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U02M_Info (IUT de Reims)
+BEGIN:VALARM
+
+ACTION:DISPLAY
+
+TRIGGER;VALUE=DURATION:-PT15M
+
+DESCRIPTION:Votre Ã©vÃ©nement dÃ©bute dans 15 minutes.
+
+END:VALARM
+
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131861
+
+DTSTAMP:20180112T143000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20180112T143000
+
+DTEND:20180112T163000
+
+SUMMARY:TD M3204 Gestion syst inform
+
+DESCRIPTION:TD M3204 Gestion syst inform\n[groupe] INFS3_1\n[enseignant] GOUGELET Estelle\n[salle] 05_U02M_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U02M_Info (IUT de Reims)
+BEGIN:VALARM
+
+ACTION:DISPLAY
+
+TRIGGER;VALUE=DURATION:-PT15M
+
+DESCRIPTION:Votre Ã©vÃ©nement dÃ©bute dans 15 minutes.
+
+END:VALARM
+
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131862
+
+DTSTAMP:20180111T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20180111T081500
+
+DTEND:20180111T121500
+
+SUMMARY:TD M3204 Gestion syst inform
+
+DESCRIPTION:TD M3204 Gestion syst inform\n[groupe] INFS3_1\n[enseignant] GOUGELET Estelle\n[salle] 05_U01M_Info (IUT de Reims)\n[notes] Rattrapage 10/01
+
+LOCATION:[salle] 05_U01M_Info (IUT de Reims)\
+BEGIN:VALARM
+
+ACTION:DISPLAY
+
+TRIGGER;VALUE=DURATION:-PT15M
+
+DESCRIPTION:Votre Ã©vÃ©nement dÃ©bute dans 15 minutes.
+
+END:VALARM
+
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131863
+
+DTSTAMP:20180109T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20180109T133000
+
+DTEND:20180109T153000
+
+SUMMARY:TD M3301 Méthodo prod applic
+
+DESCRIPTION:TD M3301 Méthodo prod applic\n[groupe] INFS3_1\n[enseignant] GUESSOUM Zahia\n[salle] 05_U10_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U10_Info (IUT de Reims)
+BEGIN:VALARM
+
+ACTION:DISPLAY
+
+TRIGGER;VALUE=DURATION:-PT15M
+
+DESCRIPTION:Votre Ã©vÃ©nement dÃ©bute dans 15 minutes.
+
+END:VALARM
+
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131864
+
+DTSTAMP:20180112T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20180112T101500
+
+DTEND:20180112T121500
+
+SUMMARY:TD M3301 Méthodo prod applic
+
+DESCRIPTION:TD M3301 Méthodo prod applic\n[groupe] INFS3_1\n[enseignant] GUESSOUM Zahia\n[salle] 05_U10_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U10_Info (IUT de Reims)
+BEGIN:VALARM
+
+ACTION:DISPLAY
+
+TRIGGER;VALUE=DURATION:-PT15M
+
+DESCRIPTION:Votre Ã©vÃ©nement dÃ©bute dans 15 minutes.
+
+END:VALARM
+
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131865
+
+DTSTAMP:20180112T163000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20180112T163000
+
+DTEND:20180112T183000
+
+SUMMARY:TD M3301 Méthodo prod applic
+
+DESCRIPTION:TD M3301 Méthodo prod applic\n[groupe] INFS3_1\n[enseignant] GUESSOUM Zahia\n[salle] 05_U03M_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U03M_Info (IUT de Reims)
+BEGIN:VALARM
+
+ACTION:DISPLAY
+
+TRIGGER;VALUE=DURATION:-PT15M
+
+DESCRIPTION:Votre Ã©vÃ©nement dÃ©bute dans 15 minutes.
+
+END:VALARM
+
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131866
+
+DTSTAMP:20180108T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20180108T081500
+
+DTEND:20180108T101500
+
+SUMMARY:TD M3204 Gestion syst inform
+
+DESCRIPTION:TD M3204 Gestion syst inform\n[groupe] INFS3_1\n[enseignant] GOUGELET Estelle\n[salle] 05_U10_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U10_Info (IUT de Reims)
+BEGIN:VALARM
+
+ACTION:DISPLAY
+
+TRIGGER;VALUE=DURATION:-PT15M
+
+DESCRIPTION:Votre Ã©vÃ©nement dÃ©bute dans 15 minutes.
+
+END:VALARM
+
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131867
+
+DTSTAMP:20180115T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20180115T081500
+
+DTEND:20180115T121500
+
+SUMMARY:Soutenance M3301 Méthodo prod applic
+
+DESCRIPTION:Soutenance M3301 Méthodo prod applic\n[groupe] INFS3\n[enseignant] PAGANELLI Thomas
+
+ GUESSOUM Zahia
+
+ SANDRON Lydie
+
+ GOUGELET Estelle\n[salle] 05_Y4_Amphi (IUT de Reims)\n[notes] Soutenances
+
+LOCATION:[salle] 05_Y4_Amphi (IUT de Reims)\
+BEGIN:VALARM
+
+ACTION:DISPLAY
+
+TRIGGER;VALUE=DURATION:-PT15M
+
+DESCRIPTION:Votre Ã©vÃ©nement dÃ©bute dans 15 minutes.
+
+END:VALARM
+
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131868
+
+DTSTAMP:20180115T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20180115T133000
+
+DTEND:20180115T173000
+
+SUMMARY:Soutenance M3301 Méthodo prod applic
+
+DESCRIPTION:Soutenance M3301 Méthodo prod applic\n[groupe] INFS3\n[enseignant] PAGANELLI Thomas
+
+ GUESSOUM Zahia
+
+ SANDRON Lydie
+
+ GOUGELET Estelle\n[salle] 05_Y4_Amphi (IUT de Reims)\n[notes] Soutenances
+
+LOCATION:[salle] 05_Y4_Amphi (IUT de Reims)\
+BEGIN:VALARM
+
+ACTION:DISPLAY
+
+TRIGGER;VALUE=DURATION:-PT15M
+
+DESCRIPTION:Votre Ã©vÃ©nement dÃ©bute dans 15 minutes.
+
+END:VALARM
+
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131869
+
+DTSTAMP:20170908T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170908T101500
+
+DTEND:20170908T121500
+
+SUMMARY:CM M3105 Concept et programm
+
+DESCRIPTION:CM M3105 Concept et programm\n[groupe] INFS3\n[enseignant] GUESSOUM Zahia\n[salle] 05_A2_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_A2_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131870
+
+DTSTAMP:20170908T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170908T133000
+
+DTEND:20170908T150000
+
+SUMMARY:CM M3301 Méthodo prod applic
+
+DESCRIPTION:CM M3301 Méthodo prod applic\n[groupe] INFS3\n[enseignant] GUESSOUM Zahia\n[salle] 05_Y4_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_Y4_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131871
+
+DTSTAMP:20170907T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170907T133000
+
+DTEND:20170907T150000
+
+SUMMARY:CM M3301 Méthodo prod applic
+
+DESCRIPTION:CM M3301 Méthodo prod applic\n[groupe] INFS3\n[enseignant] GUESSOUM Zahia\n[salle] 05_Y4_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_Y4_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131872
+
+DTSTAMP:20170907T111500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170907T111500
+
+DTEND:20170907T121500
+
+SUMMARY:CM M3201 Probabilités stats
+
+DESCRIPTION:CM M3201 Probabilités stats\n[groupe] INFS3\n[enseignant] BLANCHARD Frederic\n[salle] 05_A2_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_A2_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131873
+
+DTSTAMP:20170906T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170906T081500
+
+DTEND:20170906T101500
+
+SUMMARY:CM M3104 Program Web serveur
+
+DESCRIPTION:CM M3104 Program Web serveur\n[groupe] INFS3\n[enseignant] CUTRONA Jerome\n[salle] 05_A2_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_A2_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131874
+
+DTSTAMP:20170906T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170906T133000
+
+DTEND:20170906T153000
+
+SUMMARY:TP M3303 Préciser son projet
+
+DESCRIPTION:TP M3303 Préciser son projet\n[groupe] INFS3_1A\n[enseignant] JANSSENS Philippe\n[salle] 05_U02M_Info (IUT de Reims)\n[notes] Entretien de recrutement
+
+LOCATION:[salle] 05_U02M_Info (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131875
+
+DTSTAMP:20170921T153000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170921T153000
+
+DTEND:20170921T173000
+
+SUMMARY:TP M3303 Préciser son projet
+
+DESCRIPTION:TP M3303 Préciser son projet\n[groupe] INFS3_1A\n[enseignant] LAMBERT Ludovic\n[salle] 05_U10_Info (IUT de Reims)\n[notes] cv & lettres de motiv
+
+LOCATION:[salle] 05_U10_Info (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131876
+
+DTSTAMP:20171123T111500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171123T111500
+
+DTEND:20171123T121500
+
+SUMMARY:TP M3303 Préciser son projet
+
+DESCRIPTION:TP M3303 Préciser son projet\n[groupe] INFS3_1A\n[enseignant] RIGAUDIERE Angelica\n[salle] 05_U12_Info (IUT de Reims)\n[notes] carnet de bord (recherche de stage)
+
+LOCATION:[salle] 05_U12_Info (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131877
+
+DTSTAMP:20171115T163000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171115T163000
+
+DTEND:20171115T183000
+
+SUMMARY:TD M3303 Préciser son projet
+
+DESCRIPTION:TD M3303 Préciser son projet\n[groupe] INFS3_1\n[enseignant] DUPUIS Richard\n[salle] 05_U02M_Info (IUT de Reims)\n[notes] organiser sa recherche de stage
+
+LOCATION:[salle] 05_U02M_Info (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131878
+
+DTSTAMP:20171219T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171219T133000
+
+DTEND:20171219T143000
+
+SUMMARY:TP M3303 Préciser son projet
+
+DESCRIPTION:TP M3303 Préciser son projet\n[groupe] INFS3_1A\n[enseignant] DUPUIS Richard\n[salle] 05_U08M_Info (IUT de Reims)\n[notes] finaliser sa recherche de stage
+
+LOCATION:[salle] 05_U08M_Info (IUT de Reims)\
+BEGIN:VALARM
+
+ACTION:DISPLAY
+
+TRIGGER;VALUE=DURATION:-PT15M
+
+DESCRIPTION:Votre Ã©vÃ©nement dÃ©bute dans 15 minutes.
+
+END:VALARM
+
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131879
+
+DTSTAMP:20170911T091500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170911T091500
+
+DTEND:20170911T101500
+
+SUMMARY:CM M3102 Services réseaux
+
+DESCRIPTION:CM M3102 Services réseaux\n[groupe] INFS3\n[enseignant] ARGANINI Gregory\n[salle] 05_Y4_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_Y4_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131880
+
+DTSTAMP:20170918T091500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170918T091500
+
+DTEND:20170918T101500
+
+SUMMARY:CM M3102 Services réseaux
+
+DESCRIPTION:CM M3102 Services réseaux\n[groupe] INFS3\n[enseignant] ARGANINI Gregory\n[salle] 05_Y4_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_Y4_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131881
+
+DTSTAMP:20170925T091500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170925T091500
+
+DTEND:20170925T101500
+
+SUMMARY:CM M3102 Services réseaux
+
+DESCRIPTION:CM M3102 Services réseaux\n[groupe] INFS3\n[enseignant] ARGANINI Gregory\n[salle] 05_Y4_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_Y4_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131882
+
+DTSTAMP:20171002T091500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171002T091500
+
+DTEND:20171002T101500
+
+SUMMARY:CM M3102 Services réseaux
+
+DESCRIPTION:CM M3102 Services réseaux\n[groupe] INFS3\n[enseignant] ARGANINI Gregory\n[salle] 05_Y4_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_Y4_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131883
+
+DTSTAMP:20171009T091500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171009T091500
+
+DTEND:20171009T101500
+
+SUMMARY:CM M3102 Services réseaux
+
+DESCRIPTION:CM M3102 Services réseaux\n[groupe] INFS3\n[enseignant] ARGANINI Gregory\n[salle] 05_Y4_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_Y4_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131884
+
+DTSTAMP:20171016T091500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171016T091500
+
+DTEND:20171016T101500
+
+SUMMARY:CM M3102 Services réseaux
+
+DESCRIPTION:CM M3102 Services réseaux\n[groupe] INFS3\n[enseignant] ARGANINI Gregory\n[salle] 05_Y4_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_Y4_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131885
+
+DTSTAMP:20171023T091500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171023T091500
+
+DTEND:20171023T101500
+
+SUMMARY:CM M3102 Services réseaux
+
+DESCRIPTION:CM M3102 Services réseaux\n[groupe] INFS3\n[enseignant] ARGANINI Gregory\n[salle] 05_Y4_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_Y4_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131886
+
+DTSTAMP:20170907T091500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170907T091500
+
+DTEND:20170907T101500
+
+SUMMARY:CM M3103 Algorithmique avanc
+
+DESCRIPTION:CM M3103 Algorithmique avanc\n[groupe] INFS3\n[enseignant] PASSAT Nicolas\n[salle] 05_Y4_Amphi (IUT de Reims)\n[notes] Rattrapage 25/09
+
+LOCATION:[salle] 05_Y4_Amphi (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131887
+
+DTSTAMP:20170907T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170907T081500
+
+DTEND:20170907T091500
+
+SUMMARY:CM M3103 Algorithmique avanc
+
+DESCRIPTION:CM M3103 Algorithmique avanc\n[groupe] INFS3\n[enseignant] PASSAT Nicolas\n[salle] 05_Y4_Amphi (IUT de Reims)\n[notes] Rattrapage 9/10
+
+LOCATION:[salle] 05_Y4_Amphi (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131888
+
+DTSTAMP:20171106T091500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171106T091500
+
+DTEND:20171106T101500
+
+SUMMARY:CM M3103 Algorithmique avanc
+
+DESCRIPTION:CM M3103 Algorithmique avanc\n[groupe] INFS3\n[enseignant] PASSAT Nicolas\n[salle] 05_Y4_Amphi (IUT de Reims)\n[notes] Rattrapage 23/10
+
+LOCATION:[salle] 05_Y4_Amphi (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131889
+
+DTSTAMP:20170911T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170911T081500
+
+DTEND:20170911T091500
+
+SUMMARY:CM M3103 Algorithmique avanc
+
+DESCRIPTION:CM M3103 Algorithmique avanc\n[groupe] INFS3\n[enseignant] PASSAT Nicolas\n[salle] 05_Y4_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_Y4_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131890
+
+DTSTAMP:20170918T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170918T081500
+
+DTEND:20170918T091500
+
+SUMMARY:CM M3103 Algorithmique avanc
+
+DESCRIPTION:CM M3103 Algorithmique avanc\n[groupe] INFS3\n[enseignant] PASSAT Nicolas\n[salle] 05_Y4_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_Y4_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131891
+
+DTSTAMP:20171002T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171002T081500
+
+DTEND:20171002T091500
+
+SUMMARY:CM M3103 Algorithmique avanc
+
+DESCRIPTION:CM M3103 Algorithmique avanc\n[groupe] INFS3\n[enseignant] PASSAT Nicolas\n[salle] 05_Y4_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_Y4_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131892
+
+DTSTAMP:20171016T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171016T081500
+
+DTEND:20171016T091500
+
+SUMMARY:CM M3103 Algorithmique avanc
+
+DESCRIPTION:CM M3103 Algorithmique avanc\n[groupe] INFS3\n[enseignant] PASSAT Nicolas\n[salle] 05_Y4_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_Y4_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131893
+
+DTSTAMP:20170906T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170906T101500
+
+DTEND:20170906T121500
+
+SUMMARY:TP M3103 Algorithmique avanc
+
+DESCRIPTION:TP M3103 Algorithmique avanc\n[groupe] INFS3_1A\n[enseignant] PASSAT Nicolas\n[salle] 05_U01M_Info (IUT de Reims)\n[notes] rattrapage semaine 38
+
+LOCATION:[salle] 05_U01M_Info (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131894
+
+DTSTAMP:20170906T153000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170906T153000
+
+DTEND:20170906T173000
+
+SUMMARY:TP M3103 Algorithmique avanc
+
+DESCRIPTION:TP M3103 Algorithmique avanc\n[groupe] INFS3_1A\n[enseignant] PASSAT Nicolas\n[salle] 05_U01M_Info (IUT de Reims)\n[notes] rattrapage semaine 43
+
+LOCATION:[salle] 05_U01M_Info (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131895
+
+DTSTAMP:20170914T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170914T081500
+
+DTEND:20170914T101500
+
+SUMMARY:TP M3103 Algorithmique avanc
+
+DESCRIPTION:TP M3103 Algorithmique avanc\n[groupe] INFS3_1A\n[enseignant] PASSAT Nicolas\n[salle] 05_U01M_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U01M_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131896
+
+DTSTAMP:20170928T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170928T081500
+
+DTEND:20170928T101500
+
+SUMMARY:TP M3103 Algorithmique avanc
+
+DESCRIPTION:TP M3103 Algorithmique avanc\n[groupe] INFS3_1A\n[enseignant] PASSAT Nicolas\n[salle] 05_U01M_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U01M_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131897
+
+DTSTAMP:20171005T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171005T081500
+
+DTEND:20171005T101500
+
+SUMMARY:TP M3103 Algorithmique avanc
+
+DESCRIPTION:TP M3103 Algorithmique avanc\n[groupe] INFS3_1A\n[enseignant] PASSAT Nicolas\n[salle] 05_U01M_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U01M_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131898
+
+DTSTAMP:20171012T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171012T081500
+
+DTEND:20171012T101500
+
+SUMMARY:TP M3103 Algorithmique avanc
+
+DESCRIPTION:TP M3103 Algorithmique avanc\n[groupe] INFS3_1A\n[enseignant] PASSAT Nicolas\n[salle] 05_U01M_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U01M_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131899
+
+DTSTAMP:20171019T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171019T081500
+
+DTEND:20171019T101500
+
+SUMMARY:TP M3103 Algorithmique avanc
+
+DESCRIPTION:TP M3103 Algorithmique avanc\n[groupe] INFS3_1A\n[enseignant] PASSAT Nicolas\n[salle] 05_U01M_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U01M_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131900
+
+DTSTAMP:20171109T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171109T081500
+
+DTEND:20171109T101500
+
+SUMMARY:TP M3103 Algorithmique avanc
+
+DESCRIPTION:TP M3103 Algorithmique avanc\n[groupe] INFS3_1A\n[enseignant] PASSAT Nicolas\n[salle] 05_U01M_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U01M_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131901
+
+DTSTAMP:20170921T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170921T081500
+
+DTEND:20170921T101500
+
+SUMMARY:TD M3105 Concept et programm
+
+DESCRIPTION:TD M3105 Concept et programm\n[groupe] INFS3_1\n[enseignant] DE RUNZ Cyril\n[salle] 05_U10_Info (IUT de Reims)\n[notes] rattrapage du 25/09
+
+LOCATION:[salle] 05_U10_Info (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131902
+
+DTSTAMP:20170911T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170911T101500
+
+DTEND:20170911T121500
+
+SUMMARY:TD M3105 Concept et programm
+
+DESCRIPTION:TD M3105 Concept et programm\n[groupe] INFS3_1\n[enseignant] DE RUNZ Cyril\n[salle] 05_U10_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U10_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131903
+
+DTSTAMP:20170918T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170918T101500
+
+DTEND:20170918T121500
+
+SUMMARY:TD M3105 Concept et programm
+
+DESCRIPTION:TD M3105 Concept et programm\n[groupe] INFS3_1\n[enseignant] DE RUNZ Cyril\n[salle] 05_U10_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U10_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131904
+
+DTSTAMP:20171002T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171002T101500
+
+DTEND:20171002T121500
+
+SUMMARY:TD M3105 Concept et programm
+
+DESCRIPTION:TD M3105 Concept et programm\n[groupe] INFS3_1\n[enseignant] DE RUNZ Cyril\n[salle] 05_U10_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U10_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131905
+
+DTSTAMP:20171009T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171009T101500
+
+DTEND:20171009T121500
+
+SUMMARY:TD M3105 Concept et programm
+
+DESCRIPTION:TD M3105 Concept et programm\n[groupe] INFS3_1\n[enseignant] DE RUNZ Cyril\n[salle] 05_U10_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U10_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131906
+
+DTSTAMP:20171016T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171016T101500
+
+DTEND:20171016T121500
+
+SUMMARY:TD M3105 Concept et programm
+
+DESCRIPTION:TD M3105 Concept et programm\n[groupe] INFS3_1\n[enseignant] DE RUNZ Cyril\n[salle] 05_U10_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U10_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131907
+
+DTSTAMP:20171023T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171023T101500
+
+DTEND:20171023T121500
+
+SUMMARY:TD M3105 Concept et programm
+
+DESCRIPTION:TD M3105 Concept et programm\n[groupe] INFS3_1\n[enseignant] DE RUNZ Cyril\n[salle] 05_U10_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U10_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131908
+
+DTSTAMP:20170926T163000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170926T163000
+
+DTEND:20170926T173000
+
+SUMMARY:TP M3204 Gestion syst inform
+
+DESCRIPTION:TP M3204 Gestion syst inform\n[groupe] INFS3_1A\n[enseignant] GOUGELET Estelle\n[salle] 05_U02M_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U02M_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131909
+
+DTSTAMP:20171002T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171002T133000
+
+DTEND:20171002T143000
+
+SUMMARY:TP M3204 Gestion syst inform
+
+DESCRIPTION:TP M3204 Gestion syst inform\n[groupe] INFS3_1A\n[enseignant] GOUGELET Estelle\n[salle] 05_U02M_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U02M_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131910
+
+DTSTAMP:20171009T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171009T133000
+
+DTEND:20171009T143000
+
+SUMMARY:TP M3204 Gestion syst inform
+
+DESCRIPTION:TP M3204 Gestion syst inform\n[groupe] INFS3_1A\n[enseignant] GOUGELET Estelle\n[salle] 05_U02M_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U02M_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131911
+
+DTSTAMP:20171016T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171016T133000
+
+DTEND:20171016T143000
+
+SUMMARY:TP M3204 Gestion syst inform
+
+DESCRIPTION:TP M3204 Gestion syst inform\n[groupe] INFS3_1A\n[enseignant] GOUGELET Estelle\n[salle] 05_U02M_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U02M_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131912
+
+DTSTAMP:20171023T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171023T133000
+
+DTEND:20171023T143000
+
+SUMMARY:TP M3204 Gestion syst inform
+
+DESCRIPTION:TP M3204 Gestion syst inform\n[groupe] INFS3_1A\n[enseignant] GOUGELET Estelle\n[salle] 05_U02M_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U02M_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131913
+
+DTSTAMP:20171106T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171106T133000
+
+DTEND:20171106T143000
+
+SUMMARY:TP M3204 Gestion syst inform
+
+DESCRIPTION:TP M3204 Gestion syst inform\n[groupe] INFS3_1A\n[enseignant] GOUGELET Estelle\n[salle] 05_U02M_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U02M_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131914
+
+DTSTAMP:20170913T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170913T101500
+
+DTEND:20170913T121500
+
+SUMMARY:TP M3102 Services réseaux
+
+DESCRIPTION:TP M3102 Services réseaux\n[groupe] INFS3_1A\n[enseignant] ARGANINI Gregory\n[salle] 05_U10_Info (IUT de Reims)\n[notes] rattrapage Jean Michel Nourrit
+
+LOCATION:[salle] 05_U10_Info (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131915
+
+DTSTAMP:20170920T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170920T101500
+
+DTEND:20170920T121500
+
+SUMMARY:TP M3102 Services réseaux
+
+DESCRIPTION:TP M3102 Services réseaux\n[groupe] INFS3_1A\n[enseignant] ARGANINI Gregory\n[salle] 05_U00M_Info (IUT de Reims)\n[notes] remplacement Jean Michel Nourrit
+
+LOCATION:[salle] 05_U00M_Info (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131916
+
+DTSTAMP:20170927T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170927T101500
+
+DTEND:20170927T121500
+
+SUMMARY:TP M3102 Services réseaux
+
+DESCRIPTION:TP M3102 Services réseaux\n[groupe] INFS3_1A\n[enseignant] ARGANINI Gregory\n[salle] 05_U10_Info (IUT de Reims)\n[notes] remplacement Jean Michel Nourrit
+
+LOCATION:[salle] 05_U10_Info (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131917
+
+DTSTAMP:20170912T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170912T101500
+
+DTEND:20170912T111500
+
+SUMMARY:TP M3206 Collaborer anglais
+
+DESCRIPTION:TP M3206 Collaborer anglais\n[groupe] INFS3_1A\n[enseignant] ZMOLNIG Ingrid\n[salle] 05_C11 (IUT de Reims)
+
+LOCATION:[salle] 05_C11 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131918
+
+DTSTAMP:20170919T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170919T101500
+
+DTEND:20170919T111500
+
+SUMMARY:TP M3206 Collaborer anglais
+
+DESCRIPTION:TP M3206 Collaborer anglais\n[groupe] INFS3_1A\n[enseignant] ZMOLNIG Ingrid\n[salle] 05_C11 (IUT de Reims)
+
+LOCATION:[salle] 05_C11 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131919
+
+DTSTAMP:20170926T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170926T101500
+
+DTEND:20170926T111500
+
+SUMMARY:TP M3206 Collaborer anglais
+
+DESCRIPTION:TP M3206 Collaborer anglais\n[groupe] INFS3_1A\n[enseignant] ZMOLNIG Ingrid\n[salle] 05_C11 (IUT de Reims)
+
+LOCATION:[salle] 05_C11 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131920
+
+DTSTAMP:20171003T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171003T101500
+
+DTEND:20171003T111500
+
+SUMMARY:TP M3206 Collaborer anglais
+
+DESCRIPTION:TP M3206 Collaborer anglais\n[groupe] INFS3_1A\n[enseignant] ZMOLNIG Ingrid\n[salle] 05_C11 (IUT de Reims)
+
+LOCATION:[salle] 05_C11 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131921
+
+DTSTAMP:20171003T111500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171003T111500
+
+DTEND:20171003T121500
+
+SUMMARY:TP M3102 Services réseaux
+
+DESCRIPTION:TP M3102 Services réseaux\n[groupe] INFS3_1A\n[enseignant] ARGANINI Gregory\n[salle] 05_U00M_Info (IUT de Reims)\n[notes] remplacement Jean Michel Nourrit
+
+LOCATION:[salle] 05_U00M_Info (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131922
+
+DTSTAMP:20171004T111500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171004T111500
+
+DTEND:20171004T121500
+
+SUMMARY:TP M3102 Services réseaux
+
+DESCRIPTION:TP M3102 Services réseaux\n[groupe] INFS3_1A\n[enseignant] ARGANINI Gregory\n[salle] 05_U00M_Info (IUT de Reims)\n[notes] remplacement Jean Michel Nourrit
+
+LOCATION:[salle] 05_U00M_Info (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131923
+
+DTSTAMP:20171117T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171117T101500
+
+DTEND:20171117T121500
+
+SUMMARY:CM M3204 Gestion syst inform
+
+DESCRIPTION:CM M3204 Gestion syst inform\n[groupe] INFS3\n[enseignant] GOUGELET Estelle\n[salle] 05_A2_Amphi (IUT de Reims)\n[notes] Rattrapage 15/12 1h00
+
+LOCATION:[salle] 05_A2_Amphi (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131924
+
+DTSTAMP:20171215T111500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171215T111500
+
+DTEND:20171215T121500
+
+SUMMARY:CM M3203 Droit techno info
+
+DESCRIPTION:CM M3203 Droit techno info\n[groupe] INFS3\n[enseignant] ESCUYER Gilles\n[salle] 05_A2_Amphi (IUT de Reims)\n[notes] Rattrapage 17/11
+
+LOCATION:[salle] 05_A2_Amphi (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131925
+
+DTSTAMP:20171124T111500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171124T111500
+
+DTEND:20171124T121500
+
+SUMMARY:CM M3204 Gestion syst inform
+
+DESCRIPTION:CM M3204 Gestion syst inform\n[groupe] INFS3\n[enseignant] GOUGELET Estelle\n[salle] 05_A2_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_A2_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131926
+
+DTSTAMP:20171201T111500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171201T111500
+
+DTEND:20171201T121500
+
+SUMMARY:CM M3204 Gestion syst inform
+
+DESCRIPTION:CM M3204 Gestion syst inform\n[groupe] INFS3\n[enseignant] GOUGELET Estelle\n[salle] 05_A2_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_A2_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131927
+
+DTSTAMP:20171208T111500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171208T111500
+
+DTEND:20171208T121500
+
+SUMMARY:CM M3204 Gestion syst inform
+
+DESCRIPTION:CM M3204 Gestion syst inform\n[groupe] INFS3\n[enseignant] GOUGELET Estelle\n[salle] 05_A2_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_A2_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131928
+
+DTSTAMP:20171222T111500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171222T111500
+
+DTEND:20171222T121500
+
+SUMMARY:CM M3204 Gestion syst inform
+
+DESCRIPTION:CM M3204 Gestion syst inform\n[groupe] INFS3\n[enseignant] GOUGELET Estelle\n[salle] 05_A2_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_A2_Amphi (IUT de Reims)
+BEGIN:VALARM
+
+ACTION:DISPLAY
+
+TRIGGER;VALUE=DURATION:-PT15M
+
+DESCRIPTION:Votre Ã©vÃ©nement dÃ©bute dans 15 minutes.
+
+END:VALARM
+
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131929
+
+DTSTAMP:20171215T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171215T101500
+
+DTEND:20171215T111500
+
+SUMMARY:CM M3203 Droit techno info
+
+DESCRIPTION:CM M3203 Droit techno info\n[groupe] INFS3\n[enseignant] ESCUYER Gilles\n[salle] 05_A2_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_A2_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131930
+
+DTSTAMP:20171124T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171124T101500
+
+DTEND:20171124T111500
+
+SUMMARY:CM M3203 Droit techno info
+
+DESCRIPTION:CM M3203 Droit techno info\n[groupe] INFS3\n[enseignant] ESCUYER Gilles\n[salle] 05_A2_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_A2_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131931
+
+DTSTAMP:20171201T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171201T101500
+
+DTEND:20171201T111500
+
+SUMMARY:CM M3203 Droit techno info
+
+DESCRIPTION:CM M3203 Droit techno info\n[groupe] INFS3\n[enseignant] ESCUYER Gilles\n[salle] 05_A2_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_A2_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131932
+
+DTSTAMP:20171208T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171208T101500
+
+DTEND:20171208T111500
+
+SUMMARY:CM M3203 Droit techno info
+
+DESCRIPTION:CM M3203 Droit techno info\n[groupe] INFS3\n[enseignant] ESCUYER Gilles\n[salle] 05_A2_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_A2_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131933
+
+DTSTAMP:20171004T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171004T081500
+
+DTEND:20171004T101500
+
+SUMMARY:TP M3105 Concept et programm
+
+DESCRIPTION:TP M3105 Concept et programm\n[groupe] INFS3_1A\n[enseignant] CUTRONA Jerome\n[salle] 05_U08M_Info (IUT de Reims)\n[notes] Rattrapage 5/10
+
+LOCATION:[salle] 05_U08M_Info (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131934
+
+DTSTAMP:20171106T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171106T101500
+
+DTEND:20171106T121500
+
+SUMMARY:TP M3105 Concept et programm
+
+DESCRIPTION:TP M3105 Concept et programm\n[groupe] INFS3_1A\n[enseignant] CUTRONA Jerome\n[salle] 05_U02M_Info (IUT de Reims)\n[notes] Rattrapage 26/10
+
+LOCATION:[salle] 05_U02M_Info (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131935
+
+DTSTAMP:20170914T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170914T101500
+
+DTEND:20170914T121500
+
+SUMMARY:TP M3105 Concept et programm
+
+DESCRIPTION:TP M3105 Concept et programm\n[groupe] INFS3_1A\n[enseignant] CUTRONA Jerome\n[salle] 05_U06M_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U06M_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131936
+
+DTSTAMP:20170921T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170921T101500
+
+DTEND:20170921T121500
+
+SUMMARY:TP M3105 Concept et programm
+
+DESCRIPTION:TP M3105 Concept et programm\n[groupe] INFS3_1A\n[enseignant] CUTRONA Jerome\n[salle] 05_U06M_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U06M_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131937
+
+DTSTAMP:20170928T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170928T101500
+
+DTEND:20170928T121500
+
+SUMMARY:TP M3105 Concept et programm
+
+DESCRIPTION:TP M3105 Concept et programm\n[groupe] INFS3_1A\n[enseignant] CUTRONA Jerome\n[salle] 05_U06M_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U06M_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131938
+
+DTSTAMP:20171012T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171012T101500
+
+DTEND:20171012T121500
+
+SUMMARY:TP M3105 Concept et programm
+
+DESCRIPTION:TP M3105 Concept et programm\n[groupe] INFS3_1A\n[enseignant] CUTRONA Jerome\n[salle] 05_U06M_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U06M_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131939
+
+DTSTAMP:20171019T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171019T101500
+
+DTEND:20171019T121500
+
+SUMMARY:TP M3105 Concept et programm
+
+DESCRIPTION:TP M3105 Concept et programm\n[groupe] INFS3_1A\n[enseignant] CUTRONA Jerome\n[salle] 05_U06M_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U06M_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131940
+
+DTSTAMP:20171109T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171109T101500
+
+DTEND:20171109T121500
+
+SUMMARY:TP M3105 Concept et programm
+
+DESCRIPTION:TP M3105 Concept et programm\n[groupe] INFS3_1A\n[enseignant] CUTRONA Jerome\n[salle] 05_U06M_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U06M_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131941
+
+DTSTAMP:20170912T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170912T081500
+
+DTEND:20170912T091500
+
+SUMMARY:CM M3104 Program Web serveur
+
+DESCRIPTION:CM M3104 Program Web serveur\n[groupe] INFS3\n[enseignant] CUTRONA Jerome\n[salle] 05_Y4_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_Y4_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131942
+
+DTSTAMP:20170919T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170919T081500
+
+DTEND:20170919T091500
+
+SUMMARY:CM M3104 Program Web serveur
+
+DESCRIPTION:CM M3104 Program Web serveur\n[groupe] INFS3\n[enseignant] CUTRONA Jerome\n[salle] 05_Y4_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_Y4_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131943
+
+DTSTAMP:20170926T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170926T081500
+
+DTEND:20170926T091500
+
+SUMMARY:CM M3104 Program Web serveur
+
+DESCRIPTION:CM M3104 Program Web serveur\n[groupe] INFS3\n[enseignant] CUTRONA Jerome\n[salle] 05_Y4_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_Y4_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131944
+
+DTSTAMP:20171003T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171003T081500
+
+DTEND:20171003T091500
+
+SUMMARY:CM M3104 Program Web serveur
+
+DESCRIPTION:CM M3104 Program Web serveur\n[groupe] INFS3\n[enseignant] CUTRONA Jerome\n[salle] 05_Y4_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_Y4_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131945
+
+DTSTAMP:20171010T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171010T081500
+
+DTEND:20171010T091500
+
+SUMMARY:CM M3104 Program Web serveur
+
+DESCRIPTION:CM M3104 Program Web serveur\n[groupe] INFS3\n[enseignant] CUTRONA Jerome\n[salle] 05_Y4_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_Y4_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131946
+
+DTSTAMP:20171017T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171017T081500
+
+DTEND:20171017T091500
+
+SUMMARY:CM M3104 Program Web serveur
+
+DESCRIPTION:CM M3104 Program Web serveur\n[groupe] INFS3\n[enseignant] CUTRONA Jerome\n[salle] 05_Y4_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_Y4_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131947
+
+DTSTAMP:20171107T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171107T081500
+
+DTEND:20171107T091500
+
+SUMMARY:CM M3104 Program Web serveur
+
+DESCRIPTION:CM M3104 Program Web serveur\n[groupe] INFS3\n[enseignant] CUTRONA Jerome\n[salle] 05_Y4_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_Y4_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131948
+
+DTSTAMP:20171107T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171107T133000
+
+DTEND:20171107T143000
+
+SUMMARY:CM M3104 Program Web serveur
+
+DESCRIPTION:CM M3104 Program Web serveur\n[groupe] INFS3\n[enseignant] CUTRONA Jerome\n[salle] 05_A2_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_A2_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131949
+
+DTSTAMP:20171025T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171025T101500
+
+DTEND:20171025T114500
+
+SUMMARY:Examen M3104 Program Web serveur
+
+DESCRIPTION:Examen M3104 Program Web serveur\n[groupe] INFS3\n[enseignant] ZMOLNIG Ingrid
+
+ JONQUET Antoine\n[salle] 05_U22 (IUT de Reims)
+
+LOCATION:[salle] 05_U22 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131950
+
+DTSTAMP:20171108T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171108T101500
+
+DTEND:20171108T114500
+
+SUMMARY:Examen M3102 Services réseaux
+
+DESCRIPTION:Examen M3102 Services réseaux\n[groupe] INFS3\n[enseignant] PASSAT Nicolas
+
+ ARGANINI Gregory\n[salle] 05_U22 (IUT de Reims)
+
+LOCATION:[salle] 05_U22 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131951
+
+DTSTAMP:20171115T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171115T081500
+
+DTEND:20171115T094500
+
+SUMMARY:Examen M3103 Algorithmique avanc
+
+DESCRIPTION:Examen M3103 Algorithmique avanc\n[groupe] INFS3\n[enseignant] DESJARDIN Eric
+
+ PASSAT Nicolas\n[salle] 05_U22 (IUT de Reims)
+
+LOCATION:[salle] 05_U22 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131952
+
+DTSTAMP:20171206T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171206T081500
+
+DTEND:20171206T094500
+
+SUMMARY:Examen M3206 Collaborer anglais
+
+DESCRIPTION:Examen M3206 Collaborer anglais\n[groupe] INFS3\n[enseignant] ZMOLNIG Ingrid
+
+ GUTIERREZ-BROHAN Helen\n[salle] 05_U22 (IUT de Reims)
+
+LOCATION:[salle] 05_U22 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131953
+
+DTSTAMP:20171206T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171206T101500
+
+DTEND:20171206T114500
+
+SUMMARY:Examen M3104 Program Web serveur
+
+DESCRIPTION:Examen M3104 Program Web serveur\n[groupe] INFS3\n[enseignant] CUTRONA Jerome
+
+ JONQUET Antoine\n[salle] 05_U22 (IUT de Reims)
+
+LOCATION:[salle] 05_U22 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131954
+
+DTSTAMP:20171213T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171213T081500
+
+DTEND:20171213T094500
+
+SUMMARY:Examen M3204 Gestion syst inform
+
+DESCRIPTION:Examen M3204 Gestion syst inform\n[groupe] INFS3\n[enseignant] BENASSAROU Aassif
+
+ GOUGELET Estelle\n[salle] 05_U22 (IUT de Reims)
+
+LOCATION:[salle] 05_U22 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131955
+
+DTSTAMP:20171220T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171220T081500
+
+DTEND:20171220T094500
+
+SUMMARY:Examen M3101 Princip syst exploi
+
+DESCRIPTION:Examen M3101 Princip syst exploi\n[groupe] INFS3\n[enseignant] NOURRIT Jean-Michel
+
+ DE RUNZ Cyril\n[salle] 05_U22 (IUT de Reims)
+
+LOCATION:[salle] 05_U22 (IUT de Reims)
+BEGIN:VALARM
+
+ACTION:DISPLAY
+
+TRIGGER;VALUE=DURATION:-PT15M
+
+DESCRIPTION:Votre Ã©vÃ©nement dÃ©bute dans 15 minutes.
+
+END:VALARM
+
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131956
+
+DTSTAMP:20171115T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171115T101500
+
+DTEND:20171115T114500
+
+SUMMARY:Examen M3105 Concept et programm
+
+DESCRIPTION:Examen M3105 Concept et programm\n[groupe] INFS3\n[enseignant] GUESSOUM Zahia
+
+ BLANCHARD Frederic\n[salle] 05_U22 (IUT de Reims)
+
+LOCATION:[salle] 05_U22 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131957
+
+DTSTAMP:20171122T084500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171122T084500
+
+DTEND:20171122T110000
+
+SUMMARY:Divers
+
+DESCRIPTION:Divers\n[groupe] INFS3\n[enseignant] ROMANIUK Barbara\n[salle] 05_Y3_Amphi (IUT de Reims)\n[notes] présentation poursuite d'études / CNAM
+
+LOCATION:[salle] 05_Y3_Amphi (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131958
+
+DTSTAMP:20171213T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171213T101500
+
+DTEND:20171213T114500
+
+SUMMARY:Examen M3203 Droit techno info
+
+DESCRIPTION:Examen M3203 Droit techno info\n[groupe] INFS3\n[enseignant] DUGUET LOSCOS Celine
+
+ ESCUYER Gilles\n[salle] 05_U22 (IUT de Reims)
+
+LOCATION:[salle] 05_U22 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131959
+
+DTSTAMP:20171220T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171220T101500
+
+DTEND:20171220T114500
+
+SUMMARY:Examen M3106C1 Base program C++
+
+DESCRIPTION:Examen M3106C1 Base program C++\n[groupe] INFS3_1
+
+ INFS3_2\n[enseignant] VAUTROT Philippe
+
+ ROMANIUK Barbara\n[salle] 05_U22 (IUT de Reims)
+
+LOCATION:[salle] 05_U22 (IUT de Reims)
+BEGIN:VALARM
+
+ACTION:DISPLAY
+
+TRIGGER;VALUE=DURATION:-PT15M
+
+DESCRIPTION:Votre Ã©vÃ©nement dÃ©bute dans 15 minutes.
+
+END:VALARM
+
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131960
+
+DTSTAMP:20171011T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171011T101500
+
+DTEND:20171011T121500
+
+SUMMARY:TP M3102 Services réseaux
+
+DESCRIPTION:TP M3102 Services réseaux\n[groupe] INFS3_1A\n[enseignant] ARGANINI Gregory\n[salle] 05_U10_Info (IUT de Reims)\n[notes] remplacement Jean Michel Nourrit
+
+LOCATION:[salle] 05_U10_Info (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131961
+
+DTSTAMP:20171018T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171018T101500
+
+DTEND:20171018T121500
+
+SUMMARY:TP M3102 Services réseaux
+
+DESCRIPTION:TP M3102 Services réseaux\n[groupe] INFS3_1A\n[enseignant] ARGANINI Gregory\n[salle] 05_U10_Info (IUT de Reims)\n[notes] remplacement Jean Michel Nourrit
+
+LOCATION:[salle] 05_U10_Info (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131962
+
+DTSTAMP:20171024T091500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171024T091500
+
+DTEND:20171024T111500
+
+SUMMARY:TP M3102 Services réseaux
+
+DESCRIPTION:TP M3102 Services réseaux\n[groupe] INFS3_1A\n[enseignant] ARGANINI Gregory\n[salle] 05_U04M_Info (IUT de Reims)\n[notes] remplacement Jean Michel Nourrit
+
+LOCATION:[salle] 05_U04M_Info (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131963
+
+DTSTAMP:20171107T091500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171107T091500
+
+DTEND:20171107T111500
+
+SUMMARY:TP M3102 Services réseaux
+
+DESCRIPTION:TP M3102 Services réseaux\n[groupe] INFS3_1A\n[enseignant] ARGANINI Gregory\n[salle] 05_U10_Info (IUT de Reims)\n[notes] remplacement Jean Michel Nourrit
+
+LOCATION:[salle] 05_U10_Info (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131964
+
+DTSTAMP:20171010T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171010T101500
+
+DTEND:20171010T111500
+
+SUMMARY:TP M3206 Collaborer anglais
+
+DESCRIPTION:TP M3206 Collaborer anglais\n[groupe] INFS3_1A\n[enseignant] ZMOLNIG Ingrid\n[salle] 05_C11 (IUT de Reims)
+
+LOCATION:[salle] 05_C11 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131965
+
+DTSTAMP:20171017T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171017T101500
+
+DTEND:20171017T111500
+
+SUMMARY:TP M3206 Collaborer anglais
+
+DESCRIPTION:TP M3206 Collaborer anglais\n[groupe] INFS3_1A\n[enseignant] ZMOLNIG Ingrid\n[salle] 05_C11 (IUT de Reims)
+
+LOCATION:[salle] 05_C11 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131966
+
+DTSTAMP:20171024T111500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171024T111500
+
+DTEND:20171024T121500
+
+SUMMARY:TP M3206 Collaborer anglais
+
+DESCRIPTION:TP M3206 Collaborer anglais\n[groupe] INFS3_1A\n[enseignant] ZMOLNIG Ingrid\n[salle] 05_C11 (IUT de Reims)
+
+LOCATION:[salle] 05_C11 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131967
+
+DTSTAMP:20171107T111500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171107T111500
+
+DTEND:20171107T121500
+
+SUMMARY:TP M3206 Collaborer anglais
+
+DESCRIPTION:TP M3206 Collaborer anglais\n[groupe] INFS3_1A\n[enseignant] ZMOLNIG Ingrid\n[salle] 05_C11 (IUT de Reims)
+
+LOCATION:[salle] 05_C11 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131968
+
+DTSTAMP:20171011T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171011T133000
+
+DTEND:20171011T153000
+
+SUMMARY:TP M3205 Expr-Com
+
+ comm prof
+
+DESCRIPTION:TP M3205 Expr-Com
+
+ comm prof\n[groupe] INFS3_1A\n[enseignant] DUPUIS Richard
+
+LOCATION:-
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131969
+
+DTSTAMP:20170920T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170920T133000
+
+DTEND:20170920T153000
+
+SUMMARY:TP M3205 Expr-Com
+
+ comm prof
+
+DESCRIPTION:TP M3205 Expr-Com
+
+ comm prof\n[groupe] INFS3_1A\n[enseignant] DUPUIS Richard\n[salle] 05_U12_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U12_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131970
+
+DTSTAMP:20170927T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170927T133000
+
+DTEND:20170927T153000
+
+SUMMARY:TP M3205 Expr-Com
+
+ comm prof
+
+DESCRIPTION:TP M3205 Expr-Com
+
+ comm prof\n[groupe] INFS3_1A\n[enseignant] DUPUIS Richard\n[salle] 05_U12_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U12_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131971
+
+DTSTAMP:20171004T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171004T133000
+
+DTEND:20171004T153000
+
+SUMMARY:TP M3205 Expr-Com
+
+ comm prof
+
+DESCRIPTION:TP M3205 Expr-Com
+
+ comm prof\n[groupe] INFS3_1A\n[enseignant] DUPUIS Richard\n[salle] 05_U12_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U12_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131972
+
+DTSTAMP:20171018T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171018T133000
+
+DTEND:20171018T153000
+
+SUMMARY:TP M3205 Expr-Com
+
+ comm prof
+
+DESCRIPTION:TP M3205 Expr-Com
+
+ comm prof\n[groupe] INFS3_1A\n[enseignant] DUPUIS Richard\n[salle] 05_U12_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U12_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131973
+
+DTSTAMP:20171025T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171025T133000
+
+DTEND:20171025T153000
+
+SUMMARY:TP M3205 Expr-Com
+
+ comm prof
+
+DESCRIPTION:TP M3205 Expr-Com
+
+ comm prof\n[groupe] INFS3_1A\n[enseignant] DUPUIS Richard\n[salle] 05_U12_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U12_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131974
+
+DTSTAMP:20171108T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171108T133000
+
+DTEND:20171108T153000
+
+SUMMARY:TP M3205 Expr-Com
+
+ comm prof
+
+DESCRIPTION:TP M3205 Expr-Com
+
+ comm prof\n[groupe] INFS3_1A\n[enseignant] DUPUIS Richard\n[salle] 05_U12_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U12_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131975
+
+DTSTAMP:20170912T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170912T133000
+
+DTEND:20170912T143000
+
+SUMMARY:CM M3201 Probabilités stats
+
+DESCRIPTION:CM M3201 Probabilités stats\n[groupe] INFS3\n[enseignant] BLANCHARD Frederic\n[salle] 05_A2_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_A2_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131976
+
+DTSTAMP:20170919T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170919T133000
+
+DTEND:20170919T143000
+
+SUMMARY:CM M3201 Probabilités stats
+
+DESCRIPTION:CM M3201 Probabilités stats\n[groupe] INFS3\n[enseignant] BLANCHARD Frederic\n[salle] 05_A2_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_A2_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131977
+
+DTSTAMP:20170926T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170926T133000
+
+DTEND:20170926T143000
+
+SUMMARY:CM M3201 Probabilités stats
+
+DESCRIPTION:CM M3201 Probabilités stats\n[groupe] INFS3\n[enseignant] BLANCHARD Frederic\n[salle] 05_A2_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_A2_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131978
+
+DTSTAMP:20171016T143000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171016T143000
+
+DTEND:20171016T160000
+
+SUMMARY:TD M3202C1 Compl maths
+
+DESCRIPTION:TD M3202C1 Compl maths\n[groupe] INFS3_1\n[enseignant] COUTANT Etienne\n[salle] 05_U22 (IUT de Reims)
+
+LOCATION:[salle] 05_U22 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131979
+
+DTSTAMP:20171016T160000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171016T160000
+
+DTEND:20171016T173000
+
+SUMMARY:TD M3202C1 Compl maths
+
+DESCRIPTION:TD M3202C1 Compl maths\n[groupe] INFS3_1\n[enseignant] COUTANT Etienne\n[salle] 05_U16 (IUT de Reims)
+
+LOCATION:[salle] 05_U16 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131980
+
+DTSTAMP:20171017T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171017T133000
+
+DTEND:20171017T143000
+
+SUMMARY:CM M3105 Concept et programm
+
+DESCRIPTION:CM M3105 Concept et programm\n[groupe] INFS3\n[enseignant] GUESSOUM Zahia\n[salle] 05_A2_Amphi (IUT de Reims)\n[notes] Rattrapage 13/10
+
+LOCATION:[salle] 05_A2_Amphi (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131981
+
+DTSTAMP:20170915T111500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170915T111500
+
+DTEND:20170915T121500
+
+SUMMARY:CM M3105 Concept et programm
+
+DESCRIPTION:CM M3105 Concept et programm\n[groupe] INFS3\n[enseignant] GUESSOUM Zahia\n[salle] 05_A2_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_A2_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131982
+
+DTSTAMP:20170922T111500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170922T111500
+
+DTEND:20170922T121500
+
+SUMMARY:CM M3105 Concept et programm
+
+DESCRIPTION:CM M3105 Concept et programm\n[groupe] INFS3\n[enseignant] GUESSOUM Zahia\n[salle] 05_A2_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_A2_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131983
+
+DTSTAMP:20170929T111500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170929T111500
+
+DTEND:20170929T121500
+
+SUMMARY:CM M3105 Concept et programm
+
+DESCRIPTION:CM M3105 Concept et programm\n[groupe] INFS3\n[enseignant] GUESSOUM Zahia\n[salle] 05_A2_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_A2_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131984
+
+DTSTAMP:20171006T111500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171006T111500
+
+DTEND:20171006T121500
+
+SUMMARY:CM M3105 Concept et programm
+
+DESCRIPTION:CM M3105 Concept et programm\n[groupe] INFS3\n[enseignant] GUESSOUM Zahia\n[salle] 05_A2_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_A2_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131985
+
+DTSTAMP:20170918T143000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170918T143000
+
+DTEND:20170918T173000
+
+SUMMARY:TD M3202C1 Compl maths
+
+DESCRIPTION:TD M3202C1 Compl maths\n[groupe] INFS3_1\n[enseignant] COUTANT Etienne\n[salle] 05_U16 (IUT de Reims)
+
+LOCATION:[salle] 05_U16 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131986
+
+DTSTAMP:20170925T143000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20170925T143000
+
+DTEND:20170925T173000
+
+SUMMARY:TD M3202C1 Compl maths
+
+DESCRIPTION:TD M3202C1 Compl maths\n[groupe] INFS3_1\n[enseignant] COUTANT Etienne\n[salle] 05_U16 (IUT de Reims)
+
+LOCATION:[salle] 05_U16 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131987
+
+DTSTAMP:20171002T143000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171002T143000
+
+DTEND:20171002T173000
+
+SUMMARY:TD M3202C1 Compl maths
+
+DESCRIPTION:TD M3202C1 Compl maths\n[groupe] INFS3_1\n[enseignant] COUTANT Etienne\n[salle] 05_U16 (IUT de Reims)
+
+LOCATION:[salle] 05_U16 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131988
+
+DTSTAMP:20171009T143000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171009T143000
+
+DTEND:20171009T173000
+
+SUMMARY:TD M3202C1 Compl maths
+
+DESCRIPTION:TD M3202C1 Compl maths\n[groupe] INFS3_1\n[enseignant] COUTANT Etienne\n[salle] 05_U16 (IUT de Reims)
+
+LOCATION:[salle] 05_U16 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131989
+
+DTSTAMP:20171023T143000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171023T143000
+
+DTEND:20171023T173000
+
+SUMMARY:TD M3202C1 Compl maths
+
+DESCRIPTION:TD M3202C1 Compl maths\n[groupe] INFS3_1\n[enseignant] COUTANT Etienne\n[salle] 05_U16 (IUT de Reims)
+
+LOCATION:[salle] 05_U16 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131990
+
+DTSTAMP:20171106T143000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171106T143000
+
+DTEND:20171106T153000
+
+SUMMARY:TD M3202C1 Compl maths
+
+DESCRIPTION:TD M3202C1 Compl maths\n[groupe] INFS3_1\n[enseignant] COUTANT Etienne\n[salle] 05_U22 (IUT de Reims)
+
+LOCATION:[salle] 05_U22 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131991
+
+DTSTAMP:20171106T153000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171106T153000
+
+DTEND:20171106T173000
+
+SUMMARY:TD M3202C1 Compl maths
+
+DESCRIPTION:TD M3202C1 Compl maths\n[groupe] INFS3_1\n[enseignant] COUTANT Etienne\n[salle] 05_U16 (IUT de Reims)
+
+LOCATION:[salle] 05_U16 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131992
+
+DTSTAMP:20171122T110000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171122T110000
+
+DTEND:20171122T120000
+
+SUMMARY:CM M3106C1 Base program C++
+
+DESCRIPTION:CM M3106C1 Base program C++\n[groupe] INFS3_1
+
+ INFS3_2\n[enseignant] ROMANIUK Barbara\n[salle] 05_Y3_Amphi (IUT de Reims)\n[notes] Rattrapage 14/11 13h30
+
+LOCATION:[salle] 05_Y3_Amphi (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131993
+
+DTSTAMP:20171121T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171121T133000
+
+DTEND:20171121T143000
+
+SUMMARY:CM M3106C1 Base program C++
+
+DESCRIPTION:CM M3106C1 Base program C++\n[groupe] INFS3_1
+
+ INFS3_2\n[enseignant] ROMANIUK Barbara\n[salle] 05_A2_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_A2_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131994
+
+DTSTAMP:20171128T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171128T133000
+
+DTEND:20171128T143000
+
+SUMMARY:CM M3106C1 Base program C++
+
+DESCRIPTION:CM M3106C1 Base program C++\n[groupe] INFS3_1
+
+ INFS3_2\n[enseignant] ROMANIUK Barbara\n[salle] 05_A2_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_A2_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131995
+
+DTSTAMP:20171205T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171205T133000
+
+DTEND:20171205T143000
+
+SUMMARY:CM M3106C1 Base program C++
+
+DESCRIPTION:CM M3106C1 Base program C++\n[groupe] INFS3_1
+
+ INFS3_2\n[enseignant] ROMANIUK Barbara\n[salle] 05_A2_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_A2_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131996
+
+DTSTAMP:20171212T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171212T133000
+
+DTEND:20171212T143000
+
+SUMMARY:CM M3106C1 Base program C++
+
+DESCRIPTION:CM M3106C1 Base program C++\n[groupe] INFS3_1
+
+ INFS3_2\n[enseignant] ROMANIUK Barbara\n[salle] 05_A2_Amphi (IUT de Reims)
+
+LOCATION:[salle] 05_A2_Amphi (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131997
+
+DTSTAMP:20171128T143000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171128T143000
+
+DTEND:20171128T183000
+
+SUMMARY:TP M3106C1 Base program C++
+
+DESCRIPTION:TP M3106C1 Base program C++\n[groupe] INFS3_1A\n[enseignant] REMION Yannick\n[salle] 05_U07M_Info (IUT de Reims)\n[notes] Rattrapage 14/11 1h00 forum
+
+LOCATION:[salle] 05_U07M_Info (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131998
+
+DTSTAMP:20171205T143000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171205T143000
+
+DTEND:20171205T183000
+
+SUMMARY:TP M3106C1 Base program C++
+
+DESCRIPTION:TP M3106C1 Base program C++\n[groupe] INFS3_1A\n[enseignant] REMION Yannick\n[salle] 05_U07M_Info (IUT de Reims)\n[notes] Rattrapage 1h00 forum 14/11
+
+LOCATION:[salle] 05_U07M_Info (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759131999
+
+DTSTAMP:20171212T143000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171212T143000
+
+DTEND:20171212T183000
+
+SUMMARY:TP M3106C1 Base program C++
+
+DESCRIPTION:TP M3106C1 Base program C++\n[groupe] INFS3_1A\n[enseignant] REMION Yannick\n[salle] 05_U07M_Info (IUT de Reims)\n[notes] Rattrapage 1h00 forum 14/11
+
+LOCATION:[salle] 05_U07M_Info (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759132000
+
+DTSTAMP:20171128T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171128T101500
+
+DTEND:20171128T111500
+
+SUMMARY:TD M3206 Collaborer anglais
+
+DESCRIPTION:TD M3206 Collaborer anglais\n[groupe] INFS3_1\n[enseignant] ZMOLNIG Ingrid\n[salle] 05_U38_Langue (IUT de Reims)
+
+LOCATION:[salle] 05_U38_Langue (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759132001
+
+DTSTAMP:20171114T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171114T101500
+
+DTEND:20171114T111500
+
+SUMMARY:TD M3206 Collaborer anglais
+
+DESCRIPTION:TD M3206 Collaborer anglais\n[groupe] INFS3_1\n[enseignant] ZMOLNIG Ingrid\n[salle] 05_U16 (IUT de Reims)
+
+LOCATION:[salle] 05_U16 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759132002
+
+DTSTAMP:20171121T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171121T101500
+
+DTEND:20171121T111500
+
+SUMMARY:TD M3206 Collaborer anglais
+
+DESCRIPTION:TD M3206 Collaborer anglais\n[groupe] INFS3_1\n[enseignant] ZMOLNIG Ingrid\n[salle] 05_U16 (IUT de Reims)
+
+LOCATION:[salle] 05_U16 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759132003
+
+DTSTAMP:20171205T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171205T101500
+
+DTEND:20171205T111500
+
+SUMMARY:TD M3206 Collaborer anglais
+
+DESCRIPTION:TD M3206 Collaborer anglais\n[groupe] INFS3_1\n[enseignant] ZMOLNIG Ingrid\n[salle] 05_U16 (IUT de Reims)
+
+LOCATION:[salle] 05_U16 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759132004
+
+DTSTAMP:20171212T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171212T101500
+
+DTEND:20171212T111500
+
+SUMMARY:TD M3206 Collaborer anglais
+
+DESCRIPTION:TD M3206 Collaborer anglais\n[groupe] INFS3_1\n[enseignant] ZMOLNIG Ingrid\n[salle] 05_U16 (IUT de Reims)
+
+LOCATION:[salle] 05_U16 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759132005
+
+DTSTAMP:20171219T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171219T101500
+
+DTEND:20171219T111500
+
+SUMMARY:TD M3206 Collaborer anglais
+
+DESCRIPTION:TD M3206 Collaborer anglais\n[groupe] INFS3_1\n[enseignant] ZMOLNIG Ingrid\n[salle] 05_U16 (IUT de Reims)
+
+LOCATION:[salle] 05_U16 (IUT de Reims)
+BEGIN:VALARM
+
+ACTION:DISPLAY
+
+TRIGGER;VALUE=DURATION:-PT15M
+
+DESCRIPTION:Votre Ã©vÃ©nement dÃ©bute dans 15 minutes.
+
+END:VALARM
+
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759132006
+
+DTSTAMP:20171129T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171129T133000
+
+DTEND:20171129T153000
+
+SUMMARY:TP M3206 Collaborer anglais
+
+DESCRIPTION:TP M3206 Collaborer anglais\n[groupe] INFS3_1A\n[enseignant] ZMOLNIG Ingrid\n[salle] 05_U38_Langue (IUT de Reims)
+
+LOCATION:[salle] 05_U38_Langue (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759132007
+
+DTSTAMP:20171115T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171115T133000
+
+DTEND:20171115T153000
+
+SUMMARY:TP M3206 Collaborer anglais
+
+DESCRIPTION:TP M3206 Collaborer anglais\n[groupe] INFS3_1A\n[enseignant] ZMOLNIG Ingrid\n[salle] 05_C11 (IUT de Reims)
+
+LOCATION:[salle] 05_C11 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759132008
+
+DTSTAMP:20171122T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171122T133000
+
+DTEND:20171122T153000
+
+SUMMARY:TP M3206 Collaborer anglais
+
+DESCRIPTION:TP M3206 Collaborer anglais\n[groupe] INFS3_1A\n[enseignant] ZMOLNIG Ingrid\n[salle] 05_C11 (IUT de Reims)
+
+LOCATION:[salle] 05_C11 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759132009
+
+DTSTAMP:20171206T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171206T133000
+
+DTEND:20171206T153000
+
+SUMMARY:TP M3206 Collaborer anglais
+
+DESCRIPTION:TP M3206 Collaborer anglais\n[groupe] INFS3_1A\n[enseignant] ZMOLNIG Ingrid\n[salle] 05_C11 (IUT de Reims)
+
+LOCATION:[salle] 05_C11 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759132010
+
+DTSTAMP:20171213T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171213T133000
+
+DTEND:20171213T153000
+
+SUMMARY:TP M3206 Collaborer anglais
+
+DESCRIPTION:TP M3206 Collaborer anglais\n[groupe] INFS3_1A\n[enseignant] ZMOLNIG Ingrid\n[salle] 05_C11 (IUT de Reims)
+
+LOCATION:[salle] 05_C11 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759132011
+
+DTSTAMP:20171220T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171220T133000
+
+DTEND:20171220T153000
+
+SUMMARY:TP M3206 Collaborer anglais
+
+DESCRIPTION:TP M3206 Collaborer anglais\n[groupe] INFS3_1A\n[enseignant] ZMOLNIG Ingrid\n[salle] 05_C11 (IUT de Reims)
+
+LOCATION:[salle] 05_C11 (IUT de Reims)
+BEGIN:VALARM
+
+ACTION:DISPLAY
+
+TRIGGER;VALUE=DURATION:-PT15M
+
+DESCRIPTION:Votre Ã©vÃ©nement dÃ©bute dans 15 minutes.
+
+END:VALARM
+
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759132012
+
+DTSTAMP:20171123T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171123T101500
+
+DTEND:20171123T111500
+
+SUMMARY:TP M3204 Gestion syst inform
+
+DESCRIPTION:TP M3204 Gestion syst inform\n[groupe] INFS3_1A\n[enseignant] GOUGELET Estelle\n[salle] 05_U12_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U12_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759132013
+
+DTSTAMP:20171208T173000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171208T173000
+
+DTEND:20171208T183000
+
+SUMMARY:TP M3204 Gestion syst inform
+
+DESCRIPTION:TP M3204 Gestion syst inform\n[groupe] INFS3_1A\n[enseignant] GOUGELET Estelle\n[salle] 05_U04M_Info (IUT de Reims)\n[notes] Rattrapage 7/12
+
+LOCATION:[salle] 05_U04M_Info (IUT de Reims)\
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759132014
+
+DTSTAMP:20171116T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171116T101500
+
+DTEND:20171116T111500
+
+SUMMARY:TP M3204 Gestion syst inform
+
+DESCRIPTION:TP M3204 Gestion syst inform\n[groupe] INFS3_1A\n[enseignant] GOUGELET Estelle\n[salle] 05_U12_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U12_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759132015
+
+DTSTAMP:20171222T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171222T101500
+
+DTEND:20171222T111500
+
+SUMMARY:TP M3204 Gestion syst inform
+
+DESCRIPTION:TP M3204 Gestion syst inform\n[groupe] INFS3_1A\n[enseignant] GOUGELET Estelle\n[salle] 05_U14_Info (IUT de Reims)\n[notes] Rattrapage 21/12
+
+LOCATION:[salle] 05_U14_Info (IUT de Reims)\
+BEGIN:VALARM
+
+ACTION:DISPLAY
+
+TRIGGER;VALUE=DURATION:-PT15M
+
+DESCRIPTION:Votre Ã©vÃ©nement dÃ©bute dans 15 minutes.
+
+END:VALARM
+
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759132016
+
+DTSTAMP:20171130T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171130T101500
+
+DTEND:20171130T111500
+
+SUMMARY:TP M3204 Gestion syst inform
+
+DESCRIPTION:TP M3204 Gestion syst inform\n[groupe] INFS3_1A\n[enseignant] GOUGELET Estelle\n[salle] 05_U04M_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U04M_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759132017
+
+DTSTAMP:20171214T101500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171214T101500
+
+DTEND:20171214T111500
+
+SUMMARY:TP M3204 Gestion syst inform
+
+DESCRIPTION:TP M3204 Gestion syst inform\n[groupe] INFS3_1A\n[enseignant] GOUGELET Estelle\n[salle] 05_U04M_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U04M_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759132018
+
+DTSTAMP:20171218T133000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171218T133000
+
+DTEND:20171218T163000
+
+SUMMARY:TP M3106C1 Base program C++
+
+DESCRIPTION:TP M3106C1 Base program C++\n[groupe] INFS3_1A\n[enseignant] REMION Yannick\n[salle] 05_U03M_Info (IUT de Reims)\n[notes] Rattrapage 19/12
+
+LOCATION:[salle] 05_U03M_Info (IUT de Reims)\
+BEGIN:VALARM
+
+ACTION:DISPLAY
+
+TRIGGER;VALUE=DURATION:-PT15M
+
+DESCRIPTION:Votre Ã©vÃ©nement dÃ©bute dans 15 minutes.
+
+END:VALARM
+
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759132019
+
+DTSTAMP:20171121T143000Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171121T143000
+
+DTEND:20171121T173000
+
+SUMMARY:TP M3106C1 Base program C++
+
+DESCRIPTION:TP M3106C1 Base program C++\n[groupe] INFS3_1A\n[enseignant] REMION Yannick\n[salle] 05_U07M_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U07M_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759132020
+
+DTSTAMP:20171117T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171117T081500
+
+DTEND:20171117T101500
+
+SUMMARY:TP M3203 Droit techno info
+
+DESCRIPTION:TP M3203 Droit techno info\n[groupe] INFS3_1A\n[enseignant] COUDRAIN Sebastien\n[salle] 05_U14_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U14_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759132021
+
+DTSTAMP:20171124T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171124T081500
+
+DTEND:20171124T101500
+
+SUMMARY:TP M3203 Droit techno info
+
+DESCRIPTION:TP M3203 Droit techno info\n[groupe] INFS3_1A\n[enseignant] COUDRAIN Sebastien\n[salle] 05_U14_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U14_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759132022
+
+DTSTAMP:20171201T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171201T081500
+
+DTEND:20171201T101500
+
+SUMMARY:TP M3203 Droit techno info
+
+DESCRIPTION:TP M3203 Droit techno info\n[groupe] INFS3_1A\n[enseignant] COUDRAIN Sebastien\n[salle] 05_U14_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U14_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759132023
+
+DTSTAMP:20171208T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171208T081500
+
+DTEND:20171208T101500
+
+SUMMARY:TP M3203 Droit techno info
+
+DESCRIPTION:TP M3203 Droit techno info\n[groupe] INFS3_1A\n[enseignant] COUDRAIN Sebastien\n[salle] 05_U14_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U14_Info (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759132024
+
+DTSTAMP:20171222T081500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171222T081500
+
+DTEND:20171222T101500
+
+SUMMARY:TP M3203 Droit techno info
+
+DESCRIPTION:TP M3203 Droit techno info\n[groupe] INFS3_1A\n[enseignant] COUDRAIN Sebastien\n[salle] 05_U14_Info (IUT de Reims)
+
+LOCATION:[salle] 05_U14_Info (IUT de Reims)
+BEGIN:VALARM
+
+ACTION:DISPLAY
+
+TRIGGER;VALUE=DURATION:-PT15M
+
+DESCRIPTION:Votre Ã©vÃ©nement dÃ©bute dans 15 minutes.
+
+END:VALARM
+
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759132025
+
+DTSTAMP:20171114T111500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171114T111500
+
+DTEND:20171114T121500
+
+SUMMARY:TD M3203 Droit techno info
+
+DESCRIPTION:TD M3203 Droit techno info\n[groupe] INFS3_1\n[enseignant] COUDRAIN Sebastien\n[salle] 05_U36 (IUT de Reims)
+
+LOCATION:[salle] 05_U36 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759132026
+
+DTSTAMP:20171121T111500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171121T111500
+
+DTEND:20171121T121500
+
+SUMMARY:TD M3203 Droit techno info
+
+DESCRIPTION:TD M3203 Droit techno info\n[groupe] INFS3_1\n[enseignant] COUDRAIN Sebastien\n[salle] 05_U36 (IUT de Reims)
+
+LOCATION:[salle] 05_U36 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759132027
+
+DTSTAMP:20171128T111500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171128T111500
+
+DTEND:20171128T121500
+
+SUMMARY:TD M3203 Droit techno info
+
+DESCRIPTION:TD M3203 Droit techno info\n[groupe] INFS3_1\n[enseignant] COUDRAIN Sebastien\n[salle] 05_U36 (IUT de Reims)
+
+LOCATION:[salle] 05_U36 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759132028
+
+DTSTAMP:20171205T111500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171205T111500
+
+DTEND:20171205T121500
+
+SUMMARY:TD M3203 Droit techno info
+
+DESCRIPTION:TD M3203 Droit techno info\n[groupe] INFS3_1\n[enseignant] COUDRAIN Sebastien\n[salle] 05_U36 (IUT de Reims)
+
+LOCATION:[salle] 05_U36 (IUT de Reims)
+END:VEVENT
+
+BEGIN:VEVENT
+
+UID:105394-1759132029
+
+DTSTAMP:20171219T111500Z
+
+ORGANIZER:mailto:no-reply@univ-reims.fr
+
+DTSTART:20171219T111500
+
+DTEND:20171219T121500
+
+SUMMARY:TD M3203 Droit techno info
+
+DESCRIPTION:TD M3203 Droit techno info\n[groupe] INFS3_1\n[enseignant] COUDRAIN Sebastien\n[salle] 05_U36 (IUT de Reims)
+
+LOCATION:[salle] 05_U36 (IUT de Reims)
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER;VALUE=DURATION:-PT15M
+DESCRIPTION:Votre Ã©vÃ©nement dÃ©bute dans 15 minutes.
+END:VALARM
+END:VEVENT
+END:VCALENDAR
+CAL;
+;

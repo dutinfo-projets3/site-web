@@ -2,7 +2,7 @@
 require_once ("../autoload.inc.php");
 
 function checkParam($id){
-	return isset($_POST[$id]) && !empty($_GET[$id]);
+	return isset($_GET[$id]) && !empty($_GET[$id]);
 }
 
 // Si l'utilisateur n'est pas connecté on ne peut pas changer sa photo
@@ -24,37 +24,30 @@ if (!file_exists($userfolder)){
 	mkdir($userfolder);
 }
 
-$hasID = checkParam("id");
-
-if (!$hasID || ($hasID && $util->getUserType() == Utilisateur::TYPES["ADMINISTRATION"])){
-	$user = $hasID ? (Utilisateur::createFromID($_GET["id"])) : $util;
-
-	$file = $userfolder . $user->getUsername() . ".jpg";
-
+function uploadPic($file){
 	$img = $_FILES["photo"]["tmp_name"];
-
 	$mimect = mime_content_type($img);
-
 	if ($mimect == "image/jpeg" || $mimect == "image/png"){
-
 		list($w, $h) = getimagesize($img);
-
-	
 		$loadedImage = $mimect == "image/jpeg" ? imagecreatefromjpeg($img) : imagecreatefrompng($img);
 		$savedImage  = imagecreatetruecolor(240, 300);
-
 		imagecopyresampled($savedImage, $loadedImage, 0, 0, 0, 0, 240, 300, $w, $h);
-
 		if (file_exists($file)){
 			unlink($file);
 		}
-
 		imagejpeg($savedImage, $file);
-	} else {
-		http_response_code(400);
-		return;
-	}
+		return true;
+	} else { return false;}
+}
+$hasID = checkParam("name");
+
+if ($hasID){
+	if ($util->getUsername() == $_GET["name"] || $util->getUserType() == Utilisateur::TYPES["ADMINISTRATION"])
+		uploadPic($userfolder . $_GET["name"] . ".jpg");
+	else
+		http_response_code(401);
+	return;
 } else {
-	http_response_code(401);
+	http_response_code(400);
 	return;
 }
