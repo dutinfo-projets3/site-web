@@ -60,6 +60,7 @@
 	"__home.inscription.a__" : "How to apply",
 
 	
+	
 	"__home.about.title__" : "About - Pan African University - Institute of Water and Energy Sciences",
 	"__home.about__" : "About",
 
@@ -82,8 +83,8 @@
 	"__home.howToGo.describeCity__" :"PAUWES is located at the Chetouane campus of technology and science, about  10 mins north-east of the city centre and easy to reach by bus or taxi. Campus facilities within Tlemcen can easily be reached by public transport.",
 
 	"__home.contact.title__" : "Contact - Pan African University - Institute of Water and Energy Sciences",
-	"__home.contact.phone__" : "Postal Address",
-	"__home.contact.pPhone__" : "Pan African University Institute for Water and Energy Sciences (including Climate Change) – PAUWES c/o Abou Bekr Belkaid University of Tlemcen B.P. 119 13000 Tlemcen Algeria",
+	"__home.contact.addressTitle__" : "Postal Address",
+	"__home.contact.address__" : "Pan African University Institute for Water and Energy Sciences (including Climate Change) – PAUWES c/o Abou Bekr Belkaid University of Tlemcen B.P. 119 13000 Tlemcen Algeria",
 	"__home.contact.firstItem__" : "Renseignements généraux",
 	"__home.contact.secondtItem__" : "Informations regardant les admissions et les aides financières:",
 	"__home.contact.thirdItem__" : "Informations pour les positions académiques: ",
@@ -220,5 +221,5 @@
 	"__home.welcome.firstTitle__" : "Welcome",
 	"__home.welcome.paragraph__" : "Welcome to the Pan African University Institute of Water and Energy Sciences (including Climate Change) (PAUWES), a new and exciting centre for excellence at the University of Tlemcen in Algeria. Called into existence by the African Union Commission in 2008, the Pan African University PAU is guided by the vision of an Africa managed by its own citizens and acting as a dynamic force in the international arena. PAUWES offers two world-class graduate programmes in which students address today’s most pressing development challenges. A secure water supply and innovative energy sources are of vital importance for the future of sustainable growth on the African continent. The institute is seeking a new generation of highly educated, well-trained students who are committed to the spirit of this goal. Africa’s top graduates are invited to participate in this highly innovative, collaborative, master’s programme, grounded in the latest theoretical and practical learning. The Master in Water and the Master in Energy programmes each offer a policy and an engineering track, awarding a joint degree from the Pan African University and the University of Tlemcen. Students are taught by renowned educators from African universities and the international academic community. They have access to brand new, state-of-the-art facilities, cutting-edge research and top-notch faculty. Supported by cooperation with other institutions of higher education and research on the continent and beyond, the institute also benefits from a professional network of public, private and civil society actors. Participants are encouraged to actively contribute their own, innovative ideas to the institute’s business incubation centre. Our goal is to usher in a new generation of leaders, well-equipped to harness the wealth of African human and natural resources, imbued with a common vision of a peaceful, prosperous and integrated Africa. If you are excited by the prospect of joining a group of dynamic students from across the African continent, united toward this common goal, we look forward to receiving your application.",
 	"__home.welcome.africanCommission__" : "African Union Commission",
-	"__home.welcome.pau__" : "Pan African University PAU",
+	"__home.welcome.pau__" : "Pan African University PAU"
 }
