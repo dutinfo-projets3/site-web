@@ -1,72 +1,108 @@
 <?php
+/**
+ * Created by Alexandre
+ */
 
-class Seance {
-
+class Seance{
 	private $idSeance;
 	private $idSalle;
-	private $idMatiere;
 	private $idGroupe;
 	private $idProfesseur;
+	private $idMatiere;
 	private $dateDebut;
 	private $dateFin;
+	private $notes;
 
 	/**
-	 * Retourne une news depuis son ID
-	 * @param $idNews L'id de la news voulue
-	 * @throws NewsException
-	 * @return News instance
-	 *
-	 * @TODO Test
-	 *
-	 */
-	public static function createFromID($idNews) {
-		$stmt = myPDO::getInstance()->prepare(<<<SQL
-		SELECT * FROM News
-		WHERE idNews = ?
-SQL
-		);
-		$stmt->setFetchMode(PDO::FETCH_CLASS, '');
-		$stmt->execute(array($idNews));
-		$obj = $stmt->fetch();
-		if ($obj == null) {
-			throw new NewsException();
-		} else {
-			return $obj;
-		}
-	}
-
-	/**
-	 * Getter pour l'ID de la séance
+	 * Getter pour idSeance
 	 * @return idSeance
 	 */
-	public function getId(){
+	public function getIdSeance() {
 		return $this->idSeance;
 	}
 
 	/**
-	 * Setter pour l'id de la séance
-	 * @return l'objet courant
-	 */
-	public function setId($id){
-		$this->idSeance = $id;
-		return $this;
-	}
-
-	/**
-	 * Getter pour l'ID de la salle
-	 * @return idSalle
+	 * Getter pour la salle
+	 * @return Instance salle
 	 */
 	public function getSalle(){
-		return $this->idSalle;
+		return Salle::createFromId($this->idSalle);
 	}
 
 	/**
-	 * Setter pour l'id de la salle
-	 * @return l'objet courant
+	 * Getter pour la groupe
+	 * @return Instance groupe
 	 */
-	public function setSalle($id){
-		$this->idSalle = $id;
-		return $this;
+	public function getGroupe(){
+		return Groupe::createFromId($this->idGroupe);
 	}
 
+	/**
+	 * Getter pour la matiere
+	 * @return Instance matiere
+	 */
+	public function getMatiere(){
+		return Matiere::createFromId($this->idMatiere);
+	}
+
+	/**
+	 * Getter pour la professeur
+	 * @return Instance professeur
+	 */
+	public function getProfesseur(){
+		return Professeur::createFromId($this->idProfesseur);
+	}
+
+	/**
+	 * Getter pour dateDebut
+	 * @return dateDebut
+	 */
+	public function getDateDebut() {
+		return $this->dateDebut;
+	}
+
+	/**
+	 * Getter pour dateFin
+	 * @return dateFin
+	 */
+	public function getDateFin() {
+		return $this->dateFin;
+	}
+
+	/**
+	 * Getter pour notes
+	 * @return notes
+	 */
+	public function getNotes() {
+		return $this->notes;
+	}
+
+	/**
+	 * Retourne un Seance depuis son ID
+	 * @param $idSeance L'id de la seance voulue
+	 * @throws SeanceException
+	 * @return Seance instance
+	 *
+	 */
+	public static function createFromId($idSeance){
+		$stmt = myPDO::getInstance()->prepare(<<<SQL
+		SELECT * FROM Seance
+		WHERE idSeance = ?
+SQL
+	);
+		$stmt->setFetchMode(PDO::FETCH_CLASS, 'Seance');
+		$stmt->execute(array($idSeance));
+		$obj = $stmt->fetch();
+		if ($obj == null) {
+			throw new SeanceException();
+		} else {
+			return $obj;
+		}
+	}	
+}
+
+class SeancException extends Exception {
+	public function __construct($message = "Pas de Seance disponible avec cet ID", $code = 0, Exception $previous = null) {
+		parent::__construct($message, $code, $previous);
+	}
 }

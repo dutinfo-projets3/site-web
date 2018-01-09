@@ -248,11 +248,26 @@ SQL
 	public static function updateNews($idNews, $title, $description) {
 		$stmt = myPDO::getInstance()->prepare(<<<SQL
 			UPDATE News SET nomEvenement = ? , description = ?
-			WHERE idNews = ? 
+			WHERE idNews = ?; 
 SQL
 		);
 
 		return $stmt->execute(array($title, $description, $idNews));
+	}
+
+	/**
+	 * Permet de supprimer une news suivant sont id
+	 * @param $idNews
+	 * @return true si la suppression à eu lieu
+	 */
+	public static function deleteNews($idNews) {
+		$stmt = myPDO::getInstance()->prepare(<<<SQL
+	DELETE FROM News
+	WHERE idNews = ?;
+SQL
+		);
+		return $stmt->execute(array($idNews));
+
 	}
 }
 

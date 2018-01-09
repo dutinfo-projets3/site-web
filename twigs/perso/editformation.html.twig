@@ -1,0 +1,92 @@
+{% extends 'template.html.twig' %}
+{% block content %}
+    <div class="d-flex justify-content-around">
+        <div class="col-lg-4 col-6 d-flex flex-column card m-lg-3 m-1 mt-2 mb-2 p-2">
+            <div class="d-flex justify-content-between">
+                <label for="formation">Formation</label>
+                <i id="removeFormation" data-feather="x" color="red" style="display: none"></i>
+                <i id="addFormation" data-feather="check" color="green" style="display: none"></i>
+            </div>
+            <select class="select" id="formation" size="5">
+                <option value="0">Csdfsdfsdfsdfsdg</option>
+                <option value="1">sdfsdf</option>
+                <option value="2">sdfsdf</option>
+                <option value="3">sfdsdf</option>
+            </select>
+            <input id="addInputFormation" type="text" class="form-control mt-2" placeholder="Ajouter une formation">
+        </div>
+        <div class="col-lg-4 col-6 d-flex flex-column card m-lg-3 m-1 mt-2 mb-2 p-2">
+            <div class="d-flex justify-content-between">
+                <label for="matiere">Matiere</label>
+                <i id="removeMatiere" data-feather="x" color="red" style="display:none;"></i>
+                <i id="addMatiere" data-feather="check" color="green" style="display:none;"></i>
+            </div>
+            <select class="select" id="matiere" size="5">
+                <option value="0">dfdf</option>
+                <option value="1">sdfsdf</option>
+                <option value="2">sdfsdf</option>
+                <option value="3">sfdsdf</option>
+            </select>
+            <input id="addInputMatiere" type="text" class="form-control mt-2" placeholder="Ajouter une matière">
+
+        </div>
+    </div>
+{% endblock %}
+{% block lnkjavascript %}
+<script>
+    $(document).ready(function() {
+
+        //evenement selection d'une formation
+        $("#formation").change(function () {
+            $("#removeFormation").fadeIn();
+            $("#addFormation").fadeOut(1);
+        });
+
+        //evenement selection d'une matiere
+        $("#matiere").change(function (){
+            $("#removeMatiere").fadeIn();
+            $("#addMatiere").fadeOut(1);
+        });
+
+        //evenement focus sur le champs d'une formation
+        $("#addInputFormation").focus(function () {
+            $("#removeFormation").fadeOut(1);
+            $("#addFormation").fadeIn();
+
+        });
+
+        //evenement focus sur le champs d'une matiere
+        $("#addInputMatiere").focus(function () {
+           $("#removeMatiere").fadeOut(1);
+           $("#addMatiere").fadeIn();
+        });
+
+        //ajout d'une formation
+        $("#addFormation").click(function () {
+            res = true;
+            if($("#addInputFormation").val() == ""){
+                console.log("Formation vide");
+                res = false;
+            }else {
+                $("#formation").append(new Option($("#addInputFormation").val()));
+            }
+            return res;
+        });
+
+        //ajout d'une matiere
+        $("#addMatiere").click(function () {
+            res = true;
+            if($("#addInputMatiere").val() == ""){
+                console.log("matiere vide");
+                res = false;
+            }else {
+                $("#matiere").append(new Option($("#addInputMatiere").val()));
+            }
+            return res;
+        });
+
+
+
+    });
+</script>
+{% endblock %}

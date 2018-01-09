@@ -106,4 +106,28 @@ class Etudiant extends Utilisateur {
 	public function getDateEntree(){
 		return $this->dateEntree;
 	}
+
+	public function getGroupes(){
+		$stmt = myPDO::getInstance()->prepare(<<<SQL
+		SELECT idGroupe FROM Appartient
+		WHERE idEtudiant = ?
+SQL
+		);
+		$stmt->execute(array($this->idPersonne));
+		$obj = $stmt->fetchAll();
+		$res = array();
+		foreach($obj as $val){
+			$res[] = Groupe::createFromId($val['idGroupe']);
+		}
+		return $res;
+	}
+
+	public function getSeances(){
+		$groupes = $this->getGroupes();
+		$seances = array();
+		foreach($groupes as $g){
+			$seances[] = $g->getSeances();
+		}
+		var_dump($seances);
+	}
 }

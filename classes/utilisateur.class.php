@@ -382,6 +382,10 @@ HTML;
 		return $this;
 	}
 
+	public function getType(){
+		return $this->type;
+	}
+	
 	public function setType($type){
 		$this->type = $type;
 		return $this;
@@ -471,7 +475,6 @@ HTML;
 		$this->mail = $mail;
 		return $this;
 	}
-
 }
 
 class AuthenticationException extends Exception {
