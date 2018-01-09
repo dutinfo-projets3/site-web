@@ -7,11 +7,10 @@
                 <i id="removeFormation" data-feather="x" color="red" style="display: none"></i>
                 <i id="addFormation" data-feather="check" color="green" style="display: none"></i>
             </div>
-            <select class="select" id="formation" size="5">
-                <option value="0">Csdfsdfsdfsdfsdg</option>
-                <option value="1">sdfsdf</option>
-                <option value="2">sdfsdf</option>
-                <option value="3">sfdsdf</option>
+            <select class="select w-100" id="formation" size="5">
+                {% for formation in formations %}
+                    <option value="{{ formation.IdFormation }}">{{ formation.NomFormation }}</option>
+                {% endfor %}
             </select>
             <input id="addInputFormation" type="text" class="form-control mt-2" placeholder="Ajouter une formation">
         </div>
@@ -21,11 +20,8 @@
                 <i id="removeMatiere" data-feather="x" color="red" style="display:none;"></i>
                 <i id="addMatiere" data-feather="check" color="green" style="display:none;"></i>
             </div>
-            <select class="select" id="matiere" size="5">
-                <option value="0">dfdf</option>
-                <option value="1">sdfsdf</option>
-                <option value="2">sdfsdf</option>
-                <option value="3">sfdsdf</option>
+            <select class="select w-100" id="matiere" size="5">
+              
             </select>
             <input id="addInputMatiere" type="text" class="form-control mt-2" placeholder="Ajouter une matière">
 
@@ -33,60 +29,115 @@
     </div>
 {% endblock %}
 {% block lnkjavascript %}
-<script>
-    $(document).ready(function() {
+    <script>
+        $(document).ready(function () {
 
-        //evenement selection d'une formation
-        $("#formation").change(function () {
-            $("#removeFormation").fadeIn();
-            $("#addFormation").fadeOut(1);
+            //evenement selection d'une formation
+            $("#formation").change(function () {
+                $("#removeFormation").fadeIn();
+                $("#addFormation").fadeOut(1);
+
+                //mise a jour des matieres
+                var requestMatiere = $.ajax({
+                    url: "/api/getmatieres.php",
+                    method: "POST",
+                    data: {idFormation: $("#formation").val()}
+                });
+
+                requestMatiere.done(function (res) {
+                    $("#matiere").empty();
+                    for (i = 0; i < res.length; i++) {
+                        $("#matiere").append(new Option(res[i].nomMatiere, res[i].idMatiere));
+                    }
+
+                });
+
+                requestMatiere.fail(function () {
+                    $("#matiere").empty();
+                })
+
+            });
+
+            //evenement selection d'une matiere
+            $("#matiere").change(function () {
+                $("#removeMatiere").fadeIn();
+                $("#addMatiere").fadeOut(1);
+            });
+
+            //evenement focus sur le champs d'une formation
+            $("#addInputFormation").focus(function () {
+                $("#removeFormation").fadeOut(1);
+                $("#addFormation").fadeIn();
+
+            });
+
+            //evenement blur champs d'une matiere
+            $("#addInputMatiere").blur(function () {
+                if ($("#addInputMatiere").val() == "") {
+                    $("#addMatiere").fadeOut(1);
+                    $("#removeMatiere").fadeIn();
+                }
+            });
+
+            //evenement blur champs d'une formation
+            $("#addInputFormation").blur(function () {
+                if ($("#addInputFormation").val() == "") {
+                    $("#addFormation").fadeOut(1);
+                    $("#removeFormation").fadeIn();
+                }
+
+            });
+
+            //evenement focus sur le champs d'une matiere
+            $("#addInputMatiere").focus(function () {
+                $("#removeMatiere").fadeOut(1);
+                $("#addMatiere").fadeIn();
+            });
+
+            //ajout d'une formation
+            $("#addFormation").click(function () {
+                res = true;
+                if ($("#addInputFormation").val() == "") {
+                    console.log("Formation vide");
+                    res = false;
+                } else {
+                    var requestAddFormation = $.ajax({
+                        url: "/api/addformation.php",
+                        method: "POST",
+                        data: {nomFormation: $("#addInputFormation").val()}
+                    });
+
+                    requestAddFormation.done(function(res){
+                        $("#formation").append(new Option($("#addInputFormation").val(),res.id,false,true));
+                        $("#formation").change();
+                        $("#addInputFormation").val("");
+                    });
+
+                    requestAddFormation.fail(function () {
+                        alert("Une erreur est survenue");
+                    });
+
+
+                }
+                return res;
+            });
+
+            //ajout d'une matiere
+            $("#addMatiere").click(function () {
+                res = true;
+                if ($("#addInputMatiere").val() == "") {
+                    console.log("matiere vide");
+                    res = false;
+                } else {
+                    $("#matiere").append(new Option($("#addInputMatiere").val(),"id",false,true));
+                    $("#matiere").change();
+                    $("#addInputMatiere").val("");
+
+                }
+                return res;
+            });
+
+
         });
-
-        //evenement selection d'une matiere
-        $("#matiere").change(function (){
-            $("#removeMatiere").fadeIn();
-            $("#addMatiere").fadeOut(1);
-        });
-
-        //evenement focus sur le champs d'une formation
-        $("#addInputFormation").focus(function () {
-            $("#removeFormation").fadeOut(1);
-            $("#addFormation").fadeIn();
-
-        });
-
-        //evenement focus sur le champs d'une matiere
-        $("#addInputMatiere").focus(function () {
-           $("#removeMatiere").fadeOut(1);
-           $("#addMatiere").fadeIn();
-        });
-
-        //ajout d'une formation
-        $("#addFormation").click(function () {
-            res = true;
-            if($("#addInputFormation").val() == ""){
-                console.log("Formation vide");
-                res = false;
-            }else {
-                $("#formation").append(new Option($("#addInputFormation").val()));
-            }
-            return res;
-        });
-
-        //ajout d'une matiere
-        $("#addMatiere").click(function () {
-            res = true;
-            if($("#addInputMatiere").val() == ""){
-                console.log("matiere vide");
-                res = false;
-            }else {
-                $("#matiere").append(new Option($("#addInputMatiere").val()));
-            }
-            return res;
-        });
-
-
-
-    });
-</script>
+    </script>
 {% endblock %}

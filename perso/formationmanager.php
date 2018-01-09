@@ -11,5 +11,6 @@ if (!Utilisateur::isConnected()){
 	header('Location: /');
 	return;
 }
+$formations = Formation::getFormations();
 
-echo TwigLoader::getInstance()->render('', 'perso/editformation', array());
+echo TwigLoader::getInstance()->render('', 'perso/editformation', array('formations'=>$formations));
