@@ -21,7 +21,7 @@
                 <i id="addMatiere" data-feather="check" color="green" style="display:none;"></i>
             </div>
             <select class="select w-100" id="matiere" size="5">
-              
+
             </select>
             <input id="addInputMatiere" type="text" class="form-control mt-2" placeholder="Ajouter une matière">
 
@@ -120,6 +120,24 @@
 
                 }
                 return res;
+            });
+
+            //supression d'une formation
+            $("#removeFormation").click(function () {
+                var requestRemoveFormation = $.ajax({
+                    url: "/api/removeformation.php",
+                    method: "POST",
+                    data: {idFormation: $("#formation").val()}
+                });
+
+                requestRemoveFormation.done(function(res){
+                    $("option[value~='" + $("#formation").val() + "']").remove();
+                    $("#removeFormation").fadeOut(1);
+                });
+
+                requestRemoveFormation.fail(function () {
+                    alert("Une erreur est survenue");
+                });
             });
 
             //ajout d'une matiere

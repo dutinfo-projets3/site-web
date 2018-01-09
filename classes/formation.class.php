@@ -85,8 +85,22 @@ SQL
 		if($stmt->execute(array($nomFormation))){
 			return myPDO::getInstance()->lastInsertId();
 		}
-		throw new FormationException();
+		throw new FormationException("Impossible inserer cette formation");
 
+	}
+
+	/**
+	 * suppression d'une formation à partir de son ID
+	 */
+	public static function removeformation($idFormation){
+		$stmt = myPDO::getInstance()->prepare(<<<SQL
+		DELETE FROM Formation
+		WHERE idFormation = ?;
+SQL
+		);
+		if(!$stmt->execute(array($idFormation))){
+			throw new FormationException();
+		}
 	}
 
 }
