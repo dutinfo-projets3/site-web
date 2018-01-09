@@ -93,17 +93,35 @@ SQL
 	}
 
 	/**
-	 * Permet ajouter une formation et de retourner l'id de la formation qui vient être inséré
+	 * Permet ajouter une matiere et de retourner l'id de la matiere qui vient être inséré
 	 * @param $nomFormation
 	 * @return le dernier id de la formation
 	 */
-	public static function addMatiere($nomFormation) {
+	public static function addMatiere($nomMatiere, $idFormation) {
 		$stmt = myPDO::getInstance()->prepare(<<<SQL
-		INSERT INTO Matiere (nomMatiere) VALUE (?);
+		INSERT INTO Matiere (nomMatiere, idFormation) VALUE (?, ?);
 SQL
 		);
-		$stmt->execute(array($nomFormation));
-		return myPDO::getInstance()->lastInsertId;
+		if($stmt->execute(array($nomMatiere, $idFormation))){
+			return myPDO::getInstance()->lastInsertId();
+		}
+		throw new MatiereException("Impossible inserer une nouvelle matiere");
+	}
+
+	/**
+	 * suppression de la matiere en fonction de son id
+	 * @param $idMatiere
+	 * @throws MatiereException
+	 */
+	public static function removeMatiere($idMatiere){
+		$stmt = myPDO::getInstance()->prepare(<<<SQL
+		DELETE FROM Matiere
+		WHERE idMatiere = ?;
+SQL
+		);
+		if(!$stmt->execute(array($idMatiere))){
+			throw new MatiereException();
+		}
 	}
 }
 
