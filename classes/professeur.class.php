@@ -106,4 +106,17 @@ class Professeur extends Utilisateur {
 		return $this;
 	}
 
+	 public function getSeances(){
+        $stmt = myPDO::getInstance()->prepare(<<<SQL
+            SELECT *
+            FROM seance
+            WHERE idProfesseur = ?
+SQL
+);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, 'Seance');
+        $stmt->execute(array($this->idPersonne));
+        $seances = $stmt->fetchAll();
+        return $seances;
+    }
+
 }
