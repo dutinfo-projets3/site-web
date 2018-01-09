@@ -1,0 +1,23 @@
+{% extends 'template.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/assets/css/perso.index.css">
+{% endblock %}
+
+{% block content %}
+    <div id="ics_temp">
+
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    
+    $.ajax({
+       url : '../sessions.php',
+       type : 'POST',
+       dataType : 'html',
+       success : function(res, statut){
+          $("#ics_temp").html(res);
+       }
+    });
+{% endblock %}
