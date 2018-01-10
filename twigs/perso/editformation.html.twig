@@ -103,15 +103,6 @@
 
             }
 
-            var toolbarOptions = [[{'font': []}], [{'size': ['small', false, 'large', 'huge']}], [{'align': []}, {'list': 'ordered'}, {'list': 'bullet'}], ['bold', 'italic', 'underline', 'strike'], [{'color': []}], ['link', 'image'], ['clean']];
-            var quill = new Quill('#editDescriptionFormation', {
-                theme: 'snow',
-                modules: {
-                    imageResize: {modules: ['Resize']},
-                    toolbar: toolbarOptions
-                }
-            });
-
             function disabled(disable) {
                 if (disable) {
                     $("#editFormation")
@@ -137,6 +128,14 @@
                 }
             }
 
+            var toolbarOptions = [[{'font': []}], [{'size': ['small', false, 'large', 'huge']}], [{'align': []}, {'list': 'ordered'}, {'list': 'bullet'}], ['bold', 'italic', 'underline', 'strike'], [{'color': []}], ['link', 'image'], ['clean']];
+            var quill = new Quill('#editDescriptionFormation', {
+                theme: 'snow',
+                modules: {
+                    imageResize: {modules: ['Resize']},
+                    toolbar: toolbarOptions
+                }
+            });
 
             $("#cancel").click(function () {
                 disabled(false);
@@ -145,20 +144,46 @@
 
             $("#editFormation.btn-primary").click(function () {
                 if ($("#editFormation").hasClass("btn-primary")) {
-                    if ($("#formation").val() != null) {
-                        $("#editor").fadeIn("slow");
-                        disabled(true);
-                        $("#cancel").fadeIn(1);
-                    }
-                    else {
-                        $("#formation").val($("#formation option:first").val());
-                        $("#formation").focus();
-                        $("#formation").change();
-                        disabled(true);
-                        $("#cancel").fadeIn(1);
-                        $("#editor").fadeIn("slow");
+                    var requestGetDescription = $.ajax({
+                        url: "/api/getdescriptiondureeformation.php",
+                        method: "POST",
+                        data: {idFormation: $("#formation").val()}
+                    });
 
-                    }
+                    requestGetDescription.done(function (res) {
+                        if(res.description != null ) {
+                            quill.setContents(JSON.parse(res.description));
+                        }else{
+                            quill.setContents("");
+                        }
+
+                        if(res.duree != null){
+                            $("#duree").val(res.duree);
+                        }else {
+                            $("#duree").val("");
+                        }
+                        if ($("#formation").val() != null) {
+                            $("#editor").fadeIn("slow");
+                            disabled(true);
+                            $("#cancel").fadeIn(1);
+                        }
+                        else {
+                            $("#formation").val($("#formation option:first").val());
+                            $("#formation").focus();
+                            $("#formation").change();
+                            disabled(true);
+                            $("#cancel").fadeIn(1);
+                            $("#editor").fadeIn("slow");
+
+                        }
+
+                    });
+
+                    requestGetDescription.fail(function () {
+                        alert("Une erreur est survenue");
+                    });
+
+
                 } else {
 
                     description = warningDescripition(quill, $('.warning'), $('.add'));
@@ -327,14 +352,16 @@
             });
 
             $("#formation").click(function () {
-                $("#addFormation").fadeOut(1);
-                $("#removeFormation").fadeIn();
-                $("#formation").change();
+                    $("#addFormation").fadeOut(1);
+                    $("#removeFormation").fadeIn();
+                    $("#formation").change();
             });
 
             $("#matiere").click(function () {
-                $("#addMatiere").fadeOut(1);
-                $("#removeMatiere").fadeIn();
+                if(!$("#matiere").val() == "") {
+                    $("#addMatiere").fadeOut(1);
+                    $("#removeMatiere").fadeIn();
+                }
             });
 
             //ajout d'une matiere

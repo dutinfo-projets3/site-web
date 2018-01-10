@@ -7,6 +7,7 @@ class Formation {
 	private $idFormation;
 	private $nomFormation;
 	private $duree;
+	private $description;
 
 	/**
 	 * Getter pour idFormation
@@ -30,6 +31,14 @@ class Formation {
 	 */
 	public function getDuree() {
 		return $this->duree;
+	}
+
+	/**
+	 * Getter description
+	 * @return description
+	 */
+	public function getDescription(){
+		return $this->description;
 	}
 
 	/**
