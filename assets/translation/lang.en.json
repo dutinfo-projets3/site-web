@@ -5,7 +5,6 @@
 	"__home.text.forgotPassword__" : "Forgot password?",
 	"__home.text.welcome__" : "Welcome, ",
 
-
 	"__home.homeBar.home__" : "Home",
 	"__home.homeBar.studyProgram__" : "Study program",
 	"__home.homeBar.inscription__" : "Registration",
@@ -14,6 +13,7 @@
 	"__home.homeBar.campusLife__" : "Campus Life",
 	"__home.homeBar.about__" : "About",
 
+	"__home.news__" : "News",
 
 	"__home.button.education__" : "Education",
 	"__home.button.disconnect__" : "Disconnect",
@@ -58,8 +58,6 @@
 	"__home.inscription.p2__" : "Women are particularly encouraged to apply.",
 	"__home.inscription.p3__" : "We will only accept online applications that are complete and sent before the deadline.",
 	"__home.inscription.a__" : "How to apply",
-
-	
 	
 	"__home.about.title__" : "About - Pan African University - Institute of Water and Energy Sciences",
 	"__home.about__" : "About",

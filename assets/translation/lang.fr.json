@@ -1,4 +1,8 @@
 {
+	"__home.field.userName__" : "Nom d'utilisateur",
+	"__home.field.password__" : "Mot de passe",
+
+	"__home.text.forgotPassword__" : "Mot de passe oublié?",
 	"__home.text.welcome__" : "Bienvenue, ",
 
 	"__home.homeBar.home__" : "Accueil",
@@ -14,6 +18,8 @@
 	"__home.button.next__" : "Suivant",
 	"__home.button.previous__" : "Précédent",
 	"__home.button.newButton__" : "En savoir plus",
+
+	"__home.news__" : "Actualités",
 
 	"__perso.student.studentHome__" : "Accueil Etudiant",
 	"__perso.student.myMarks__" : "Mes notes",

@@ -3,7 +3,7 @@
  * Created by Alexandre
  */
 
-class Formation{
+class Formation {
 	private $idFormation;
 	private $nomFormation;
 	private $duree;
@@ -39,7 +39,7 @@ class Formation{
 	 * @return Formation instance
 	 *
 	 */
-	public static function createFromID($idFormation){
+	public static function createFromID($idFormation) {
 		$stmt = myPDO::getInstance()->prepare(<<<SQL
 		SELECT * FROM Formation
 		WHERE idFormation = ?
@@ -54,7 +54,55 @@ SQL
 			return $obj;
 		}
 	}
-	
+
+	/**
+	 * Renvoie toute les formation disponible
+	 * @return tableau de formation
+	 *
+	 */
+	public static function getFormations() {
+		$stmt = myPDO::getInstance()->prepare(<<<SQL
+		SELECT * FROM Formation;
+SQL
+		);
+		$stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+		$stmt->execute();
+		return $arrayFormation = $stmt->fetchAll();
+
+	}
+
+	/**
+	 * Permet ajouter une formation et de retourner l'id de la formation qui vient être inséré
+	 * @param $nomFormation
+	 * @return le dernier id de la formation
+	 */
+	public static function addFormation($nomFormation){
+		$stmt = myPDO::getInstance()->prepare(<<<SQL
+		INSERT INTO Formation (nomFormation) VALUE (?);
+SQL
+		);
+
+		if($stmt->execute(array($nomFormation))){
+			return myPDO::getInstance()->lastInsertId();
+		}
+		throw new FormationException("Impossible inserer cette formation");
+
+	}
+
+	/**
+	 * suppression d'une formation à partir de son ID
+	 */
+	public static function removeformation($idFormation){
+		$stmt = myPDO::getInstance()->prepare(<<<SQL
+		DELETE FROM Formation
+		WHERE idFormation = ?;
+SQL
+		);
+		if(!$stmt->execute(array($idFormation))){
+			throw new FormationException();
+		}
+	}
+
 }
 
 class FormationException extends Exception {
