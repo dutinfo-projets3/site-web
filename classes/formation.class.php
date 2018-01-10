@@ -103,6 +103,23 @@ SQL
 		}
 	}
 
+	/**
+	 * Permet de mettre à jour la duree et la description d'une formation
+	 * @param $idFormation
+	 * @param $description
+	 * @param $duree
+	 * @throws FormationException
+	 */
+	public static function addDescription($idFormation, $description, $duree){
+		$stmt = myPDO::getInstance()->prepare(<<<SQL
+		UPDATE Formation SET description = ?, duree = ? 
+		WHERE idFormation = ?;
+SQL
+		);
+		if(!$stmt->execute(array($description, $duree, $idFormation))){
+			throw new FormationException();
+		}
+	}
 }
 
 class FormationException extends Exception {
