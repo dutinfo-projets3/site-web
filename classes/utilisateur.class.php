@@ -75,12 +75,12 @@ class Utilisateur {
 HTML;
 		if ($err != null) {
 			switch ($err) {
-				case "badpass":
-					$val .= "__home.form.badPass__";
-					break;
-				case "other":
-					$val .= "__home.form.serverError__";
-					break;
+			case "badpass":
+				$val .= "__home.form.badPass__";
+				break;
+			case "other":
+				$val .= "__home.form.serverError__";
+				break;
 			}
 		}
 
@@ -92,7 +92,7 @@ HTML;
 					<input type="password" name="password"  class="form-control form-control-sm mt-2" id="password" placeholder="__home.form.password__">
 					<a href="" class="small col-sm-12 text-muted p-0 d-lg-none"> __home.forgottenPassword__</a>
 				</div>
-				
+
 				<input hidden name="url" value="{$urlActuelUser}">
 				<input hidden name="code">
 				<button type="submit" class="btn btn-primary col-lg-2 col-12  mt-lg-0 mt-1">&rarr;</button>
@@ -140,24 +140,24 @@ HTML;
 HTML;
 		if ($displayPanelButton) {
 			$val .= '<a class="btn btn-primary col-lg-5 col-5 " href="/perso">
-                        <div class="row pr-2 pl-2">
-                            <i data-feather="grid" class="col-12 col-lg-2 p-0"></i>
-                            <span class="col-10 d-none d-lg-inline p-0">__home.button.education__</span>
-                        </div>
-                    </a>';
+				<div class="row pr-2 pl-2">
+				<i data-feather="grid" class="col-12 col-lg-2 p-0"></i>
+				<span class="col-10 d-none d-lg-inline p-0">__home.button.education__</span>
+				</div>
+				</a>';
 			$val .= '<a class="btn btn-danger col-lg-6 offset-2 offset-lg-1 col-5" href="/login.php?logout=true">
-                        <div class="row pr-2 pl-2">
-                            <i data-feather="log-out" class="col-12 p-0 col-lg-2"></i>
-                            <span class="col-10 d-none d-lg-inline p-0">__home.button.disconnect__</span>
-                        </div>
-                    </a>';
+				<div class="row pr-2 pl-2">
+				<i data-feather="log-out" class="col-12 p-0 col-lg-2"></i>
+				<span class="col-10 d-none d-lg-inline p-0">__home.button.disconnect__</span>
+				</div>
+				</a>';
 		} else {
 			$val .= '<a class="btn btn-danger  col-12 col-lg-6 offset-lg-3" href="/login.php?logout=true">
-                        <div class="row pr-2 pl-2">
-                            <i data-feather="log-out" class="col-2 p-0"></i>
-                            <span class="col-10 p-0">__home.button.disconnect__</span>
-                        </div>
-                    </a>';
+				<div class="row pr-2 pl-2">
+				<i data-feather="log-out" class="col-2 p-0"></i>
+				<span class="col-10 p-0">__home.button.disconnect__</span>
+				</div>
+				</a>';
 		}
 		$val .= <<< HTML
 		</div>
@@ -176,16 +176,16 @@ HTML;
 		for ($i = 0; $i < $size; $i++) {
 			$choose = rand(1, 3);
 			switch ($choose) {
-				case 1 :
-					$res .= chr(rand((ord("a")), (ord("z"))));
-					break;
-				case 2 :
-					$res .= chr(rand((ord("A")), (ord("Z"))));
-					break;
-				case 3 :
-					$res .= chr(rand((ord("0")), (ord("9"))));
-					break;
-				default :
+			case 1 :
+				$res .= chr(rand((ord("a")), (ord("z"))));
+				break;
+			case 2 :
+				$res .= chr(rand((ord("A")), (ord("Z"))));
+				break;
+			case 3 :
+				$res .= chr(rand((ord("0")), (ord("9"))));
+				break;
+			default :
 			}
 		}
 		return $res;
@@ -233,17 +233,17 @@ HTML;
 	private static function createUserKind($user) {
 		$obj = null;
 		switch ($user->type) {
-			case self::TYPES["ETUDIANT"]:
-				$obj = Etudiant::createFromUser($user);
-				break;
-			case self::TYPES["PROFESSEUR"]:
-				$obj = Professeur::createFromUser($user);
-				break;
-			case self::TYPES["ADMINISTRATION"]:
-				$obj = Secretaire::createFromUser($user);
-				break;
-			default:
-				var_dump("SOMETHING WENT WRNG");
+		case self::TYPES["ETUDIANT"]:
+			$obj = Etudiant::createFromUser($user);
+			break;
+		case self::TYPES["PROFESSEUR"]:
+			$obj = Professeur::createFromUser($user);
+			break;
+		case self::TYPES["ADMINISTRATION"]:
+			$obj = Secretaire::createFromUser($user);
+			break;
+		default:
+			var_dump("SOMETHING WENT WRNG");
 		}
 		return $obj;
 	}
@@ -260,6 +260,24 @@ HTML;
 		} else {
 			throw new NotInSessionException();
 		}
+	}
+
+	/**
+	 * Créé une instance de l'utilisateur en fonction du nom proposé
+	 * @throws InvalidArgumentException si l'utilisateur n'existe pas
+	 */
+	public static function createFromUsername($id) {
+		$rq = "SELECT * FROM Utilisateur WHERE nomutilisateur=:id;";
+		$stmt = myPDO::getInstance()->prepare($rq);
+
+		$stmt->bindValue(":id", $id);
+
+		$stmt->setFetchMode(PDO::FETCH_CLASS, 'Utilisateur');
+
+		$res = null;
+		if ($stmt->execute())
+			$res = $stmt->fetch();
+		return Utilisateur::createUserKind($res);
 	}
 
 	/**
@@ -368,7 +386,7 @@ HTML;
 			"numerotel" => $this->numerotel
 		);
 	}
-	
+
 	/***
 	 * Getters & Setters
 	 **/
@@ -385,7 +403,7 @@ HTML;
 	public function getType(){
 		return $this->type;
 	}
-	
+
 	public function setType($type){
 		$this->type = $type;
 		return $this;
