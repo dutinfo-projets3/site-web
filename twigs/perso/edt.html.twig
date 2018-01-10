@@ -1,45 +1,41 @@
 {% extends 'template.html.twig' %}
 
+{% block stylesheets %}
+	<link rel="stylesheet" href="/assets/css/fullcalendar.min.css"/>
+{% endblock %}
+
 {% block javascripts %}
 	<script src="/assets/js/moment.min.js"> </script>
 	<script src="/assets/js/ical.min.js"> </script>
+	<script src="/assets/js/ical_events.js"> </script>
+	<script src="/assets/js/ical_fullcalendar.js"> </script>
 {% endblock %}
 
 {% block content %}
-
-	<div class="mt-5 row" id="cal">
-
-		<div class="col-4 text-center" onclick="remOne()">
-			<i data-feather="arrow-left-circle"></i>
-		</div>
-
-		<div class="col-4 text-center" id="sem"> </div>
-
-		<div class="col-4 text-center" onclick="plusOne()">
-			<i data-feather="arrow-right-circle"></i>
-		</div>
-
-		<table class="col-12 col-lg-10 offset-lg-1 mt-4 text-center table table-dark" style="display: overflow;">
-			<thead>
-				<tr>
-					<th scope="col"></th>
-					<th scope="col" id="monday">Lundi</th>
-					<th scope="col" id="tuesday">Mardi</th>
-					<th scope="col" id="wednesday">Mercredi</th>
-					<th scope="col" id="thursday">Jeudi</th>
-					<th scope="col" id="friday">Vendredi</th>
-					<th scope="col" id="saturday">Samedi</th>
-				</tr>
-			</thead>
-			<tbody id="cald">
-			</tbody>
-		</table>
-	</div>
-	<script>
-		var username = '{{ user.username }}';
-	</script>
+	<div id="calendar" class="col-lg-10 offset-lg-1 col-12 offset-0"> </div>
 {% endblock %}
 
 {% block lnkjavascript %}
-	<script src="/assets/js/edt.js"> </script>
+	<script>
+$(document).ready(function() {
+	$('#calendar').fullCalendar({
+		defaultView: "agendaWeek"
+	})
+
+$.ajax({
+	url: '/api/getcal.php?user=' + "{{ user.username }}",
+	type: 'GET',
+	success: function(tx, status){
+		console.log("downloaded");
+		$('#calendar').fullCalendar('addEventSource', fc_events(tx, {}));
+	},
+	error: function(res, status, err){
+		console.log(err);
+	}
+});
+
+});
+</script>
+	<script src="/assets/js/fullcalendar.min.js"> </script>
 {% endblock %}
+
