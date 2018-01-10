@@ -35,94 +35,11 @@
 			</tbody>
 		</table>
 	</div>
-
+	<script>
+		var username = '{{ user.username }}';
+	</script>
 {% endblock %}
 
-{% block javascript %}
-
-	var date = moment();
-	var edt = [];
-
-	var weekDays = [ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" ];
-
-	function fillWithWeek(date){
-		var cal = document.getElementById("cald");
-
-		while(cal.firstChild){
-			cal.removeChild(cal.firstChild);
-		}
-
-		var date = moment(date).week("isoweek");
-
-		$("#sem").text("Semaine " + date.week());
-
-		$("#monday").text("Lundi " + date.day("Monday").format("DD/MM"));
-		$("#tuesday").text("Mardi " + date.day("Tuesday").format("DD/MM"));
-		$("#wednesday").text("Mercredi " + date.day("Wednesday").format("DD/MM"));
-		$("#thursday").text("Jeudi " + date.day("Thursday").format("DD/MM"));
-		$("#friday").text("Vendredi " + date.day("Friday").format("DD/MM"));
-		$("#saturday").text("Samedi " + date.day("Saturday").format("DD/MM"));
-
-		for (i = 0; i<edt.length; i++){
-	  		console.log(moment(edt[i].startDate.toJSDate()))
-	  	}
-
-		for (i = 8; i <= 21; i++){
-			var tr = document.createElement("tr");
-			var th = document.createElement("th")
-			th.setAttribute("scope", "row");
-			th.innerText = i + "h - " + (i+1) + "h";
-
-			tr.appendChild(th);
-
-			// Chaque jour de chaque heure
-			for (curD in weekDays){
-				day = date.day(weekDays[curD]);
-				a = document.createElement("td");
-				a.style.height="100px";
-				found = false;
-				count = 0;
-				while (!found && count < edt.length){
-					currentDate = edt[count].startDate.toJSDate();
-					if (((moment(currentDate)).format("DDMMYYYY") == moment(day).format("DDMMYYYY")) && currentDate.getHours() == i){
-						found = edt[count];
-					}
-					++count;
-				}
-				if (found)
-	  a.innerHTML = "<span style='display:inline-block'>" + found.summary + "</span><span style='display:inline-block; font-size: 12px; overflow: hidden;'>" + found.description.replace(/\n/g, '<br />') + "</span>";
-				tr.appendChild(a);
-			}
-			cal.appendChild(tr);
-		}
-	}
-
-	function plusOne(){
-		date = date.add(1, 'week');
-		fillWithWeek(date);
-	}
-
-	function remOne(){
-		date = date.subtract(1, "week");
-		fillWithWeek(date);
-	}
-
-	$.ajax({
-		url: '/api/getcal.php?user={{ user.username }}',
-		type: 'GET',
-		success: function(tx, status){
-			var jcal = ICAL.parse(tx);
-			comp = new ICAL.Component(jcal);
-
-			$.each(comp.getAllSubcomponents("vevent"), function(a, b){
-				edt.push(new ICAL.Event(b));
-			});
-
-			fillWithWeek(date);
-		},
-		error: function(res, status, err){
-			console.log(err);
-		}
-	});
+{% block lnkjavascript %}
+	<script src="/assets/js/edt.js"> </script>
 {% endblock %}
-
