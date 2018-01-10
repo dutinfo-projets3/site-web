@@ -151,15 +151,15 @@
                     });
 
                     requestGetDescription.done(function (res) {
-                        if(res.description != null ) {
+                        if (res.description != null) {
                             quill.setContents(JSON.parse(res.description));
-                        }else{
+                        } else {
                             quill.setContents("");
                         }
 
-                        if(res.duree != null){
+                        if (res.duree != null) {
                             $("#duree").val(res.duree);
-                        }else {
+                        } else {
                             $("#duree").val("");
                         }
                         if ($("#formation").val() != null) {
@@ -189,12 +189,16 @@
                     description = warningDescripition(quill, $('.warning'), $('.add'));
                     duree = warningDuree($('#duree'), $('.add'));
 
-                    if(duree && description){
+                    if (duree && description) {
                         $("#backRolling").css("visibility", "visible");
                         var requestAddDescription = $.ajax({
                             url: "/api/updatedescriptionformation.php",
                             method: "POST",
-                            data: {idFormation: $("#formation").val(), description: JSON.stringify(quill.getContents()), duree : $("#duree").val()}
+                            data: {
+                                idFormation: $("#formation").val(),
+                                description: JSON.stringify(quill.getContents()),
+                                duree: $("#duree").val()
+                            }
                         });
 
                         requestAddDescription.done(function () {
@@ -352,13 +356,13 @@
             });
 
             $("#formation").click(function () {
-                    $("#addFormation").fadeOut(1);
-                    $("#removeFormation").fadeIn();
-                    $("#formation").change();
+                $("#addFormation").fadeOut(1);
+                $("#removeFormation").fadeIn();
+                $("#formation").change();
             });
 
             $("#matiere").click(function () {
-                if(!$("#matiere").val() == "") {
+                if (!$("#matiere").val() == "") {
                     $("#addMatiere").fadeOut(1);
                     $("#removeMatiere").fadeIn();
                 }

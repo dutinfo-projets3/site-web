@@ -37,7 +37,7 @@ class Formation {
 	 * Getter description
 	 * @return description
 	 */
-	public function getDescription(){
+	public function getDescription() {
 		return $this->description;
 	}
 
@@ -85,13 +85,13 @@ SQL
 	 * @param $nomFormation
 	 * @return le dernier id de la formation
 	 */
-	public static function addFormation($nomFormation){
+	public static function addFormation($nomFormation) {
 		$stmt = myPDO::getInstance()->prepare(<<<SQL
 		INSERT INTO Formation (nomFormation) VALUE (?);
 SQL
 		);
 
-		if($stmt->execute(array($nomFormation))){
+		if ($stmt->execute(array($nomFormation))) {
 			return myPDO::getInstance()->lastInsertId();
 		}
 		throw new FormationException("Impossible inserer cette formation");
@@ -101,13 +101,13 @@ SQL
 	/**
 	 * suppression d'une formation à partir de son ID
 	 */
-	public static function removeformation($idFormation){
+	public static function removeformation($idFormation) {
 		$stmt = myPDO::getInstance()->prepare(<<<SQL
 		DELETE FROM Formation
 		WHERE idFormation = ?;
 SQL
 		);
-		if(!$stmt->execute(array($idFormation))){
+		if (!$stmt->execute(array($idFormation))) {
 			throw new FormationException();
 		}
 	}
@@ -119,13 +119,13 @@ SQL
 	 * @param $duree
 	 * @throws FormationException
 	 */
-	public static function addDescription($idFormation, $description, $duree){
+	public static function addDescription($idFormation, $description, $duree) {
 		$stmt = myPDO::getInstance()->prepare(<<<SQL
 		UPDATE Formation SET description = ?, duree = ? 
 		WHERE idFormation = ?;
 SQL
 		);
-		if(!$stmt->execute(array($description, $duree, $idFormation))){
+		if (!$stmt->execute(array($description, $duree, $idFormation))) {
 			throw new FormationException();
 		}
 	}

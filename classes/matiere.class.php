@@ -102,7 +102,7 @@ SQL
 		INSERT INTO Matiere (nomMatiere, idFormation) VALUE (?, ?);
 SQL
 		);
-		if($stmt->execute(array($nomMatiere, $idFormation))){
+		if ($stmt->execute(array($nomMatiere, $idFormation))) {
 			return myPDO::getInstance()->lastInsertId();
 		}
 		throw new MatiereException("Impossible inserer une nouvelle matiere");
@@ -113,18 +113,17 @@ SQL
 	 * @param $idMatiere
 	 * @throws MatiereException
 	 */
-	public static function removeMatiere($idMatiere){
+	public static function removeMatiere($idMatiere) {
 		$stmt = myPDO::getInstance()->prepare(<<<SQL
 		DELETE FROM Matiere
 		WHERE idMatiere = ?;
 SQL
 		);
-		if(!$stmt->execute(array($idMatiere))){
+		if (!$stmt->execute(array($idMatiere))) {
 			throw new MatiereException();
 		}
 	}
 }
-
 
 
 class MatiereException extends Exception {
