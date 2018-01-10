@@ -3,12 +3,13 @@
      <link href="/assets/css/rolling.css" rel="stylesheet">
  {% endblock %}
 {% block content %}
-    <div id="backRolling" >
+    <div id="backRolling">
         <img src="/assets/img/rolling.gif" alt="Responsive image" class="img-fluid"
              id="changeRolling">
     </div>
+    <h1 class="text-center card m-3 bg-white">Edition des formations et des matières</h1>
     <div class="d-flex justify-content-around">
-        <div class="col-lg-4 col-6 d-flex flex-column card m-lg-3 m-1 mt-2 mb-2 p-2" >
+        <div class="col-lg-4 col-6 d-flex flex-column card m-lg-3 m-1 mt-2 mb-2 p-2">
             <div class="d-flex justify-content-between">
                 <label for="formation">Formation</label>
                 <i id="removeFormation" data-feather="x" color="red" style="display: none"></i>
@@ -20,8 +21,12 @@
                 {% endfor %}
             </select>
             <input id="addInputFormation" type="text" class="form-control mt-2" placeholder="Ajouter une formation">
+            <div class="invalid-feedback">
+                Une formation doit avoir un nom
+            </div>
         </div>
-        <div class="col-lg-4 col-6 d-flex flex-column card m-lg-3 m-1 mt-2 mb-2 p-2" style="visibility:hidden" id="blockMatiere">
+        <div class="col-lg-4 col-6 d-flex flex-column card m-lg-3 m-1 mt-2 mb-2 p-2" style="visibility:hidden"
+             id="blockMatiere">
             <div class="d-flex justify-content-between">
                 <label for="matiere">Matiere</label>
                 <i id="removeMatiere" data-feather="x" color="red" style="display:none;"></i>
@@ -30,7 +35,10 @@
             <select class="select w-100" id="matiere" size="5">
 
             </select>
-            <input id="addInputMatiere" type="text" class="form-control mt-2" placeholder="Ajouter une matière">
+            <input id="addInputMatiere" type="text" class="form-control mt-2 " placeholder="Ajouter une matière">
+            <div class="invalid-feedback">
+                Une matière doit avoir un nom
+            </div>
 
         </div>
     </div>
@@ -58,14 +66,14 @@
                         $("#matiere").append(new Option(res[i].nomMatiere, res[i].idMatiere));
                     }
 
-                    if($("#blockMatiere").css("visibility") == "hidden")
+                    if ($("#blockMatiere").css("visibility") == "hidden")
                         $("#blockMatiere").css('visibility', 'visible').hide().fadeIn();
                 });
 
                 requestMatiere.fail(function () {
                     $("#backRolling").css("visibility", "hidden");
                     $("#matiere").empty();
-                    if($("#blockMatiere").css("visibility") == "hidden")
+                    if ($("#blockMatiere").css("visibility") == "hidden")
                         $("#blockMatiere").css('visibility', 'visible').hide().fadeIn();
 
                 })
@@ -81,10 +89,12 @@
 
             //evenement focus sur le champs d'une formation
             $("#addInputFormation").focus(function () {
+                $("#addFormation").css("opacity", "0.5");
+                $("#addInputFormation").addClass("is-invalid");
                 $("#removeFormation").fadeOut(1);
                 $("#addFormation").fadeIn();
                 $("option:selected").prop("selected", false);
-                if($("#blockMatiere").css("visibility") == "visible") {
+                if ($("#blockMatiere").css("visibility") == "visible") {
                     $("#blockMatiere").css('visibility', 'hidden').hide().fadeOut();
                 }
                 $("#matiere").empty();
@@ -93,21 +103,18 @@
 
             //evenement blur champs d'une matiere
             $("#addInputMatiere").blur(function () {
-                if ($("#addInputMatiere").val() == "") {
-                    $("#addMatiere").fadeOut(1);
-                }
+                $("#addInputMatiere").removeClass("is-invalid");
             });
 
             //evenement blur champs d'une formation
             $("#addInputFormation").blur(function () {
-                if ($("#addInputFormation").val() == "") {
-                    $("#addFormation").fadeOut(1);
-                }
-
+                $("#addInputFormation").removeClass("is-invalid");
             });
 
             //evenement focus sur le champs d'une matiere
             $("#addInputMatiere").focus(function () {
+                $("#addMatiere").css("opacity", "0.5");
+                $("#addInputMatiere").addClass("is-invalid");
                 $("#removeMatiere").fadeOut(1);
                 $("#addMatiere").fadeIn();
                 $("#removeFormation:visible").fadeOut(1);
@@ -119,6 +126,8 @@
 
                 if ($("#addInputFormation").val() == "") {
                     console.log("Formation vide");
+                    $("#addInputFormation").focus();
+                    return false;
                 } else {
                     $("#backRolling").css("visibility", "visible");
                     var requestAddFormation = $.ajax({
@@ -127,10 +136,12 @@
                         data: {nomFormation: $("#addInputFormation").val()}
                     });
 
-                    requestAddFormation.done(function(res){
-                        $("#formation").append(new Option($("#addInputFormation").val(),res.id,false,true));
+                    requestAddFormation.done(function (res) {
+                        $("#formation").append(new Option($("#addInputFormation").val(), res.id, false, true));
                         $("#formation").change();
                         $("#addInputFormation").val("");
+                        $("#addFormation").fadeOut(1);
+                        $("#removeFormation").fadeIn();
                         $("#backRolling").css("visibility", "hidden");
                     });
 
@@ -152,13 +163,13 @@
                     data: {idFormation: $("#formation").val()}
                 });
 
-                requestRemoveFormation.done(function(res){
+                requestRemoveFormation.done(function () {
                     $("#backRolling").css("visibility", "hidden");
                     $("option[value~='" + $("#formation").val() + "']").remove();
                     $("#removeFormation").fadeOut(1);
+                    $("#formation").val($("#formation option:first").val());
                     $("#matiere").empty();
-                    $("#removeMatiere").fadeOut(1);
-                    if($("#blockMatiere").css("visibility") == "visible") {
+                    if ($("#blockMatiere").css("visibility") == "visible") {
                         $("#blockMatiere").css('visibility', 'hidden').hide().fadeOut();
                     }
                 });
@@ -171,7 +182,13 @@
             });
 
             $("#formation").click(function () {
-               $("#removeFormation").fadeIn();
+                $("#addFormation").fadeOut(1);
+                $("#removeFormation").fadeIn();
+            });
+
+            $("#matiere").click(function () {
+                $("#addMatiere").fadeOut(1);
+                $("#removeMatiere").fadeIn();
             });
 
             //ajout d'une matiere
@@ -179,17 +196,19 @@
 
                 if ($("#addInputMatiere").val() == "") {
                     console.log("matiere vide");
+                    $("#addInputMatiere").focus();
+                    return false;
                 } else {
                     $("#backRolling").css("visibility", "visible");
                     var requestAddMatiere = $.ajax({
                         url: "/api/addMatiere.php",
                         method: "POST",
-                        data: {idFormation: $("#formation").val(), nomMatiere : $("#addInputMatiere").val()}
+                        data: {idFormation: $("#formation").val(), nomMatiere: $("#addInputMatiere").val()}
                     });
 
-                    requestAddMatiere.done(function(res){
+                    requestAddMatiere.done(function (res) {
                         $("#backRolling").css("visibility", "hidden");
-                        $("#matiere").append(new Option($("#addInputMatiere").val(),res.id,false,true));
+                        $("#matiere").append(new Option($("#addInputMatiere").val(), res.id, false, true));
                         $("#matiere").change();
                         $("#addInputMatiere").val("");
                     });
@@ -198,12 +217,56 @@
                         $("#backRolling").css("visibility", "hidden");
                         alert("une erreur est survenue");
                     });
-
-
-
                 }
             });
 
+            //supression d'une matière
+            $("#removeMatiere").click(function () {
+                $("#backRolling").css("visibility", "visible");
+                var requestRemoveMatiere = $.ajax({
+                    url: "/api/removematiere.php",
+                    method: "POST",
+                    data: {idMatiere: $("#matiere").val()}
+                });
+
+                requestRemoveMatiere.done(function () {
+                    $("#backRolling").css("visibility", "hidden");
+                    $("option[value~='" + $("#matiere").val() + "']").remove();
+                    $("#removeMatiere").fadeOut(1);
+                    $("#matiere").val($("#matiere option:first").val());
+                });
+
+                requestRemoveMatiere.fail(function () {
+                    $("#backRolling").css("visibility", "hidden");
+                    alert("une erreur est survenue");
+                })
+            });
+
+
+            $("#addInputFormation").keyup(function () {
+                if ($("#addInputFormation").val() != "") {
+                    $("#addInputFormation").removeClass("is-invalid");
+                    $("#addFormation").css("opacity", "1");
+                }
+
+                else {
+                    $("#addInputFormation").addClass("is-invalid");
+                    $("#addFormation").css("opacity", "0.5");
+                }
+            });
+
+
+            $("#addInputMatiere").keyup(function () {
+                if ($("#addInputMatiere").val() != "") {
+                    $("#addInputMatiere").removeClass("is-invalid");
+                    $("#addMatiere").css("opacity", "1");
+                }
+
+                else {
+                    $("#addInputMatiere").addClass("is-invalid");
+                    $("#addMatiere").css("opacity", "0.5");
+                }
+            });
 
         });
     </script>
