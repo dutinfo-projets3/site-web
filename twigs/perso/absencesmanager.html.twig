@@ -1,0 +1,129 @@
+{% extends 'template.html.twig' %}
+
+{% block content %}
+	{% if (usertype == 1) %}
+		<table>
+			<tr>
+				<th> Nom </th>
+				<th> Prénom </th>
+				<th> Absent(e) </th>
+			</tr>
+		</table>
+		<div id="choix">
+			<div class="row bg-danger text-center" style="margin-bottom: 10px;" id="warn"></div>
+			<label for"date"> date </label>
+			<input id="date" type ="text" placeholder="dd/mm/yyyy">
+			<label for"dheure"> heure début (24 heures format) </label>
+			<input id="dheure" type ="text" placeholder="hh:mm">
+			<label for"fheure"> heure fin (24 heures format) </label>
+			<input id="fheure" type ="text" placeholder="hh:mm">
+			<button id="submit" type="submit">Envoyer </button>
+		</div>
+	{% elseif (usertype == 2) %}
+		<table>
+			<tr> 
+				 <th> Nom et prénom </th>
+				 <th> Matière </th>
+				 <th> Jour et heure </th>
+				 <th> Justifier </th>
+			</tr>
+		</table>
+	{% else %}
+		<p> Une erreur est survenue ! </p>
+	{% endif %}
+{%endblock%}
+
+{% block javascript %}
+$(function() {
+    var auj = new Date();
+	var day = auj.getDate()<10? "0"+auj.getDate() : auj.getDate();
+	var month = auj.getMonth()<9? "0"+(auj.getMonth()+1) : auj.getMonth()+1;
+	var year = auj.getFullYear();
+	$('#date').val(day+"/"+month+"/"+year);
+	document.getElementsByTagName("table")[0].style.display = "none";
+});
+$("#submit").on("click",function(){
+	if($('#date').val().length === 10 && $('#date').val().charAt(2) == "/" && $('#date').val().charAt(5) == "/" && $('#dheure').val().length == 5 && $('#dheure').val().charAt(2)==":" && $('#fheure').val().length == 5 && $('#fheure').val().charAt(2)==":"){
+		jour = $('#date').val().split("/")[0];
+		mois = $('#date').val().split("/")[1];
+		annee = $('#date').val().split("/")[2];
+		if(checkDate(jour,mois,annee)){
+			dheure = $('#dheure').val().split(":")[0];
+			dminute = $('#dheure').val().split(":")[1];
+			if(checkHour(dheure,dminute)){
+				fheure = $('#fheure').val().split(":")[0];
+				fminute = $('#fheure').val().split(":")[1];
+				if(checkHour(fheure,fminute)){
+					if(debutRightPlace()){
+						document.getElementById("choix").style.display = "none";
+						//document.getElementsByTagName("table")[0].style.display = "block";
+							var req = $.ajax({
+								url: "/api/getEleves.php",
+			                    method: "GET",
+			                    data: {"idUser": {{idUser}}, "jour": jour, "mois": mois, "annee":annee, "dheure": dheure, "dminute": dminute, "fheure": fheure, "fminute": fminute},
+			                    contentType: "application/json; charset=utf-8"
+							});
+							req.done(function(res){
+								/*document.getElementsByTagName("table")[0].innerHTML += res;*/
+								console.log(res);
+							});
+					}else {
+					$('#warn').html("Statut inconhérent");
+					document.getElementById("warn").style.display = "block";
+					$('#fheure').val("");
+					$('#dheure').val("");
+					}	
+				}else {
+					$('#warn').html("Heure de fin non valide");
+					document.getElementById("warn").style.display = "block";
+					$('#fheure').val("");
+				}
+			} else {
+				$('#warn').html("Heure de début non valie");
+				document.getElementById("warn").style.display = "block";
+				$('#dheure').val("");
+			}
+		} else {
+			$('#warn').html("Jour non valide");
+			document.getElementById("warn").style.display = "block";
+			$('#date').val("");
+		}
+	} else {
+		$('#warn').html("Format non respecté");
+		document.getElementById("warn").style.display = "block";
+		$('#date').val("");
+		$('#heure').val("");
+	}
+	setTimeout(function(){document.getElementById("warn").style.display = "none"},5000);
+});
+
+function checkDate(j,m,a){
+		if(m==1||m==3||m==5||m==8||m==7||m==10||m==12){
+				return j>0 && j<32;
+		}
+		if(m==4||m==6||m==9||m==11){
+				return j>0 && j<31;
+		}
+		if((a%4==0 && a%100!=0) || a%400){
+			return j>0 && j<29;
+		} else {
+			return j>0 && j<28;
+		}
+		return false;
+	}
+
+	function checkHour(h,m){
+		return h>-1 && h<24 && m > -1 && m<60; 
+	}
+
+	function debutRightPlace(){
+		return dheure<=fheure && dminute<=fminute;
+	}
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="/assets/css/absenceManager.css">
+{% endblock %}
+
+{% block lnkjavascript %}
+	{% endblock %}
