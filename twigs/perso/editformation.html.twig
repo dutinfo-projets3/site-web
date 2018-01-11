@@ -159,16 +159,18 @@
                     $("#backRolling").css("visibility", "hidden");
                     $("#matiere").empty();
                     for (i = 0; i < res.length; i++) {
+                        if (navigator.userAgent.match(/(iPhone|iPod|iPad)/i)) {
+                            if (i == 0) {
+                                $("#matiere").append(new Option(res[i].nomMatiere, res[i].idMatiere, true, true));
+                            }
+                        }
                         $("#matiere").append(new Option(res[i].nomMatiere, res[i].idMatiere));
                     }
 
                     if ($("#blockMatiere").css("visibility") == "hidden")
                         $("#blockMatiere").css('visibility', 'visible').hide().fadeIn();
 
-                    if (navigator.userAgent.match(/(iPhone|iPod|iPad)/i)) {
-                        $("#matiere").val($("#formation option:first")
-                            .val());
-                    }
+
 
                 });
 
@@ -185,10 +187,13 @@
             $("#editFormation.btn-primary").click(function () {
                 if ($("#editFormation").hasClass("btn-primary")) {
                     $("#backRolling").css("visibility", "visible");
-
+                    if($("#formation").val() == null) {
                         $("#formation").val($("#formation option:first")
-                            .val())
-                            .change();
+                            .val());
+                        $("#formation").change();
+                    }else {
+                        $("#formation").change();
+                    }
 
                     var requestGetDescription = $.ajax({
                         url: "/api/getdescriptiondureeformation.php",
