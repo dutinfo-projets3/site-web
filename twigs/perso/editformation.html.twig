@@ -8,15 +8,15 @@
         <img src="/assets/img/rolling.gif" alt="Responsive image" class="img-fluid"
              id="changeRolling">
     </div>
-    <h1 class="text-center card m-3 bg-white">Edition des formations et des matières</h1>
-    <div class="d-flex justify-content-around">
-        <div class="col-lg-4 col-6 d-flex flex-column card m-lg-3 m-1 mt-2 mb-2 p-2">
+    <h1 class="text-center card m-md-3 m-0 bg-white">Edition des formations et des matières</h1>
+    <div class=" d-md-flex d-lg-flex flex-md-row flex-lg-row flex-column justify-content-md-around justify-content-lg-around">
+        <div class="col-md-5 col-lg-4 col-12 d-flex flex-column card m-lg-3 m-1 mt-2 mb-2 p-2">
             <div class="d-flex justify-content-between">
                 <label for="formation">Formation</label>
                 <i id="removeFormation" data-feather="x" color="red" style="display: none"></i>
                 <i id="addFormation" data-feather="check" color="green" style="display: none"></i>
             </div>
-            <select class="select w-100" id="formation" size="5">
+            <select class="" id="formation" size="5">
                 {% for formation in formations %}
                     <option value="{{ formation.IdFormation }}">{{ formation.NomFormation }}</option>
                 {% endfor %}
@@ -34,14 +34,14 @@
 
 
         </div>
-        <div class="col-lg-4 col-6 d-flex flex-column card m-lg-3 m-1 mt-2 mb-2 p-2" style="visibility:hidden"
+        <div class="col-md-5 col-lg-4 col-12 d-flex flex-column card m-lg-3 m-1 mt-2 mb-2 p-2" style="visibility:hidden"
              id="blockMatiere">
             <div class="d-flex justify-content-between">
                 <label for="matiere">Matiere</label>
                 <i id="removeMatiere" data-feather="x" color="red" style="display:none;"></i>
                 <i id="addMatiere" data-feather="check" color="green" style="display:none;"></i>
             </div>
-            <select class="select w-100 h-100" id="matiere" size="5">
+            <select class="h-100" id="matiere" size="5">
 
             </select>
 
@@ -55,7 +55,7 @@
 
     <!--jquill editor-->
     <div class="mb-5">
-        <div id="editor" class="col-9 m-auto" style="display: none">
+        <div id="editor" class="col-md-9 col-12 m-auto" style="display: none">
             <h4 class="m-2">Veuillez saisir ou modifier la description</h4>
             <p class="text-warning add d-none">Veuillez remplir tous les champs obligatoires</p>
             <div class="input-group mb-2">
@@ -80,6 +80,8 @@
 
 
         $(document).ready(function () {
+
+
             function warningDescripition(quill, warningClass, textWarning) {
                 if (quill.getLength() == 1) {
                     warningClass.addClass("border border-warning p-2 ");
@@ -142,8 +144,52 @@
                 $("#editor").fadeOut();
             });
 
+            $(document).on('change', "#formation", function () {
+                $("#removeMatiere").fadeOut(1);
+                $("#backRolling").css("visibility", "visible");
+
+                //mise a jour des matieres
+                var requestMatiere = $.ajax({
+                    url: "/api/getmatieres.php",
+                    method: "POST",
+                    data: {idFormation: $("#formation").val()}
+                });
+
+                requestMatiere.done(function (res) {
+                    $("#backRolling").css("visibility", "hidden");
+                    $("#matiere").empty();
+                    for (i = 0; i < res.length; i++) {
+                        $("#matiere").append(new Option(res[i].nomMatiere, res[i].idMatiere));
+                    }
+
+                    if ($("#blockMatiere").css("visibility") == "hidden")
+                        $("#blockMatiere").css('visibility', 'visible').hide().fadeIn();
+
+                    if (navigator.userAgent.match(/(iPhone|iPod|iPad)/i)) {
+                        $("#matiere").val($("#formation option:first")
+                            .val());
+                    }
+
+                });
+
+                requestMatiere.fail(function () {
+                    $("#backRolling").css("visibility", "hidden");
+                    $("#matiere").empty();
+                    if ($("#blockMatiere").css("visibility") == "hidden")
+                        $("#blockMatiere").css('visibility', 'visible').hide().fadeIn();
+
+                })
+
+            });
+
             $("#editFormation.btn-primary").click(function () {
                 if ($("#editFormation").hasClass("btn-primary")) {
+                    $("#backRolling").css("visibility", "visible");
+
+                        $("#formation").val($("#formation option:first")
+                            .val())
+                            .change();
+
                     var requestGetDescription = $.ajax({
                         url: "/api/getdescriptiondureeformation.php",
                         method: "POST",
@@ -162,28 +208,19 @@
                         } else {
                             $("#duree").val("");
                         }
-                        if ($("#formation").val() != null) {
-                            $("#editor").fadeIn("slow");
-                            disabled(true);
-                            $("#cancel").fadeIn(1);
-                        }
-                        else {
-                            $("#formation").val($("#formation option:first").val());
-                            $("#formation").focus();
-                            $("#formation").change();
-                            disabled(true);
-                            $("#cancel").fadeIn(1);
-                            $("#editor").fadeIn("slow");
+                        $("#editor").fadeIn("slow");
+                        disabled(true);
+                        $("#cancel").fadeIn(1);
+                        $("#backRolling").css("visibility", "hidden");
 
-                        }
 
                     });
 
                     requestGetDescription.fail(function () {
                         alert("Une erreur est survenue");
+                        $("#backRolling").css("visibility", "hidden");
+
                     });
-
-
                 } else {
 
                     description = warningDescripition(quill, $('.warning'), $('.add'));
@@ -216,38 +253,6 @@
             });
 
 
-            //evenement selection d'une formation
-            $("#formation").change(function () {
-                $("#removeMatiere").fadeOut(1);
-                $("#backRolling").css("visibility", "visible");
-
-                //mise a jour des matieres
-                var requestMatiere = $.ajax({
-                    url: "/api/getmatieres.php",
-                    method: "POST",
-                    data: {idFormation: $("#formation").val()}
-                });
-
-                requestMatiere.done(function (res) {
-                    $("#backRolling").css("visibility", "hidden");
-                    $("#matiere").empty();
-                    for (i = 0; i < res.length; i++) {
-                        $("#matiere").append(new Option(res[i].nomMatiere, res[i].idMatiere));
-                    }
-
-                    if ($("#blockMatiere").css("visibility") == "hidden")
-                        $("#blockMatiere").css('visibility', 'visible').hide().fadeIn();
-                });
-
-                requestMatiere.fail(function () {
-                    $("#backRolling").css("visibility", "hidden");
-                    $("#matiere").empty();
-                    if ($("#blockMatiere").css("visibility") == "hidden")
-                        $("#blockMatiere").css('visibility', 'visible').hide().fadeIn();
-
-                })
-
-            });
 
             //evenement selection d'une matiere
             $("#matiere").change(function () {
@@ -446,5 +451,11 @@
             });
 
         });
+
+        if (navigator.userAgent.match(/(iPhone|iPod|iPad)/i)) {
+            $("#formation").val($("#formation option:first")
+                .val());
+            $("#matiere").removeClass("h-100");
+        }
     </script>
 {% endblock %}
