@@ -1,5 +1,12 @@
 <?php
+
 require_once "../autoload.inc.php";
+ob_start();
+
+if (!isset($_GET["annee"]) || empty($_GET["annee"]) || !isset($_GET["formation"]) || empty($_GET["formation"])){ 
+	http_response_code(400);
+	return;
+}
 
 function writeCentered($pdf, $text){
 	$pdf->SetX(($pdf->GetPageWidth() / 2) - ($pdf->GetStringWidth($text) / 2));
@@ -7,26 +14,30 @@ function writeCentered($pdf, $text){
 }
 
 
-$notes = [
-	"Mathematiques" => [ 2, [ [ 2, 1], [15, 2], [15, 2] , [12, 3] ] ],
-	"Java" => [ 1, [ [20, 2], [20, 2], [19, 5] ] ],
-	"Theorie du complot" => [1, [ [20, 1], [20, 2] ] ]
-];
-
-
 if (Utilisateur::isConnected()){
 	$user = Utilisateur::createFromSession();
 
-	$pdf = new FPDF();
-	$pdf->SetFont("Arial", "B", 16);
+	$notes = Note::buildArray($user->getID(), $_GET["formation"], Annee::createFromUserYear($user->getID(), $_GET["formation"], $_GET["annee"]));
+	
+	$pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+
+	$pdf->SetAuthor('PanAfrican University');
+	$pdf->SetTitle('Bulletin ');
+	$pdf->SetSubject('Notes');
+	$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+	$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+
+	$pdf->SetPrintHeader(false);
+	$pdf->SetPrintFooter(false);
+
 
 	$pdf->AddPage();
 
 	writeCentered($pdf, "Bulletin de notes");
 	$pdf->SetY(18);
-	$pdf->SetFont("Arial", "", 12);
-	writeCentered($pdf, "Annee scolaire XXXX - XXXX");
-	$pdf->SetFont("Arial", "", 10);
+	$pdf->SetFont("times", "", 12);
+	writeCentered($pdf, "Annee scolaire {$_GET['annee']} - " . ($_GET["annee"] + 1));
+	$pdf->SetFont("times", "", 10);
 	$pdf->SetY(24);
 	writeCentered($pdf, "Periode du XX/XX/XXXX au XX/XX/XXXX");
 	$pdf->Ln(20);
@@ -41,7 +52,7 @@ if (Utilisateur::isConnected()){
 	}
 
 	$pdf->Ln(7);
-	$pdf->SetFont("Arial", "", 8);
+	$pdf->SetFont("times", "", 8);
 	$pdf->SetFillColor(220, 220, 220);
 
 	$moyennes = array();
@@ -62,7 +73,7 @@ if (Utilisateur::isConnected()){
 		$pdf->Cell($size[3], 7, $moy, "LR", 1, "C", true);
 
 		foreach($v[1] as $note){
-			$pdf->Cell($size[0], 7, "      Note", "LR");
+			$pdf->Cell($size[0], 7, "", "LR");
 			$pdf->Cell($size[1], 7, $note[0], "LR", 0, "C");
 			$pdf->Cell($size[2], 7, $note[1], "LR", 0, "C");
 			$pdf->Cell($size[3], 7, "", "LR", 1);
@@ -84,6 +95,12 @@ if (Utilisateur::isConnected()){
 	$pdf->Cell($size[0] + $size[1] + $size[2], 7, "Journee d'absences", 1, 0, "C");
 	$pdf->Cell($size[3], 7, "0", 1, 1, "C");
 
-
+ob_end_clean();
 	$pdf->Output();
+} else {
+
+	http_response_code(401);
+	return;
+
 }
+
