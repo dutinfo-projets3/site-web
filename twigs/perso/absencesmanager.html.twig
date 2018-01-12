@@ -11,14 +11,20 @@
 		</table>
 		<div id="choix">
 			<div class="row bg-danger text-center" style="margin-bottom: 10px;" id="warn"></div>
-			<label for"date"> date </label>
-			<input id="date" type ="text" placeholder="dd/mm/yyyy">
-			<label for"dheure"> heure début (24 heures format) </label>
-			<input id="dheure" type ="text" placeholder="hh:mm">
-			<label for"fheure"> heure fin (24 heures format) </label>
-			<input id="fheure" type ="text" placeholder="hh:mm">
-			<button id="submit" type="submit">Envoyer </button>
+			<div class="mx-auto w-25">
+				<label for"date" class="d-inline"> date </label>
+				<input id="date" class="d-block" type ="text" placeholder="dd/mm/yyyy">
+			</div>
+			<div class="mx-auto w-25">
+				<label for"dheure" class="d-inline"> heure début (24 heures format) </label>
+				<input id="dheure"  class="d-block" type ="text" placeholder="hh:mm">
+			</div>
+			<div class="mx-auto w-25">
+				<label for"fheure" class="d-inline"> heure fin (24 heures format) </label>
+				<input id="fheure" class="d-block" type ="text" placeholder="hh:mm">
+			</div>
 		</div>
+		<button id="submit" class="mx-auto" type="submit">Envoyer </button>
 	{% elseif (usertype == 2) %}
 		<table>
 			<tr> 
