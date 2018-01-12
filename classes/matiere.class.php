@@ -7,7 +7,7 @@ class Matiere {
 	private $idMatiere;
 	private $idFormation;
 	private $nomMatiere;
-	private $coeff;
+	private $coef;
 
 	/**
 	 * Getter pour idMatiere
@@ -38,7 +38,7 @@ class Matiere {
 	 * @return coeff
 	 */
 	public function getCoeff() {
-		return $this->coeff;
+		return $this->coef;
 	}
 
 	/**

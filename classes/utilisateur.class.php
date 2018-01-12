@@ -493,6 +493,11 @@ HTML;
 		$this->mail = $mail;
 		return $this;
 	}
+
+
+	public function getFormations(){
+		return Formation::createFromUser($this->idPersonne);
+	}
 }
 
 class AuthenticationException extends Exception {

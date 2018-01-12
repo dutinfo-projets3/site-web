@@ -64,6 +64,21 @@ SQL
 		}
 	}
 
+	public static function createFromUser($idFormation) {
+		$stmt = myPDO::getInstance()->prepare(<<<SQL
+		SELECT * FROM Formation
+		WHERE idFormation = (
+			SELECT idFormation FROM AnneeScolaire WHERE idAnnee = (
+				SELECT idAnnee FROM InscriptionEleve WHERE idEtudiant = ?
+			)
+		)
+SQL
+		);
+		$stmt->setFetchMode(PDO::FETCH_CLASS, 'Formation');
+		$stmt->execute(array($idFormation));
+		return $stmt->fetchAll();
+	}
+
 	/**
 	 * Renvoie toute les formation disponible
 	 * @return tableau de formation
@@ -111,6 +126,8 @@ SQL
 			throw new FormationException();
 		}
 	}
+
+
 
 	/**
 	 * Permet de mettre à jour la duree et la description d'une formation
