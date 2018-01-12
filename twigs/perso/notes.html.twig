@@ -1,0 +1,17 @@
+{% extends 'template.html.twig' %}
+
+{% block content %}
+
+	<h1 class="col-12 text-center"> Bulletins </h1>
+	<div class="col-10 offset-1">
+	{% for key,value in annees %}
+		<div class="pt-3">{{ key }} </div>
+		<ul>
+			{% for val in value %}
+				<li> <a href="/api/getbulletin.php?annee={{ val.annee }}&formation={{ formations[key] }}">{{ val.annee }} - {{ val.annee + 1 }}</a> </li>
+			{% endfor %}
+		</ul>
+	{% endfor %}
+	</div>
+
+{% endblock %}
