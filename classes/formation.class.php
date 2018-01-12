@@ -68,9 +68,9 @@ SQL
 		$stmt = myPDO::getInstance()->prepare(<<<SQL
 		SELECT * FROM Formation
 		WHERE idFormation = (
-			SELECT idFormation FROM AnneeScolaire WHERE idAnnee = (
-				SELECT idAnnee FROM InscriptionEleve WHERE idEtudiant = ? LIMIT 1
-			)
+			SELECT idFormation FROM AnneeScolaire WHERE idAnnee IN (
+				SELECT idAnnee FROM InscriptionEleve WHERE idEtudiant = ?
+			) LIMIT 1
 		)
 SQL
 		);
