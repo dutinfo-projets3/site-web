@@ -71,10 +71,15 @@
                 {{ include('perso/inscriptionpersoitem.html.twig', {'rowname': "Code postal:", 'idname': "cp", 'error': "Entrez un code postal valide" }) }}
                 {{ include('perso/inscriptionpersoitem.html.twig', {'rowname': "Numéro:", 'idname': "numero", 'error': "Entrez un numéro valide" }) }}
                 {{ include('perso/inscriptionpersoitem.html.twig', {'rowname': "Email:", 'idname': "mail", 'error': "Entrez un email valide" }) }}
+				{{ include('perso/inscriptionpersoitem.html.twig', {'rowname': "INE:", 'idname': "INE", 'error': "L'INE n'est pas valide"}) }}
+				{{ include('perso/inscriptionpersoitem.html.twig', {'rowname': "Date Embauche", 'idname': "date", 'error': "La date n'est pas valide"}) }}
+				<select id="formations" class="text-center" name="formations"></select>
+				<div>
 				<input name="type" id="student" type="radio" value="student" checked>
 				<label for="student">Etudiant</label>
 				<input name="type" id="teacher" type="radio" value="teacher">
 				<label for="teacher">Professeur</label>
+				</div>
 				<div id="errorMsgInsc" class="row mt-3"> <span class="text-center bg-warning text-white p-2 col-10 offset-1 d-block"> Une erreur est survenue! </span> </div>
 				<div class="row pt-4">
 					<button id="bt_addUser" type="button" class="col-5 btn btn-success">Ajouter</button>
@@ -90,6 +95,31 @@
 {% block lnkjavascript %}
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 	<script type="text/javascript">
+
+		{% if userList %}
+			var selectFormation = $('#formations');
+			$.ajax({
+				url:'/api/getListFormation.php',
+                success: function(data){
+					data = JSON.parse(data);
+					console.log(data);
+				    for(var k in data){
+				        console.log(k);
+				        if(k==0){
+                            selectFormation.append(new Option(data[k].nom, data[k].id, true, true));
+						}
+                        else{
+                            selectFormation.append(new Option(data[k].nom, data[k].id, false, false));
+						}
+					}
+                },
+                error: function(a, b, c, d){
+                    $("#errorMsgInsc").removeClass("d-none");
+                    $("#errorMsgInsc").addClass("d-block");
+                }
+			});
+		{% endif %}
+
 		function getUserInfo(){
 
 			{% if userList %}

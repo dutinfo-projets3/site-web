@@ -10,6 +10,17 @@ $cp=$_GET["cp"];
 $numerotel=$_GET["numerotel"];
 $mail=$_GET["mail"];
 $type=$_GET["type"];
+$formation="";
+$INE="";
+$embauche="";
+
+if($type==0){
+    $formation = $_GET["formation"];
+    $INE = $_GET["INE"];
+}
+else{
+    $embauche=$_GET["date"];
+}
 
 
 $randomPass="";
@@ -33,6 +44,26 @@ $pdo = myPDO::getInstance();
 $stmt = $pdo->prepare("INSERT INTO utilisateur(type,nomPers,prenomPers,motDePasse,adresse,ville,codePostal,mail,numerotel)VALUES(?,?,?,?,?,?,?,?,?)");
 $stmt->execute([$type,$nom,$prenom,$randomPassSHA,$adresse,$ville,$cp,$mail,$numerotel]);
 
+$user = $pdo->lastInsertId();
+
+if($type==0){
+    $stmt = $pdo->prepare("SELECT annee FROM anneescolaire WHERE idFormation=?");
+    $stmt->execute([$formation]);
+    $date = $stmt->fetch();
+
+
+    if($date==null){
+        $date= date("Y");
+    }
+    $stmt = $pdo->prepare("INSERT INTO etudiant(idEtudiant,ine,dateEntree)VALUES(?,?,?)");
+    $stmt->execute([$user,$INE,$date["annee"]]);
+}
+
+else{
+    $stmt = $pdo->prepare("INSERT INTO professeur(idProfesseur,dateEmbauche)VALUES(?,?)");
+    $stmt->execute([$user,$embauche]);
+}
+
 
 
 $from = "smtp.gmail.com";
@@ -41,7 +72,7 @@ $to = $mail;
 
 $subject = "Inscription";
 
-$message = "Inscription PAUWES : Mot de passe temporaire (merci de le changer à votre première connection) :".$randomPass ;
+$message = "Inscription PAUWES : Nom d'utilisateur Mot de passe temporaire (merci de le changer à votre première connection) :".$randomPass ;
 
 $headers = "From:" . $from;
 
