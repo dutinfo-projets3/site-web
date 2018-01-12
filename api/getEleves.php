@@ -22,29 +22,27 @@ if(baseVerif($id) && baseVerif($jour) && baseVerif($mois) && baseVerif($annee) &
 							 						WHERE idGroupe
 		IN (SELECT idGroupe
 			FROM Seance
-			WHERE idProfesseur = :prof
-			AND CONVERT(DATE_FORMAT(dateDebut,"%Y-%c-%d %H:%i:00"),CHAR(19)) = :deb
-			AND CONVERT(DATE_FORMAT(dateFin,"%Y-%c-%d %H:%i:00"),CHAR(19))  = :fin )))
+			WHERE idProfesseur = ?
+			AND dateDebut = ?
+			AND dateFin  = ? )))
 		ORDER BY nomPers, prenomPers
 SQL
 );
-	$stmt->bindParam(':prof',$id);
-	$begin = date('Y-m-d H:i:s',strtotime($annee.'-'.$mois.'-'.$jour.' '.$heureD.':'.$minuteD.':00'));
-	$end = date('Y-m-d H:i:s',strtotime($annee.'-'.$mois.'-'.$jour.' '.$heureF.':'.$minuteF.':00'));
-	$stmt->bindParam(':deb',$begin);
-	$stmt->bindParam(':fin',$end);
-	if(!$stmt->execute()){
+	$begin = $annee.'-'.$mois.'-'.$jour.' '.$heureD.':'.$minuteD.':00';
+	//echo $begin."\n";
+	$end = $annee.'-'.$mois.'-'.$jour.' '.$heureF.':'.$minuteF.':00';
+	//echo $end."\n";
+	if(!$stmt->execute(array($id,$begin,$end))){
 		throw new Exception();
 	}
 	$stmt->setFetchMode(PDO::FETCH_CLASS,"Utilisateur");
-	$temp = $stmt->fetchAll();
-	$eleves = array();
-	foreach ($temp as $key => $value) {
-		$eleves = array($eleves,$value);
+	$eleves  = $stmt->fetchAll();
+	$sendEleves = array();
+	foreach ($eleves as $eleve) {
+		array_push($sendEleves, array("nom" =>$eleve->getNom(),"id" => $eleve->getID(), "prenom" => $eleve->getPrenom()));
 	}
-	var_dump($temp);
-	/*header("Content-type: application/json");
-	echo json_encode($eleves);*/
+	header("Content-type: application/json");
+	echo json_encode($sendEleves);
 } else {
 	http_response_code(400);
 	return;

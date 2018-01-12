@@ -1,3 +1,14 @@
 #warn{
 	display : none;
 }
+
+table {
+	display: none;
+	border-color: #868786;
+	border-width: 2px;
+	border-style: solid;
+}
+
+td, th {
+	border-style: solid;	
+}
