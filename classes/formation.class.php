@@ -69,7 +69,7 @@ SQL
 		SELECT * FROM Formation
 		WHERE idFormation = (
 			SELECT idFormation FROM AnneeScolaire WHERE idAnnee = (
-				SELECT idAnnee FROM InscriptionEleve WHERE idEtudiant = ?
+				SELECT idAnnee FROM InscriptionEleve WHERE idEtudiant = ? LIMIT 1
 			)
 		)
 SQL
