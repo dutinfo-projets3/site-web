@@ -1,60 +1,41 @@
 {% extends 'template.html.twig' %}
 
-{% block content %}
-
-	<div class="mt-5 row">
-
-		<div class="col-4 text-center">
-			<i data-feather="arrow-left-circle"></i>
-		</div>
-
-		<div class="col-4 text-center">
-			Semaine 54
-		</div>
-
-		<div class="col-4 text-center">
-			<i data-feather="arrow-right-circle"></i>
-		</div>
-
-		<table class="col-12 col-lg-10 offset-lg-1 mt-4 text-center table table-dark" style="display: overflow;">
-			<thead>
-				<tr>
-					<th scope="col"></th>
-					<th scope="col">Lundi</th>
-					<th scope="col">Mardi</th>
-					<th scope="col">Mercredi</th>
-					<th scope="col">Jeudi</th>
-					<th scope="col">Vendredi</th>
-					<th scope="col">Samedi</th>
-				</tr>
-			</thead>
-			<tbody id="cald">
-			</tbody>
-		</table>
-
-	</div>
-
+{% block stylesheets %}
+	<link rel="stylesheet" href="/assets/css/fullcalendar.min.css"/>
 {% endblock %}
 
-{% block javascript %}
-	var cal = document.getElementById("cald");
+{% block javascripts %}
+	<script src="/assets/js/moment.min.js"> </script>
+	<script src="/assets/js/ical.min.js"> </script>
+	<script src="/assets/js/ical_events.js"> </script>
+	<script src="/assets/js/ical_fullcalendar.js"> </script>
+{% endblock %}
 
-	for (i = 8; i <= 17; i++){
-		var tr = document.createElement("tr");
-		var th = document.createElement("th")
-		th.setAttribute("scope", "row");
-		th.innerText = i + "h - " + (i+1) + "h";
+{% block content %}
+	<div id="calendar" class="col-lg-10 offset-lg-1 col-12 offset-0"> </div>
+{% endblock %}
 
-		tr.appendChild(th);
+{% block lnkjavascript %}
+	<script>
+$(document).ready(function() {
+	$('#calendar').fullCalendar({
+		defaultView: "agendaWeek"
+	})
 
-		for (j = 0; j < 6; j++){
-			a = document.createElement("td");
-			a.innerText = "Cours" + i +"/" +j;
-	  		tr.appendChild(a);
-		}
-
-	 	cal.appendChild(tr);
+$.ajax({
+	url: '/api/getcal.php?user=' + "{{ user.username }}",
+	type: 'GET',
+	success: function(tx, status){
+		console.log("downloaded");
+		$('#calendar').fullCalendar('addEventSource', fc_events(tx, {}));
+	},
+	error: function(res, status, err){
+		console.log(err);
 	}
+});
 
+});
+</script>
+	<script src="/assets/js/fullcalendar.min.js"> </script>
 {% endblock %}
 

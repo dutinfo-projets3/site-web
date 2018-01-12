@@ -7,13 +7,13 @@
  */
 require_once "../autoload.inc.php";
 
-if(empty($_GET['idNews'])
-	&& !Utilisateur::isConnected() && Utilisateur::createFromSession()->getUserType() != Utilisateur::TYPES['ADMINISTRATION']){
+if (empty($_GET['idNews'])
+	&& !Utilisateur::isConnected() && Utilisateur::createFromSession()->getUserType() != Utilisateur::TYPES['ADMINISTRATION']) {
 	http_response_code(400);
 	return;
 }
 
-if(isset($_GET['idNews']) && !empty($_GET['idNews'])) {
+if (isset($_GET['idNews']) && !empty($_GET['idNews'])) {
 	$news = News::createFromID($_GET['idNews']);
 	$description = $news->getDescription();
 	$title = $news->getNomEvenement();
