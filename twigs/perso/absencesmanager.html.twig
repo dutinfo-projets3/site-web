@@ -2,8 +2,11 @@
 
 {% block content %}
 	{% if (usertype == 1) %}
-		<table>
+		<table class="d-flex flex-row">
 			<tr>
+				<th> Nom </th>
+				<th> Prénom </th>
+				<th> Absent(e) </th>
 				<th> Nom </th>
 				<th> Prénom </th>
 				<th> Absent(e) </th>
@@ -70,8 +73,9 @@ $("#submit").on("click",function(){
 			                    contentType: "application/json; charset=utf-8"
 							});
 							req.done(function(res){
-								/*document.getElementsByTagName("table")[0].innerHTML += res;*/
+								document.getElementsByTagName("table")[0].style.display = "block";
 								console.log(res);
+
 							});
 					}else {
 					$('#warn').html("Statut inconhérent");

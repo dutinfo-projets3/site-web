@@ -23,8 +23,8 @@ if(baseVerif($id) && baseVerif($jour) && baseVerif($mois) && baseVerif($annee) &
 		IN (SELECT idGroupe
 			FROM Seance
 			WHERE idProfesseur = :prof
-			AND dateDebut = :deb
-			AND dateFin  = :fin )))
+			AND CONVERT(DATE_FORMAT(dateDebut,"%Y-%c-%d %H:%i:00"),CHAR(19)) = :deb
+			AND CONVERT(DATE_FORMAT(dateFin,"%Y-%c-%d %H:%i:00"),CHAR(19))  = :fin )))
 		ORDER BY nomPers, prenomPers
 SQL
 );
