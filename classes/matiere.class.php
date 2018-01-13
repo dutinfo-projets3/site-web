@@ -89,7 +89,7 @@ SQL
 	 * @return array
 	 */
 	public function toArray() {
-		return array("idMatiere" => $this->idMatiere, "idFormation" => $this->idFormation, "nomMatiere" => $this->nomMatiere, "coeff" => $this->coeff);
+		return array("idMatiere" => $this->idMatiere, "idFormation" => $this->idFormation, "nomMatiere" => $this->nomMatiere, "coeff" => $this->coef);
 	}
 
 	/**
