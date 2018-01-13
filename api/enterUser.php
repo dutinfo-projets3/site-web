@@ -51,22 +51,39 @@ if($type==0){
     $stmt->execute([$formation]);
     $date = $stmt->fetch();
 
+    if($todayDate = new DateTime("now"));
+    $dateLimite = new DateTime(date("Y")."-10-01");
 
-    if($date==null){
-        $date= date("Y");
+    $dateARentrer=date("Y");
+
+    if($todayDate>$dateLimite){
+        $dateARentrer=date("Y")+1;
     }
-    $stmt = $pdo->prepare("INSERT INTO etudiant(idEtudiant,ine,dateEntree)VALUES(?,?,?)");
-    $stmt->execute([$user,$INE,$date["annee"]]);
+
+    if($date["annee"]!= date("Y")){
+        $stmt = $pdo->prepare("INSERT INTO anneescolaire(idFormation,annee)VALUES(?,?)");
+        $stmt->execute([$formation,$dateARentrer]);
+    }
+
+    $dateARentrer="01/10/".$dateARentrer;
+
+    $stmt = $pdo->prepare("INSERT INTO etudiant(idEtudiant,ine,dateEntree)VALUES(?,?,STR_TO_DATE(?,'%d/%m/%Y'))");
+    $stmt->execute([$user,$INE,$dateARentrer]);
 }
 
 else{
-    $stmt = $pdo->prepare("INSERT INTO professeur(idProfesseur,dateEmbauche)VALUES(?,?)");
+    $stmt = $pdo->prepare("INSERT INTO professeur(idProfesseur,dateEmbauche)VALUES(?,STR_TO_DATE(?,'%d/%m/%Y'))");
     $stmt->execute([$user,$embauche]);
 }
 
+$user = utilisateur::createFromID($user);
+$texte = "Username : ".$user->getUsername()." Password : ".$randomPass;
 
 
-$from = "smtp.gmail.com";
+echo $texte;
+
+
+/*$from = "smtp.gmail.com";
 
 $to = $mail;
 
@@ -76,4 +93,4 @@ $message = "Inscription PAUWES : Nom d'utilisateur Mot de passe temporaire (merc
 
 $headers = "From:" . $from;
 
-mail($to,$subject,$message, $headers);
+mail($to,$subject,$message, $headers);*/
