@@ -3,9 +3,10 @@
  * Created by Alexandre
  */
 
-class Groupe{
+class Groupe {
 	private $idGroupe;
-	private $nomGroupe;
+	private $nom;
+	private $idFormation;
 
 	/**
 	 * Getter pour idGroupe
@@ -20,7 +21,7 @@ class Groupe{
 	 * @return nomGroupe
 	 */
 	public function getNomGroupe() {
-		return $this->nomGroupe;
+		return $this->nom;
 	}
 
 	/**
@@ -30,7 +31,7 @@ class Groupe{
 	 * @return Groupe instance
 	 *
 	 */
-	public static function createFromId($idGroupe){
+	public static function createFromId($idGroupe) {
 		$stmt = myPDO::getInstance()->prepare(<<<SQL
 		SELECT * FROM Groupe
 		WHERE idGroupe = ?
@@ -46,7 +47,7 @@ SQL
 		}
 	}
 
-	public function getSeances(){
+	public function getSeances() {
 		$stmt = myPDO::getInstance()->prepare(<<<SQL
 		SELECT * FROM Seance
 		WHERE idGroupe = ?
@@ -61,7 +62,27 @@ SQL
 			return $obj;
 		}
 	}
-	
+
+
+	public static function getGroupeFromFormation($idFormation) {
+		$stmt = myPDO::getInstance()->prepare(<<<SQL
+		SELECT * FROM Groupe
+		WHERE idFormation = ?;
+SQL
+		);
+		$stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
+		$stmt->execute(array($idFormation));
+		$groupe = $stmt->fetchAll();
+		if($groupe == null){
+			throw new GroupeException("Pas de groupe disponible pour cette formation");
+		}
+		return $groupe;
+	}
+
+	public function toArray() {
+		return array("idGroupe" => $this->idGroupe, "nom" => $this->nom, "idFormation" => $this->idFormation);
+	}
+
 }
 
 class GroupeException extends Exception {

@@ -1,0 +1,127 @@
+{% extends 'template.html.twig' %}
+ {% block stylesheets %}
+     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+ {% endblock %}
+{% block content %}
+    <h1>Ajout d'un cour</h1>
+    <h4>Selection d'une formation</h4>
+    <div class="form-group">
+        <select class="custom-select custom-select-lg mb-3" id="selectFormation">
+            {% for formation in formations %}
+                <option {% if index.first %}selected {% endif %}
+                        value="{{ formation.idFormation }}">{{ formation.nomFormation }}</option>
+            {% endfor %}
+        </select>
+        <div class="invalid-feedback">
+            Pas de groupe disponible pour cette formation ou de matière
+        </div>
+    </div>
+
+    <div style="display: none" id="otherParameters">
+        <h4>Selection d'une matière</h4>
+        <select class="custom-select custom-select-lg mb-3" id="selectMatiere">
+
+        </select>
+
+        <h4>Selection d'un groupe</h4>
+        <select class="custom-select custom-select-lg mb-3" id="selectGroupe">
+        </select>
+        <h4>Selection d'un profeseur</h4>
+        <select class="custom-select custom-select-lg mb-3" id="selectProfesseurs">
+            {% for professeur in professeurs %}
+                <option {% if index.first %}selected {% endif %}
+                        value="{{ professeur.id }}"> {{ professeur.nom }} {{ professeur.prenom }}</option>
+            {% endfor %}
+        </select>
+        <h4>Selection d'une date et d'une heure</h4>
+        <div>
+            <label for="datepicker">Date : </label>
+            <input type="text" id="datepicker">
+            <label for="timepickerStart">Heure de début : </label>
+            <input id="timepickerStart">
+            <label for="timepickerEnd">Heure de Fin: </label>
+            <input id="timepickerEnd">
+        </div>
+        <h4>Selection d'une salle</h4>
+        <select class="custom-select custom-select-lg mb-3" id="selectSalle">>
+            {% for salle in salles %}
+                <option
+                        value="{{ salle.idsalle }}">Numéro : {{ salle.numero }} / Batiment
+                    : {{ salle.batiment }}</option>
+            {% endfor %}
+        </select>
+
+        <button type="button" class="btn btn-primary">Valider</button>
+    </div>
+
+
+{% endblock %}
+
+
+{% block lnkjavascript %}
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+    <script>
+
+        $(function () {
+            $("#selectFormation").change(function () {
+                var requestGroupe = $.ajax({
+                    url: "/api/getGroupeFromFormation.php",
+                    method: "POST",
+                    data: {idFormation: $(this).val()},
+                });
+
+                requestGroupe.done(function (res) {
+                    for (i = 0; i < res.groupes.length; i++) {
+                        $("#selectGroupe").append(new Option(res.groupes[i].nom, res.groupes[i].idGroupe));
+                    }
+                    for (i = 0; i < res.matieres.length; i++) {
+                        $("#selectMatiere").append(new Option(res.matieres[i].nomMatiere, res.matieres[i].idMatiere));
+                    }
+                    $("#otherParameters").fadeIn();
+                    $("#selectFormation").removeClass("is-invalid");
+
+                });
+
+                requestGroupe.fail(function () {
+                    $("#selectFormation").addClass("is-invalid");
+                    $("#otherParameters").fadeOut();
+                })
+            });
+
+            $("#datepicker").datepicker();
+
+
+            $('#timepickerStart').timepicker({
+                timeFormat: 'H:mm ',
+                interval: 60,
+                minTime: '8',
+                maxTime: '18',
+                dropdown: true,
+                scrollbar: true
+            });
+
+            $('#timepickerEnd').timepicker({
+                timeFormat: 'H:mm ',
+                interval: 60,
+                minTime: '8',
+                maxTime: '18',
+                dropdown: true,
+                scrollbar: true
+            });
+
+            $("#selectGroupe").change(function () {
+
+            });
+
+            $("#selectFormation ").change();
+            $("#selectGroupe ").change();
+            $("#selectProfesseurs").change();
+
+
+        });
+
+
+    </script>
+{% endblock %}

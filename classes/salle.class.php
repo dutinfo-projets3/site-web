@@ -3,7 +3,7 @@
  * Created by Alexandre
  */
 
-class Salle{
+class Salle {
 	private $idSalle;
 	private $numero;
 	private $batiment;
@@ -24,6 +24,14 @@ class Salle{
 		return $this->batiment . $this->numero;
 	}
 
+	public function getBatiment(){
+		return $this->batiment;
+	}
+
+	public function getNumero(){
+		return $this->numero;
+	}
+
 
 	/**
 	 * Retourne une Salle depuis son ID
@@ -32,7 +40,7 @@ class Salle{
 	 * @return Salle instance
 	 *
 	 */
-	public static function createFromID($idSalle){
+	public static function createFromID($idSalle) {
 		$stmt = myPDO::getInstance()->prepare(<<<SQL
 		SELECT * FROM Salle
 		WHERE idSalle = ?
@@ -47,7 +55,17 @@ SQL
 			return $obj;
 		}
 	}
-	
+
+	public static function getSalle() {
+		$stmt = myPDO::getInstance()->prepare(<<<SQL
+		SELECT * FROM Salle
+SQL
+		);
+		$stmt->setFetchMode(PDO::FETCH_CLASS,__CLASS__);
+		$stmt->execute();
+		return $stmt->fetchAll();
+	}
+
 }
 
 class SalleException extends Exception {
