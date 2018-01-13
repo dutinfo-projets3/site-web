@@ -72,6 +72,7 @@ var bt3       =$("#addUserButton");
 var error     =$("#errorMsgInsc");
 var firstForm =$("#userInfo");
 var secondForm=$("#userInscription");
+var listUser  =$("#userList");
 var radio1    =document.getElementById("student");
 var radio2    =document.getElementById("teacher");
 
@@ -85,6 +86,8 @@ bt3.click(function(){
    bt3.hide();
    firstForm.hide();
    secondForm.show();
+   listUser.addClass("d-none");
+   listUser.removeClass("d-flex");
 });
 
 
@@ -94,6 +97,8 @@ bt1.click(function(){
     bt3.show();
     clear();
     setToZero();
+    listUser.addClass("d-flex");
+    listUser.removeClass("d-none");
 });
 
 radio1.onclick = function(){
@@ -206,6 +211,11 @@ bt2.click(function(){
             success: function(data){
                 clear();
                 setToZero();
+                WinPrint = window.open('', '', 'letf=0,top=0,toolbar=0,scrollbars=0,status=0');
+                WinPrint.document.write(data);
+                WinPrint.focus();
+                WinPrint.print();
+                WinPrint.close();
             },
             error: function(a, b, c, d){
                 $("#errorMsgInsc").removeClass("d-none");
