@@ -2,16 +2,15 @@
 
 {% block content %}
 	{% if (usertype == 1) %}
-		<table class="d-flex flex-row">
-			<tr>
-				<th> Nom </th>
-				<th> Prénom </th>
-				<th> Absent(e) </th>
-				<th> Nom </th>
-				<th> Prénom </th>
-				<th> Absent(e) </th>
-			</tr>
-		</table>
+	<div id="abs">
+		<table class="w-100 text-left">
+				<tr>
+					<th> Nom </th>
+					<th> Prénom </th>
+					<th> Absent(e) </th>
+				</tr>
+			</table>
+		</div>
 		<div id="choix">
 			<div class="row bg-danger text-center" style="margin-bottom: 10px;" id="warn"></div>
 			<div class="mx-auto w-25">
@@ -26,8 +25,9 @@
 				<label for"fheure" class="d-inline"> heure fin (24 heures format) </label>
 				<input id="fheure" class="d-block" type ="text" placeholder="hh:mm">
 			</div>
+			<button id="submit" class="mx-auto" type="submit">Envoyer </button>
 		</div>
-		<button id="submit" class="mx-auto" type="submit">Envoyer </button>
+		
 	{% elseif (usertype == 2) %}
 		<table>
 			<tr> 
@@ -49,13 +49,13 @@ $(function() {
 	var month = auj.getMonth()<9? "0"+(auj.getMonth()+1) : auj.getMonth()+1;
 	var year = auj.getFullYear();
 	$('#date').val(day+"/"+month+"/"+year);
-	document.getElementsByTagName("table")[0].style.display = "none";
 });
 $("#submit").on("click",function(){
 	if($('#date').val().length === 10 && $('#date').val().charAt(2) == "/" && $('#date').val().charAt(5) == "/" && $('#dheure').val().length == 5 && $('#dheure').val().charAt(2)==":" && $('#fheure').val().length == 5 && $('#fheure').val().charAt(2)==":"){
-		jour = $('#date').val().split("/")[0];
-		mois = $('#date').val().split("/")[1];
-		annee = $('#date').val().split("/")[2];
+		var date = $('#date').val().split("/")
+		jour = date[0];
+		mois = date[1];
+		annee = date[2];
 		if(checkDate(jour,mois,annee)){
 			dheure = $('#dheure').val().split(":")[0];
 			dminute = $('#dheure').val().split(":")[1];
@@ -65,23 +65,40 @@ $("#submit").on("click",function(){
 				if(checkHour(fheure,fminute)){
 					if(debutRightPlace()){
 						document.getElementById("choix").style.display = "none";
-						//document.getElementsByTagName("table")[0].style.display = "block";
 							var req = $.ajax({
-								url: "/api/getEleves.php",
-			                    method: "GET",
-			                    data: {"idUser": {{idUser}}, "jour": jour, "mois": mois, "annee":annee, "dheure": dheure, "dminute": dminute, "fheure": fheure, "fminute": fminute},
-			                    contentType: "application/json; charset=utf-8"
+										url: "/api/getEleves.php",
+			                   			 method: "GET",
+			                   			 data: {"idUser": {{idUser}}, "jour": jour, "mois": mois, "annee":annee, "dheure": dheure, "dminute": dminute, "fheure": fheure, "fminute": fminute},
+			                    		contentType: "application/json; charset=utf-8"
+												 
 							});
+
 							req.done(function(res){
 								document.getElementsByTagName("table")[0].style.display = "block";
-								console.log(res);
-
+								var table = document.getElementsByTagName("table")[0];
+								for(eleve in res){
+									ligne = document.createElement("tr");
+									nom = document.createElement("td");
+									prenom = document.createElement("td");
+									abs = document.createElement("td");
+									nom.nodevalue = res[eleve].nom.toUpperCase();
+									prenom.nodevalue = res[eleve].prenom;
+									abs.appendChild(document.createElement("button"));
+									ligne.appendChild(nom);
+									table.appendChild(ligne);
+								}
 							});
+
+							req.fail(function(res){
+								alert("Une erreure est survenue");
+							});
+
+							//document.getElementsByTagName("table")[0].style.display = "none";
 					}else {
-					$('#warn').html("Statut inconhérent");
-					document.getElementById("warn").style.display = "block";
-					$('#fheure').val("");
-					$('#dheure').val("");
+						$('#warn').html("Statut inconhérent");
+						document.getElementById("warn").style.display = "block";
+						$('#fheure').val("");
+						$('#dheure').val("");
 					}	
 				}else {
 					$('#warn').html("Heure de fin non valide");
@@ -132,7 +149,7 @@ function checkDate(j,m,a){
 {% endblock %}
 
 {% block stylesheets %}
-	<link rel="stylesheet" href="/assets/css/absenceManager.css">
+	<link rel="stylesheet" href="/assets/css/absencesmanager.css">
 {% endblock %}
 
 {% block lnkjavascript %}
