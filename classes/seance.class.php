@@ -3,7 +3,7 @@
  * Created by Alexandre
  */
 
-class Seance{
+class Seance {
 	private $idSeance;
 	private $idSalle;
 	private $idGroupe;
@@ -25,7 +25,7 @@ class Seance{
 	 * Getter pour la salle
 	 * @return Instance salle
 	 */
-	public function getSalle(){
+	public function getSalle() {
 		return Salle::createFromId($this->idSalle);
 	}
 
@@ -33,7 +33,7 @@ class Seance{
 	 * Getter pour la groupe
 	 * @return Instance groupe
 	 */
-	public function getGroupe(){
+	public function getGroupe() {
 		return Groupe::createFromId($this->idGroupe);
 	}
 
@@ -41,7 +41,7 @@ class Seance{
 	 * Getter pour la matiere
 	 * @return Instance matiere
 	 */
-	public function getMatiere(){
+	public function getMatiere() {
 		return Matiere::createFromId($this->idMatiere);
 	}
 
@@ -49,7 +49,7 @@ class Seance{
 	 * Getter pour la professeur
 	 * @return Instance professeur
 	 */
-	public function getProfesseur(){
+	public function getProfesseur() {
 		return Professeur::createFromId($this->idProfesseur);
 	}
 
@@ -84,12 +84,12 @@ class Seance{
 	 * @return Seance instance
 	 *
 	 */
-	public static function createFromId($idSeance){
+	public static function createFromId($idSeance) {
 		$stmt = myPDO::getInstance()->prepare(<<<SQL
 		SELECT * FROM Seance
 		WHERE idSeance = ?
 SQL
-	);
+		);
 		$stmt->setFetchMode(PDO::FETCH_CLASS, 'Seance');
 		$stmt->execute(array($idSeance));
 		$obj = $stmt->fetch();
@@ -98,7 +98,33 @@ SQL
 		} else {
 			return $obj;
 		}
-	}	
+	}
+
+	public static function getSeance() {
+		$stmt = myPDO::getInstance()->prepare(<<<SQL
+		SELECT * FROM Seance
+SQL
+		);
+		$stmt->setFetchMode(PDO::FETCH_CLASS,__CLASS__);
+		$stmt->execute();
+		$seances = $stmt->fetchAll();
+		if($seances != null){
+			return $seances;
+		}
+		throw new SeancException("Pas seance disponible");
+	}
+
+	public static function addSeance($idSalle, $idMatiere, $idGroupe, $idProfesseur, $dateDebut, $dateFin) {
+		$stmt = myPDO::getInstance()->prepare(<<<SQL
+		INSERT INTO Seance (idSalle, idMatiere, idGroupe, idProfesseur, dateDebut, dateFin) VALUE (?,?,?,?,?,?)
+SQL
+		);
+		if ($stmt->execute(array($idSalle, $idMatiere, $idGroupe, $idProfesseur, $dateDebut, $dateFin))) {
+			return myPDO::getInstance()->lastInsertId();
+		};
+		throw new SeancException("Erreur");
+
+	}
 }
 
 class SeancException extends Exception {
