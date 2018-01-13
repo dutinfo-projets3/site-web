@@ -4,11 +4,14 @@
 
 table {
 	display: none;
-	border-color: #868786;
-	border-width: 2px;
-	border-style: solid;
 }
 
-td, th {
-	border-style: solid;	
+tr {
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-bottom-color: green;
+}
+
+#absButton {
+	display: none;
 }

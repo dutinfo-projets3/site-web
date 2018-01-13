@@ -3,12 +3,13 @@
 {% block content %}
 	{% if (usertype == 1) %}
 	<div id="abs">
-		<table class="w-100 text-left">
+		<table>
 				<tr>
 					<th> Nom </th>
 					<th> Prénom </th>
 					<th> Absent(e) </th>
 				</tr>
+				<button id="absButton" class="mx-auto" type="submit">Envoyer </button>
 			</table>
 		</div>
 		<div id="choix">
@@ -27,7 +28,6 @@
 			</div>
 			<button id="submit" class="mx-auto" type="submit">Envoyer </button>
 		</div>
-		
 	{% elseif (usertype == 2) %}
 		<table>
 			<tr> 
@@ -64,7 +64,6 @@ $("#submit").on("click",function(){
 				fminute = $('#fheure').val().split(":")[1];
 				if(checkHour(fheure,fminute)){
 					if(debutRightPlace()){
-						document.getElementById("choix").style.display = "none";
 							var req = $.ajax({
 										url: "/api/getEleves.php",
 			                   			 method: "GET",
@@ -74,19 +73,29 @@ $("#submit").on("click",function(){
 							});
 
 							req.done(function(res){
-								document.getElementsByTagName("table")[0].style.display = "block";
 								var table = document.getElementsByTagName("table")[0];
+								document.getElementById("choix").style.display = "none";
+								document.getElementById("absButton").style.display = "inline";
+								table.style.display = "block";
 								for(eleve in res){
 									ligne = document.createElement("tr");
 									nom = document.createElement("td");
 									prenom = document.createElement("td");
 									abs = document.createElement("td");
-									nom.nodevalue = res[eleve].nom.toUpperCase();
-									prenom.nodevalue = res[eleve].prenom;
-									abs.appendChild(document.createElement("button"));
+									nom.appendChild(document.createTextNode(res[eleve].nom.toUpperCase()));
+									prenom.appendChild(document.createTextNode(res[eleve].prenom));
+									button = document.createElement("input");
+									button.setAttribute("type","checkbox");
+									button.setAttribute("name", "abs[]");
+									button.setAttribute("value", res[eleve].id);
+									abs.appendChild(button);
 									ligne.appendChild(nom);
+									ligne.appendChild(prenom);
+									ligne.appendChild(abs);
 									table.appendChild(ligne);
+									table.className += "table table-responsive";
 								}
+								$("#abs").append($("#absButton"));
 							});
 
 							req.fail(function(res){
@@ -123,6 +132,26 @@ $("#submit").on("click",function(){
 	}
 	setTimeout(function(){document.getElementById("warn").style.display = "none"},5000);
 });
+
+$("#absButton").on("click",function(){
+		var select = [];
+		$(":checked").each(function(){
+			select.push($(this).val());
+		});
+		select = select.join('+');
+
+		var req = $.ajax({
+			url: "/api/setAbsences.php",
+			method: "GET",
+			data: {"absents" : select},
+			contentType: "application/json; charset=utf-8"
+													 
+		});
+
+		req.done(function(res){
+			console.log(res);
+		});
+	});
 
 function checkDate(j,m,a){
 		if(m==1||m==3||m==5||m==8||m==7||m==10||m==12){
