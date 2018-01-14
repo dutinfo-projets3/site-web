@@ -25,9 +25,11 @@ if($secu && isValidDay($jour,$mois,$annee) && isValidHour($heureD,$minuteD)){
 	$etudiants = $seance->getEleves();
 	foreach ($etudiants as $eleve) {
 		$eleve["isAbsent"] = Absence::isAbsent($eleve['id'],$seance->getIdSeance());
+		var_dump($eleve);
 	}
-	header("Content-type: application/json");
-	echo json_encode($etudiants);
+	var_dump($etudiants);
+	/*header("Content-type: application/json");
+	echo json_encode($etudiants);*/
 } else {
 	http_response_code(400);
 	return;
