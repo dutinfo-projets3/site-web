@@ -10,7 +10,7 @@ $minuteD = $_GET['dminute'];
 $secu = true;
 $params = array($jour,$mois,$annee,$heureD,$minuteD);
 foreach ($params as $value) {
-	$secu = $secu || baseVerif($value);
+	$secu = $secu && baseVerif($value);
 }
 
 if($secu && isValidDay($jour,$mois,$annee) && isValidHour($heureD,$minuteD)){

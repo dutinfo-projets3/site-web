@@ -53,8 +53,9 @@ $("#submit").on("click",function(){
 		mois = date[1];
 		annee = date[2];
 		if(checkDate(jour,mois,annee)){
-			dheure = $('#dheure').val().split(":")[0];
-			dminute = $('#dheure').val().split(":")[1];
+			var time = $('#dheure').val(); 
+			dheure = time.split(":")[0];
+			dminute = time.split(":")[1];
 			if(checkHour(dheure,dminute)){
 				var req = $.ajax({
 							url: "/api/getEleves.php",
@@ -65,6 +66,7 @@ $("#submit").on("click",function(){
 				});
 
 				req.done(function(res){
+					console.log(res);
 					var table = document.getElementsByTagName("table")[0];
 					document.getElementById("choix").style.display = "none";
 					document.getElementById("absButton").style.display = "inline";
@@ -92,7 +94,7 @@ $("#submit").on("click",function(){
 				});
 
 				req.fail(function(res){
-					alert("Une erreure est survenue");
+					alert("Une erreure est survenue 1");
 				});
 			} else {
 				$('#warn').html("Heure de début non valie");
@@ -123,13 +125,16 @@ $("#absButton").on("click",function(){
 		var req = $.ajax({
 			url: "/api/setAbsences.php",
 			method: "GET",
-			data: {"absents" : select},
+			data: {"absents" : select, "jour" : jour, "mois" : mois , "annee" : annee, "dheure" : dheure, "dminute" : dminute},
 			contentType: "application/json; charset=utf-8"
 													 
 		});
 
 		req.done(function(res){
-			console.log(res);
+		});
+
+		req.fail(function(res){
+			alert("Une erreur est survenue");
 		});
 	});
 
