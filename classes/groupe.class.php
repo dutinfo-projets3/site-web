@@ -61,6 +61,16 @@ SQL
 			return $obj;
 		}
 	}
+
+	public static function getGroupes(){
+	    $stmt = myPDO::getInstance()->prepare(<<<SQL
+        SELECT * FROM groupe
+SQL
+        );
+	    $stmt->execute();
+	    $obj = $stmt->fetchAll();
+	    return $obj;
+    }
 	
 }
 

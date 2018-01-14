@@ -1,0 +1,104 @@
+{% extends 'template.html.twig' %}
+
+{% block stylesheets %}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+
+    <div id="groupe" class="d-flex md-row flex-lg-row flex-column justify-content-md-around justify-content-lg-around">
+        <div class="col-md-5 col-lg-4 col-12 d-flex flex-column m-lg-3 m-1 mb-2 p-2">
+            <div class="d-flex">Groupes</div>
+            <select class="js-example-basic-single text-center d-inline" size="5" id="selectGroupe">
+                {% for i in groupes %}
+                    <option value="{{ i.idGroupe }}">{{ i.nom }} - Formation
+                        : {{ formations[i.idFormation] }}</option>
+                {% endfor %}
+            </select>
+            <button id="btDeleteGroup" class="btn btn-danger m-1">Supprimmer le groupe</button>
+            <div id="removeGroupeValidate-span" class="mt-1 flex-row justify-content-center d-none">
+                <i data-feather="x" class="text-danger"></i>
+                <span class="text-danger ml-2">Aucune groupe sélectionné</span>
+            </div>
+        </div>
+        <div class="col-md-5 col-lg-4 col-12 d-flex flex-column m-lg-3 m-1 mb-2 p-2">
+            <div class="row">
+                <button id="btMembre" type="button" class="col-5 btn btn-dark"> Membres</button>
+                <button id="btAdd" type="button" class="offset-1 col-5 btn btn-dark"> Ajouter un étudiant</button>
+            </div>
+            <div>
+                <select id="selectMember" style="width:100%;" class="m-1" size="10">
+                </select>
+                <div id="removeValidate-span" class="mt-1 flex-row justify-content-center d-none">
+                    <i data-feather="x" class="text-danger"></i>
+                    <span class="text-danger ml-2">Aucune personne de sélectionnée</span>
+                </div>
+                <button id="btDeleteStudent" class="btn btn-danger">Retirer l'étudiant</button>
+                <div id="divAddStudent" class="d-none row  m-1">
+                    <select class="js-example-basic-single text-center d-inline col-12" style="width:100%" size="5" id="selectStudent">
+                        {% for i in etudiants %}
+                            <option value="{{ i.idPersonne }}">{{ i.nomPers }} {{ i.prenomPers }}
+                                - {{ i.nomUtilisateur }}</option>
+                        {% endfor %}
+                    </select>
+                    <div class="col-12">
+                        <button id="btAddStudent" class=" btn btn-success m-1">Ajouter l'étudiant</button>
+                        <div id="StudentValidate-span" class="mt-1 flex-row justify-content-center d-none">
+                            <i data-feather="x" class="text-danger"></i>
+                            <span class="text-danger ml-2">La personne est déjà dans un groupe</span>
+                        </div>
+                        <div id="EmptyValidate-span" class="mt-1 flex-row justify-content-center d-none">
+                            <i data-feather="x" class="text-danger"></i>
+                            <span class="text-danger ml-2">Pas de groupe ou d'étudiant sélectionné</span>
+                        </div>
+                        <div id="insereValidate-span" class="mt-1 flex-row d-none justify-content-center">
+                            <span class="text-success ml-2">Insertion réussie</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button id="btGroupe" type="button" class="btn btn-dark m-1">Ajouter un groupe</button>
+
+    <div id="addGroupe"
+         class="d-none md-row flex-lg-row flex-column justify-content-md-around justify-content-lg-around">
+        <div class="row">
+            <span class="col-5 d-block">Nom du groupe</span>
+            <input id="nomGroupe-field" class="col-6 d-inline" type="text">
+        </div>
+        <div id="groupeValidate-span" class="mt-1 flex-row d-none justify-content-center">
+            <i data-feather="x" class="text-danger"></i>
+            <span class="text-danger ml-2">Nom invalide ou utilisé</span>
+        </div>
+        <div class="row">
+            <span class="col-5 d-block">Formation</span>
+            <div>
+                <select id="selectFormation">
+                    {% for key,i in formations %}
+                        <option value="{{ key }}">{{ i }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div>
+            <button id="btAddGroupe" class="btn btn-success m-1">Ajouter le groupe</button>
+            <button id="btCancel" class="btn btn-danger m-1">Annuler</button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block lnkjavascript %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script src="/assets/js/groupes.js" type="text/javascript"></script>
+    <script>
+        $(document).ready(function () {
+            $('.js-example-basic-single').select2();
+        });
+
+        var listeGroupe =[];
+        {% for i in groupes %}
+            listeGroupe.push("{{ i.nom }}");
+        {% endfor %}
+    </script>
+{% endblock %}
