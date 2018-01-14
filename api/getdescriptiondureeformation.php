@@ -6,8 +6,7 @@
  * Time: 23:08
  */
 require_once("../autoload.inc.php");
-if (empty($_POST['idFormation'])
-	&& !Utilisateur::isConnected() && Utilisateur::createFromSession()->getUserType() != Utilisateur::TYPES['ADMINISTRATION']) {
+if (empty($_POST['idFormation'])) {
 	http_response_code(401);
 	return;
 }

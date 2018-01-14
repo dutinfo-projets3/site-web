@@ -13,7 +13,7 @@ class Professeur extends Utilisateur {
 	 */
 	private $dateDepart;
 
-	public function __construct($user){
+	public function __construct($user) {
 		parent::__construct($user);
 		$this->type = Utilisateur::TYPES["PROFESSEUR"];
 	}
@@ -21,13 +21,13 @@ class Professeur extends Utilisateur {
 	/**
 	 * Créé une instance de professeur à partir des infos
 	 */
-	public static function createFromInfo($nom, $prenom, $adresse, $cp, $ville, $mail, $numtel, $dateEmbauche = null, $dateDepart = null){
+	public static function createFromInfo($nom, $prenom, $adresse, $cp, $ville, $mail, $numtel, $dateEmbauche = null, $dateDepart = null) {
 		// Hack dégueux pour avoir le même prototype que dans User et ne pas avoir de warning
-		if ($dateEmbauche != null){
+		if ($dateEmbauche != null) {
 			$user = parent::createFromInfo($nom, $prenom, $adresse, $cp, $ville, $mail, $numtel);
 			$prof = (new Professeur($user))->setDateEmbauche($dateEmbauche);
 
-			if ($dateDepart != null){
+			if ($dateDepart != null) {
 				$prof->setDateDepart($dateDepart);
 			}
 
@@ -40,7 +40,7 @@ class Professeur extends Utilisateur {
 	 * Il créé une copie de User dans une instance de Professeur
 	 * Puis il va chercher les champs manquant dans la base de donnée
 	 */
-	public static function createFromUser($user){
+	public static function createFromUser($user) {
 		$prof = new Professeur($user);
 
 		$rq = "SELECT * FROM Professeur WHERE idProfesseur=?";
@@ -50,7 +50,7 @@ class Professeur extends Utilisateur {
 
 		$tab = $stmt->fetch();
 		$prof->dateEmbauche = $tab["dateEmbauche"];
-		$prof->dateDepart   = $tab["dateDepart"];
+		$prof->dateDepart = $tab["dateDepart"];
 		return $prof;
 	}
 
@@ -58,16 +58,16 @@ class Professeur extends Utilisateur {
 	 * Ajoute un nouvel utilisateur dans la BD
 	 * @return Utilisateur avec son id mis à jour
 	 */
-	public function insertIntoBD($pass){
+	public function insertIntoBD($pass) {
 		$id = parent::insertIntoBD($pass);
 
 		$rq = "INSERT INTO Professeur (idProfesseur, dateEmbauche, dateDepart) VALUES (:id, :emb, :dpt)";
 		$stmt = myPDO::getInstance()->prepare($rq);
 
 		$stmt->execute(array(
-			"id"         => $id,
-			"emb"        => $this->getDateEmbauche(),
-			"dpt"        => $this->getDateDepart()
+			"id" => $id,
+			"emb" => $this->getDateEmbauche(),
+			"dpt" => $this->getDateDepart()
 		));
 
 		return $id;
@@ -77,7 +77,7 @@ class Professeur extends Utilisateur {
 	 * Met a jour l'utilisateur dans la base de donnée
 	 * Change son mot de passe s'il est spécifié en paramètre
 	 */
-	public function updateBD($mdp = null){
+	public function updateBD($mdp = null) {
 		parent::updateBD($mdp);
 		$rq = "UPDATE Professeur SET dateEmbauche=:dateEmbauche, dateDepart=:dateDepart WHERE idProfesseur=:id";
 		$stmt = myPDO::getInstance()->prepare($rq);
@@ -88,35 +88,51 @@ class Professeur extends Utilisateur {
 		));
 	}
 
-	public function getDateEmbauche(){
+	public static function getProfesseur() {
+		$utilisateurs = parent::createList();
+		$professeurs = array();
+		foreach ($utilisateurs as $utilisateur) {
+			if ($utilisateur['type'] == 1)
+				array_push($professeurs, $utilisateur);
+		}
+		return $professeurs;
+
+	}
+
+	public function getDateEmbauche() {
 		return $this->dateEmbauche;
 	}
 
-	public function getDateDepart(){
+	public function getDateDepart() {
 		return $this->dateDepart;
 	}
 
-	public function setDateEmbauche($date){
+	public function setDateEmbauche($date) {
 		$this->dateEmbauche = $date;
 		return $this;
 	}
 
-	public function setDateDepart($date){
+	public function setDateDepart($date) {
 		$this->dateDepart = $date;
 		return $this;
 	}
 
-	 public function getSeances(){
-        $stmt = myPDO::getInstance()->prepare(<<<SQL
+	/**
+		Retourne un objet de type séance pour les dates indiquées
+	*/
+	public function getSeance($annee, $mois, $jour, $heureD, $minuteD) {
+		$stmt = myPDO::getInstance()->prepare(<<<SQL
             SELECT *
             FROM seance
             WHERE idProfesseur = ?
+            AND dateDebut = ?
 SQL
-);
-        $stmt->setFetchMode(PDO::FETCH_CLASS, 'Seance');
-        $stmt->execute(array($this->idPersonne));
-        $seances = $stmt->fetchAll();
-        return $seances;
-    }
+		);
+		$begin = $annee.'-'.$mois.'-'.$jour.' '.$heureD.':'.$minuteD.':00';
+		$stmt->setFetchMode(PDO::FETCH_CLASS, 'Seance');
+		$stmt->execute(array($this->idPersonne, $begin));
+		$seance = $stmt->fetch();
+		return $seance;
+	}
 
 }

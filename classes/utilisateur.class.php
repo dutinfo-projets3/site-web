@@ -120,7 +120,7 @@ HTML;
 	 * Create a list of every users
 	 */
 	public static function createList(){
-		$rq = "SELECT idPersonne as id, nomPers as nom, prenomPers as prenom FROM Utilisateur";
+		$rq = "SELECT idPersonne as id, nomPers as nom, prenomPers as prenom, type FROM Utilisateur";
 		$stmt = myPDO::getInstance()->prepare($rq);
 		$stmt->setFetchMode(PDO::FETCH_ASSOC);
 		$stmt->execute();
