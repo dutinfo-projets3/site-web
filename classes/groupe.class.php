@@ -103,7 +103,8 @@ SQL
 			foreach ($utilisateurS as $eleve) {
 				array_push($send, array("id" => $eleve->getId(),
 										"nom" => $eleve->getNom(),
-										"prenom" => $eleve->getPrenom()));
+										"prenom" => $eleve->getPrenom(),
+										"isAbsent" => false /*Valeur temporaire*/));
 			}
 			return $send;
 	}

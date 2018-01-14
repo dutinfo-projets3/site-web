@@ -17,9 +17,15 @@ if($secu && isValidDay($jour,$mois,$annee) && isValidHour($heureD,$minuteD)){
 	$p = Utilisateur::createFromSession();
 
 	$seance = $p->getSeance($annee, $mois, $jour, $heureD,$minuteD);
+	if($seance == null){
+		// La séance n'a pas été trouvée
+		return;
+	}
 
 	$etudiants = $seance->getEleves();
-
+	foreach ($etudiants as $eleve) {
+		$eleve["isAbsent"] = Absence::isAbsent($eleve['id'],$seance->getIdSeance());
+	}
 	header("Content-type: application/json");
 	echo json_encode($etudiants);
 } else {

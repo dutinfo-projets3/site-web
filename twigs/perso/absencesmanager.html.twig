@@ -93,9 +93,10 @@ $("#submit").on("click",function(){
 
 				});
 
-				req.fail(function(res){
-					alert("Une erreure est survenue 1");
+				req.fail(function(res,a,error){
+					console.log(error);
 				});
+
 			} else {
 				$('#warn').html("Heure de début non valie");
 				document.getElementById("warn").style.display = "block";
@@ -110,7 +111,7 @@ $("#submit").on("click",function(){
 		$('#warn').html("Format non respecté");
 		document.getElementById("warn").style.display = "block";
 		$('#date').val("");
-		$('#heure').val("");
+		$('#dheure').val("");
 	}
 	setTimeout(function(){document.getElementById("warn").style.display = "none"},5000);
 });
