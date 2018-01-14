@@ -100,7 +100,7 @@ SQL
 		}
 	}
 
-	public static function getSeance() {
+	public static function getSeances() {
 		$stmt = myPDO::getInstance()->prepare(<<<SQL
 		SELECT * FROM Seance
 SQL

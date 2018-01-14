@@ -6,6 +6,7 @@ if(isset($_GET['absents'])){
 		return;
 	}
 	$idAbsents = explode("+",$_GET['absents']);
+	var_dump($idAbsents);
 } else {
 	http_response_code(400);
 	return;

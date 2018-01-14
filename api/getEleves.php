@@ -1,18 +1,28 @@
 <?php
 require_once "../autoload.inc.php";
+require_once "verifAbsences.php";
 $jour = $_GET['jour'];
 $mois = $_GET['mois'];
 $annee = $_GET['annee'];
 $heureD = $_GET['dheure'];
 $minuteD = $_GET['dminute'];
-$heureF = $_GET['fheure'];
-$minuteF = $_GET['fminute'];
 
-$p = Utilisateur::createFromSession();
+$secu = true;
+$params = array($jour,$mois,$annee,$heureD,$minuteD);
+foreach ($params as $value) {
+	$secu = $secu || baseVerif($value);
+}
 
-$seance = $p->getSeance($annee, $mois, $jour, $heureD,$minuteD, $heureF, $minuteF);
+if($secu && isValidDay($jour,$mois,$annee) && isValidHour($heureD,$minuteD)){
+	$p = Utilisateur::createFromSession();
 
-$etudiants = $seance->getEleves();
+	$seance = $p->getSeance($annee, $mois, $jour, $heureD,$minuteD);
 
-header("Content-type: application/json");
-echo json_encode($etudiants);
+	$etudiants = $seance->getEleves();
+
+	header("Content-type: application/json");
+	echo json_encode($etudiants);
+} else {
+	http_response_code(400);
+	return;
+}

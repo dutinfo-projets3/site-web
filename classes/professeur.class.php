@@ -120,19 +120,17 @@ class Professeur extends Utilisateur {
 	/**
 		Retourne un objet de type séance pour les dates indiquées
 	*/
-	public function getSeance($annee, $mois, $jour, $heureD, $minuteD ,$heureF, $minuteF) {
+	public function getSeance($annee, $mois, $jour, $heureD, $minuteD) {
 		$stmt = myPDO::getInstance()->prepare(<<<SQL
             SELECT *
             FROM seance
             WHERE idProfesseur = ?
             AND dateDebut = ?
-			AND dateFin  = ?
 SQL
 		);
 		$begin = $annee.'-'.$mois.'-'.$jour.' '.$heureD.':'.$minuteD.':00';
-		$end = $annee.'-'.$mois.'-'.$jour.' '.$heureF.':'.$minuteF.':00';
 		$stmt->setFetchMode(PDO::FETCH_CLASS, 'Seance');
-		$stmt->execute(array($this->idPersonne, $begin, $end));
+		$stmt->execute(array($this->idPersonne, $begin));
 		$seance = $stmt->fetch();
 		return $seance;
 	}

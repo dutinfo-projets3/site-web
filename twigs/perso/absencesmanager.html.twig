@@ -22,10 +22,6 @@
 				<label for"dheure" class="d-inline"> heure début (24 heures format) </label>
 				<input id="dheure"  class="d-block" type ="text" placeholder="hh:mm">
 			</div>
-			<div class="mx-auto w-25">
-				<label for"fheure" class="d-inline"> heure fin (24 heures format) </label>
-				<input id="fheure" class="d-block" type ="text" placeholder="hh:mm">
-			</div>
 			<button id="submit" class="mx-auto" type="submit">Envoyer </button>
 		</div>
 	{% elseif (usertype == 2) %}
@@ -51,7 +47,7 @@ $(function() {
 	$('#date').val(day+"/"+month+"/"+year);
 });
 $("#submit").on("click",function(){
-	if($('#date').val().length === 10 && $('#date').val().charAt(2) == "/" && $('#date').val().charAt(5) == "/" && $('#dheure').val().length == 5 && $('#dheure').val().charAt(2)==":" && $('#fheure').val().length == 5 && $('#fheure').val().charAt(2)==":"){
+	if($('#date').val().length === 10 && $('#date').val().charAt(2) == "/" && $('#date').val().charAt(5) == "/" && $('#dheure').val().length == 5 && $('#dheure').val().charAt(2)==":"){
 		var date = $('#date').val().split("/")
 		jour = date[0];
 		mois = date[1];
@@ -60,62 +56,44 @@ $("#submit").on("click",function(){
 			dheure = $('#dheure').val().split(":")[0];
 			dminute = $('#dheure').val().split(":")[1];
 			if(checkHour(dheure,dminute)){
-				fheure = $('#fheure').val().split(":")[0];
-				fminute = $('#fheure').val().split(":")[1];
-				if(checkHour(fheure,fminute)){
-					if(debutRightPlace()){
-							var req = $.ajax({
-										url: "/api/getEleves.php",
-			                   			 method: "GET",
-			                   			 data: {"idUser": {{idUser}}, "jour": jour, "mois": mois, "annee":annee, "dheure": dheure, "dminute": dminute, "fheure": fheure, "fminute": fminute},
-			                    		contentType: "application/json; charset=utf-8"
-												 
-							});
+				var req = $.ajax({
+							url: "/api/getEleves.php",
+	               			 method: "GET",
+	               			 data: {"jour": jour, "mois": mois, "annee":annee, "dheure": dheure, "dminute": dminute},
+	                		contentType: "application/json; charset=utf-8"
+									 
+				});
 
-							req.done(function(res){
-							console.log(res);
-								var table = document.getElementsByTagName("table")[0];
-								document.getElementById("choix").style.display = "none";
-								document.getElementById("absButton").style.display = "inline";
-								table.style.display = "block";
-								for(eleve in res){
-									ligne = document.createElement("tr");
-									nom = document.createElement("td");
-									prenom = document.createElement("td");
-									abs = document.createElement("td");
-									nom.appendChild(document.createTextNode(res[eleve].nom.toUpperCase()));
-									prenom.appendChild(document.createTextNode(res[eleve].prenom));
-									button = document.createElement("input");
-									button.setAttribute("type","checkbox");
-									button.setAttribute("name", "abs[]");
-									button.setAttribute("value", res[eleve].id);
-									abs.appendChild(button);
-									ligne.appendChild(nom);
-									ligne.appendChild(prenom);
-									ligne.appendChild(abs);
-									table.appendChild(ligne);
-									table.className += "table table-responsive";
-								}
-								$("#abs").append($("#absButton"));
+				req.done(function(res){
+					var table = document.getElementsByTagName("table")[0];
+					document.getElementById("choix").style.display = "none";
+					document.getElementById("absButton").style.display = "inline";
+					table.style.display = "block";
+					for(eleve in res){
+						ligne = document.createElement("tr");
+						nom = document.createElement("td");
+						prenom = document.createElement("td");
+						abs = document.createElement("td");
+						nom.appendChild(document.createTextNode(res[eleve].nom.toUpperCase()));
+						prenom.appendChild(document.createTextNode(res[eleve].prenom));
+						button = document.createElement("input");
+						button.setAttribute("type","checkbox");
+						button.setAttribute("name", "abs[]");
+						button.setAttribute("value", res[eleve].id);
+						abs.appendChild(button);
+						ligne.appendChild(nom);
+						ligne.appendChild(prenom);
+						ligne.appendChild(abs);
+						table.appendChild(ligne);
+						table.className += "table table-responsive";
+					}
+					$("#abs").append($("#absButton"));
 
-							});
+				});
 
-							req.fail(function(res){
-								alert("Une erreure est survenue");
-							});
-
-							//document.getElementsByTagName("table")[0].style.display = "none";
-					}else {
-						$('#warn').html("Statut inconhérent");
-						document.getElementById("warn").style.display = "block";
-						$('#fheure').val("");
-						$('#dheure').val("");
-					}	
-				}else {
-					$('#warn').html("Heure de fin non valide");
-					document.getElementById("warn").style.display = "block";
-					$('#fheure').val("");
-				}
+				req.fail(function(res){
+					alert("Une erreure est survenue");
+				});
 			} else {
 				$('#warn').html("Heure de début non valie");
 				document.getElementById("warn").style.display = "block";
@@ -172,10 +150,6 @@ function checkDate(j,m,a){
 
 	function checkHour(h,m){
 		return h>-1 && h<24 && m > -1 && m<60; 
-	}
-
-	function debutRightPlace(){
-		return dheure<=fheure && dminute<=fminute;
 	}
 {% endblock %}
 

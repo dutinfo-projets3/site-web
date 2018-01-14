@@ -16,6 +16,5 @@ if($user->getType()==0){
 $params = array();
 $params['usertype']=$user->getType();
 $params["displayPanelButton"] = false;
-$params['idUser'] = $user->getId();
 
 echo TwigLoader::getInstance()->render('','perso/absencesmanager',$params);
