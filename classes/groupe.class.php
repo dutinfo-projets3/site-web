@@ -83,6 +83,31 @@ SQL
 		return array("idGroupe" => $this->idGroupe, "nom" => $this->nom, "idFormation" => $this->idFormation);
 	}
 
+	/**
+		Retourne le nom, prénom et id des élèves appartenant à $this
+		Dommage que ce soit un tableau 2D ...
+	*/
+	public function getEleves(){
+		$stmt = myPDO::getInstance()->prepare(<<<SQL
+			SELECT *
+			FROM Utilisateur
+			WHERE idPersonne IN (SELECT idEtudiant
+								 FROM appartient
+								 WHERE idGroupe = ?)
+SQL
+);
+			$stmt->setFetchMode(PDO::FETCH_CLASS,"Utilisateur");
+			$stmt->execute(array($this->idGroupe));
+			$utilisateurS = $stmt->fetchAll();
+			$send = array();
+			foreach ($utilisateurS as $eleve) {
+				array_push($send, array("id" => $eleve->getId(),
+										"nom" => $eleve->getNom(),
+										"prenom" => $eleve->getPrenom()));
+			}
+			return $send;
+	}
+
 }
 
 class GroupeException extends Exception {

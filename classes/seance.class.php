@@ -125,6 +125,13 @@ SQL
 		throw new SeancException("Erreur");
 
 	}
+
+	/**
+	* CF doc getEleves dans la classe groupe
+	*/
+	public function getEleves(){
+		return Groupe::createFromId($this->idGroupe)->getEleves();
+	}
 }
 
 class SeancException extends Exception {
