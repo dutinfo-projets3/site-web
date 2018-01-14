@@ -87,6 +87,7 @@ $("#submit").on("click",function(){
 							button.setAttribute("type","checkbox");
 							button.setAttribute("name", "abs[]");
 							button.setAttribute("value", res[eleve].id);
+							button.checked = res[eleve].isAbsent;
 							abs.appendChild(button);
 							ligne.appendChild(nom);
 							ligne.appendChild(prenom);
