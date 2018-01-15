@@ -105,10 +105,10 @@ SQL
 		SELECT * FROM Seance
 SQL
 		);
-		$stmt->setFetchMode(PDO::FETCH_CLASS,__CLASS__);
+		$stmt->setFetchMode(PDO::FETCH_CLASS, __CLASS__);
 		$stmt->execute();
 		$seances = $stmt->fetchAll();
-		if($seances != null){
+		if ($seances != null) {
 			return $seances;
 		}
 		throw new SeancException("Pas seance disponible");
@@ -126,10 +126,47 @@ SQL
 
 	}
 
+	public static function getDateFromGroupe($idGroupe) {
+		$stmt = myPDO::getInstance()->prepare(<<<SQL
+		SELECT dateDebut, dateFin
+		FROM Seance
+		WHERE idGroupe = ?
+SQL
+		);
+		$stmt->setFetchMode(PDO::FETCH_ASSOC);
+		$stmt->execute(array($idGroupe));
+		return $stmt->fetchAll();
+
+	}
+	public static function getDateFromProfesseur($idProfesseur) {
+		$stmt = myPDO::getInstance()->prepare(<<<SQL
+		SELECT dateDebut, dateFin
+		FROM Seance
+		WHERE idProfesseur = ?
+SQL
+		);
+		$stmt->setFetchMode(PDO::FETCH_ASSOC);
+		$stmt->execute(array($idProfesseur));
+		return $stmt->fetchAll();
+
+	}
+	public static function getDateFromSalle($idSalle) {
+		$stmt = myPDO::getInstance()->prepare(<<<SQL
+		SELECT dateDebut, dateFin
+		FROM Seance
+		WHERE idSalle = ?
+SQL
+		);
+		$stmt->setFetchMode(PDO::FETCH_ASSOC);
+		$stmt->execute(array($idSalle));
+		return $stmt->fetchAll();
+
+	}
+
 	/**
-	* CF doc getEleves dans la classe groupe
-	*/
-	public function getEleves(){
+	 * CF doc getEleves dans la classe groupe
+	 */
+	public function getEleves() {
 		return Groupe::createFromId($this->idGroupe)->getEleves();
 	}
 }

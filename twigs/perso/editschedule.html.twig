@@ -4,11 +4,33 @@
      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
  {% endblock %}
 {% block content %}
-    <div class=" mt-3 mb-3 p-3 bg-lightcard form-control " id="formulaire">
+    <div class=" mt-3 mb-3 p-3 bg-lightcard form-control" id="formulaire">
+
         <h1 class="card text-center col-md-8 offset-md-2 mb-3 col-12 offset-0">Ajout d'un cours</h1>
+        <div class="d-flex align-items-center justify-content-between">
+            <h3>Selection d'une date et d'une heure</h3>
+            <img src="/assets/img/rolling.gif" alt="Responsive image" class="img-fluid"
+                 id="changeRolling" style="height: 45px;display:none;padding: 5px">
+        </div>
+
+
+        <div id="dateHeure" class="mb-2 d-flex flex-wrap form-control">
+            <label for="datepicker" class="m-2 ml-4 ">Date : </label>
+            <input type="text" id="datepicker" class="col-md-2 col-12 form-control">
+            <label for="timepickerStart" class="m-2 ml-4">Heure de début : </label>
+            <input id="timepickerStart" class="form-control col-md-2 col-12">
+            <label for="timepickerEnd" class="m-2 ml-4">Heure de Fin: </label>
+            <input id="timepickerEnd" class="form-control  col-md-2 col-12">
+            <div class="invalid-feedback">
+                Les heures début et fin ne peuvent être les même et inférieure ou le format n'est pas respecter
+            </div>
+        </div>
+        <div class="invalid-feedback">
+            Choisir une date et une heure
+        </div>
         <h4>Selection d'une formation</h4>
         <div class="form-group">
-            <select class="custom-select custom-select-lg mb-3" id="selectFormation">
+            <select class="custom-select custom-select-lg mb-3 form-control" id="selectFormation">
                 {% for formation in formations %}
                     <option {% if index.first %}selected {% endif %}
                             value="{{ formation.idFormation }}">{{ formation.nomFormation }}</option>
@@ -20,49 +42,48 @@
         </div>
 
         <div style="display: none" id="otherParameters" class="mb-2">
-            <h4>Selection d'une date et d'une heure</h4>
-            <div class="mb-2 d-flex flex-wrap">
-                <label for="datepicker" class="m-2 ml-4 ">Date : </label>
-                <input type="text" id="datepicker" class="col-md-2 col-12 form-control">
-                <label for="timepickerStart" class="m-2 ml-4">Heure de début : </label>
-                <input id="timepickerStart" class="form-control col-md-2 col-12">
-                <label for="timepickerEnd" class="m-2 ml-4">Heure de Fin: </label>
-                <input id="timepickerEnd" class="form-control  col-md-2 col-12">
-                <div class="invalid-feedback">
-                    Les heures début et fin ne peuvent être les même et inférieure ou le format n'est pas respecter
-                </div>
-
+            <h4>Selection d'un groupe</h4>
+            <div class="form-group">
+                <select class="custom-select custom-select-lg mb-3 form-control" id="selectGroupe">
+                </select>
+                <div class="invalid-feedback">Ce groupe à déjà cour sur ces heures</div>
             </div>
-
             <h4>Selection d'une matière</h4>
             <select class="custom-select custom-select-lg mb-3" id="selectMatiere">
 
             </select>
 
-            <h4>Selection d'un groupe</h4>
-            <select class="custom-select custom-select-lg mb-3" id="selectGroupe">
-            </select>
             <h4>Selection d'un profeseur</h4>
-            <select class="custom-select custom-select-lg mb-3" id="selectProfesseurs">
-                {% for professeur in professeurs %}
-                    <option {% if index.first %}selected {% endif %}
-                            value="{{ professeur.id }}"> {{ professeur.nom }} {{ professeur.prenom }}</option>
-                {% endfor %}
-            </select>
+            <div class="form-group">
+                <select class="custom-select custom-select-lg mb-3 form-control" id="selectProfesseurs">
+                    {% for professeur in professeurs %}
+                        <option {% if index.first %}selected {% endif %}
+                                value="{{ professeur.id }}"> {{ professeur.nom }} {{ professeur.prenom }}</option>
+                    {% endfor %}
+                </select>
+                <div class="invalid-feedback">
+                    Ce professeur travaille déjà
+                </div>
+            </div>
             <h4>Selection d'une salle</h4>
-            <select class="custom-select custom-select-lg mb-3" id="selectSalle">>
-                {% for salle in salles %}
-                    <option
-                            value="{{ salle.idsalle }}">Numéro : {{ salle.numero }} / Batiment
-                        : {{ salle.batiment }}</option>
-                {% endfor %}
-            </select>
+            <div class="form-group">
+                <select class="custom-select custom-select-lg mb-3 form-control" id="selectSalle">>
+                    {% for salle in salles %}
+                        <option
+                                value="{{ salle.idsalle }}">Numéro : {{ salle.numero }} / Batiment
+                            : {{ salle.batiment }}</option>
+                    {% endfor %}
+                </select>
+                <div class="invalid-feedback">
+                    Cette salle est déjà prise
+                </div>
+            </div>
             <button id="sendInfo" type="button" class="btn btn-primary">Valider</button>
         </div>
 
     </div>
     <div class="invalid-feedback">
-        Veuillez remplir tous les champs
+        Tous les champs doivent être valide
     </div>
 
 
@@ -74,9 +95,58 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
     <script>
-        $(document).ready(function () {
+        function wait(wait) {
+            if(wait) {
+                $("#changeRolling").fadeIn();
+                $(":input").each(function () {
+                    $(this).attr("disabled", "disabled");
+                });
+            }else {
+                $("#changeRolling").fadeOut();
+                $(":input").each(function () {
+                    $(this).removeAttr("disabled");
+                });
+            }
+        }
+        function toMysqlDate() {
+            date = $("#datepicker").val().split("/");
+            hourStart = $("#timepickerStart").val();
+            hourEnd = $("#timepickerEnd").val();
+            hourStart = hourStart.split(":");
+            hourEnd = hourEnd.split(":");
+            dateDebut = date[2] + '-' + date[0] + '-' + date[1] + " " + hourStart[0] + ":00:00";
+            dateF = date[2] + '-' + date[0] + '-' + date[1] + " " + hourEnd[0] + ":00:00";
+            return {"dateDebut": dateDebut, "dateF": dateF}
+        }
 
+        function checkDate() {
+            if ($("#datepicker").val() == "" || $("#timepickerStart").val() == "" || $("#timepickerEnd").val() == "") {
+                $("#dateHeure").addClass("is-invalid");
+                $("select").each(function () {
+                    $(this).attr("disabled", "disabled")
+                });
+                $("#sendInfo").attr("disabled", "disabled");
+                $("#changeRolling")
+                    .attr("src","/assets/img/rolling.gif");
+            } else {
+                $("#dateHeure").removeClass("is-invalid");
+                $("select").each(function () {
+                    $(this).removeAttr("disabled", "disabled");
+                });
+                $("#sendInfo").removeAttr("disabled", "disabled");
+                $("#selectGroupe").change();
+                $("#selectProfesseurs").change();
+                $("#selectSalle").change();
+                $("#otherParameters").fadeIn();
+                $("#changeRolling")
+                    .attr("src","/assets/img/rolling.gif");
+
+            }
+        }
+
+        $(document).ready(function () {
             $("#selectFormation").change(function () {
+                wait(true);
                 var requestGroupe = $.ajax({
                     url: "/api/getGroupeFromFormation.php",
                     method: "POST",
@@ -84,19 +154,26 @@
                 });
 
                 requestGroupe.done(function (res) {
+                    wait(false);
+                    checkDate();
                     for (i = 0; i < res.groupes.length; i++) {
                         $("#selectGroupe").append(new Option(res.groupes[i].nom, res.groupes[i].idGroupe));
                     }
                     for (i = 0; i < res.matieres.length; i++) {
                         $("#selectMatiere").append(new Option(res.matieres[i].nomMatiere, res.matieres[i].idMatiere));
                     }
-                    $("#otherParameters").fadeIn();
-                    $("#selectFormation").removeClass("is-invalid");
+                    $("#selectFormation")
+                        .removeClass("is-invalid")
+                        .addClass("is-valid");
+
 
                 });
 
                 requestGroupe.fail(function () {
-                    $("#selectFormation").addClass("is-invalid");
+                    wait(false);
+                    $("#selectFormation")
+                        .addClass("is-invalid")
+                        .removeClass("is-valid");
                     $("#otherParameters").fadeOut();
                 })
             });
@@ -107,9 +184,11 @@
                     if (/(^(0?[1-9])|^(1?[0-2]))\/([0-2][0-9]|[3][01])\/([1][9][7-9][0-9]|[2][0-9][0-9][0-9])/.test($(this).val())) {
                         $(this).addClass("is-valid");
                         $(this).removeClass("is-invalid");
+                        checkDate();
                     } else {
                         $(this).removeClass("is-valid");
                         $(this).addClass("is-invalid");
+
                     }
                 });
 
@@ -132,6 +211,7 @@
                                 $("#timepickerEnd").removeClass("is-invalid");
                                 $(this).addClass("is-valid");
                                 $("#timepickerEnd").addClass("is-valid");
+                                checkDate()
                             } else {
                                 $(this).addClass("is-invalid");
                             }
@@ -154,11 +234,14 @@
                             $(this).addClass("is-invalid");
                             $("#timepickerStart").addClass("is-invalid");
                         } else {
-                            if (/[0-9]{1,2}\:[0-9]{2}\ /.test($("#timepickerEnd").val()) && parseInt($("#timepickerEnd").val().split(":")[0]) > parseInt($("#timepickerStart").val().split(":")[0])) {
+                            if (/[0-9]{1,2}\:[0-9]{2}\ /.test($("#timepickerEnd").val())
+                                && parseInt($("#timepickerEnd").val().split(":")[0]) > parseInt($("#timepickerStart").val().split(":")[0])
+                            ) {
                                 $(this).removeClass("is-invalid");
                                 $("#timepickerStart").removeClass("is-invalid");
                                 $(this).addClass("is-valid");
                                 $("#timepickerStart").addClass("is-valid");
+                                checkDate();
                             } else {
                                 $(this).addClass("is-invalid");
                             }
@@ -168,21 +251,94 @@
             });
 
             $("#selectGroupe").change(function () {
+                wait(true);
+                arrayDate = toMysqlDate();
+                var requestGroupe = $.ajax({
+                    url: "/api/checkseance.php",
+                    method: "POST",
+                    data: {idGroupe: $(this).val(), dateDebut: arrayDate.dateDebut, dateFin: arrayDate.dateF}
+                });
+                requestGroupe.done(function () {
+                    wait(false);
+                    $("#selectGroupe")
+                        .addClass("is-valid")
+                        .removeClass("is-invalid");
+                });
+
+                requestGroupe.fail(function () {
+                    wait(false);
+                    $("#selectGroupe")
+                        .addClass("is-invalid")
+                        .removeClass("is-valid");
+                });
 
             });
 
+            $("#selectProfesseurs").change(function () {
+                wait(true);
+                arrayDate = toMysqlDate();
+                var requestGroupe = $.ajax({
+                    url: "/api/checkseance.php",
+                    method: "POST",
+                    data: {idProfesseur: $(this).val(), dateDebut: arrayDate.dateDebut, dateFin: arrayDate.dateF}
+                });
+
+                requestGroupe.done(function () {
+                    wait(false);
+                    $("#selectProfesseurs")
+                        .addClass("is-valid")
+                        .removeClass("is-invalid");
+                });
+
+                requestGroupe.fail(function () {
+                    wait(false);
+                    $("#selectProfesseurs")
+                        .addClass("is-invalid")
+                        .removeClass("is-valid");
+                });
+            });
+
+            $("#selectSalle").change(function () {
+                wait(true);
+                arrayDate = toMysqlDate();
+                var requestGroupe = $.ajax({
+                    url: "/api/checkseance.php",
+                    method: "POST",
+                    data: {idSalle: $(this).val(), dateDebut: arrayDate.dateDebut, dateFin: arrayDate.dateF}
+                });
+
+                requestGroupe.done(function () {
+                    wait(false);
+                    $("#selectSalle")
+                        .addClass("is-valid")
+                        .removeClass("is-invalid");
+                });
+
+                requestGroupe.fail(function () {
+                    wait(false);
+                    $("#selectSalle")
+                        .addClass("is-invalid")
+                        .removeClass("is-valid");
+                });
+            });
+
+            $("#selectFormation").change(function () {
+                checkDate();
+            });
+
             $("#sendInfo").click(function () {
-                if ($("#datepicker").val() == "" || $("#timepickerStart").val() == "" || $("#timepickerEnd").val() == "") {
-                    $("#formulaire").addClass("is-invalid");
-                } else {
+
+                console.log($("#datepicker").hasClass("is-valid"));
+                var attr1 = $("#datepicker").hasClass("is-valid");
+                var attr2 = $("#timepickerStart").hasClass("is-valid");
+                var attr3 = $("#timepickerEnd").hasClass("is-valid");
+                var attr4 = $("#selectSalle").hasClass("is-valid");
+                var attr5 = $("#selectGroupe").hasClass("is-valid");
+                var attr6 = $("#selectProfesseurs").hasClass("is-valid");
+                if (attr1 && attr2 && attr3 && attr4 && attr5 && attr6) {
+                    wait(true);
                     $("#formulaire").removeClass("is-invalid");
-                    date = $("#datepicker").val().split("/");
-                    hourStart = $("#timepickerStart").val();
-                    hourEnd = $("#timepickerEnd").val();
-                    hourStart = hourStart.split(":");
-                    hourEnd = hourEnd.split(":");
-                    dateDebut = date[2] + '-' + date[0] + '-' + date[1] + " " + hourStart[0] + ":00:00";
-                    dateF = date[2] + '-' + date[0] + '-' + date[1] + " " + hourEnd[0] + ":00:00";
+                    arrayDate = toMysqlDate();
                     var requestAddSeance = $.ajax({
                         url: "/api/addseance.php",
                         method: "POST",
@@ -191,22 +347,44 @@
                             idMatiere: $("#selectMatiere").val(),
                             idGroupe: $("#selectGroupe").val(),
                             idProfesseur: $("#selectProfesseurs").val(),
-                            dateDeb: dateDebut,
-                            dateFin: dateF,
+                            dateDeb: arrayDate.dateDebut,
+                            dateFin: arrayDate.dateF,
                         },
                     });
 
                     requestAddSeance.done(function () {
+                        wait(false);
+                        $("input").each(function () {
+                            $(this).val("");
+                        });
+                        $("#datepicker").removeClass("is-valid");
+                        $("#timepickerEnd").removeClass("is-valid");
+                        $("#timepickerStart").removeClass("is-valid");
+                        $("#selectProfesseurs").removeClass("is-valid");
+                        $("#selectGroupe").removeClass("is-valid");
+                        $("#selectSalle").removeClass("is-valid");
+                        $("#otherParameters").fadeOut();
+                        checkDate();
+                        $("#changeRolling")
+                            .attr("src","/assets/img/check.png");
+                    });
+
+                    requestAddSeance.fail(function () {
+                        wait(false);
                     })
+                }
+                else {
+                    $("#formulaire").addClass("is-invalid");
                 }
             });
 
-
             $("#selectFormation ").change();
-            $("#selectGroupe ").change();
-            $("#selectProfesseurs").change();
-        })
-        ;
+            /**
+
+             $("#selectGroupe ").change();
+             $("#selectProfesseurs").change();
+             **/
+        });
 
 
     </script>
