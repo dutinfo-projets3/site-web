@@ -19,3 +19,7 @@ tr {
 #fin {
 	display: none;
 }
+
+#returnButton {
+	display : none;
+}

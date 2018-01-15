@@ -10,6 +10,7 @@
 					<th> Absent(e) </th>
 				</tr>
 				<button id="absButton" class="mx-auto" type="submit">Envoyer </button>
+				<button id="returnButton" class="mx-auto" type="submit">Retourner en arrière </button>
 			</table>
 			<img src ="/assets/img/check.png" id="fin">
 		</div>
@@ -47,6 +48,12 @@ $(function() {
 	var year = auj.getFullYear();
 	$('#date').val(day+"/"+month+"/"+year);
 });
+
+$('#returnButton').on("click",function(){
+	location.reload();
+	console.log("allez !")
+});
+
 $("#submit").on("click",function(){
 	if($('#date').val().length === 10 && $('#date').val().charAt(2) == "/" && $('#date').val().charAt(5) == "/" && $('#dheure').val().length == 5 && $('#dheure').val().charAt(2)==":"){
 		var date = $('#date').val().split("/")
@@ -70,8 +77,10 @@ $("#submit").on("click",function(){
 					document.getElementById("choix").style.display = "none";
 					if(typeof(res[0].nom)=="undefined"){
 						var auj = new Date(annee, mois-1, jour, dheure, dminute)
-						var avert = document.createTextNode("Etes-vous sûr(e) d'avoir un cours qui commence le "+auj.toLocaleString()+"?");
+						var avert = document.createTextNode("Vous n'avez aucun cours qui commence le "+auj.toLocaleString()+".");
 						$('#abs').append(avert);
+						$("#returnButton").css("display" , "inline");
+						$('#abs').append($("#returnButton"));
 					} else {
 						var table = document.getElementsByTagName("table")[0];
 						document.getElementById("absButton").style.display = "inline";
