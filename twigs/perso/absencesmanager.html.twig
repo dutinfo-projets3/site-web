@@ -9,8 +9,8 @@
 					<th> Prénom </th>
 					<th> Absent(e) </th>
 				</tr>
-				<button id="absButton" class="mx-auto" type="submit">Envoyer </button>
-				<button id="returnButton" class="mx-auto" type="submit">Retourner en arrière </button>
+				<button id="absButton" class="mx-auto btn-black" type="submit">Envoyer </button>
+				<button id="returnButton" class="mx-auto btn-black" type="submit">Retourner en arrière </button>
 			</table>
 			<img src ="/assets/img/check.png" id="fin">
 		</div>
@@ -24,7 +24,7 @@
 				<label for"dheure" class="d-inline"> heure début (24 heures format) </label>
 				<input id="dheure"  class="d-block" type ="text" placeholder="hh:mm">
 			</div>
-			<button id="submit" class="mx-auto" type="submit">Envoyer </button>
+			<button id="submit" class="mx-auto btn-black" type="submit">Envoyer </button>
 		</div>
 	{% elseif (usertype == 2) %}
 		<table>
@@ -105,7 +105,9 @@ $("#submit").on("click",function(){
 							table.className += "table table-responsive";
 						}
 					}
+					$("#returnButton").css("display","inline");
 					$("#abs").append($("#absButton"));
+					$("#abs").append(($("#returnButton")));
 
 				});
 

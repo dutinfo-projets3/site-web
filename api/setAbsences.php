@@ -8,6 +8,7 @@ $annee = $_GET['annee'];
 $heureD = $_GET['dheure'];
 $minuteD = $_GET['dminute'];
 $absents = $_GET['absents'];
+$presents = array();
 
 if(isset($_GET['absents'])){
 	$secu = true;
@@ -18,8 +19,6 @@ if(isset($_GET['absents'])){
 		foreach ($absentIds as $misterNotHere) {
 			array_push($params, $misterNotHere);
 		}
-	} else {
-		// Le prof a fait l'appel et il n'y aucun absent
 	}
 	foreach ($params as $value) {
 		$secu = $secu && baseVerif($value);
@@ -28,6 +27,10 @@ if(isset($_GET['absents'])){
 		$p = Utilisateur::createFromSession();
 
 		$seance = $p->getSeance($annee, $mois, $jour, $heureD,$minuteD);
+
+		if(empty(($_GET['absents'])){
+			$presents = Absence::getAbsence
+		}
 
 		foreach ($absentIds as $id) {
 			Absence::putIntoBd($id,$seance->getIdseance());

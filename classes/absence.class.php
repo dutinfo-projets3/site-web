@@ -29,7 +29,7 @@ SQL
 			FROM Absence
 			WHERE idSeance = ?
 SQL
-);		
+);	
+	$stmt-> execute(array($idSeance));	
 	}
-	$stmt-> execute(array($idSeance));
 }
