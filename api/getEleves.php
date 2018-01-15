@@ -18,7 +18,6 @@ if($secu && isValidDay($jour,$mois,$annee) && isValidHour($heureD,$minuteD)){
 
 	$seance = $p->getSeance($annee, $mois, $jour, $heureD,$minuteD);
 	if($seance == null){
-		// La séance n'a pas été trouvée
 		return;
 	}
 
